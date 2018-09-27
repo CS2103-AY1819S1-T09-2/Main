@@ -86,7 +86,8 @@ public class Deck {
             return true;
         }
 
-        return otherDeck != null && otherDeck.getName().equals(getName());
+        return otherDeck != null && otherDeck.getName().equals(getName())
+                && (otherDeck.getPhone().equals(getPhone()) || otherDeck.getEmail().equals(getEmail()));
     }
 
     /**
@@ -114,13 +115,21 @@ public class Deck {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name);
+        return Objects.hash(name, phone, email, address, tags);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName());
+        builder.append(getName())
+                .append(" Phone: ")
+                .append(getPhone())
+                .append(" Email: ")
+                .append(getEmail())
+                .append(" Address: ")
+                .append(getAddress())
+                .append(" Tags: ");
+        getTags().forEach(builder::append);
         return builder.toString();
     }
 
