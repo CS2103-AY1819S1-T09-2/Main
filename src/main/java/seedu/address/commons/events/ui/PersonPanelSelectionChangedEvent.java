@@ -1,17 +1,17 @@
 package seedu.address.commons.events.ui;
 
 import seedu.address.commons.events.BaseEvent;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.Deck;
 
 /**
- * Represents a selection change in the Person List Panel
+ * Represents a selection change in the Deck List Panel
  */
 public class PersonPanelSelectionChangedEvent extends BaseEvent {
 
 
-    private final Person newSelection;
+    private final Deck newSelection;
 
-    public PersonPanelSelectionChangedEvent(Person newSelection) {
+    public PersonPanelSelectionChangedEvent(Deck newSelection) {
         this.newSelection = newSelection;
     }
 
@@ -20,7 +20,7 @@ public class PersonPanelSelectionChangedEvent extends BaseEvent {
         return getClass().getSimpleName();
     }
 
-    public Person getNewSelection() {
+    public Deck getNewSelection() {
         return newSelection;
     }
 }
