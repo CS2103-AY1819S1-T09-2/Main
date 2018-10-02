@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="header"><h1>Anakin - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>T09-02</code>      Since: <code>Sep 2018</code>      Licence: <code>MIT</code></p>
+<p>By: <code>Team T09-2</code>      Since: <code>Aug 2018</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -21,14 +21,13 @@
 <li><a href="#editing-a-deck-code-editdeck-code">3.6. Editing a deck : <code>editdeck</code></a></li>
 <li><a href="#deleting-a-deck-code-deldeck-code">3.7. Deleting a deck : <code>deldeck</code></a></li>
 <li><a href="#adding-a-card-code-newcard-code">3.8. Adding a card : <code>newcard</code></a></li>
-<li><a href="#editing-a-deck-code-editdeck-code-2">3.9. Editing a deck : <code>editdeck</code></a></li>
+<li><a href="#editing-a-card-code-editcard-code">3.9. Editing a card : <code>editcard</code></a></li>
 <li><a href="#sort-current-list-by-name-code-sortname-code">3.10. Sort current list by name : <code>sortname</code></a></li>
-<li><a href="#sort-by-rank-code-sortrank-code">3.11. Sort by rank : <code>sortrank</code></a></li>
-<li><a href="#export-deck-to-csv-file-code-exportdeck-code">3.12. Export deck to csv file : <code>exportdeck</code></a></li>
-<li><a href="#import-deck-from-csv-file-code-importdeck-code">3.13. Import deck from csv file : <code>importdeck</code></a></li>
-<li><a href="#sort-by-rank-code-sortrank-code-2">3.14. Sort by rank : <code>sortrank</code></a></li>
-<li><a href="#card-difficulty-classification-code-classify-code">3.15. Card difficulty classification : <code>classify</code></a></li>
-<li><a href="#exiting-anakin-code-exit-code">3.16. Exiting Anakin : <code>exit</code></a></li>
+<li><a href="#export-deck-to-csv-file-code-exportdeck-code">3.11. Export deck to csv file : <code>exportdeck</code></a></li>
+<li><a href="#import-deck-from-csv-file-code-importdeck-code">3.12. Import deck from csv file : <code>importdeck</code></a></li>
+<li><a href="#sort-by-rank-code-sortrank-code">3.13. Sort by rank : <code>sortrank</code></a></li>
+<li><a href="#card-difficulty-classification-code-classify-code">3.14. Card difficulty classification : <code>classify</code></a></li>
+<li><a href="#exiting-anakin-code-exit-code">3.15. Exiting Anakin : <code>exit</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -40,7 +39,16 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Anakin</strong>  is for those who <strong>want to make heavy use of flashcards without the hassle of managing physical copies</strong>. More importantly, Anakin is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>Welcome to the <strong>Anakin</strong> User Guide!</p>
+</div>
+<div class="paragraph">
+<p><strong>Anakin</strong>  was built for those who <strong>want to make heavy use of flashcards without the hassle of managing physical copies</strong>. More importantly, Anakin is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI).</p>
+</div>
+<div class="paragraph">
+<p>To get started, head over to <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a>!</p>
+</div>
+<div class="paragraph">
+<p>For a quick review of commands, check out <a href="#command-summary">Section 5, &#8220;Command Summary&#8221;</a>.</p>
 </div>
 </div>
 </div>
@@ -53,10 +61,10 @@
 <p>Ensure you have Java version <code>9</code> or later installed in your Computer.</p>
 </li>
 <li>
-<p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/se-edu/addressbook-level4/releases">here</a>.</p>
+<p>Download the latest <code>Anakin.jar</code> <a href="https://github.com/CS2103-AY1819S1-T09-2/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
+<p>Copy the file to the folder you want to use as the home folder for your copy of Anakin.</p>
 </li>
 <li>
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
@@ -81,7 +89,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>newdeck</code></strong> : creates a new deck.</p>
 </li>
 <li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
+<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd deck shown in the current list</p>
 </li>
 <li>
 <p><strong><code>exit</code></strong> : exits the app</p>
@@ -110,13 +118,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
+<p>Items in square brackets are optional e.g <code>newdeck [n/NAME]</code> can be used as <code>newdeck n/My Deck</code> or as <code>newdeck</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
-</li>
-<li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
+<p>Parameters can be in any order e.g. if the command specifies <code>q/QUESTION a/ANSWER</code>, <code>a/ANSWER q/QUESTION</code> is also acceptable.</p>
 </li>
 </ul>
 </div>
@@ -139,26 +144,32 @@ Format: <code>list</code></p>
 <div class="sect2">
 <h3 id="adding-a-deck-code-newdeck-code"><a class="link" href="#adding-a-deck-code-newdeck-code">3.3. Adding a deck: <code>newdeck</code></a></h3>
 <div class="paragraph">
-<p>Adds a person to the address book<br>
-Format: <code>newdeck [n/name]</code></p>
+<p>Adds a new deck to Anakin<br>
+Format: <code>newdeck [n/NAME]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Name will be taken as a string.</p>
+<p>NAME will be taken as a string.</p>
 </li>
 <li>
-<p>If name is left blank, the name of the deck will be “New Deck #number”.</p>
+<p>If NAME is left blank, the name of the deck will be “New Deck #number”.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:
-* <code>newdeck n/My First Deck</code></p>
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>newdeck n/My First Deck</code></p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -182,10 +193,16 @@ Format: <code>cd INDEX_OF_DECK</code></p>
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:
-* <code>list</code><br>
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
 <code>select 2</code><br>
 Enter the 2nd deck in the deck list</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -227,7 +244,7 @@ Edits the name of the first deck in the list to be <code>My Deck</code>.</p>
 <div class="sect2">
 <h3 id="deleting-a-deck-code-deldeck-code"><a class="link" href="#deleting-a-deck-code-deldeck-code">3.7. Deleting a deck : <code>deldeck</code></a></h3>
 <div class="paragraph">
-<p>Deletes the specified person from the address book.<br>
+<p>Deletes the specified person from Anakin.<br>
 Format: <code>deldeck INDEX_OF_DECK</code></p>
 </div>
 <div class="sidebarblock">
@@ -269,7 +286,7 @@ Format: <code>newcard [q/QUESTION] [a/ANSWER]</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-deck-code-editdeck-code-2"><a class="link" href="#editing-a-deck-code-editdeck-code-2">3.9. Editing a deck : <code>editdeck</code></a></h3>
+<h3 id="editing-a-card-code-editcard-code"><a class="link" href="#editing-a-card-code-editcard-code">3.9. Editing a card : <code>editcard</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing card in the specified deck.<br>
 Format: <code>editcard d/INDEX_OF_DECK INDEX_OF_CARD [q/QUESTION] [a/ANSWER]</code></p>
@@ -299,40 +316,30 @@ Format: <code>editcard INDEX_OF_CARD [q/QUESTION] [a/ANSWER]</code></p>
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:
-* <code>list</code><br>
-Displays all decks.<br>
-* <code>edit 1 n/My Deck</code><br>
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+Displays all decks.<br></p>
+</li>
+<li>
+<p><code>edit 1 n/My Deck</code><br>
 Edits the name of the first deck in the list to be <code>My Deck</code>.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
 <h3 id="sort-current-list-by-name-code-sortname-code"><a class="link" href="#sort-current-list-by-name-code-sortname-code">3.10. Sort current list by name : <code>sortname</code></a></h3>
 <div class="paragraph">
-<p>If user is currently in a deck, sort all card in alphabetical order.
+<p>If user is currently in a deck, sort all card in alphabetical order.<br>
 Format: <code>sortname</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sort-by-rank-code-sortrank-code"><a class="link" href="#sort-by-rank-code-sortrank-code">3.11. Sort by rank : <code>sortrank</code></a></h3>
-<div class="paragraph">
-<p>Sorts the cards in current deck by rank (card performance).<br>
-Format: <code>sortrank</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Note: User must be inside a deck to perform this command.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="export-deck-to-csv-file-code-exportdeck-code"><a class="link" href="#export-deck-to-csv-file-code-exportdeck-code">3.12. Export deck to csv file : <code>exportdeck</code></a></h3>
+<h3 id="export-deck-to-csv-file-code-exportdeck-code"><a class="link" href="#export-deck-to-csv-file-code-exportdeck-code">3.11. Export deck to csv file : <code>exportdeck</code></a></h3>
 <div class="paragraph">
 <p>Creates a CSV file at the specified FILEPATH containing the deck at INDEX_OF_DECK.<br>
 Format: <code>exportdeck INDEX_OF_DECK [f/FILEPATH]</code></p>
@@ -353,7 +360,7 @@ Format: <code>exportdeck INDEX_OF_DECK [f/FILEPATH]</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="import-deck-from-csv-file-code-importdeck-code"><a class="link" href="#import-deck-from-csv-file-code-importdeck-code">3.13. Import deck from csv file : <code>importdeck</code></a></h3>
+<h3 id="import-deck-from-csv-file-code-importdeck-code"><a class="link" href="#import-deck-from-csv-file-code-importdeck-code">3.12. Import deck from csv file : <code>importdeck</code></a></h3>
 <div class="paragraph">
 <p>Imports a deck from the CSV at the specified FILEPATH.<br>
 Format: <code>exportdeck FILEPATH</code></p>
@@ -371,32 +378,17 @@ Format: <code>exportdeck FILEPATH</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sort-by-rank-code-sortrank-code-2"><a class="link" href="#sort-by-rank-code-sortrank-code-2">3.14. Sort by rank : <code>sortrank</code></a></h3>
+<h3 id="sort-by-rank-code-sortrank-code"><a class="link" href="#sort-by-rank-code-sortrank-code">3.13. Sort by rank : <code>sortrank</code></a></h3>
 <div class="paragraph">
 <p>Sorts the cards in current deck by rank (card performance).<br>
 Format: <code>sortrank</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="card-difficulty-classification-code-classify-code"><a class="link" href="#card-difficulty-classification-code-classify-code">3.15. Card difficulty classification : <code>classify</code></a></h3>
-<div class="paragraph">
-<p>Allocates card into one of four bins {Easy, Good, Hard, Review}<br>
-Format: <code>classify d/INDEX_OF_DECK INDEX_OF_CARD &lt;classification&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>If user is inside a deck:<br>
-Format: <code>classify INDEX_OF_CARD &lt;classification&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>If user is viewing a card:<br>
-Format: <code>classify &lt;classification&gt;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>&lt;classification&gt;: {‘easy’ | ‘good’ | ‘hard’ | ‘review’}</p>
+<p>Note: User must be inside a deck to perform this command.</p>
 </li>
 </ul>
 </div>
@@ -404,7 +396,34 @@ Format: <code>classify &lt;classification&gt;</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-anakin-code-exit-code"><a class="link" href="#exiting-anakin-code-exit-code">3.16. Exiting Anakin : <code>exit</code></a></h3>
+<h3 id="card-difficulty-classification-code-classify-code"><a class="link" href="#card-difficulty-classification-code-classify-code">3.14. Card difficulty classification : <code>classify</code></a></h3>
+<div class="paragraph">
+<p>Allocates card into one of four bins {Easy, Good, Hard, Review}<br>
+Format: <code>classify d/INDEX_OF_DECK INDEX_OF_CARD RATING</code></p>
+</div>
+<div class="paragraph">
+<p>If user is inside a deck:<br>
+Format: <code>classify INDEX_OF_CARD RATING</code></p>
+</div>
+<div class="paragraph">
+<p>If user is viewing a card:<br>
+Format: <code>classify RATING</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>RATING indicates how you felt about the question<br>
+<strong>RATING</strong> {‘easy’ | ‘good’ | ‘hard’ | ‘review’}</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exiting-anakin-code-exit-code"><a class="link" href="#exiting-anakin-code-exit-code">3.15. Exiting Anakin : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
@@ -419,17 +438,81 @@ Format: <code>exit</code></p>
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
 <strong>A</strong>: Export all your decks, copy the .csv files to the other Computer, then use the import command to import your decks.</p>
 </div>
+<div class="paragraph">
+<p><strong>Q</strong>: Why is it called <strong>Anakin</strong>?<br>
+<strong>A</strong>: Because using CLI is as cool as using the Force.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>See above please :)</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>A convenient cheat sheet of commands</p>
 </div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">What does it do?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>list</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lists all decks</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>newdeck [n/NAME]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Creates a new deck. /n is optional</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>editdeck  INDEX n/NAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Edits the deck</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cd INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Navigates into the deck at INDEX.<br>
+Use <code>cd ..</code> to navigate out of the deck</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deldeck INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deletes the deck at the specified INDEX</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>newcard [q/QUESTION] [a/ANSWER]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Creates a new card in the current deck.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delcard INDEX_OF_DECK INDEX_OF_CARD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deletes the card at the specified INDEX_OF_CARD inside the deck at INDEX_OF_DECK.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delcard INDEX_OF_CARD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deletes the card at the specified INDEX.<br>
+You must be inside a deck to perform this operation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>newcard [q/QUESTION] [a/ANSWER]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Creates a new card in the current deck. q/ and a/ are optional.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>editcard INDEX_OF_CARD [q/QUESTION] [a/ANSWER]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Edits a new card in the current  at INDEX_OF_CARD. Either q/ or a/ must be provided.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sortname</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sort the currently displayed list of decks or cards by name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>classify RATING</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Classifies the current card into one of the following categories: {‘easy’, ‘good’ , ‘hard’ , ‘review’}</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-02 09:10:31 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-02 09:15:52 UTC</div></div></div></body></html>
