@@ -23,11 +23,13 @@
 <li><a href="#adding-a-card-code-newcard-code">3.8. Adding a card : <code>newcard</code></a></li>
 <li><a href="#editing-a-card-code-editcard-code">3.9. Editing a card : <code>editcard</code></a></li>
 <li><a href="#sort-current-list-by-name-code-sortname-code">3.10. Sort current list by name : <code>sortname</code></a></li>
-<li><a href="#export-deck-to-csv-file-code-exportdeck-code">3.11. Export deck to csv file : <code>exportdeck</code></a></li>
-<li><a href="#import-deck-from-csv-file-code-importdeck-code">3.12. Import deck from csv file : <code>importdeck</code></a></li>
-<li><a href="#sort-by-rank-code-sortrank-code">3.13. Sort by rank : <code>sortrank</code></a></li>
-<li><a href="#card-difficulty-classification-code-classify-code">3.14. Card difficulty classification : <code>classify</code></a></li>
-<li><a href="#exiting-anakin-code-exit-code">3.15. Exiting Anakin : <code>exit</code></a></li>
+<li><a href="#locate-a-deck-by-name-code-find-code">3.11. Locate a deck by name : <code>find</code></a></li>
+<li><a href="#locate-a-card-by-question-code-find-code">3.12. Locate a card by question : <code>find</code></a></li>
+<li><a href="#export-deck-to-csv-file-code-exportdeck-code">3.13. Export deck to csv file : <code>exportdeck</code></a></li>
+<li><a href="#import-deck-from-csv-file-code-importdeck-code">3.14. Import deck from csv file : <code>importdeck</code></a></li>
+<li><a href="#sort-by-rank-code-sortrank-code">3.15. Sort by rank : <code>sortrank</code></a></li>
+<li><a href="#card-difficulty-classification-code-classify-code">3.16. Card difficulty classification : <code>classify</code></a></li>
+<li><a href="#exiting-anakin-code-exit-code">3.17. Exiting Anakin : <code>exit</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -119,6 +121,9 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </li>
 <li>
 <p>Items in square brackets are optional e.g <code>newdeck [n/NAME]</code> can be used as <code>newdeck n/My Deck</code> or as <code>newdeck</code>.</p>
+</li>
+<li>
+<p>Items with …​ after them can be used multiple times including zero times e.g. <code>[t/TAG]…​</code> can be used as (i.e. 0 times), t/friend, t/friend t/family etc.</p>
 </li>
 <li>
 <p>Parameters can be in any order e.g. if the command specifies <code>q/QUESTION a/ANSWER</code>, <code>a/ANSWER q/QUESTION</code> is also acceptable.</p>
@@ -289,7 +294,7 @@ Format: <code>newcard [q/QUESTION] [a/ANSWER]</code></p>
 <h3 id="editing-a-card-code-editcard-code"><a class="link" href="#editing-a-card-code-editcard-code">3.9. Editing a card : <code>editcard</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing card in the specified deck.<br>
-Format: <code>editcard d/INDEX_OF_DECK INDEX_OF_CARD [q/QUESTION] [a/ANSWER]</code></p>
+Format: <code>editcard INDEX_OF_CARD d/INDEX_OF_DECK [q/QUESTION] [a/ANSWER]</code></p>
 </div>
 <div class="paragraph">
 <p>If user is inside a deck, can omit: d/INDEX_OF_DECK.<br>
@@ -321,12 +326,8 @@ Format: <code>editcard INDEX_OF_CARD [q/QUESTION] [a/ANSWER]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br>
-Displays all decks.<br></p>
-</li>
-<li>
-<p><code>edit 1 n/My Deck</code><br>
-Edits the name of the first deck in the list to be <code>My Deck</code>.</p>
+<p><code>edit 1 d/1 a/A</code><br>
+Edits the answer of the first card in the first deck to be <code>A</code>.</p>
 </li>
 </ul>
 </div>
@@ -339,7 +340,97 @@ Format: <code>sortname</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="export-deck-to-csv-file-code-exportdeck-code"><a class="link" href="#export-deck-to-csv-file-code-exportdeck-code">3.11. Export deck to csv file : <code>exportdeck</code></a></h3>
+<h3 id="locate-a-deck-by-name-code-find-code"><a class="link" href="#locate-a-deck-by-name-code-find-code">3.11. Locate a deck by name : <code>find</code></a></h3>
+<div class="paragraph">
+<p>Finds decks with names that contain any of the given keywords.
+Format: <code>find KEYWORD [MORE_KEYWORDS]…</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
+</li>
+<li>
+<p>Only the name is searched.</p>
+</li>
+<li>
+<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
+</li>
+<li>
+<p>Decks matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find Algo</code><br>
+Returns <code>algo</code> and <code>Easy Algo</code></p>
+</li>
+<li>
+<p><code>find Bio Chem Physics</code><br>
+Returns any deck having names <code>Bio</code>, <code>Chem</code>, or <code>Physics</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="locate-a-card-by-question-code-find-code"><a class="link" href="#locate-a-card-by-question-code-find-code">3.12. Locate a card by question : <code>find</code></a></h3>
+<div class="paragraph">
+<p>Finds cards in a specified deck with questions that contain any of the given keywords.
+Format: <code>find d/INDEX_OF_DECK KEYWORD [MORE_KEYWORDS]…</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
+</li>
+<li>
+<p>Only the name is searched.</p>
+</li>
+<li>
+<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
+</li>
+<li>
+<p>Cards matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find d/1 NP</code><br>
+Returns <code>Is p = np?</code> and <code>Explain NP-hard</code> from the first deck.</p>
+</li>
+<li>
+<p><code>find d/1 P NP</code><br>
+Returns any cards having questions including <code>P</code> or <code>NP</code> in the first deck.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="export-deck-to-csv-file-code-exportdeck-code"><a class="link" href="#export-deck-to-csv-file-code-exportdeck-code">3.13. Export deck to csv file : <code>exportdeck</code></a></h3>
 <div class="paragraph">
 <p>Creates a CSV file at the specified FILEPATH containing the deck at INDEX_OF_DECK.<br>
 Format: <code>exportdeck INDEX_OF_DECK [f/FILEPATH]</code></p>
@@ -360,7 +451,7 @@ Format: <code>exportdeck INDEX_OF_DECK [f/FILEPATH]</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="import-deck-from-csv-file-code-importdeck-code"><a class="link" href="#import-deck-from-csv-file-code-importdeck-code">3.12. Import deck from csv file : <code>importdeck</code></a></h3>
+<h3 id="import-deck-from-csv-file-code-importdeck-code"><a class="link" href="#import-deck-from-csv-file-code-importdeck-code">3.14. Import deck from csv file : <code>importdeck</code></a></h3>
 <div class="paragraph">
 <p>Imports a deck from the CSV at the specified FILEPATH.<br>
 Format: <code>exportdeck FILEPATH</code></p>
@@ -378,7 +469,7 @@ Format: <code>exportdeck FILEPATH</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sort-by-rank-code-sortrank-code"><a class="link" href="#sort-by-rank-code-sortrank-code">3.13. Sort by rank : <code>sortrank</code></a></h3>
+<h3 id="sort-by-rank-code-sortrank-code"><a class="link" href="#sort-by-rank-code-sortrank-code">3.15. Sort by rank : <code>sortrank</code></a></h3>
 <div class="paragraph">
 <p>Sorts the cards in current deck by rank (card performance).<br>
 Format: <code>sortrank</code></p>
@@ -396,7 +487,7 @@ Format: <code>sortrank</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="card-difficulty-classification-code-classify-code"><a class="link" href="#card-difficulty-classification-code-classify-code">3.14. Card difficulty classification : <code>classify</code></a></h3>
+<h3 id="card-difficulty-classification-code-classify-code"><a class="link" href="#card-difficulty-classification-code-classify-code">3.16. Card difficulty classification : <code>classify</code></a></h3>
 <div class="paragraph">
 <p>Allocates card into one of four bins {Easy, Good, Hard, Review}<br>
 Format: <code>classify d/INDEX_OF_DECK INDEX_OF_CARD RATING</code></p>
@@ -423,7 +514,7 @@ Format: <code>classify RATING</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-anakin-code-exit-code"><a class="link" href="#exiting-anakin-code-exit-code">3.15. Exiting Anakin : <code>exit</code></a></h3>
+<h3 id="exiting-anakin-code-exit-code"><a class="link" href="#exiting-anakin-code-exit-code">3.17. Exiting Anakin : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
@@ -509,10 +600,18 @@ You must be inside a deck to perform this operation.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sort the currently displayed list of decks or cards by name</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find KEYWORD [MORE_KEYWORDS]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Finds decks with names that contain any of the given keywords.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find d/INDEX_OF_DECK KEYWORD [MORE_KEYWORDS]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Finds cards in a specified deck with questions that contain any of the given keywords.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>classify RATING</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Classifies the current card into one of the following categories: {‘easy’, ‘good’ , ‘hard’ , ‘review’}</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-03 04:23:41 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-03 05:19:53 UTC</div></div></div></body></html>
