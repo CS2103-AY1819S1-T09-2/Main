@@ -1,5 +1,7 @@
 package seedu.address.model.Anakin_deck;
 
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
 import java.util.Objects;
 
 /**
@@ -10,20 +12,21 @@ public class Anakin_Card {
     private final int performance;
 
     // Identity fields
-    private final String question;
-    private final String answer;
+    private final AnakinQuestion question;
+    private final AnakinAnswer answer;
 
-    public Anakin_Card(String question, String answer) {
+    public Anakin_Card(AnakinQuestion question, AnakinAnswer answer) {
+        requireAllNonNull(question, answer);
         this.question = question;
         this.answer = answer;
         performance = 0;
     }
 
-    public String getQuestion() {
+    public AnakinQuestion getQuestion() {
         return question;
     }
 
-    public String getAnswer() {
+    public AnakinAnswer getAnswer() {
         return answer;
     }
 
