@@ -44,7 +44,9 @@ public class AnakinParser {
 
         case Anakin_DelDeckCommand.COMMAND_WORD:
             return new AnakinDelDeckCommandParser().parse(arguments);
-/*
+
+        // TO DO
+            /*
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
 
@@ -53,9 +55,6 @@ public class AnakinParser {
 
         case DeleteCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
-
-        case ClearCommand.COMMAND_WORD:
-            return new ClearCommand();
 
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
@@ -72,11 +71,6 @@ public class AnakinParser {
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
 
-        case UndoCommand.COMMAND_WORD:
-            return new UndoCommand();
-
-        case RedoCommand.COMMAND_WORD:
-            return new RedoCommand();
 */
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
