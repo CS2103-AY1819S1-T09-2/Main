@@ -1,16 +1,17 @@
 package seedu.address.logic.Anakinparser;
 
-import seedu.address.logic.Anakin_commands.Anakin_Command;
-import seedu.address.logic.Anakin_commands.Anakin_DelDeckCommand;
-import seedu.address.logic.Anakin_commands.Anakin_NewDeckCommand;
-import seedu.address.logic.commands.*;
-import seedu.address.logic.parser.exceptions.ParseException;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+
+import seedu.address.logic.Anakin_commands.Anakin_Command;
+import seedu.address.logic.Anakin_commands.Anakin_DelDeckCommand;
+import seedu.address.logic.Anakin_commands.Anakin_NewDeckCommand;
+import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+
 
 /**
  * Parses user input.
