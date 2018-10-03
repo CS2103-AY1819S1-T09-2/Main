@@ -35,7 +35,7 @@ public class AnakinQuestion {
      */
     public static boolean isValidQuestion(String test) {
         // TODO: Update validation regex
-//        return test.matches(QUESTION_VALIDATION_REGEX);
+        // return test.matches(QUESTION_VALIDATION_REGEX);
         return true;
     }
 
