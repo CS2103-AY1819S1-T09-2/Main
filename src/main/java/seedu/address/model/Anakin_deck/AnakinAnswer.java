@@ -53,6 +53,6 @@ public class AnakinAnswer {
 
     @Override
     public int hashCode() {
-        return fullANswer.hashCode();
+        return fullAnswer.hashCode();
     }
 }
