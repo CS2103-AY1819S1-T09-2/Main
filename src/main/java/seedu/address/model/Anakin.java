@@ -14,7 +14,7 @@ import seedu.address.model.AnakinDeck.AnakinUniqueDeckList;
  * Wraps all data at the Anakin level
  * Duplicates are not allowed (by .isSameDeck comparison)
  */
-public class Anakin implements Anakin_ReadOnlyAnakin {
+public class Anakin implements AnakinReadOnlyAnakin {
 
     private final AnakinUniqueDeckList decks;
 
@@ -37,7 +37,7 @@ public class Anakin implements Anakin_ReadOnlyAnakin {
     /**
      * Creates an Anakin using the Decks in the {@code toBeCopied}
      */
-    public Anakin(Anakin_ReadOnlyAnakin toBeCopied) {
+    public Anakin(AnakinReadOnlyAnakin toBeCopied) {
         this();
 
     }
@@ -55,7 +55,7 @@ public class Anakin implements Anakin_ReadOnlyAnakin {
     /**
      * Resets the existing data of this {@code Anakin} with {@code newData}.
      */
-    public void resetData(Anakin_ReadOnlyAnakin newData) {
+    public void resetData(AnakinReadOnlyAnakin newData) {
         requireNonNull(newData);
 
         setDecks(newData.getDeckList());

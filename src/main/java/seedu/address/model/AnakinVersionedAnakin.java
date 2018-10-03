@@ -6,12 +6,12 @@ import java.util.List;
 /**
  * {@code Anakin} that keeps track of its own history.
  */
-public class Anakin_VersionedAnakin extends Anakin {
+public class AnakinVersionedAnakin extends Anakin {
 
-    private final List<Anakin_ReadOnlyAnakin> anakinStateList;
+    private final List<AnakinReadOnlyAnakin> anakinStateList;
     private int currentStatePointer;
 
-    public Anakin_VersionedAnakin(Anakin_ReadOnlyAnakin initialState) {
+    public AnakinVersionedAnakin(AnakinReadOnlyAnakin initialState) {
         super(initialState);
 
         anakinStateList = new ArrayList<>();
@@ -77,11 +77,11 @@ public class Anakin_VersionedAnakin extends Anakin {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof Anakin_VersionedAnakin)) {
+        if (!(other instanceof AnakinVersionedAnakin)) {
             return false;
         }
 
-        Anakin_VersionedAnakin otherVersionedAnakin = (Anakin_VersionedAnakin) other;
+        AnakinVersionedAnakin otherVersionedAnakin = (AnakinVersionedAnakin) other;
 
         // state check
         return super.equals(otherVersionedAnakin)

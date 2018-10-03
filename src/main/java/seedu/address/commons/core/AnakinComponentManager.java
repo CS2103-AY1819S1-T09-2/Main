@@ -7,17 +7,17 @@ import seedu.address.commons.events.BaseEvent;
  *
  * Registers the class' event handlers in eventsCenter
  */
-public class Anakin_ComponentManager {
+public class AnakinComponentManager {
     protected EventsCenter eventsCenter;
 
     /**
      * Uses default {@link EventsCenter}
      */
-    public Anakin_ComponentManager() {
+    public AnakinComponentManager() {
         this(EventsCenter.getInstance());
     }
 
-    public Anakin_ComponentManager(EventsCenter eventsCenter) {
+    public AnakinComponentManager(EventsCenter eventsCenter) {
         this.eventsCenter = eventsCenter;
         eventsCenter.registerHandler(this);
     }

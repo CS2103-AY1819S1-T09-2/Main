@@ -6,7 +6,7 @@ import seedu.address.model.AnakinDeck.AnakinDeck;
 /**
  * Unmodifiable view of Anakin
  */
-public interface Anakin_ReadOnlyAnakin {
+public interface AnakinReadOnlyAnakin {
 
     /**
      * Returns an unmodifiable view of the decks list.

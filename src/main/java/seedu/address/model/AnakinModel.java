@@ -17,9 +17,9 @@ public interface AnakinModel {
     /** {@code Predicate} that always evaluate to true */
     Predicate<AnakinCard> PREDICATE_SHOW_ALL_CARDS = unused -> true;
 
-    void resetData(Anakin_ReadOnlyAnakin newData);
+    void resetData(AnakinReadOnlyAnakin newData);
 
-    Anakin_ReadOnlyAnakin getAnakin();
+    AnakinReadOnlyAnakin getAnakin();
 
     boolean hasDeck(AnakinDeck deck);
 

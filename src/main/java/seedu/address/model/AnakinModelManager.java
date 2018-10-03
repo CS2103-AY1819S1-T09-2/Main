@@ -8,19 +8,19 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-import seedu.address.commons.core.Anakin_ComponentManager;
+import seedu.address.commons.core.AnakinComponentManager;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.commons.events.model.Anakin_AnakinChangedEvent;
+import seedu.address.commons.events.model.AnakinChangedEvent;
 import seedu.address.model.AnakinDeck.AnakinCard;
 import seedu.address.model.AnakinDeck.AnakinDeck;
 
 /**
  * Represents the in-memory model of Anakin data.
  */
-public class AnakinModelManager extends Anakin_ComponentManager implements AnakinModel {
+public class AnakinModelManager extends AnakinComponentManager implements AnakinModel {
     public static final Logger logger = LogsCenter.getLogger(AnakinModelManager.class);
 
-    private final Anakin_VersionedAnakin versionedAnakin;
+    private final AnakinVersionedAnakin versionedAnakin;
     private final FilteredList<AnakinDeck> filteredDecks;
     // The filteredCards is not assigned. Should have methods to assign filteredCards (when user is inside a deck).
     private FilteredList<AnakinCard> filteredCards;
@@ -28,13 +28,13 @@ public class AnakinModelManager extends Anakin_ComponentManager implements Anaki
     /**
      * Initializes a AnakinModelManager with the given Anakin and userPrefs.
      */
-    public AnakinModelManager(Anakin_ReadOnlyAnakin anakin, UserPrefs userPrefs) {
+    public AnakinModelManager(AnakinReadOnlyAnakin anakin, UserPrefs userPrefs) {
         super();
         requireAllNonNull(anakin, userPrefs);
 
         logger.fine("Initializing with anakin: " + anakin + " and user prefs " + userPrefs);
 
-        versionedAnakin = new Anakin_VersionedAnakin(anakin);
+        versionedAnakin = new AnakinVersionedAnakin(anakin);
         filteredDecks = new FilteredList<>(versionedAnakin.getDeckList());
     }
 
@@ -43,19 +43,19 @@ public class AnakinModelManager extends Anakin_ComponentManager implements Anaki
     }
 
     @Override
-    public void resetData(Anakin_ReadOnlyAnakin newData) {
+    public void resetData(AnakinReadOnlyAnakin newData) {
         versionedAnakin.resetData(newData);
         indicateAnakinChanged();
     }
 
     @Override
-    public Anakin_ReadOnlyAnakin getAnakin() {
+    public AnakinReadOnlyAnakin getAnakin() {
         return null;
     }
 
     /** Raises an event to indicate the model has changed */
     private void indicateAnakinChanged() {
-        raise(new Anakin_AnakinChangedEvent(versionedAnakin));
+        raise(new AnakinChangedEvent(versionedAnakin));
     }
 
     @Override
