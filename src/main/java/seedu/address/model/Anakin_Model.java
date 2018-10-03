@@ -14,6 +14,9 @@ public interface Anakin_Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Anakin_Deck> PREDICATE_SHOW_ALL_DECKS = unused -> true;
 
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Anakin_Card> PREDICATE_SHOW_ALL_CARDS = unused -> true;
+
     void resetData(Anakin_ReadOnlyAnakin newData);
 
     Anakin_ReadOnlyAnakin getAnakin();
@@ -25,6 +28,14 @@ public interface Anakin_Model {
     void deleteDeck(Anakin_Deck deck);
 
     void updateDeck(Anakin_Deck target, Anakin_Deck editedDeck);
+
+    boolean hasCard(Anakin_Card card);
+
+    void addCard(Anakin_Card card);
+
+    void deleteCard(Anakin_Card card);
+
+    void updateCard(Anakin_Card target, Anakin_Card editedCard);
 
     ObservableList<Anakin_Deck> getFilteredDeckList();
 

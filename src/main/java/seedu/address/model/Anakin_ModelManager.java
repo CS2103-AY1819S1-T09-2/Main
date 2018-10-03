@@ -85,6 +85,27 @@ public class Anakin_ModelManager extends Anakin_ComponentManager implements Anak
         indicateAnakinChanged();
     }
 
+    @Override
+    public boolean hasCard(Anakin_Card card) {
+        // TODO
+        return true;
+    }
+
+    @Override
+    public void deleteCard(Anakin_Card card) {
+        // TODO
+    }
+
+    @Override
+    public void addCard(Anakin_Card card) {
+        // TODO
+    }
+
+    @Override
+    public void updateCard(Anakin_Card target, Anakin_Card editedCard) {
+        // TODO
+    }
+
     //=========== Filtered Deck List Accessors =============================================================
 
     /**
