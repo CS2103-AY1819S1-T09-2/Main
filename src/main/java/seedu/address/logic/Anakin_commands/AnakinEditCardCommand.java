@@ -1,10 +1,13 @@
 package seedu.address.logic.Anakin_commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ANSWER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DECK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUESTION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ANSWER;
 import static seedu.address.model.Anakin_Model.PREDICATE_SHOW_ALL_CARDS;
+
+import java.util.List;
+import java.util.Optional;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -16,9 +19,6 @@ import seedu.address.model.Anakin_Model;
 import seedu.address.model.Anakin_deck.AnakinAnswer;
 import seedu.address.model.Anakin_deck.AnakinQuestion;
 import seedu.address.model.Anakin_deck.Anakin_Card;
-
-import java.util.Optional;
-import java.util.List;
 
 /**
  * Edits the details of an existing card in a deck.
