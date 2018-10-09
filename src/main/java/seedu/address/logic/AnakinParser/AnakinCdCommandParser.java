@@ -25,7 +25,7 @@ public class AnakinCdCommandParser implements AnakinParserInterface<AnakinCdComm
 
     public AnakinCdCommand parse(String args) throws ParseException {
         //For cd with no index
-        if(args.length() == 0){
+        if (args.length() == 0) {
             return new AnakinCdCommand();
         } else {
 
