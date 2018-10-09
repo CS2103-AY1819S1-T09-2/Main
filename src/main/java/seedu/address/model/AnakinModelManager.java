@@ -113,13 +113,13 @@ public class AnakinModelManager extends AnakinComponentManager implements Anakin
     }
 
     @Override
-    public void goIntoDeck(AnakinDeck deck){
+    public void goIntoDeck(AnakinDeck deck) {
         requireAllNonNull(deck);
         versionedAnakin.getIntoDeck(deck);
     }
 
     @Override
-    public void getOutOfDeck(){
+    public void getOutOfDeck() {
         versionedAnakin.getOutOfDeck();
     }
 
