@@ -1,5 +1,9 @@
 package seedu.address.logic.AnakinCommands;
 
+import java.util.List;
+
+import static java.util.Objects.requireNonNull;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
@@ -7,10 +11,6 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AnakinModel;
 import seedu.address.model.anakindeck.AnakinDeck;
-
-import java.util.List;
-
-import static java.util.Objects.requireNonNull;
 
 /**
  * Navigates into a deck identified using its displayed index from Anakin.
@@ -40,7 +40,7 @@ public class AnakinCdCommand extends AnakinCommand {
     /**
      * Alternate constructor for AnakinCdCommand that does not require an Index
      */
-    public AnakinCdCommand(){
+    public AnakinCdCommand() {
         //Set targetIndex as 0.
         this.targetIndex = Index.fromZeroBased(0);
         this.noIndex = true;
@@ -51,7 +51,7 @@ public class AnakinCdCommand extends AnakinCommand {
         requireNonNull(anakinModel);
         List<AnakinDeck> lastShownList = anakinModel.getFilteredDeckList();
 
-        if (this.noIndex){
+        if (this.noIndex) {
             //Exit the deck
             anakinModel.getOutOfDeck();
             anakinModel.commitAnakin();
