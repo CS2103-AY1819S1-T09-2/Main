@@ -53,7 +53,7 @@ public class AnakinParser {
 
         case AnakinDelCardCommand.COMMAND_WORD:
             return new AnakinDelCardCommandParser().parse(arguments);
-              
+        
         case AnakinCdCommand.COMMAND_WORD:
             return new AnakinCdCommandParser().parse(arguments);
 
