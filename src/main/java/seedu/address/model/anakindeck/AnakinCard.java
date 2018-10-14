@@ -9,7 +9,7 @@ import java.util.Objects;
  */
 public class AnakinCard {
 
-    private final int performance;
+    private final Performance performance;
 
     // Identity fields
     private final AnakinQuestion question;
@@ -19,7 +19,7 @@ public class AnakinCard {
         requireAllNonNull(question, answer);
         this.question = question;
         this.answer = answer;
-        performance = 0;
+        performance = Performance.DEFAULT;
     }
 
     public AnakinQuestion getQuestion() {
@@ -30,7 +30,7 @@ public class AnakinCard {
         return answer;
     }
 
-    public int getPerformance() {
+    public Performance getPerformance() {
         return performance;
     }
 

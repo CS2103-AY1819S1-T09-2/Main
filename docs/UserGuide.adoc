@@ -117,11 +117,11 @@ Edits the name of the first deck in the list to be `My Deck`.
 
 === Deleting a deck : `deldeck`
 
-Deletes the specified person from Anakin. +
+Deletes the specified deck from Anakin. +
 Format: `deldeck INDEX_OF_DECK`
 
 ****
-* Deletes the person at the specified `INDEX`.
+* Deletes the deck at the specified `INDEX`.
 * INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
 ****
 
