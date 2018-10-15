@@ -17,6 +17,20 @@
 <li><a href="#configurations-to-do-before-writing-code">1.4. Configurations to do before writing code</a></li>
 </ul>
 </li>
+<li><a href="#design">2. Design</a>
+<ul class="sectlevel2">
+<li><a href="#architecture">2.1. Architecture</a></li>
+<li><a href="#ui-component">2.2. UI component</a></li>
+<li><a href="#logic-component">2.3. Logic component</a></li>
+<li><a href="#model-component">2.4. Model component</a></li>
+<li><a href="#storage-component">2.5. Storage component</a></li>
+</ul>
+</li>
+<li><a href="#implementation">3. Implementation</a>
+<ul class="sectlevel2">
+<li><a href="#card-level-operations">3.1. Card-level operations</a></li>
+</ul>
+</li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
 <li><a href="#use-cases">Appendix C: Use Cases</a>
@@ -163,6 +177,158 @@ This will generate all resources required by the application and tests.</p>
 </div>
 <div class="paragraph">
 <p>Optionally, you can follow the <a href="UsingCheckstyle.html">UsingCheckstyle.adoc</a> document to configure Intellij to check style-compliance as you write code.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="design"><a class="link" href="#design">2. Design</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="architecture"><a class="link" href="#architecture">2.1. Architecture</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="ui-component"><a class="link" href="#ui-component">2.2. UI component</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="logic-component"><a class="link" href="#logic-component">2.3. Logic component</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="model-component"><a class="link" href="#model-component">2.4. Model component</a></h3>
+<div class="imageblock" style="text-align: left">
+<div class="content">
+<img src="images/AnakinModelClassDiagram.png" alt="AnakinModelClassDiagram" width="900">
+</div>
+</div>
+<div class="paragraph">
+<p>Structure of the Model Component</p>
+</div>
+<div class="paragraph">
+<p>The <code>Model</code>,</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>stores Anakin data.</p>
+</li>
+<li>
+<p>exposes an unmodifiable ObservableList&lt;Deck&gt; and ObservableList&lt;Card&gt; that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+</li>
+<li>
+<p>does not depend on any of the other three components.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="storage-component"><a class="link" href="#storage-component">2.5. Storage component</a></h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="implementation"><a class="link" href="#implementation">3. Implementation</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section describes some noteworthy details on how certain features are implemented.</p>
+</div>
+<div class="sect2">
+<h3 id="card-level-operations"><a class="link" href="#card-level-operations">3.1. Card-level operations</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current implementation</a></h4>
+<div class="paragraph">
+<p>Card-level operations are supported in Anakin class:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Anakin#addCard(Card card) - Add a card to the current deck.</p>
+</li>
+<li>
+<p>Anakin#deleteCard(Card card) - Delete a card from the current deck.</p>
+</li>
+<li>
+<p>Anakin#updateCard( Card target, Card editedCard) - Update the information of a card inside the current deck.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These operations are exposed in the Model interface as: Model#addCard(Card card), Model#deleteCard(Card card), Model#updateCard(Card target, Card editedCard) respectively.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how these operations are executed in Model.</p>
+</div>
+<div class="paragraph">
+<p>The user executes <code>newcard q/Hello? a/World</code> to add a new card with question "Hello?" and answer "World" to the current deck.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>newcard</code> command calls Model#addCard(Card card), or ModelManager#addCard.</p>
+</li>
+<li>
+<p>ModelManager, which implements Model interface, will call Anakin#addCard method.</p>
+</li>
+<li>
+<p>Anakin#addCard will throw DeckNotFoundException if the user is not inside a deck. Otherwise, it will call method UniqueCardList#add(Card toAdd).</p>
+</li>
+<li>
+<p>UniqueCardList#add will throw DuplicateCardException if the card already exist in the list. Otherwise, it will add the card to its internal ObservableList&lt;Card&gt;.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>newcard</code> operation works:</p>
+</div>
+<div class="imageblock" style="text-align: left">
+<div class="content">
+<img src="images/NewCard%20sequence%20diagram.png" alt="NewCard sequence diagram" width="790">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-consideration"><a class="link" href="#design-consideration">3.1.2. Design consideration</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Implement the logic of card-level operations in Anakin class.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and debug as all logic related with executing commands are implemented in Anakin.</p>
+</li>
+<li>
+<p>Cons: Deck class is not informed, or notified when its UniqueCardList is modified. This might result in unexpected behaviors if a card-level command is executed and the person in charge of Deck class assumes that the UniqueCardList is unmodified.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Implement the logic of card-level operations in Deck class.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The responsibility of each class is clear, only a Deck can modify its list of cards.</p>
+</li>
+<li>
+<p>Cons: The logic for executing deck-level and card-level commands are implemented at different places. We must ensure that the implementation of each command is correct.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -699,4 +865,4 @@ This will generate all resources required by the application and tests.</p>
 </dl>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-15 02:55:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-15 03:14:01 UTC</div></div></div></body></html>
