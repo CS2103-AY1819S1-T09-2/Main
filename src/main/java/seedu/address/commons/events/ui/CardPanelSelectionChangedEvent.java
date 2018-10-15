@@ -4,7 +4,7 @@ import seedu.address.commons.events.BaseEvent;
 import seedu.address.model.anakindeck.AnakinCard;
 
 /**
- * Represents a selection change in the Person List Panel
+ * Represents a selection change in the Card List Panel
  */
 public class CardPanelSelectionChangedEvent extends BaseEvent {
 

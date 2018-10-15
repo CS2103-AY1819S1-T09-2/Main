@@ -16,7 +16,7 @@ import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.model.anakindeck.AnakinCard;
 
 /**
- * Panel containing the list of persons.
+ * Panel containing the list of cards.
  */
 public class CardListPanel extends UiPart<Region> {
     private static final String FXML = "CardListPanel.fxml";
@@ -48,7 +48,7 @@ public class CardListPanel extends UiPart<Region> {
     }
 
     /**
-     * Scrolls to the {@code PersonCard} at the {@code index} and selects it.
+     * Scrolls to the {@code AnakinCard} at the {@code index} and selects it.
      */
     private void scrollTo(int index) {
         Platform.runLater(() -> {
@@ -64,7 +64,7 @@ public class CardListPanel extends UiPart<Region> {
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Person} using a {@code PersonCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code Card} using a {@code CardCard}.
      */
     class CardListViewCell extends ListCell<AnakinCard> {
         @Override
