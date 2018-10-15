@@ -12,6 +12,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.AnakinModel;
+import seedu.address.model.anakindeck.AnakinCard;
 import seedu.address.model.anakindeck.AnakinDeck;
 
 /**
@@ -44,6 +45,11 @@ public class AnakinLogicManager extends ComponentManager implements AnakinLogic 
     @Override
     public ObservableList<AnakinDeck> getFilteredDeckList() {
         return model.getFilteredDeckList();
+    }
+
+    @Override
+    public ObservableList<AnakinCard> getFilteredCardList() {
+        return model.getFilteredCardList();
     }
 
     @Override
