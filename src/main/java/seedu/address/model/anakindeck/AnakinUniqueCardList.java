@@ -29,7 +29,7 @@ public class AnakinUniqueCardList implements Iterable<AnakinCard> {
     }
 
     /**
-     * Adds a deck to the list.
+     * Adds a card to the list.
      * The card must not already exist in the list.
      */
     public void add(AnakinCard toAdd) {
