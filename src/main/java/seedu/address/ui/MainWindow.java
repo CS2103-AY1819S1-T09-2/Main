@@ -35,7 +35,9 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private BrowserPanel browserPanel;
-    private PersonListPanel personListPanel;
+//    private PersonListPanel personListPanel;
+    private DeckListPanel deckListPanel;
+    private CardListPanel cardListPanel;
     private Config config;
     private UserPrefs prefs;
     private HelpWindow helpWindow;
@@ -50,7 +52,8 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
+//    private StackPane personListPanelPlaceholder;
+    private StackPane listPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -122,13 +125,19 @@ public class MainWindow extends UiPart<Stage> {
         browserPanel = new BrowserPanel();
         browserPlaceholder.getChildren().add(browserPanel.getRoot());
 
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+//        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+//        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+
+        cardListPanel = new CardListPanel(logic.getFilteredCardList());
+        listPanelPlaceholder.getChildren().add(cardListPanel.getRoot());
+
+        deckListPanel = new DeckListPanel(logic.getFilteredDeckList());
+        listPanelPlaceholder.getChildren().add(deckListPanel.getRoot());
 
         ResultDisplay resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        StatusBarFooter statusBarFooter = new StatusBarFooter(prefs.getAddressBookFilePath());
+        StatusBarFooter statusBarFooter = new StatusBarFooter(prefs.getAnakinFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(logic);
@@ -187,8 +196,12 @@ public class MainWindow extends UiPart<Stage> {
         raise(new ExitAppRequestEvent());
     }
 
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
+//    public PersonListPanel getPersonListPanel() {
+//        return personListPanel;
+//    }
+
+    public DeckListPanel getDeckListPanel() {
+        return deckListPanel;
     }
 
     void releaseResources() {
