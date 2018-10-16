@@ -6,8 +6,8 @@ import javafx.collections.ObservableList;
 
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.logic.AnakinCommands.AnakinCommand;
-import seedu.address.logic.AnakinParser.AnakinParser;
+import seedu.address.logic.anakincommands.AnakinCommand;
+import seedu.address.logic.anakinparser.AnakinParser;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;

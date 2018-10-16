@@ -18,7 +18,7 @@ import seedu.address.model.anakindeck.AnakinDeck;
  * Represents the in-memory model of Anakin data.
  */
 public class AnakinModelManager extends AnakinComponentManager implements AnakinModel {
-    public static final Logger logger = LogsCenter.getLogger(AnakinModelManager.class);
+    public static final Logger LOGGER = LogsCenter.getLogger(AnakinModelManager.class);
 
     private final AnakinVersionedAnakin versionedAnakin;
     private final FilteredList<AnakinDeck> filteredDecks;
@@ -32,7 +32,7 @@ public class AnakinModelManager extends AnakinComponentManager implements Anakin
         super();
         requireAllNonNull(anakin, userPrefs);
 
-        logger.fine("Initializing with anakin: " + anakin + " and user prefs " + userPrefs);
+        LOGGER.fine("Initializing with anakin: " + anakin + " and user prefs " + userPrefs);
 
         versionedAnakin = new AnakinVersionedAnakin(anakin);
         filteredDecks = new FilteredList<>(versionedAnakin.getDeckList());

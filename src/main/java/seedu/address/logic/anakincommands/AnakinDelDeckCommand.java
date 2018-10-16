@@ -1,4 +1,4 @@
-package seedu.address.logic.AnakinCommands;
+package seedu.address.logic.anakincommands;
 
 import static java.util.Objects.requireNonNull;
 

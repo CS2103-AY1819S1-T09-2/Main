@@ -1,11 +1,11 @@
-package seedu.address.logic.AnakinParser;
+package seedu.address.logic.anakinparser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.AnakinCommands.AnakinCdCommand;
+import seedu.address.logic.anakincommands.AnakinCdCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.Prefix;

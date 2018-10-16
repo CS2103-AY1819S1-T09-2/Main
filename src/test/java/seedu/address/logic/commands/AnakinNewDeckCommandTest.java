@@ -14,8 +14,9 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import javafx.collections.ObservableList;
-import seedu.address.logic.AnakinCommands.AnakinNewDeckCommand;
+
 import seedu.address.logic.CommandHistory;
+import seedu.address.logic.anakincommands.AnakinNewDeckCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Anakin;
 import seedu.address.model.AnakinModel;
@@ -23,6 +24,7 @@ import seedu.address.model.AnakinReadOnlyAnakin;
 import seedu.address.model.anakindeck.AnakinCard;
 import seedu.address.model.anakindeck.AnakinDeck;
 import seedu.address.testutil.AnakinDeckBuilder;
+
 
 public class AnakinNewDeckCommandTest {
 

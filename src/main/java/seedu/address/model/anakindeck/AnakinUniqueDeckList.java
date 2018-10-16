@@ -8,8 +8,8 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.anakindeck.AnakinExceptions.DeckNotFoundException;
-import seedu.address.model.anakindeck.AnakinExceptions.DuplicateDeckException;
+import seedu.address.model.anakindeck.anakinexceptions.DeckNotFoundException;
+import seedu.address.model.anakindeck.anakinexceptions.DuplicateDeckException;
 
 /**
  * A list of decks that enforces uniqueness between its elements and does not allow nulls.
