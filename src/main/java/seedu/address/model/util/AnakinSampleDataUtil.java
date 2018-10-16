@@ -14,9 +14,9 @@ import seedu.address.model.anakindeck.Name;
 public class AnakinSampleDataUtil {
     private static AnakinDeck[] getSampleDecks() {
         return new AnakinDeck[] {
-                new AnakinDeck(new Name("Algorithms")),
-                new AnakinDeck(new Name("Software Engineering")),
                 new AnakinDeck(new Name("Asking Questions")),
+                new AnakinDeck(new Name("Software Engineering")),
+                new AnakinDeck(new Name("Algorithms")),
                 new AnakinDeck(new Name("Product Design"))
         };
     }
