@@ -131,7 +131,7 @@
     -fx-text-fill: #181818;
 }
 
-.card-panel .list-cell {
+.card-panel .list-cell:filled {
     -fx-background-color: #d1d1d1;
 }
 
