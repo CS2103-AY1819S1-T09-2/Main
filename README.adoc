@@ -1,9 +1,9 @@
 ifdef::env-github[]
-image::docs/images/Anakin.png[width="250", align="center"]
+image:docs/images/Anakin.png[width="250", align="center"]
 endif::[]
 
 ifndef::env-github[]
-image::images/Anakin.png[width="250", align="center"]
+image:docs/images/Anakin.png[width="200", align="center"]
 endif::[]
 
 = Anakin
@@ -38,8 +38,8 @@ image:docs/images/ui-mockups/Gameplay-Answer.png[width="400"]
 endif::[]
 
 ifndef::env-github[]
-image:images/ui-mockups/Gameplay-Question.png[width="400"]
-image:images/ui-mockups/Gameplay-Answer.png[width="400"]
+image:docs/images/ui-mockups/Gameplay-Question.png[width="400"]
+image:docs/images/ui-mockups/Gameplay-Answer.png[width="400"]
 endif::[]
 
 

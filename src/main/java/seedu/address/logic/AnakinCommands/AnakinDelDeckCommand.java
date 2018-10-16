@@ -38,7 +38,7 @@ public class AnakinDelDeckCommand extends AnakinCommand {
         List<AnakinDeck> lastShownList = anakinModel.getFilteredDeckList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_DECK_DISPLAYED_INDEX);
         }
 
         AnakinDeck deckToDelete = lastShownList.get(targetIndex.getZeroBased());

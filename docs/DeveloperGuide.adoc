@@ -67,6 +67,74 @@ This project follows https://github.com/oss-generic/process/blob/master/docs/Cod
 
 Optionally, you can follow the <<UsingCheckstyle#, UsingCheckstyle.adoc>> document to configure Intellij to check style-compliance as you write code.
 
+== Design
+
+=== Architecture
+
+=== UI component
+
+=== Logic component
+
+=== Model component
+
+image::AnakinModelClassDiagram.png[width="900", align="left"]
+
+Structure of the Model Component
+
+The `Model`,
+
+****
+* stores Anakin data.
+* exposes an unmodifiable ObservableList<Deck> and ObservableList<Card> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* does not depend on any of the other three components.
+****
+
+=== Storage component
+
+== Implementation
+
+This section describes some noteworthy details on how certain features are implemented.
+
+=== Card-level operations
+
+==== Current implementation
+
+Card-level operations are supported in Anakin class:
+
+* Anakin#addCard(Card card) - Add a card to the current deck.
+* Anakin#deleteCard(Card card) - Delete a card from the current deck.
+* Anakin#updateCard( Card target, Card editedCard) - Update the information of a card inside the current deck.
+
+These operations are exposed in the Model interface as: Model#addCard(Card card), Model#deleteCard(Card card), Model#updateCard(Card target, Card editedCard) respectively.
+
+Given below is an example usage scenario and how these operations are executed in Model.
+
+The user executes `newcard q/Hello? a/World` to add a new card with question "Hello?" and answer "World" to the current deck.
+
+****
+. The `newcard` command calls Model#addCard(Card card), or ModelManager#addCard.
+. ModelManager, which implements Model interface, will call Anakin#addCard method.
+. Anakin#addCard will throw DeckNotFoundException if the user is not inside a deck. Otherwise, it will call method UniqueCardList#add(Card toAdd).
+. UniqueCardList#add will throw DuplicateCardException if the card already exist in the list. Otherwise, it will add the card to its internal ObservableList<Card>.
+****
+
+The following sequence diagram shows how the `newcard` operation works:
+
+image::NewCard sequence diagram.png[width="790", align="left"]
+
+==== Design consideration
+
+* *Alternative 1 (current choice):* Implement the logic of card-level operations in Anakin class.
+
+** Pros: Easy to implement and debug as all logic related with executing commands are implemented in Anakin.
+** Cons: Deck class is not informed, or notified when its UniqueCardList is modified. This might result in unexpected behaviors if a card-level command is executed and the person in charge of Deck class assumes that the UniqueCardList is unmodified.
+
+* *Alternative 2:* Implement the logic of card-level operations in Deck class.
+
+** Pros: The responsibility of each class is clear, only a Deck can modify its list of cards.
+** Cons: The logic for executing deck-level and card-level commands are implemented at different places. We must ensure that the implementation of each command is correct.
+
+
 [appendix]
 == Product Scope
 
