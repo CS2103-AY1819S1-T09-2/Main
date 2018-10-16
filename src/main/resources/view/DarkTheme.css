@@ -103,14 +103,11 @@
 }
 
 .list-cell:filled:even {
-    /*-fx-background-color: #3c3e3f;*/
     -fx-background-color: #181818;
 }
 
 .list-cell:filled:odd {
-    /*-fx-background-color: #515658;*/
     -fx-background-color: #d1d1d1;
-    /*-fx-background-color: #212121;*/
 }
 
 .list-cell:filled:selected {
@@ -132,7 +129,6 @@
 
 .list-cell:filled:odd .label {
     -fx-text-fill: #181818;
-    /*-fx-text-fill: #fffd3b;*/
 }
 
 .card-panel .list-cell {
