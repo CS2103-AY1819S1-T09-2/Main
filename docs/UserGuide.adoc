@@ -104,7 +104,7 @@ Format: `cd ..`
 === Editing a deck : `editdeck`
 
 Edits the name of the deck at the specified index in the list. +
-Format: `edit INDEX_OF_DECK n/NAME`
+Format: `editdeck INDEX_OF_DECK n/NAME`
 
 ****
 * INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
@@ -112,7 +112,7 @@ Format: `edit INDEX_OF_DECK n/NAME`
 
 Examples:
 
-* `edit 1 n/My Deck` +
+* `editdeck 1 n/My Deck` +
 Edits the name of the first deck in the list to be `My Deck`.
 
 === Deleting a deck : `deldeck`
