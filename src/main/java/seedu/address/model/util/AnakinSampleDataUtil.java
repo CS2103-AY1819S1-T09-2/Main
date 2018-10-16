@@ -12,6 +12,10 @@ import seedu.address.model.anakindeck.Name;
  * Contains utility methods for populating {@code Anakin} with sample decks.
  */
 public class AnakinSampleDataUtil {
+    /**
+     * @param sampleAnakin
+     * @return sampleAnakin with a sample deck
+     */
     private static Anakin addSampleDeck(Anakin sampleAnakin) {
         AnakinDeck sampleDeck = new AnakinDeck(new Name("Asking Questions"));
         sampleAnakin.addDeck(sampleDeck);
