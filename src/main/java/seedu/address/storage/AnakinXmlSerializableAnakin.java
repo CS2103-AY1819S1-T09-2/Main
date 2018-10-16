@@ -8,12 +8,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.AddressBook;
 import seedu.address.model.Anakin;
 import seedu.address.model.AnakinReadOnlyAnakin;
-import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.anakindeck.AnakinDeck;
-import seedu.address.model.person.Person;
 
 /**
  * An Immutable Anakin that is serializable to XML format
@@ -46,7 +43,7 @@ public class AnakinXmlSerializableAnakin {
      * Converts this anakin into the model's {@code Anakin} object.
      *
      * @throws IllegalValueException if there were any data constraints violated or duplicates in the
-     * {@code AnakinXmlAdaptedDeck}.
+     *                               {@code AnakinXmlAdaptedDeck}.
      */
     public Anakin toModelType() throws IllegalValueException {
         Anakin anakin = new Anakin();
