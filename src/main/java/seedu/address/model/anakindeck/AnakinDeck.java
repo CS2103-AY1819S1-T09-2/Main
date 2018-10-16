@@ -1,5 +1,6 @@
 package seedu.address.model.anakindeck;
 
+import java.util.List;
 import java.util.Objects;
 
 
@@ -14,6 +15,12 @@ public class AnakinDeck {
     public AnakinDeck(Name name) {
         this.name = name;
         cards = new AnakinUniqueCardList();
+    }
+    public AnakinDeck(Name name, List<AnakinCard> cards) {
+        this(name);
+        for (AnakinCard card : cards) {
+            this.cards.add(card);
+        }
     }
 
     public Name getName() {

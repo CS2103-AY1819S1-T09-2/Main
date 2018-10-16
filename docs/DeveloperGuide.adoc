@@ -75,6 +75,26 @@ Optionally, you can follow the <<UsingCheckstyle#, UsingCheckstyle.adoc>> docume
 
 === Logic component
 
+
+
+image::AnakinLogicClassDiagram.png[width="700", align="left"]
+
+_Structure of the Logic component_
+
+The 'Logic' component:
+****
+* exposes functionality through LogicManager
+* parses user input
+* create commands
+* modifies Model
+****
+
+The `LogicManager` contains an `AnakinModel`, an `AnakinParser`, and a `CommandHistory`.
+
+When a string input by the user is parsed by `AnakinParser`, it creates a new `AnakinCommand` of the appropriate type with the relevant arguments (based on parser tokens). Each `AnakinCommand` has its own Class. `LogicManager` will call `execute` on the command object. If successful, `LogicManager` will modify `Model` accordingly. Regardless of success, `LogicManager` will update `CommandHistory` with the `CommandResult`.
+
+
+
 === Model component
 
 image::AnakinModelClassDiagram.png[width="900", align="left"]
@@ -135,6 +155,7 @@ image::NewCard sequence diagram.png[width="790", align="left"]
 ** Cons: The logic for executing deck-level and card-level commands are implemented at different places. We must ensure that the implementation of each command is correct.
 
 
+
 [appendix]
 == Product Scope
 
@@ -166,7 +187,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |user |delete a card |remove flashcards that I no longer need
 
-|`* * *` |user |find a person by name |locate details of persons without having to go through the entire list
+|`* * *` |user |find a deck by name |locate a deck without having to go through the entire list
 
 |`* * *` |user |iterate through decks |iterate viewing a deck of flashcards
 
@@ -263,7 +284,6 @@ Use case resumes at step 2.
 Use case ends.
 
 *Extensions*
-
 [none]
 * 2a. The list is empty.
 +
