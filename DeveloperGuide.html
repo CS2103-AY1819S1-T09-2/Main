@@ -195,7 +195,43 @@ This will generate all resources required by the application and tests.</p>
 </div>
 <div class="sect2">
 <h3 id="logic-component"><a class="link" href="#logic-component">2.3. Logic component</a></h3>
-
+<div class="imageblock" style="text-align: left">
+<div class="content">
+<img src="images/AnakinLogicClassDiagram.png" alt="AnakinLogicClassDiagram" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p><em>Structure of the Logic component</em></p>
+</div>
+<div class="paragraph">
+<p>The 'Logic' component:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>exposes functionality through LogicManager</p>
+</li>
+<li>
+<p>parses user input</p>
+</li>
+<li>
+<p>create commands</p>
+</li>
+<li>
+<p>modifies Model</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>LogicManager</code> contains an <code>AnakinModel</code>, an <code>AnakinParser</code>, and a <code>CommandHistory</code>.</p>
+</div>
+<div class="paragraph">
+<p>When a string input by the user is parsed by <code>AnakinParser</code>, it creates a new <code>AnakinCommand</code> of the appropriate type with the relevant arguments (based on parser tokens). Each <code>AnakinCommand</code> has its own Class. <code>LogicManager</code> will call <code>execute</code> on the command object. If successful, <code>LogicManager</code> will modify <code>Model</code> accordingly. Regardless of success, <code>LogicManager</code> will update <code>CommandHistory</code> with the <code>CommandResult</code>.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="model-component"><a class="link" href="#model-component">2.4. Model component</a></h3>
@@ -416,8 +452,8 @@ This will generate all resources required by the application and tests.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">find a person by name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">locate details of persons without having to go through the entire list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find a deck by name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">locate a deck without having to go through the entire list</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -865,4 +901,4 @@ This will generate all resources required by the application and tests.</p>
 </dl>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-16 05:07:53 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-16 09:02:24 UTC</div></div></div></body></html>
