@@ -53,7 +53,8 @@ public class AnakinXmlAdaptedCard {
      */
     public AnakinCard toModelType() throws IllegalValueException {
         if (question == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, AnakinQuestion.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    AnakinQuestion.class.getSimpleName()));
         }
         if (!AnakinQuestion.isValidQuestion(question)) {
             throw new IllegalValueException(AnakinQuestion.MESSAGE_QUESTION_CONSTRAINTS);
@@ -62,7 +63,8 @@ public class AnakinXmlAdaptedCard {
         final AnakinQuestion cardQuestion = new AnakinQuestion(question);
 
         if (answer == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, AnakinAnswer.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    AnakinAnswer.class.getSimpleName()));
         }
         if (!AnakinAnswer.isValidAnswer(answer)) {
             throw new IllegalValueException(AnakinAnswer.MESSAGE_ANSWER_CONSTRAINTS);
