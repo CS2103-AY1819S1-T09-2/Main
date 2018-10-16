@@ -2,7 +2,6 @@ package seedu.address.logic.AnakinCommands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.AnakinModel.PREDICATE_SHOW_ALL_DECKS;
 
 import java.util.ArrayList;
