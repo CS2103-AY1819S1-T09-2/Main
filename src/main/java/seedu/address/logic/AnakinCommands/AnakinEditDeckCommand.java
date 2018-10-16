@@ -29,16 +29,15 @@ import seedu.address.model.anakindeck.Name;
  */
 public class AnakinEditDeckCommand extends AnakinCommand {
 
-    public static final String COMMAND_WORD = "edit";
+    public static final String COMMAND_WORD = "editdeck";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the deck identified "
             + "by the index number used in the displayed deck list. "
             + "Changes its name to NAME.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "[" + PREFIX_NAME + "NAME]...\n "
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_NAME;
+            + PREFIX_NAME + "[NAME]";
 
     public static final String MESSAGE_EDIT_DECK_SUCCESS = "Edited Deck: %1$s";
     public static final String MESSAGE_DECK_NOT_EDITED = "Index of Deck to edit and Name to edit to must be provided.";
