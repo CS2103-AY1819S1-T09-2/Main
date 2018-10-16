@@ -29,15 +29,12 @@ public class CardCard extends UiPart<Region> {
     private Label question;
     @FXML
     private Label id;
-    @FXML
-    private Label answer;
 
     public CardCard(AnakinCard card, int displayedIndex) {
         super(FXML);
         this.card = card;
         id.setText(displayedIndex + ". ");
         question.setText(card.getQuestion().fullQuestion);
-        answer.setText(card.getAnswer().fullAnswer);
     }
 
     @Override
