@@ -1,0 +1,25 @@
+{
+  "authors":
+  [
+    {
+      "githubId": "leeyjjoel",
+      "authorNames": ["leeyjjoel", "Lee Yi Jie Joel"]
+    },
+    {
+      "githubId": "lessthanfree",
+      "authorNames": ["lessthanfree", "David Goh"]
+    },
+    {
+      "githubId": "tomforge",
+      "authorNames": ["tomforge", "Foo Guo Wei"]
+    },
+    {
+      "githubId": "yujiatay",
+      "authorNames": ["yujiatay", "Yu Jia Tay"]
+    },
+    {
+      "githubId": "truongthanh2606",
+      "authorNames": ["truongthanh2606", "Truong Thanh"]
+    }
+  ]
+}

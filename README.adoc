@@ -1,8 +1,9 @@
 ifdef::env-github[]
-image::docs/images/Anakin.png[width="250", align="center"]
+image:docs/images/Anakin.png[width="250", align="center"]
 endif::[]
+
 ifndef::env-github[]
-image::images/Anakin.png[width="250", align="center"]
+image:docs/images/Anakin.png[width="200", align="center"]
 endif::[]
 
 = Anakin
@@ -15,7 +16,21 @@ https://coveralls.io/github/CS2103-AY1819S1-T09-2/main?branch=master[image:https
 https://www.codacy.com/app/leeyjjoel/main?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CS2103-AY1819S1-T09-2/main&amp;utm_campaign=Badge_Grade[image:https://api.codacy.com/project/badge/Grade/1bb58958c22c473dbf75c560d5b71612[Codacy Badge]]
 https://gitter.im/se-edu/Lobby[image:https://badges.gitter.im/se-edu/Lobby.svg[Gitter chat]]
 
+
 Anakin is a spaced repetition flashcard program which makes remembering things easy.
+Here's what some of our users have to say:
+
+[quote, Tan Xiao Ming, Computer Science Graduate]
+Amazing work. Simply amazing.
+
+[quote, Donnie T., Political Science Student]
+The greatest CLI app, maybe, ever!
+
+[quote, Tony Stark, Billionare; Inventor; Entrepreneur]
+Better than Pepper Potts!
+
+[quote, A.Aron Tan, Lecturer]
+They did it.
 
 ifdef::env-github[]
 image:docs/images/ui-mockups/Gameplay-Question.png[width="400"]
@@ -23,22 +38,21 @@ image:docs/images/ui-mockups/Gameplay-Answer.png[width="400"]
 endif::[]
 
 ifndef::env-github[]
-image:images/ui-mockups/Gameplay-Question.png[width="400"]
-image:images/ui-mockups/Gameplay-Answer.png[width="400"]
+image:docs/images/ui-mockups/Gameplay-Question.png[width="400"]
+image:docs/images/ui-mockups/Gameplay-Answer.png[width="400"]
 endif::[]
+
+
 
 == Site Map
 
 * <<UserGuide#, User Guide>>
 * <<DeveloperGuide#, Developer Guide>>
-* <<LearningOutcomes#, Learning Outcomes>>
 * <<AboutUs#, About Us>>
 * <<ContactUs#, Contact Us>>
 
 == Acknowledgements
-
-* Some parts of this sample application were inspired by the excellent http://code.makery.ch/library/javafx-8-tutorial/[Java FX tutorial] by
-_Marco Jakob_.
+* This project is based off the exceptional https://github.com/se-edu/[AddressBook-Level4] developed by SE-EDU.
 * Libraries used: https://github.com/TestFX/TestFX[TextFX], https://bitbucket.org/controlsfx/controlsfx/[ControlsFX], https://github.com/FasterXML/jackson[Jackson], https://github.com/google/guava[Guava], https://github.com/junit-team/junit5[JUnit5]
 * Darth Vadar icon by https://thenounproject.com/Alone_Forever/uploads/?i=1799999[Alone_Forever]
 

@@ -50,7 +50,7 @@ public class AnakinModelManager extends AnakinComponentManager implements Anakin
 
     @Override
     public AnakinReadOnlyAnakin getAnakin() {
-        return null;
+        return versionedAnakin;
     }
 
     /** Raises an event to indicate the model has changed */
