@@ -10,7 +10,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_QUESTION;
 import java.util.stream.Stream;
 
 import seedu.address.logic.AnakinCommands.AnakinNewDeckCommand;
-import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Prefix;
@@ -31,25 +30,16 @@ public class AnakinNewDeckCommandParser implements AnakinParserInterface<AnakinN
      */
     public AnakinNewDeckCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_DECK,
-                        PREFIX_ANSWER, PREFIX_QUESTION, PREFIX_FILEPATH);
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_DECK,
-                PREFIX_ANSWER, PREFIX_QUESTION, PREFIX_FILEPATH)
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    AddCommand.MESSAGE_USAGE));
+                    AnakinNewDeckCommand.MESSAGE_USAGE));
         }
 
-        /*
-        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
-        Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
-        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
-        Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-        */
-
-        AnakinDeck deck = new AnakinDeck(new Name("Deck1")); //TO DO
+        Name name = AnakinParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+        AnakinDeck deck = new AnakinDeck(name);
 
         return new AnakinNewDeckCommand(deck);
     }
