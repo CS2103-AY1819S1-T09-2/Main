@@ -15,12 +15,9 @@ import javafx.stage.Stage;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.commons.core.index.Index;
 import seedu.address.commons.events.ui.ExitAppRequestEvent;
 import seedu.address.commons.events.ui.ShowHelpRequestEvent;
-import seedu.address.commons.events.ui.SwitchPanelRequestEvent;
 import seedu.address.logic.AnakinLogic;
-import seedu.address.logic.Logic;
 import seedu.address.model.UserPrefs;
 
 /**
@@ -38,7 +35,6 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private BrowserPanel browserPanel;
-//    private PersonListPanel personListPanel;
     private DeckListPanel deckListPanel;
     private CardListPanel cardListPanel;
     private Config config;
@@ -55,8 +51,10 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-//    private StackPane personListPanelPlaceholder;
-    private StackPane listPanelPlaceholder;
+    private StackPane deckListPanelPlaceholder;
+
+    @FXML
+    private StackPane cardListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -128,15 +126,11 @@ public class MainWindow extends UiPart<Stage> {
         browserPanel = new BrowserPanel();
         browserPlaceholder.getChildren().add(browserPanel.getRoot());
 
-//        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-//        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
-
-        // TODO: Rename deckListPanelPlaceholder to listPanelPlaceholder (here and fxml)
         cardListPanel = new CardListPanel(logic.getFilteredCardList());
-        listPanelPlaceholder.getChildren().add(cardListPanel.getRoot());
+        cardListPanelPlaceholder.getChildren().add(cardListPanel.getRoot());
 
         deckListPanel = new DeckListPanel(logic.getFilteredDeckList());
-        listPanelPlaceholder.getChildren().add(deckListPanel.getRoot());
+        deckListPanelPlaceholder.getChildren().add(deckListPanel.getRoot());
 
         ResultDisplay resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -176,18 +170,18 @@ public class MainWindow extends UiPart<Stage> {
                 (int) primaryStage.getX(), (int) primaryStage.getY());
     }
 
-    /**
-     * Switch the deck list with card list inside the same stackpane and vice versa.
-     */
-    public void handleSwitch(int targetIndex) {
-        // Assumes there are only two children in stackpane
-        int currentTopIndex = listPanelPlaceholder.getChildren().size() - 1;
-        if (targetIndex == currentTopIndex) {
-            // TODO: don't do anything throw Same Panel Error
-        } else {
-            listPanelPlaceholder.getChildren().get(currentTopIndex).toBack();
-        }
-    }
+//    /**
+//     * Switch the deck list with card list inside the same stackpane and vice versa.
+//     */
+//    public void handleSwitch(int targetIndex) {
+//        // Assumes there are only two children in stackpane
+//        int currentTopIndex = listPanelPlaceholder.getChildren().size() - 1;
+//        if (targetIndex == currentTopIndex) {
+//            // TODO: don't do anything throw Same Panel Error
+//        } else {
+//            listPanelPlaceholder.getChildren().get(currentTopIndex).toBack();
+//        }
+//    }
 
     /**
      * Opens the help window or focuses on it if it's already opened.
@@ -213,10 +207,6 @@ public class MainWindow extends UiPart<Stage> {
         raise(new ExitAppRequestEvent());
     }
 
-//    public PersonListPanel getPersonListPanel() {
-//        return personListPanel;
-//    }
-
     public DeckListPanel getDeckListPanel() {
         return deckListPanel;
     }
@@ -225,11 +215,11 @@ public class MainWindow extends UiPart<Stage> {
         browserPanel.freeResources();
     }
 
-    @Subscribe
-    public void handleSwitchPanelRequestEvent(SwitchPanelRequestEvent event) {
-        logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        handleSwitch(event.targetIndex);
-    }
+//    @Subscribe
+//    public void handleSwitchPanelRequestEvent(SwitchPanelRequestEvent event) {
+//        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+//        handleSwitch(event.targetIndex);
+//    }
 
     @Subscribe
     private void handleShowHelpEvent(ShowHelpRequestEvent event) {
