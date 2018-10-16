@@ -5,9 +5,11 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.anakindeck.AnakinAnswer;
 import seedu.address.model.anakindeck.AnakinCard;
 import seedu.address.model.anakindeck.AnakinDeck;
 import seedu.address.model.anakindeck.AnakinExceptions.DeckNotFoundException;
+import seedu.address.model.anakindeck.AnakinQuestion;
 import seedu.address.model.anakindeck.AnakinUniqueCardList;
 import seedu.address.model.anakindeck.AnakinUniqueDeckList;
 
@@ -23,6 +25,9 @@ public class Anakin implements AnakinReadOnlyAnakin {
     // Represent the current list of cards (when user get into a deck)
     private AnakinUniqueCardList cards;
 
+    // Represents the list of cards displayed on the UI
+    private AnakinUniqueCardList displayedCards;
+
     /*
      * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
      * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
@@ -32,6 +37,8 @@ public class Anakin implements AnakinReadOnlyAnakin {
      */
     {
         decks = new AnakinUniqueDeckList();
+        cards = new AnakinUniqueCardList();
+        displayedCards = new AnakinUniqueCardList();
     }
 
     public Anakin() { }
@@ -55,12 +62,21 @@ public class Anakin implements AnakinReadOnlyAnakin {
     }
 
     /**
+     * Replaces the contents of the card list with {@code cards}.
+     * {@code cards} must not contain duplicate cards.
+     */
+    public void setCards(List<AnakinCard> cards) {
+        this.cards.setCards(cards);
+    }
+
+    /**
      * Resets the existing data of this {@code Anakin} with {@code newData}.
      */
     public void resetData(AnakinReadOnlyAnakin newData) {
         requireNonNull(newData);
 
         setDecks(newData.getDeckList());
+        setCards(newData.getCardList());
     }
 
     //// navigating operations
@@ -72,6 +88,7 @@ public class Anakin implements AnakinReadOnlyAnakin {
         requireNonNull(deck);
         isInsideDeck = true;
         cards = deck.getCards();
+        displayedCards.setCards(deck.getCards());
     }
 
     /**
@@ -82,7 +99,8 @@ public class Anakin implements AnakinReadOnlyAnakin {
             throw new DeckNotFoundException();
         }
         isInsideDeck = false;
-        cards = null;
+        cards = new AnakinUniqueCardList();
+        displayedCards.clear();
     }
 
     /**
@@ -151,6 +169,7 @@ public class Anakin implements AnakinReadOnlyAnakin {
             throw new DeckNotFoundException();
         }
         cards.add(c);
+        displayedCards.setCards(cards);
     }
 
     /**
@@ -164,6 +183,7 @@ public class Anakin implements AnakinReadOnlyAnakin {
             throw new DeckNotFoundException();
         }
         cards.setCard(target, editedCard);
+        displayedCards.setCards(cards);
     }
 
     /**
@@ -175,6 +195,7 @@ public class Anakin implements AnakinReadOnlyAnakin {
             throw new DeckNotFoundException();
         }
         cards.remove(key);
+        displayedCards.setCards(cards);
     }
 
     //// util methods
@@ -192,10 +213,7 @@ public class Anakin implements AnakinReadOnlyAnakin {
 
     @Override
     public ObservableList<AnakinCard> getCardList() {
-        if (!isInsideDeck()) {
-            throw new DeckNotFoundException();
-        }
-        return cards.asUnmodifiableObservableList();
+        return displayedCards.asUnmodifiableObservableList();
     }
 
     @Override

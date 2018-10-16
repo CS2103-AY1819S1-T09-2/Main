@@ -36,6 +36,7 @@ public class AnakinModelManager extends AnakinComponentManager implements Anakin
 
         versionedAnakin = new AnakinVersionedAnakin(anakin);
         filteredDecks = new FilteredList<>(versionedAnakin.getDeckList());
+        filteredCards = new FilteredList<>(versionedAnakin.getCardList());
     }
 
     public AnakinModelManager() {
@@ -116,11 +117,15 @@ public class AnakinModelManager extends AnakinComponentManager implements Anakin
     public void goIntoDeck(AnakinDeck deck) {
         requireAllNonNull(deck);
         versionedAnakin.getIntoDeck(deck);
+        updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
+        indicateAnakinChanged();
     }
 
     @Override
     public void getOutOfDeck() {
         versionedAnakin.getOutOfDeck();
+        updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
+        indicateAnakinChanged();
     }
 
     //=========== Filtered Deck List Accessors =============================================================

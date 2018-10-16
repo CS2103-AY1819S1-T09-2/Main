@@ -71,6 +71,13 @@ public class AnakinUniqueCardList implements Iterable<AnakinCard> {
         }
     }
 
+    /**
+     * Clears all cards.
+     */
+    public void clear() {
+        internalList.clear();
+    }
+
     public void setCards(AnakinUniqueCardList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
