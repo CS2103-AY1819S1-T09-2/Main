@@ -8,10 +8,11 @@ import seedu.address.commons.events.BaseEvent;
  */
 public class SwitchPanelRequestEvent extends BaseEvent {
 
-//    public final int targetIndex;
+    public final int targetIndex;
 
-    public SwitchPanelRequestEvent() {
-//        this.targetIndex = targetIndex.getZeroBased();
+    public SwitchPanelRequestEvent(Index targetIndex) {
+        // TODO: change this to an enum indicating Deck and Card
+        this.targetIndex = targetIndex.getZeroBased();
     }
 
     @Override

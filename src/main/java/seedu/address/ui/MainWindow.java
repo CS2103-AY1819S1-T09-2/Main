@@ -15,8 +15,11 @@ import javafx.stage.Stage;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.index.Index;
 import seedu.address.commons.events.ui.ExitAppRequestEvent;
 import seedu.address.commons.events.ui.ShowHelpRequestEvent;
+import seedu.address.commons.events.ui.SwitchPanelRequestEvent;
+import seedu.address.logic.AnakinLogic;
 import seedu.address.logic.Logic;
 import seedu.address.model.UserPrefs;
 
@@ -31,7 +34,7 @@ public class MainWindow extends UiPart<Stage> {
     private final Logger logger = LogsCenter.getLogger(getClass());
 
     private Stage primaryStage;
-    private Logic logic;
+    private AnakinLogic logic;
 
     // Independent Ui parts residing in this Ui container
     private BrowserPanel browserPanel;
@@ -61,7 +64,7 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private StackPane statusbarPlaceholder;
 
-    public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic) {
+    public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, AnakinLogic logic) {
         super(FXML, primaryStage);
 
         // Set dependencies
@@ -128,6 +131,7 @@ public class MainWindow extends UiPart<Stage> {
 //        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
 //        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
+        // TODO: Rename deckListPanelPlaceholder to listPanelPlaceholder (here and fxml)
         cardListPanel = new CardListPanel(logic.getFilteredCardList());
         listPanelPlaceholder.getChildren().add(cardListPanel.getRoot());
 
@@ -173,6 +177,19 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Switch the deck list with card list inside the same stackpane and vice versa.
+     */
+    public void handleSwitch(int targetIndex) {
+        // Assumes there are only two children in stackpane
+        int currentTopIndex = listPanelPlaceholder.getChildren().size() - 1;
+        if (targetIndex == currentTopIndex) {
+            // TODO: don't do anything throw Same Panel Error
+        } else {
+            listPanelPlaceholder.getChildren().get(currentTopIndex).toBack();
+        }
+    }
+
+    /**
      * Opens the help window or focuses on it if it's already opened.
      */
     @FXML
@@ -206,6 +223,12 @@ public class MainWindow extends UiPart<Stage> {
 
     void releaseResources() {
         browserPanel.freeResources();
+    }
+
+    @Subscribe
+    public void handleSwitchPanelRequestEvent(SwitchPanelRequestEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        handleSwitch(event.targetIndex);
     }
 
     @Subscribe
