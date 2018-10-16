@@ -170,19 +170,6 @@ public class MainWindow extends UiPart<Stage> {
                 (int) primaryStage.getX(), (int) primaryStage.getY());
     }
 
-//    /**
-//     * Switch the deck list with card list inside the same stackpane and vice versa.
-//     */
-//    public void handleSwitch(int targetIndex) {
-//        // Assumes there are only two children in stackpane
-//        int currentTopIndex = listPanelPlaceholder.getChildren().size() - 1;
-//        if (targetIndex == currentTopIndex) {
-//            // TODO: don't do anything throw Same Panel Error
-//        } else {
-//            listPanelPlaceholder.getChildren().get(currentTopIndex).toBack();
-//        }
-//    }
-
     /**
      * Opens the help window or focuses on it if it's already opened.
      */
@@ -214,12 +201,6 @@ public class MainWindow extends UiPart<Stage> {
     void releaseResources() {
         browserPanel.freeResources();
     }
-
-//    @Subscribe
-//    public void handleSwitchPanelRequestEvent(SwitchPanelRequestEvent event) {
-//        logger.info(LogsCenter.getEventHandlingLogMessage(event));
-//        handleSwitch(event.targetIndex);
-//    }
 
     @Subscribe
     private void handleShowHelpEvent(ShowHelpRequestEvent event) {
