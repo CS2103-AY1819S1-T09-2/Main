@@ -154,7 +154,40 @@ image::NewCard sequence diagram.png[width="790", align="left"]
 ** Pros: The responsibility of each class is clear, only a Deck can modify its list of cards.
 ** Cons: The logic for executing deck-level and card-level commands are implemented at different places. We must ensure that the implementation of each command is correct.
 
+Deck-level operations are supported in Anakin class:
 
+* Anakin#addDeck(AnakinDeck deck) - Add a deck.
+* Anakin#removeDeck(AnakinDeck key) - Delete a deck with specified key.
+* Anakin#updateDeck(AnakinDeck target, AnakinDeck editedDeck) - Update the information of a card inside the current deck.
+
+These operations are exposed in the Model interface as: Model#addDeck(AnakinDeck deck), Model#deleteDeck(AnakinDeck deck), Model#updateDeck(AnakinDeck target, AnakinDeck editedDeck) respectively.
+
+Given below is an example usage scenario and how these operations are executed in Model.
+
+The user executes `newdeck q/Hello? a/World` to add a new card with question "Hello?" and answer "World" to the current deck.
+
+****
+. The `newcard` command calls Model#addCard(Card card), or ModelManager#addCard.
+. ModelManager, which implements Model interface, will call Anakin#addCard method.
+. Anakin#addCard will throw DeckNotFoundException if the user is not inside a deck. Otherwise, it will call method UniqueCardList#add(Card toAdd).
+. UniqueCardList#add will throw DuplicateCardException if the card already exist in the list. Otherwise, it will add the card to its internal ObservableList<Card>.
+****
+
+The following sequence diagram shows how the `newcard` operation works:
+
+image::NewCard sequence diagram.png[width="790", align="left"]
+
+==== Design consideration
+
+* *Alternative 1 (current choice):* Implement the logic of card-level operations in Anakin class.
+
+** Pros: Easy to implement and debug as all logic related with executing commands are implemented in Anakin.
+** Cons: Deck class is not informed, or notified when its UniqueCardList is modified. This might result in unexpected behaviors if a card-level command is executed and the person in charge of Deck class assumes that the UniqueCardList is unmodified.
+
+* *Alternative 2:* Implement the logic of card-level operations in Deck class.
+
+** Pros: The responsibility of each class is clear, only a Deck can modify its list of cards.
+** Cons: The logic for executing deck-level and card-level commands are implemented at different places. We must ensure that the implementation of each command is correct.
 
 [appendix]
 == Product Scope
