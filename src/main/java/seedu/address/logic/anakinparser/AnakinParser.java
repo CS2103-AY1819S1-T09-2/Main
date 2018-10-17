@@ -12,9 +12,9 @@ import seedu.address.logic.anakincommands.AnakinDelCardCommand;
 import seedu.address.logic.anakincommands.AnakinDelDeckCommand;
 import seedu.address.logic.anakincommands.AnakinEditCardCommand;
 import seedu.address.logic.anakincommands.AnakinEditDeckCommand;
+import seedu.address.logic.anakincommands.AnakinHelpCommand;
 import seedu.address.logic.anakincommands.AnakinNewCardCommand;
 import seedu.address.logic.anakincommands.AnakinNewDeckCommand;
-import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 
@@ -38,7 +38,7 @@ public class AnakinParser {
     public AnakinCommand parseCommand(String userInput) throws ParseException {
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
         if (!matcher.matches()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AnakinHelpCommand.MESSAGE_USAGE));
         }
 
         final String commandWord = matcher.group("commandWord");
@@ -84,11 +84,11 @@ public class AnakinParser {
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
-
-        case HelpCommand.COMMAND_WORD:
-            return new HelpCommand();
-
 */
+        case AnakinHelpCommand.COMMAND_WORD:
+            return new AnakinHelpCommand();
+
+
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }

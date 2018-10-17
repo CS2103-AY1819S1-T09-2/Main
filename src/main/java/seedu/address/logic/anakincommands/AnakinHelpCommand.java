@@ -1,5 +1,7 @@
 package seedu.address.logic.anakincommands;
 
+import seedu.address.commons.core.EventsCenter;
+import seedu.address.commons.events.ui.ShowHelpRequestEvent;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.AnakinModel;
@@ -18,7 +20,7 @@ public class AnakinHelpCommand extends AnakinCommand {
 
     @Override
     public CommandResult execute(AnakinModel model, CommandHistory history) {
-        //TODO: Retrieve Help Message for each of the commands
+        EventsCenter.getInstance().post(new ShowHelpRequestEvent());
         return new CommandResult(SHOWING_HELP_MESSAGE);
     }
 }
