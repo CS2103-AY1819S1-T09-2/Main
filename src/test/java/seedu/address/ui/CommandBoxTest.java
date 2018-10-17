@@ -9,11 +9,11 @@ import org.junit.Test;
 
 import guitests.guihandles.CommandBoxHandle;
 import javafx.scene.input.KeyCode;
-import seedu.address.logic.Logic;
-import seedu.address.logic.LogicManager;
+import seedu.address.logic.AnakinLogic;
+import seedu.address.logic.AnakinLogicManager;
 import seedu.address.logic.commands.ListCommand;
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
+import seedu.address.model.AnakinModel;
+import seedu.address.model.AnakinModelManager;
 
 public class CommandBoxTest extends GuiUnitTest {
 
@@ -27,8 +27,8 @@ public class CommandBoxTest extends GuiUnitTest {
 
     @Before
     public void setUp() {
-        Model model = new ModelManager();
-        Logic logic = new LogicManager(model);
+        AnakinModel model = new AnakinModelManager();
+        AnakinLogic logic = new AnakinLogicManager(model);
 
         CommandBox commandBox = new CommandBox(logic);
         commandBoxHandle = new CommandBoxHandle(getChildNode(commandBox.getRoot(),

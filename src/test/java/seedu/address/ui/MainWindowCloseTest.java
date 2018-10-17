@@ -12,8 +12,8 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.events.ui.ExitAppRequestEvent;
-import seedu.address.logic.LogicManager;
-import seedu.address.model.ModelManager;
+import seedu.address.logic.AnakinLogicManager;
+import seedu.address.model.AnakinModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.ui.testutil.EventsCollectorRule;
 
@@ -32,7 +32,8 @@ public class MainWindowCloseTest extends GuiUnitTest {
     public void setUp() throws Exception {
         FxToolkit.setupStage(stage -> {
             this.stage = stage;
-            mainWindow = new MainWindow(stage, new Config(), new UserPrefs(), new LogicManager(new ModelManager()));
+            mainWindow = new MainWindow(stage, new Config(), new UserPrefs(),
+                    new AnakinLogicManager(new AnakinModelManager()));
             mainWindowHandle = new EmptyMainWindowHandle(stage);
 
             stage.setScene(mainWindow.getRoot().getScene());
