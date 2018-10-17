@@ -198,6 +198,10 @@ image::NewCard sequence diagram.png[width="790", align="left"]
 ** Pros: The responsibility of each class is clear, only a Deck can modify its list of cards.
 ** Cons: The logic for executing deck-level and card-level commands are implemented at different places. We must ensure that the implementation of each command is correct.
 
+=== Deck-level operations
+
+==== Current implementation
+
 Deck-level operations are supported in Anakin class:
 
 * Anakin#addDeck(AnakinDeck deck) - Add a deck.
