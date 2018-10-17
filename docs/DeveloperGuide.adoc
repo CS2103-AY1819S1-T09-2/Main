@@ -164,16 +164,16 @@ These operations are exposed in the Model interface as: Model#addDeck(AnakinDeck
 
 Given below is an example usage scenario and how these operations are executed in Model.
 
-The user executes `newdeck q/Hello? a/World` to add a new card with question "Hello?" and answer "World" to the current deck.
+The user executes `newdeck n/My First Deck` to add a new deck with the name `My First Deck`.
 
 ****
-. The `newcard` command calls Model#addCard(Card card), or ModelManager#addCard.
-. ModelManager, which implements Model interface, will call Anakin#addCard method.
-. Anakin#addCard will throw DeckNotFoundException if the user is not inside a deck. Otherwise, it will call method UniqueCardList#add(Card toAdd).
-. UniqueCardList#add will throw DuplicateCardException if the card already exist in the list. Otherwise, it will add the card to its internal ObservableList<Card>.
+. The `newdeck` command calls Model#addDeck(AnakinDeck deck), or ModelManager#addDeck.
+. ModelManager, which implements Model interface, will call Anakin#addDeck method.
+. Anakin#addDeck will call method addDeck(Card toAdd).
+. UniqueDeckList#add will throw DuplicateDeckException if the card already exist in the list. Otherwise, it will add the deck to its internal ObservableList<Deck>.
 ****
 
-The following sequence diagram shows how the `newcard` operation works:
+The following sequence diagram shows how the `newdeck` operation works:
 
 image::NewCard sequence diagram.png[width="790", align="left"]
 
