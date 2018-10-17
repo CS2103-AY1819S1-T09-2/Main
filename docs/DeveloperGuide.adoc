@@ -237,6 +237,44 @@ image::NewDeck.png[width="790", align="left"]
 ** Pros: The responsibility of each class is clear, only a Deck can modify its list of cards.
 ** Cons: The logic for executing deck-level and card-level commands are implemented at different places. We must ensure that the implementation of each command is correct.
 
+=== UI implementation
+
+==== Current implementation (v1.2)
+
+The UI for Anakin at v1.2 splits the main area into three sections:
+
+ * (Left) List of decks
+ * (Center) List of cards in selected deck
+ * (Right) Preview area for the selected card
+
+This was implemented by morphing PersonListPanel and PersonListCard into our use cases for decks and cards and
+editing MainWindow to render changes in both decks and cards.
+
+Given below is an example usage scenario and how the lists are displayed at each step.
+
+Step 1. The user launches Anakin application and sees a list of sample decks. At this step, the CardListPanel is
+empty.
+
+Step 2. The user executes `cd 1` command to navigate into the first deck. Anakin renders the deck's cards (at index
+1) on the CardListPanel.
+
+Step 3. The user executes `cd 2` command to navigate into the second deck. Anakin switches the displayed cards with
+that of the second deck.
+
+Step 4. The user executes `cd ..` command to navigate out of the second deck. The CardListPanel is empty again.
+
+==== Design considerations
+
+* *Alternative 1 (current choice):* Display deck and card lists side by side
+
+** Pros: Easy to implement
+** Cons: Somewhat lacking in aesthetics
+
+* *Alternative 2:* Display deck and card list in the same panel and switch out accordingly
+
+** Pros: Looks more impressive in UI-wise,
+** Cons: Have to implement a switch event to toggle items inside StackPane
+
 [appendix]
 == Product Scope
 
