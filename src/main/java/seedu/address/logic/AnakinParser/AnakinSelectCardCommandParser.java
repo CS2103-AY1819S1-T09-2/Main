@@ -1,9 +1,9 @@
-package seedu.address.logic.AnakinParser;
+package seedu.address.logic.anakinparser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.AnakinCommands.AnakinSelectCardCommand;
+import seedu.address.logic.anakincommands.AnakinSelectCardCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
