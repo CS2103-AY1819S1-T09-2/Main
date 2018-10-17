@@ -155,6 +155,16 @@ The `Model`,
 
 === Storage component
 
+.Structure of the Storage Component
+image::StorageClassDiagram.png[width="800"]
+
+*API* : link:{repoURL}/src/main/java/seedu/address/storage/AnakinStorage.java[`Storage.java`]
+
+The `Storage` component,
+
+* can store `UserPref` objects in json format and read it back
+* can save Anakin's data in XML format and read it back
+
 == Implementation
 
 This section describes some noteworthy details on how certain features are implemented.
