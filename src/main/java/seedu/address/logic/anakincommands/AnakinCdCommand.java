@@ -19,6 +19,7 @@ import seedu.address.model.anakindeck.AnakinDeck;
 public class AnakinCdCommand extends AnakinCommand {
 
     public static final String COMMAND_WORD = "cd";
+    public static final String EXIT_DECK_ARGS = "..";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Navigates into the deck identified by the index number used in the displayed deck list.\n"
@@ -58,7 +59,7 @@ public class AnakinCdCommand extends AnakinCommand {
             return new CommandResult(String.format(MESSAGE_EXIT_SUCCESS));
         } else {
             if (targetIndex.getZeroBased() >= lastShownList.size()) {
-                throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+                throw new CommandException(Messages.MESSAGE_INVALID_DECK_DISPLAYED_INDEX);
             }
 
             AnakinDeck deckToEnter = lastShownList.get(targetIndex.getZeroBased());

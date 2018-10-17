@@ -7,7 +7,6 @@ import java.util.stream.Stream;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.anakincommands.AnakinCdCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
-import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -24,18 +23,20 @@ public class AnakinCdCommandParser implements AnakinParserInterface<AnakinCdComm
      */
 
     public AnakinCdCommand parse(String args) throws ParseException {
-        //For cd with no index
-        if (args.length() == 0) {
-            return new AnakinCdCommand();
-        } else {
 
-            try {
-                Index index = ParserUtil.parseIndex(args);
+
+        try {
+            if (args.equals(AnakinCdCommand.EXIT_DECK_ARGS)) {
+                return new AnakinCdCommand();
+            } else {
+                Index index = AnakinParserUtil.parseIndex(args);
                 return new AnakinCdCommand(index);
-            } catch (ParseException pe) {
-                throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, AnakinCdCommand.MESSAGE_USAGE), pe);
             }
+
+
+        } catch (ParseException pe) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AnakinCdCommand.MESSAGE_USAGE), pe);
         }
     }
 
