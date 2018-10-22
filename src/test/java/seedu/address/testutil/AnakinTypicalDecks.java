@@ -8,7 +8,7 @@ import seedu.address.model.Anakin;
 import seedu.address.model.anakindeck.AnakinDeck;
 
 /**
- * A utility class containing a list of {@code Person} objects to be used in tests.
+ * A utility class containing a list of {@code Deck} objects to be used in tests.
  */
 public class AnakinTypicalDecks {
 
@@ -25,7 +25,7 @@ public class AnakinTypicalDecks {
     private AnakinTypicalDecks() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical persons.
+     * Returns an {@code Anakin} with all the typical decks.
      */
     public static Anakin getTypicalAnakin() {
         Anakin ak = new Anakin();

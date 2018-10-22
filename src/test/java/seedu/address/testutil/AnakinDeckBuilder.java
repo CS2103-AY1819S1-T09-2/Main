@@ -19,7 +19,7 @@ public class AnakinDeckBuilder {
     }
 
     /**
-     * Initializes the PersonBuilder with the data of {@code personToCopy}.
+     * Initializes the DeckBuilder with the data of {@code deckToCopy}.
      */
     public AnakinDeckBuilder(AnakinDeck deckToCopy) {
         name = deckToCopy.getName();

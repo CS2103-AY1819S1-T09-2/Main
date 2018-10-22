@@ -93,9 +93,6 @@ public class Anakin implements AnakinReadOnlyAnakin {
      * Navigating out of the current deck
      */
     public void getOutOfDeck() {
-        if (!isInsideDeck()) {
-            throw new DeckNotFoundException();
-        }
         isInsideDeck = false;
         cards = new AnakinUniqueCardList();
         displayedCards.clear();

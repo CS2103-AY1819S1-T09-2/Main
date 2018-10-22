@@ -199,6 +199,11 @@ public class AnakinNewDeckCommandTest {
         public void commitAnakin() {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public boolean isInsideDeck(){
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

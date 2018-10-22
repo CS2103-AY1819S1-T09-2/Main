@@ -128,6 +128,11 @@ public class AnakinModelManager extends AnakinComponentManager implements Anakin
         indicateAnakinChanged();
     }
 
+    @Override
+    public boolean isInsideDeck(){
+        return versionedAnakin.isInsideDeck();
+    }
+
     //=========== Filtered Deck List Accessors =============================================================
 
     /**

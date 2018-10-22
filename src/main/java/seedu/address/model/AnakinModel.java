@@ -49,6 +49,8 @@ public interface AnakinModel {
 
     void updateFilteredCardList(Predicate<AnakinCard> predicate);
 
+    boolean isInsideDeck();
+
     boolean canUndoAnakin();
 
     boolean canRedoAnakin();

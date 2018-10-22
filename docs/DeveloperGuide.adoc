@@ -12,7 +12,7 @@ ifdef::env-github[]
 :note-caption: :information_source:
 :warning-caption: :warning:
 endif::[]
-:repoURL: https://github.com/CS2103-AY1819S1-T09-2/main
+:repoURL: https://github.com/CS2103-AY1819S1-T09-2/main/tree/master
 
 By: `Team T09-2`      Since: `Aug 2018`      Licence: `MIT`
 
@@ -155,6 +155,16 @@ The `Model`,
 
 === Storage component
 
+.Structure of the Storage Component
+image::StorageClassDiagram.png[width="800"]
+
+*API* : link:{repoURL}/src/main/java/seedu/address/storage/AnakinStorage.java[`Storage.java`]
+
+The `Storage` component,
+
+* can store `UserPref` objects in json format and read it back
+* can save Anakin's data in XML format and read it back
+
 == Implementation
 
 This section describes some noteworthy details on how certain features are implemented.
@@ -236,6 +246,31 @@ image::NewDeck.png[width="790", align="left"]
 
 ** Pros: The responsibility of each class is clear, only a Deck can modify its list of cards.
 ** Cons: The logic for executing deck-level and card-level commands are implemented at different places. We must ensure that the implementation of each command is correct.
+
+=== Performance Tracking Implementation
+
+==== Proposed Implementation (v1.3)
+
+The user can assign to a card a difficulty after reviewing it in "play" mode. Users can only do this assignment on
+the card they are currently reviewing, as it is the only time it makes sense.
+
+The command available to the user will be `classify [DIFFICULTY_TEXT]`, where `DIFFICULTY_TEXT` is any of the strings
+ `easy`, `good`, `hard`, and `review`, corresponding to the respective levels of perceived difficulty of that
+ flashcard (`review` refers to flagging for immediate review, and that card will be automatically assigned a
+ difficulty of `hard`).
+
+Given below is an example usage scenario for the performance tracking feature.
+
+Step 1. The user requests to "play" a deck. He sees a card A (question only) from the deck.
+
+Step 2. The user requests to see the answer. He sees the answer displayed with the question.
+
+Step 3. The user executes `classify hard`. Card A is now assigned the difficulty of `hard`.
+
+Step 4. The user continues reviewing the rest of the cards in the deck.
+
+Step 5. Card A is shown to the user more regularly when he reviews the same deck in the future.
+
 
 === UI implementation
 
