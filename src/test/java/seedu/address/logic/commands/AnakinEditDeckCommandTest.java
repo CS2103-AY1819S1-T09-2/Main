@@ -3,10 +3,10 @@ package seedu.address.logic.commands;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.AnakinCommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.AnakinCommandTestUtil.VALID_NAME_JOHN;
 import static seedu.address.logic.commands.AnakinCommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.AnakinCommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.CommandTestUtil.showAnakinDeckAtIndex;
+import static seedu.address.logic.commands.AnakinCommandTestUtil.showDeckAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_DECK;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_DECK;
 import static seedu.address.testutil.AnakinTypicalDecks.getTypicalAnakin;
@@ -25,6 +25,8 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.anakindeck.AnakinDeck;
 import seedu.address.testutil.EditDeckDescriptorBuilder;
 import seedu.address.testutil.AnakinDeckBuilder;
+import seedu.address.testutil.AnakinTypicalCards;
+
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for EditCommand.
@@ -37,7 +39,7 @@ public class AnakinEditDeckCommandTest {
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         AnakinDeck editedAnakinDeck = new AnakinDeckBuilder().build();
-        EditDeckDescriptor descriptor = new EditDeckDescriptor(editedAnakinDeck).build();
+        EditDeckDescriptor descriptor = new EditDeckDescriptorBuilder(editedAnakinDeck).build();
         AnakinEditDeckCommand editCommand = new AnakinEditDeckCommand(INDEX_FIRST_DECK, descriptor);
 
         String expectedMessage = String.format(AnakinEditDeckCommand.MESSAGE_EDIT_DECK_SUCCESS, editedAnakinDeck);
@@ -55,11 +57,10 @@ public class AnakinEditDeckCommandTest {
         AnakinDeck lastAnakinDeck = model.getFilteredDeckList().get(indexLastAnakinDeck.getZeroBased());
 
         AnakinDeckBuilder deckInList = new AnakinDeckBuilder(lastAnakinDeck);
-        AnakinDeck editedAnakinDeck = deckInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
-                .withTags(VALID_TAG_HUSBAND).build();
+        AnakinDeck editedAnakinDeck = deckInList.withName(VALID_NAME_JOHN).withCards(VALID_CARDS).build();
 
-        EditDeckDescriptor descriptor = new EditDeckDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withPhone(VALID_PHONE_BOB).withTags(VALID_TAG_HUSBAND).build();
+        EditDeckDescriptor descriptor = new EditDeckDescriptorBuilder().withName(VALID_NAME_JOHN)
+                .withCards(AnakinTypicalCards.getTypicalCards()).build();
         AnakinEditDeckCommand editCommand = new AnakinEditDeckCommand(indexLastAnakinDeck, descriptor);
 
         String expectedMessage = String.format(AnakinEditDeckCommand.MESSAGE_EDIT_DECK_SUCCESS, editedAnakinDeck);
@@ -89,9 +90,9 @@ public class AnakinEditDeckCommandTest {
         showDeckAtIndex(model, INDEX_FIRST_DECK);
 
         AnakinDeck deckInFilteredList = model.getFilteredDeckList().get(INDEX_FIRST_DECK.getZeroBased());
-        AnakinDeck editedAnakinDeck = new AnakinDeckBuilder(deckInFilteredList).withName(VALID_NAME_BOB).build();
+        AnakinDeck editedAnakinDeck = new AnakinDeckBuilder(deckInFilteredList).withName(VALID_NAME_JOHN).build();
         AnakinEditDeckCommand editCommand = new AnakinEditDeckCommand(INDEX_FIRST_DECK,
-                new EditDeckDescriptorBuilder().withName(VALID_NAME_BOB).build());
+                new EditDeckDescriptorBuilder().withName(VALID_NAME_JOHN).build());
 
         String expectedMessage = String.format(AnakinEditDeckCommand.MESSAGE_EDIT_DECK_SUCCESS, editedAnakinDeck);
 
@@ -113,7 +114,7 @@ public class AnakinEditDeckCommandTest {
 
     @Test
     public void execute_duplicateAnakinDeckFilteredList_failure() {
-        showAnakinDeckAtIndex(model, INDEX_FIRST_DECK);
+        showDeckAtIndex(model, INDEX_FIRST_DECK);
 
         // edit deck in filtered list into a duplicate in address book
         AnakinDeck deckInList = model.getAnakin().getDeckList().get(INDEX_SECOND_DECK.getZeroBased());
@@ -126,7 +127,7 @@ public class AnakinEditDeckCommandTest {
     @Test
     public void execute_invalidAnakinDeckIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredDeckList().size() + 1);
-        EditDeckDescriptor descriptor = new EditDeckDescriptorBuilder().withName(VALID_NAME_BOB).build();
+        EditDeckDescriptor descriptor = new EditDeckDescriptorBuilder().withName(VALID_NAME_JOHN).build();
         AnakinEditDeckCommand editCommand = new AnakinEditDeckCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(editCommand, model, commandHistory, Messages.MESSAGE_INVALID_DECK_DISPLAYED_INDEX);
@@ -144,7 +145,7 @@ public class AnakinEditDeckCommandTest {
         assertTrue(outOfBoundIndex.getZeroBased() < model.getAnakin().getDeckList().size());
 
         AnakinEditDeckCommand editCommand = new AnakinEditDeckCommand(outOfBoundIndex,
-                new EditDeckDescriptorBuilder().withName(VALID_NAME_BOB).build());
+                new EditDeckDescriptorBuilder().withName(VALID_NAME_JOHN).build());
 
         assertCommandFailure(editCommand, model, commandHistory, Messages.MESSAGE_INVALID_DECK_DISPLAYED_INDEX);
     }
@@ -174,7 +175,7 @@ public class AnakinEditDeckCommandTest {
     @Test
     public void executeUndoRedo_invalidIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredDeckList().size() + 1);
-        EditDeckDescriptor descriptor = new EditDeckDescriptorBuilder().withName(VALID_NAME_BOB).build();
+        EditDeckDescriptor descriptor = new EditDeckDescriptorBuilder().withName(VALID_NAME_JOHN).build();
         AnakinEditDeckCommand editCommand = new AnakinEditDeckCommand(outOfBoundIndex, descriptor);
 
         // execution failed -> address book state not added into model
@@ -199,7 +200,7 @@ public class AnakinEditDeckCommandTest {
         AnakinEditDeckCommand editCommand = new AnakinEditDeckCommand(INDEX_FIRST_DECK, descriptor);
         AnakinModelManager expectedModel = new AnakinModelManager(model.getAnakin(), new UserPrefs());
 
-        showAnakinDeckAtIndex(model, INDEX_SECOND_DECK);
+        showDeckAtIndex(model, INDEX_SECOND_DECK);
         AnakinDeck deckToEdit = model.getFilteredDeckList().get(INDEX_FIRST_DECK.getZeroBased());
         expectedModel.updateDeck(deckToEdit, editedAnakinDeck);
         expectedModel.commitAnakin();

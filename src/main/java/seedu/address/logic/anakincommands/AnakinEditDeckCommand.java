@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.model.AnakinModel.PREDICATE_SHOW_ALL_DECKS;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -18,8 +18,9 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 
 import seedu.address.model.AnakinModel;
-import seedu.address.model.anakindeck.AnakinCard;
+//import seedu.address.model.anakindeck.AnakinCard;
 import seedu.address.model.anakindeck.AnakinDeck;
+import seedu.address.model.anakindeck.AnakinUniqueCardList;
 import seedu.address.model.anakindeck.Name;
 
 
@@ -40,7 +41,7 @@ public class AnakinEditDeckCommand extends AnakinCommand {
 
     public static final String MESSAGE_EDIT_DECK_SUCCESS = "Edited Deck: %1$s";
     public static final String MESSAGE_DECK_NOT_EDITED = "Index of Deck to edit and Name to edit to must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This deck already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_DECK = "This deck already exists in the address book.";
 
     private final Index index;
     private final EditDeckDescriptor editDeckDescriptor;
@@ -70,7 +71,7 @@ public class AnakinEditDeckCommand extends AnakinCommand {
         AnakinDeck editedDeck = createEditedDeck(deckToEdit, editDeckDescriptor);
 
         if (!deckToEdit.isSameDeck(editedDeck) && anakinModel.hasDeck(editedDeck)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            throw new CommandException(MESSAGE_DUPLICATE_DECK);
         }
 
         anakinModel.updateDeck(deckToEdit, editedDeck);
@@ -87,7 +88,6 @@ public class AnakinEditDeckCommand extends AnakinCommand {
         assert deckToEdit != null;
 
         Name updatedName = editDeckDescriptor.getName().orElse(deckToEdit.getName());
-        //List<AnakinCard> updatedList = editDeckDescriptor.getCards().orElse(deckToEdit.getCards());
 
         return new AnakinDeck(updatedName);
     }
@@ -116,7 +116,8 @@ public class AnakinEditDeckCommand extends AnakinCommand {
      */
     public static class EditDeckDescriptor {
         private Name name;
-        private List<AnakinCard> cards;
+        // private List<AnakinCard> cards;
+        private AnakinUniqueCardList cards;
 
         public EditDeckDescriptor() {}
 
@@ -146,20 +147,22 @@ public class AnakinEditDeckCommand extends AnakinCommand {
 
 
         /**
-         * Sets {@code tags} to this object's {@code tags}.
-         * A defensive copy of {@code tags} is used internally.
+         * Sets {@code cards} to this object's {@code tags}.
+         * A defensive copy of {@code cards} is used internally.
          */
-        public void setCards(List<AnakinCard> cards) {
-            this.cards = (cards != null) ? new ArrayList<>(cards) : null;
+        public void setCards(AnakinUniqueCardList cards) {
+            // this.cards = (cards != null) ? new ArrayList<>(cards) : null;
+            this.cards = cards;
         }
 
         /**
-         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
+         * Returns an unmodifiable card set, which throws {@code UnsupportedOperationException}
          * if modification is attempted.
-         * Returns {@code Optional#empty()} if {@code tags} is null.
+         * Returns {@code Optional#empty()} if {@code cards} is null.
          */
-        public Optional<List<AnakinCard>> getCards() {
-            return (cards != null) ? Optional.of(Collections.unmodifiableList(cards)) : Optional.empty();
+        public Optional<AnakinUniqueCardList> getCards() {
+            // return (cards != null) ? Optional.of(Collections.unmodifiableList(cards)) : Optional.empty();
+            return Optional.of(cards);
         }
 
         @Override
