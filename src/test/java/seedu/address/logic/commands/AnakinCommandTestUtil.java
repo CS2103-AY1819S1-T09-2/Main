@@ -23,6 +23,7 @@ import seedu.address.model.anakindeck.AnakinDeckNameContainsKeywordsPredicate;
 public class AnakinCommandTestUtil {
 
     public static final String VALID_NAME = "My Deck";
+    public static final String VALID_NAME_JOHN = "John Phua";
 
     public static final String INVALID_NAME = " " + PREFIX_NAME + " Bad_Deck_Name!";
 
