@@ -16,7 +16,7 @@ import seedu.address.testutil.AnakinTypicalDecks;
 
 public class AnakinXmlSerializableAnakinTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data",
-            "AnakinXmlSerializableAnakinTest");
+            "XmlSerializableAnakinTest");
     private static final Path TYPICAL_DECKS_FILE = TEST_DATA_FOLDER.resolve("typicalDecksAnakin.xml");
     private static final Path INVALID_DECK_FILE = TEST_DATA_FOLDER.resolve("invalidDeckAnakin.xml");
     private static final Path DUPLICATE_DECK_FILE = TEST_DATA_FOLDER.resolve("duplicateDeckAnakin.xml");
