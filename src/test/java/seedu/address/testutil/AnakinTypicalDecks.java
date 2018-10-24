@@ -51,6 +51,6 @@ public class AnakinTypicalDecks {
     }
 
     public static List<AnakinDeck> getTypicalDecks() {
-        return new ArrayList<>(Arrays.asList(DECK_WITH_CARDS, DECK_A, DECK_B, DECK_C, DECK_D, DECK_E, DECK_F, DECK_G));
+        return new ArrayList<>(Arrays.asList(DECK_WITH_CARDS, DECK_A, DECK_B, DECK_C, DECK_D, DECK_E));
     }
 }
