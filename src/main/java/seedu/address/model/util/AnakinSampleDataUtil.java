@@ -24,12 +24,12 @@ public class AnakinSampleDataUtil {
                 new AnakinAnswer("Tomorrow")));
         sampleAnakin.addCard(new AnakinCard(new AnakinQuestion("What can be broken, but is never held?"),
                 new AnakinAnswer("A promise")));
-        sampleAnakin.addCard(new AnakinCard(new AnakinQuestion("What is it that lives if it is fed, and dies if "
-                + "you give it a drink?"), new AnakinAnswer("Fire")));
+        sampleAnakin.addCard(new AnakinCard(new AnakinQuestion("What is it that lives if it is fed, and dies if you " +
+                "give it a drink?"), new AnakinAnswer("Fire")));
         sampleAnakin.addCard(new AnakinCard(new AnakinQuestion("What can one catch that is not thrown?"),
                 new AnakinAnswer("A cold")));
-        sampleAnakin.addCard(new AnakinCard(new AnakinQuestion(" What is it that if you have, you want to share "
-                + "me, and if you share, you do not have?"), new AnakinAnswer("A secret")));
+        sampleAnakin.addCard(new AnakinCard(new AnakinQuestion("What is it that if you have, you want to share me, " +
+                "and if you share, you do not have?"), new AnakinAnswer("A secret")));
         sampleAnakin.addCard(new AnakinCard(new AnakinQuestion("If it takes eight men ten hours to build a wall, "
                 + "how long would it take four men?"), new AnakinAnswer("No time, because the wall is already built"
                 + ".")));

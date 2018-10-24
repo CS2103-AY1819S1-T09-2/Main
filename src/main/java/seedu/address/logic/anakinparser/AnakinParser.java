@@ -12,9 +12,11 @@ import seedu.address.logic.anakincommands.AnakinDelCardCommand;
 import seedu.address.logic.anakincommands.AnakinDelDeckCommand;
 import seedu.address.logic.anakincommands.AnakinEditCardCommand;
 import seedu.address.logic.anakincommands.AnakinEditDeckCommand;
+import seedu.address.logic.anakincommands.AnakinExitCommand;
 import seedu.address.logic.anakincommands.AnakinHelpCommand;
 import seedu.address.logic.anakincommands.AnakinNewCardCommand;
 import seedu.address.logic.anakincommands.AnakinNewDeckCommand;
+import seedu.address.logic.anakincommands.AnakinSortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 
@@ -65,6 +67,9 @@ public class AnakinParser {
         case AnakinCdCommand.COMMAND_WORD:
             return new AnakinCdCommandParser().parse(arguments);
 
+        case AnakinSortCommand.COMMAND_WORD:
+            return new AnakinSortCommand();
+
         // TO DO
             /*
         case SelectCommand.COMMAND_WORD:
@@ -81,10 +86,11 @@ public class AnakinParser {
 
         case HistoryCommand.COMMAND_WORD:
             return new HistoryCommand();
-
-        case ExitCommand.COMMAND_WORD:
-            return new ExitCommand();
 */
+
+        case AnakinExitCommand.COMMAND_WORD:
+            return new AnakinExitCommand();
+
         case AnakinHelpCommand.COMMAND_WORD:
             return new AnakinHelpCommand();
 

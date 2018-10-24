@@ -27,8 +27,6 @@ import seedu.address.testutil.AnakinTypicalCards;
 import seedu.address.testutil.EditDeckDescriptorBuilder;
 import seedu.address.commons.exceptions.IllegalValueException;
 
-
-
 /**
  * Contains helper methods for testing commands.
  */
@@ -36,6 +34,7 @@ public class AnakinCommandTestUtil {
 
     public static final String VALID_NAME = "My Deck";
     public static final String VALID_NAME_JOHN = "John Phua";
+
     public static final String VALID_NAME_DECK_A = "My Deck A";
     public static final String VALID_NAME_DECK_B = "Your deck";
 
@@ -80,6 +79,8 @@ public class AnakinCommandTestUtil {
         DESC_BOB = new EditDeckDescriptorBuilder().withName(VALID_NAME_DECK_B)
                     .withCards(TYPICAL_CARD_LIST).build();
     }
+
+
 
 
 

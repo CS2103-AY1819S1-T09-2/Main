@@ -159,9 +159,19 @@ Examples:
 * `edit 1 d/1 a/A` +
 Edits the answer of the first card in the first deck to be `A`.
 
-=== Sort current list by name : `sortname`
-If user is currently in a deck, sort all card in alphabetical order. +
-Format: `sortname`
+=== Sort current list in lexicographical order : `sort`
+If user is currently in a deck, sort all cards in alphabetical order according to the question. +
+If user is not in a deck, sort all decks in alphabetical order according to the deck's name. +
+Format: `sort`
+
+=== Sort the list of cards by performance : `rank`
+User must be inside a deck to perform this operation. +
+Sorts the cards in current deck by rank (card performance). +
+Format: `rank`
+
+****
+* Note: User must be inside a deck to perform this command.
+****
 
 === Locate a deck by name : `find`
 
@@ -220,13 +230,6 @@ Format: `exportdeck FILEPATH`
 * FILEPATH must include the filename of the target file.
 ****
 
-=== Sort by rank : `sortrank`
-Sorts the cards in current deck by rank (card performance). +
-Format: `sortrank`
-
-****
-* Note: User must be inside a deck to perform this command.
-****
 === Card difficulty classification : `classify`
 Allocates card into one of four bins {Easy, Good, Hard, Review} +
 Format: `classify d/INDEX_OF_DECK INDEX_OF_CARD RATING`
@@ -262,7 +265,7 @@ A convenient cheat sheet of commands
 |=======================================================================
 |Command | What does it do?
 |`list` | Lists all decks
-|`newdeck [n/NAME]` | Creates a new deck. /n is optional
+|`newdeck [n/NAME]` | Creates a new deck. n/ is optional
 |`editdeck  INDEX n/NAME` | Edits the deck
 |`cd INDEX` | Navigates into the deck at INDEX. +
 Use `cd ..` to navigate out of the deck

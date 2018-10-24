@@ -60,6 +60,17 @@ public class AnakinModelManager extends AnakinComponentManager implements Anakin
     }
 
     @Override
+    public void sort() {
+        versionedAnakin.sort();
+        if (isInsideDeck()) {
+            updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
+        } else {
+            updateFilteredDeckList(PREDICATE_SHOW_ALL_DECKS);
+        }
+        indicateAnakinChanged();
+    }
+
+    @Override
     public boolean hasDeck(AnakinDeck deck) {
         requireAllNonNull(deck);
         return versionedAnakin.hasDeck(deck);

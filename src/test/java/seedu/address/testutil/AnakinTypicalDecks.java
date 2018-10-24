@@ -17,6 +17,7 @@ public class AnakinTypicalDecks {
     public static final AnakinDeck DECK_C = new AnakinDeckBuilder().withName("Calculus").build();
     public static final AnakinDeck DECK_D = new AnakinDeckBuilder().withName("Darwinian Studies").build();
     public static final AnakinDeck DECK_E = new AnakinDeckBuilder().withName("Epistemology").build();
+    public static final AnakinDeck DECK_WITH_CARDS =  AnakinTypicalCards.getTypicalDeck();
 
     // Manually added
     public static final AnakinDeck DECK_F = new AnakinDeckBuilder().withName("Finance").build();
@@ -35,7 +36,21 @@ public class AnakinTypicalDecks {
         return ak;
     }
 
+    /**
+     * Returns an {@code Anakin} with all typical decks and inside deck B.
+     */
+
+    public static Anakin getTypicalAnakinInDeck() {
+        Anakin ak = new Anakin();
+        for (AnakinDeck deck : getTypicalDecks()) {
+            ak.addDeck(deck);
+        }
+
+        ak.getIntoDeck(DECK_WITH_CARDS);
+        return ak;
+    }
+
     public static List<AnakinDeck> getTypicalDecks() {
-        return new ArrayList<>(Arrays.asList(DECK_A, DECK_B, DECK_C, DECK_D, DECK_E, DECK_F, DECK_G));
+        return new ArrayList<>(Arrays.asList(DECK_WITH_CARDS, DECK_A, DECK_B, DECK_C, DECK_D, DECK_E));
     }
 }

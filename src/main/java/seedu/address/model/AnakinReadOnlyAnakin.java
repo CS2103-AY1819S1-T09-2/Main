@@ -20,4 +20,9 @@ public interface AnakinReadOnlyAnakin {
      * This list will not contain any duplicate cards.
      */
     ObservableList<AnakinCard> getCardList();
+
+    /**
+     * Returns the state
+     */
+    boolean isInsideDeck();
 }

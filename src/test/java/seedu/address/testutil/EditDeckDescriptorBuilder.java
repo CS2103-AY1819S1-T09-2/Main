@@ -6,6 +6,7 @@ import seedu.address.logic.anakincommands.AnakinEditDeckCommand.EditDeckDescript
 import seedu.address.model.anakindeck.AnakinCard;
 import seedu.address.model.anakindeck.AnakinDeck;
 import seedu.address.model.anakindeck.AnakinUniqueCardList;
+
 import seedu.address.model.anakindeck.Name;
 
 /**
@@ -30,7 +31,6 @@ public class EditDeckDescriptorBuilder {
     public EditDeckDescriptorBuilder(AnakinDeck deck) {
         descriptor = new EditDeckDescriptor();
         descriptor.setName(deck.getName());
-        descriptor.setCards(deck.getCards());
 
     }
 
@@ -50,6 +50,7 @@ public class EditDeckDescriptorBuilder {
         anakinUniqueCardList.setCards(cardlist);
         return this;
     }
+
 
 
     public EditDeckDescriptor build() {

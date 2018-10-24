@@ -1,0 +1,48 @@
+<anakin>
+    <decks>
+        <name>HEYYY</name>
+        <cards>
+            <question>An</question>
+            <answer>Empty</answer>
+        </cards>
+        <cards>
+            <question>Street</question>
+            <answer>An</answer>
+        </cards>
+        <cards>
+            <question>Empty</question>
+            <answer>House</answer>
+        </cards>
+        <cards>
+            <question>A</question>
+            <answer>Hole</answer>
+        </cards>
+        <cards>
+            <question>Inside</question>
+            <answer>My</answer>
+        </cards>
+        <cards>
+            <question>Heart</question>
+            <answer>I am</answer>
+        </cards>
+        <cards>
+            <question>All</question>
+            <answer>Alone</answer>
+        </cards>
+    </decks>
+    <decks>
+        <name>Algebra</name>
+    </decks>
+    <decks>
+        <name>Bacon Salad Recipe</name>
+    </decks>
+    <decks>
+        <name>Calculus</name>
+    </decks>
+    <decks>
+        <name>Darwinian Studies</name>
+    </decks>
+    <decks>
+        <name>Epistemology</name>
+    </decks>
+</anakin>

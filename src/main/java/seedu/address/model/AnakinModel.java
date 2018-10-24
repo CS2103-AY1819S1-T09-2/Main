@@ -21,6 +21,8 @@ public interface AnakinModel {
 
     AnakinReadOnlyAnakin getAnakin();
 
+    void sort();
+
     boolean hasDeck(AnakinDeck deck);
 
     void addDeck(AnakinDeck deck);

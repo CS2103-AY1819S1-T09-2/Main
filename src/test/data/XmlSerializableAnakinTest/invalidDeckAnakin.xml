@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<anakin>
+    <!--Deck with invalid name field-->
+    <decks>
+        <name> </name>
+        <cards>
+            <question>How is</question>
+            <answer>Gamora</answer>
+        </cards>
+    </decks>
+</anakin>

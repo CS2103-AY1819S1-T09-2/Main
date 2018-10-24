@@ -45,13 +45,13 @@ public class CardCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof PersonCard)) {
+        if (!(other instanceof CardCard)) {
             return false;
         }
 
         // state check
         CardCard card = (CardCard) other;
         return id.getText().equals(card.id.getText())
-                && card.equals(card.card);
+                && this.card.equals(card.card);
     }
 }
