@@ -31,7 +31,7 @@ public class StorageManagerTest {
 
     @Before
     public void setUp() {
-        AnakinXmlAnakinStorage anakinStorage = new AnakinXmlAnakinStorage(getTempFilePath("ab"));
+        XmlAnakinStorage anakinStorage = new XmlAnakinStorage(getTempFilePath("ab"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
         storageManager = new StorageManager(anakinStorage, userPrefsStorage);
     }
@@ -59,8 +59,8 @@ public class StorageManagerTest {
     public void anakinReadSave() throws Exception {
         /*
          * Note: This is an integration test that verifies the StorageManager is properly wired to the
-         * {@link AnakinXmlAnakinStorage} class.
-         * More extensive testing of UserPref saving/reading is done in {@link AnakinXmlAnakinStorage} class.
+         * {@link XmlAnakinStorage} class.
+         * More extensive testing of UserPref saving/reading is done in {@link XmlAnakinStorage} class.
          */
         Anakin original = getTypicalAnakin();
         storageManager.saveAnakin(original);
@@ -87,7 +87,7 @@ public class StorageManagerTest {
     /**
      * A Stub class to throw an exception when the save method is called
      */
-    class XmlAnakinStorageExceptionThrowingStub extends AnakinXmlAnakinStorage {
+    class XmlAnakinStorageExceptionThrowingStub extends XmlAnakinStorage {
 
         public XmlAnakinStorageExceptionThrowingStub(Path filePath) {
             super(filePath);

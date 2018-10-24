@@ -21,11 +21,11 @@ import seedu.address.model.UserPrefs;
 public class StorageManager extends ComponentManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
-    private AnakinAnakinStorage anakinStorage;
+    private AnakinStorage anakinStorage;
     private UserPrefsStorage userPrefsStorage;
 
 
-    public StorageManager(AnakinAnakinStorage anakinStorage, UserPrefsStorage userPrefsStorage) {
+    public StorageManager(AnakinStorage anakinStorage, UserPrefsStorage userPrefsStorage) {
         super();
         this.anakinStorage = anakinStorage;
         this.userPrefsStorage = userPrefsStorage;

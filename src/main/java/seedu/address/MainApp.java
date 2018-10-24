@@ -26,10 +26,10 @@ import seedu.address.model.AnakinModelManager;
 import seedu.address.model.AnakinReadOnlyAnakin;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.AnakinSampleDataUtil;
-import seedu.address.storage.AnakinAnakinStorage;
+import seedu.address.storage.AnakinStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
-import seedu.address.storage.AnakinXmlAnakinStorage;
+import seedu.address.storage.XmlAnakinStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.UserPrefsStorage;
 import seedu.address.ui.Ui;
@@ -63,7 +63,7 @@ public class MainApp extends Application {
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         userPrefs = initPrefs(userPrefsStorage);
 
-        AnakinAnakinStorage anakinStorage = new AnakinXmlAnakinStorage(userPrefs.getAnakinFilePath());
+        AnakinStorage anakinStorage = new XmlAnakinStorage(userPrefs.getAnakinFilePath());
         storage = new StorageManager(anakinStorage, userPrefsStorage);
 
         initLogging(config);

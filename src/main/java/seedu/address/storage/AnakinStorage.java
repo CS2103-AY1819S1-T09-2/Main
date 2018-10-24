@@ -10,7 +10,7 @@ import seedu.address.model.AnakinReadOnlyAnakin;
 /**
  * Represents a storage for {@link seedu.address.model.AnakinReadOnlyAnakin}
  */
-public interface AnakinAnakinStorage {
+public interface AnakinStorage {
 
     /**
      * Returns the file path of the data file.
