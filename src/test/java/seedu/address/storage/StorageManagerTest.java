@@ -3,7 +3,7 @@ package seedu.address.storage;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.AnakinTypicalDecks.getTypicalAnakin;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -14,27 +14,26 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
-import seedu.address.commons.events.model.AddressBookChangedEvent;
+import seedu.address.commons.events.model.AnakinChangedEvent;
 import seedu.address.commons.events.storage.DataSavingExceptionEvent;
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.Anakin;
+import seedu.address.model.AnakinReadOnlyAnakin;
 import seedu.address.model.UserPrefs;
 import seedu.address.ui.testutil.EventsCollectorRule;
 
 public class StorageManagerTest {
 
     @Rule
-    public TemporaryFolder testFolder = new TemporaryFolder();
-    @Rule
     public final EventsCollectorRule eventsCollectorRule = new EventsCollectorRule();
-
-    private StorageManager storageManager;
+    @Rule
+    public TemporaryFolder testFolder = new TemporaryFolder();
+    private AnakinStorageManager storageManager;
 
     @Before
     public void setUp() {
-        XmlAddressBookStorage addressBookStorage = new XmlAddressBookStorage(getTempFilePath("ab"));
+        AnakinXmlAnakinStorage anakinStorage = new AnakinXmlAnakinStorage(getTempFilePath("ab"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
-        storageManager = new StorageManager(addressBookStorage, userPrefsStorage);
+        storageManager = new AnakinStorageManager(anakinStorage, userPrefsStorage);
     }
 
     private Path getTempFilePath(String fileName) {
@@ -57,29 +56,30 @@ public class StorageManagerTest {
     }
 
     @Test
-    public void addressBookReadSave() throws Exception {
+    public void anakinReadSave() throws Exception {
         /*
          * Note: This is an integration test that verifies the StorageManager is properly wired to the
-         * {@link XmlAddressBookStorage} class.
-         * More extensive testing of UserPref saving/reading is done in {@link XmlAddressBookStorageTest} class.
+         * {@link AnakinXmlAnakinStorage} class.
+         * More extensive testing of UserPref saving/reading is done in {@link AnakinXmlAnakinStorage} class.
          */
-        AddressBook original = getTypicalAddressBook();
-        storageManager.saveAddressBook(original);
-        ReadOnlyAddressBook retrieved = storageManager.readAddressBook().get();
-        assertEquals(original, new AddressBook(retrieved));
+        Anakin original = getTypicalAnakin();
+        storageManager.saveAnakin(original);
+        AnakinReadOnlyAnakin retrieved = storageManager.readAnakin().get();
+        assertEquals(original, new Anakin(retrieved));
     }
 
     @Test
-    public void getAddressBookFilePath() {
-        assertNotNull(storageManager.getAddressBookFilePath());
+    public void getAnakinFilePath() {
+        assertNotNull(storageManager.getAnakinFilePath());
     }
 
     @Test
-    public void handleAddressBookChangedEvent_exceptionThrown_eventRaised() {
+    public void handleAnakinChangedEvent_exceptionThrown_eventRaised() {
         // Create a StorageManager while injecting a stub that  throws an exception when the save method is called
-        Storage storage = new StorageManager(new XmlAddressBookStorageExceptionThrowingStub(Paths.get("dummy")),
-                                             new JsonUserPrefsStorage(Paths.get("dummy")));
-        storage.handleAddressBookChangedEvent(new AddressBookChangedEvent(new AddressBook()));
+        AnakinStorage storage = new AnakinStorageManager(new XmlAnakinStorageExceptionThrowingStub(Paths.get
+                ("dummy")),
+                new JsonUserPrefsStorage(Paths.get("dummy")));
+        storage.handleAnakinChangedEvent(new AnakinChangedEvent(new Anakin()));
         assertTrue(eventsCollectorRule.eventsCollector.getMostRecent() instanceof DataSavingExceptionEvent);
     }
 
@@ -87,14 +87,14 @@ public class StorageManagerTest {
     /**
      * A Stub class to throw an exception when the save method is called
      */
-    class XmlAddressBookStorageExceptionThrowingStub extends XmlAddressBookStorage {
+    class XmlAnakinStorageExceptionThrowingStub extends AnakinXmlAnakinStorage {
 
-        public XmlAddressBookStorageExceptionThrowingStub(Path filePath) {
+        public XmlAnakinStorageExceptionThrowingStub(Path filePath) {
             super(filePath);
         }
 
         @Override
-        public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath) throws IOException {
+        public void saveAnakin(AnakinReadOnlyAnakin anakin, Path filePath) throws IOException {
             throw new IOException("dummy exception");
         }
     }
