@@ -1,5 +1,8 @@
 package seedu.address.testutil;
 
+import java.util.List;
+
+import seedu.address.model.anakindeck.AnakinCard;
 import seedu.address.model.anakindeck.AnakinDeck;
 import seedu.address.model.anakindeck.AnakinUniqueCardList;
 import seedu.address.model.anakindeck.Name;
@@ -16,6 +19,7 @@ public class AnakinDeckBuilder {
 
     public AnakinDeckBuilder() {
         name = new Name(DEFAULT_NAME);
+        cards = new AnakinUniqueCardList();
     }
 
     /**
@@ -37,13 +41,15 @@ public class AnakinDeckBuilder {
     /**
      * Sets the {@code AnakinUniqueCardList} of the {@code AnakinDeck} that we are building.
      */
-    public AnakinDeckBuilder withCards(AnakinUniqueCardList cardlist) {
-        this.cards = cardlist;
+    public AnakinDeckBuilder withCards(List<AnakinCard> cardlist) {
+        AnakinUniqueCardList anakinUniqueCardList = new AnakinUniqueCardList();
+        anakinUniqueCardList.setCards(cardlist);
+        this.cards = anakinUniqueCardList;
         return this;
     }
 
     public AnakinDeck build() {
-        return new AnakinDeck(name);
+        return new AnakinDeck(name, cards.internalList);
     }
 
 }

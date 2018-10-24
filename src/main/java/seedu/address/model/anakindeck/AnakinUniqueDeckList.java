@@ -3,6 +3,7 @@ package seedu.address.model.anakindeck;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -69,6 +70,13 @@ public class AnakinUniqueDeckList implements Iterable<AnakinDeck> {
         if (!internalList.remove(toRemove)) {
             throw new DeckNotFoundException();
         }
+    }
+
+    /**
+     * Sort all decks in the list in alphabetical order according to the name of decks.
+     */
+    public void sort() {
+        internalList.sort(Comparator.comparing(o -> o.getName().toString()));
     }
 
     public void setDecks(AnakinUniqueDeckList replacement) {

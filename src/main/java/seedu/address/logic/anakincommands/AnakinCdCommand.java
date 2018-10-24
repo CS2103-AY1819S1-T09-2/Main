@@ -19,7 +19,7 @@ import seedu.address.model.anakindeck.AnakinDeck;
 public class AnakinCdCommand extends AnakinCommand {
 
     public static final String COMMAND_WORD = "cd";
-    public static final String EXIT_DECK_ARGS = "..";
+    public static final String EXIT_DECK_ARGS = " ..";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Navigates into the deck identified by the index number used in the displayed deck list.\n"

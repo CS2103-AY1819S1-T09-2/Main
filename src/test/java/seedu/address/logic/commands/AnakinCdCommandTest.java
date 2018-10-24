@@ -42,7 +42,6 @@ public class AnakinCdCommandTest {
 
         assertCommandSuccess(cdCommand, model, commandHistory, expectedMessage, expectedModel);
     }
-    
 
     @Test
     public void execute_invalidIndexUnfilteredList_throwsCommandException() {
