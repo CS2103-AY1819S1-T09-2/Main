@@ -45,7 +45,7 @@ public class EditCardDescriptorBuilder {
         descriptor.setQuestion(new AnakinQuestion(question));
         return this;
     }
-    
+
 
     public EditCardDescriptor build() {
         return descriptor;

@@ -21,8 +21,8 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.XmlUtil;
-import seedu.address.model.anakindeck.Deck;
-import seedu.address.storage.AnakinXmlSerializableAnakin;
+import seedu.address.model.anakindeck.AnakinDeck;
+import seedu.address.storage.XmlSerializableAnakin;
 
 public class DeckListPanelTest extends GuiUnitTest {
     private static final ObservableList<Deck> TYPICAL_DECKS =
@@ -81,8 +81,8 @@ public class DeckListPanelTest extends GuiUnitTest {
      */
     private ObservableList<Deck> createBackingList(int deckCount) throws Exception {
         Path xmlFile = createXmlFileWithDecks(deckCount);
-        AnakinXmlSerializableAnakin xmlAnakin =
-                XmlUtil.getDataFromFile(xmlFile, AnakinXmlSerializableAnakin.class);
+        XmlSerializableAnakin xmlAnakin =
+                XmlUtil.getDataFromFile(xmlFile, XmlSerializableAnakin.class);
         return FXCollections.observableArrayList(xmlAnakin.toModelType().getDeckList());
     }
 

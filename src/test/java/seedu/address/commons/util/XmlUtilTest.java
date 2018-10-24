@@ -15,32 +15,30 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import seedu.address.model.AddressBook;
-import seedu.address.storage.XmlAdaptedPerson;
-import seedu.address.storage.XmlAdaptedTag;
-import seedu.address.storage.XmlSerializableAddressBook;
-import seedu.address.testutil.AddressBookBuilder;
-import seedu.address.testutil.PersonBuilder;
-import seedu.address.testutil.TestUtil;
+import seedu.address.model.Anakin;
+import seedu.address.storage.XmlAdaptedCard;
+import seedu.address.storage.XmlAdaptedDeck;
+import seedu.address.storage.XmlSerializableAnakin;
+import seedu.address.testutil.AnakinBuilder;
+import seedu.address.testutil.AnakinDeckBuilder;
+import seedu.address.testutil.AnakinTestUtil;
 
 public class XmlUtilTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "XmlUtilTest");
     private static final Path EMPTY_FILE = TEST_DATA_FOLDER.resolve("empty.xml");
     private static final Path MISSING_FILE = TEST_DATA_FOLDER.resolve("missing.xml");
-    private static final Path VALID_FILE = TEST_DATA_FOLDER.resolve("validAddressBook.xml");
-    private static final Path MISSING_PERSON_FIELD_FILE = TEST_DATA_FOLDER.resolve("missingPersonField.xml");
-    private static final Path INVALID_PERSON_FIELD_FILE = TEST_DATA_FOLDER.resolve("invalidPersonField.xml");
-    private static final Path VALID_PERSON_FILE = TEST_DATA_FOLDER.resolve("validPerson.xml");
-    private static final Path TEMP_FILE = TestUtil.getFilePathInSandboxFolder("tempAddressBook.xml");
+    private static final Path VALID_FILE = TEST_DATA_FOLDER.resolve("validAnakin.xml");
+    private static final Path MISSING_DECK_FIELD_FILE = TEST_DATA_FOLDER.resolve("missingDeckField.xml");
+    private static final Path INVALID_DECK_FIELD_FILE = TEST_DATA_FOLDER.resolve("invalidDeckField.xml");
+    private static final Path VALID_DECK_FILE = TEST_DATA_FOLDER.resolve("validDeck.xml");
+    private static final Path TEMP_FILE = AnakinTestUtil.getFilePathInSandboxFolder("tempAnakin.xml");
 
-    private static final String INVALID_PHONE = "9482asf424";
+    private static final String INVALID_NAME = " ";
 
-    private static final String VALID_NAME = "Hans Muster";
-    private static final String VALID_PHONE = "9482424";
-    private static final String VALID_EMAIL = "hans@example";
-    private static final String VALID_ADDRESS = "4th street";
-    private static final List<XmlAdaptedTag> VALID_TAGS = Collections.singletonList(new XmlAdaptedTag("friends"));
+    private static final String VALID_NAME = "Qui Gon Jinn";
+    private static final List<XmlAdaptedCard> VALID_CARDS = Collections.singletonList(new XmlAdaptedCard
+            ("How is", "Gamora"));
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -48,7 +46,7 @@ public class XmlUtilTest {
     @Test
     public void getDataFromFile_nullFile_throwsNullPointerException() throws Exception {
         thrown.expect(NullPointerException.class);
-        XmlUtil.getDataFromFile(null, AddressBook.class);
+        XmlUtil.getDataFromFile(null, Anakin.class);
     }
 
     @Test
@@ -60,52 +58,52 @@ public class XmlUtilTest {
     @Test
     public void getDataFromFile_missingFile_fileNotFoundException() throws Exception {
         thrown.expect(FileNotFoundException.class);
-        XmlUtil.getDataFromFile(MISSING_FILE, AddressBook.class);
+        XmlUtil.getDataFromFile(MISSING_FILE, Anakin.class);
     }
 
     @Test
     public void getDataFromFile_emptyFile_dataFormatMismatchException() throws Exception {
         thrown.expect(JAXBException.class);
-        XmlUtil.getDataFromFile(EMPTY_FILE, AddressBook.class);
+        XmlUtil.getDataFromFile(EMPTY_FILE, Anakin.class);
     }
 
     @Test
     public void getDataFromFile_validFile_validResult() throws Exception {
-        AddressBook dataFromFile = XmlUtil.getDataFromFile(VALID_FILE, XmlSerializableAddressBook.class).toModelType();
-        assertEquals(9, dataFromFile.getPersonList().size());
+        Anakin dataFromFile = XmlUtil.getDataFromFile(VALID_FILE, XmlSerializableAnakin.class).toModelType();
+        assertEquals(3, dataFromFile.getDeckList().size());
     }
 
     @Test
-    public void xmlAdaptedPersonFromFile_fileWithMissingPersonField_validResult() throws Exception {
-        XmlAdaptedPerson actualPerson = XmlUtil.getDataFromFile(
-                MISSING_PERSON_FIELD_FILE, XmlAdaptedPersonWithRootElement.class);
-        XmlAdaptedPerson expectedPerson = new XmlAdaptedPerson(
-                null, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
-        assertEquals(expectedPerson, actualPerson);
+    public void xmlAdaptedDeckFromFile_fileWithMissingDeckField_validResult() throws Exception {
+        XmlAdaptedDeck actualDeck = XmlUtil.getDataFromFile(
+                MISSING_DECK_FIELD_FILE, XmlAdaptedDeckWithRootElement.class);
+        XmlAdaptedDeck expectedDeck = new XmlAdaptedDeck(
+                null, VALID_CARDS);
+        assertEquals(expectedDeck, actualDeck);
     }
 
     @Test
-    public void xmlAdaptedPersonFromFile_fileWithInvalidPersonField_validResult() throws Exception {
-        XmlAdaptedPerson actualPerson = XmlUtil.getDataFromFile(
-                INVALID_PERSON_FIELD_FILE, XmlAdaptedPersonWithRootElement.class);
-        XmlAdaptedPerson expectedPerson = new XmlAdaptedPerson(
-                VALID_NAME, INVALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
-        assertEquals(expectedPerson, actualPerson);
+    public void xmlAdaptedDeckFromFile_fileWithInvalidDeckField_validResult() throws Exception {
+        XmlAdaptedDeck actualDeck = XmlUtil.getDataFromFile(
+                INVALID_DECK_FIELD_FILE, XmlAdaptedDeckWithRootElement.class);
+        XmlAdaptedDeck expectedDeck = new XmlAdaptedDeck(
+                INVALID_NAME, VALID_CARDS);
+        assertEquals(expectedDeck, actualDeck);
     }
 
     @Test
-    public void xmlAdaptedPersonFromFile_fileWithValidPerson_validResult() throws Exception {
-        XmlAdaptedPerson actualPerson = XmlUtil.getDataFromFile(
-                VALID_PERSON_FILE, XmlAdaptedPersonWithRootElement.class);
-        XmlAdaptedPerson expectedPerson = new XmlAdaptedPerson(
-                VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
-        assertEquals(expectedPerson, actualPerson);
+    public void xmlAdaptedDeckFromFile_fileWithValidDeck_validResult() throws Exception {
+        XmlAdaptedDeck actualDeck = XmlUtil.getDataFromFile(
+                VALID_DECK_FILE, XmlAdaptedDeckWithRootElement.class);
+        XmlAdaptedDeck expectedDeck = new XmlAdaptedDeck(
+                VALID_NAME, VALID_CARDS);
+        assertEquals(expectedDeck, actualDeck);
     }
 
     @Test
     public void saveDataToFile_nullFile_throwsNullPointerException() throws Exception {
         thrown.expect(NullPointerException.class);
-        XmlUtil.saveDataToFile(null, new AddressBook());
+        XmlUtil.saveDataToFile(null, new Anakin());
     }
 
     @Test
@@ -117,30 +115,32 @@ public class XmlUtilTest {
     @Test
     public void saveDataToFile_missingFile_fileNotFoundException() throws Exception {
         thrown.expect(FileNotFoundException.class);
-        XmlUtil.saveDataToFile(MISSING_FILE, new AddressBook());
+        XmlUtil.saveDataToFile(MISSING_FILE, new Anakin());
     }
 
     @Test
     public void saveDataToFile_validFile_dataSaved() throws Exception {
         FileUtil.createFile(TEMP_FILE);
-        XmlSerializableAddressBook dataToWrite = new XmlSerializableAddressBook(new AddressBook());
+        XmlSerializableAnakin dataToWrite = new XmlSerializableAnakin(new Anakin());
         XmlUtil.saveDataToFile(TEMP_FILE, dataToWrite);
-        XmlSerializableAddressBook dataFromFile = XmlUtil.getDataFromFile(TEMP_FILE, XmlSerializableAddressBook.class);
+        XmlSerializableAnakin dataFromFile = XmlUtil.getDataFromFile(TEMP_FILE, XmlSerializableAnakin.class);
         assertEquals(dataToWrite, dataFromFile);
 
-        AddressBookBuilder builder = new AddressBookBuilder(new AddressBook());
-        dataToWrite = new XmlSerializableAddressBook(
-                builder.withPerson(new PersonBuilder().build()).build());
+        AnakinBuilder builder = new AnakinBuilder(new Anakin());
+        dataToWrite = new XmlSerializableAnakin(
+                builder.withDeck(new AnakinDeckBuilder().build()).build());
 
         XmlUtil.saveDataToFile(TEMP_FILE, dataToWrite);
-        dataFromFile = XmlUtil.getDataFromFile(TEMP_FILE, XmlSerializableAddressBook.class);
+        dataFromFile = XmlUtil.getDataFromFile(TEMP_FILE, XmlSerializableAnakin.class);
         assertEquals(dataToWrite, dataFromFile);
     }
 
     /**
-     * Test class annotated with {@code XmlRootElement} to allow unmarshalling of .xml data to {@code XmlAdaptedPerson}
+     * Test class annotated with {@code XmlRootElement} to allow unmarshalling of .xml data to {@code
+     * XmlAdaptedDeck}
      * objects.
      */
-    @XmlRootElement(name = "person")
-    private static class XmlAdaptedPersonWithRootElement extends XmlAdaptedPerson {}
+    @XmlRootElement(name = "deck")
+    private static class XmlAdaptedDeckWithRootElement extends XmlAdaptedDeck {
+    }
 }

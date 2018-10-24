@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<anakin>
+    <decks>
+        <name>Duplicate Deck</name>
+        <cards>
+            <question>Theirs not to</question>
+            <answer>reason why</answer>
+        </cards>
+    </decks>
+    <decks>
+        <name>Duplicate Deck</name>
+        <cards>
+            <question>Theirs but to</question>
+            <answer>do and die</answer>
+        </cards>
+    </decks>
+</anakin>
