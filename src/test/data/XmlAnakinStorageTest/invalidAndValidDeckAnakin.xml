@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<anakin>
+    <!-- Valid Deck -->
+    <decks>
+        <name>I tried</name>
+        <cards>
+            <question>so hard and</question>
+            <answer>got so far</answer>
+        </cards>
+    </decks>
+    <!-- Deck with invalid name-->
+    <decks>
+        <name> </name>
+        <cards>
+            <question>but in the end</question>
+            <answer>it does not even matter</answer>
+        </cards>
+    </decks>
+</anakin>
