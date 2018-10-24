@@ -20,7 +20,7 @@ import seedu.address.model.anakindeck.Deck;
 public class AnakinModelManager extends AnakinComponentManager implements AnakinModel {
     public static final Logger LOGGER = LogsCenter.getLogger(AnakinModelManager.class);
 
-    private final AnakinVersionedAnakin versionedAnakin;
+    private final VersionedAnakin versionedAnakin;
     private final FilteredList<Deck> filteredDecks;
     // The filteredCards is not assigned. Should have methods to assign filteredCards (when user is inside a deck).
     private FilteredList<Card> filteredCards;
@@ -28,13 +28,13 @@ public class AnakinModelManager extends AnakinComponentManager implements Anakin
     /**
      * Initializes a AnakinModelManager with the given Anakin and userPrefs.
      */
-    public AnakinModelManager(AnakinReadOnlyAnakin anakin, UserPrefs userPrefs) {
+    public AnakinModelManager(ReadOnlyAnakin anakin, UserPrefs userPrefs) {
         super();
         requireAllNonNull(anakin, userPrefs);
 
         LOGGER.fine("Initializing with anakin: " + anakin + " and user prefs " + userPrefs);
 
-        versionedAnakin = new AnakinVersionedAnakin(anakin);
+        versionedAnakin = new VersionedAnakin(anakin);
         filteredDecks = new FilteredList<>(versionedAnakin.getDeckList());
         filteredCards = new FilteredList<>(versionedAnakin.getCardList());
     }
@@ -44,13 +44,13 @@ public class AnakinModelManager extends AnakinComponentManager implements Anakin
     }
 
     @Override
-    public void resetData(AnakinReadOnlyAnakin newData) {
+    public void resetData(ReadOnlyAnakin newData) {
         versionedAnakin.resetData(newData);
         indicateAnakinChanged();
     }
 
     @Override
-    public AnakinReadOnlyAnakin getAnakin() {
+    public ReadOnlyAnakin getAnakin() {
         return versionedAnakin;
     }
 

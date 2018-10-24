@@ -1,8 +1,8 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.anakincommands;
 
-import static seedu.address.logic.commands.AnakinCommandTestUtil.assertCommandFailure;
-import static seedu.address.logic.commands.AnakinCommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.AnakinCommandTestUtil.deleteFirstDeck;
+import static seedu.address.logic.commands.anakincommands.CommandTestUtil.assertCommandFailure;
+import static seedu.address.logic.commands.anakincommands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.anakincommands.CommandTestUtil.deleteFirstDeck;
 import static seedu.address.testutil.AnakinTypicalDecks.getTypicalAnakin;
 
 import org.junit.Before;
@@ -16,7 +16,7 @@ import seedu.address.model.AnakinModel;
 import seedu.address.model.AnakinModelManager;
 import seedu.address.model.UserPrefs;
 
-public class AnakinRedoCommandTest {
+public class RedoCommandTest {
 
     private final AnakinModel model = new AnakinModelManager(getTypicalAnakin(), new UserPrefs());
     private final AnakinModel expectedModel = new AnakinModelManager(getTypicalAnakin(), new UserPrefs());

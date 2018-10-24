@@ -3,7 +3,7 @@ package seedu.address.model;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.AnakinCommandTestUtil.VALID_CARD_LIST;
+import static seedu.address.logic.commands.anakincommands.CommandTestUtil.VALID_CARD_LIST;
 import static seedu.address.testutil.AnakinTypicalDecks.DECK_A;
 import static seedu.address.testutil.AnakinTypicalDecks.getTypicalAnakin;
 
@@ -88,9 +88,9 @@ public class AnakinTest {
     }
 
     /**
-     * A stub AnakinReadOnlyAnakin whose decks list can violate interface constraints.
+     * A stub ReadOnlyAnakin whose decks list can violate interface constraints.
      */
-    private static class AnakinStub implements AnakinReadOnlyAnakin {
+    private static class AnakinStub implements ReadOnlyAnakin {
         private final ObservableList<Deck> decks = FXCollections.observableArrayList();
         private final ObservableList<Card> cards = FXCollections.observableArrayList();
 

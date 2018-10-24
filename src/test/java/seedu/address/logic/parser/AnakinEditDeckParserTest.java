@@ -1,11 +1,11 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.AnakinCommandTestUtil.INVALID_DECK_NAME_ARGS;
-import static seedu.address.logic.commands.AnakinCommandTestUtil.VALID_DECK_NAME_A_ARGS;
-import static seedu.address.logic.commands.AnakinCommandTestUtil.VALID_DECK_NAME_B_ARGS;
-import static seedu.address.logic.commands.AnakinCommandTestUtil.VALID_NAME_DECK_A;
-import static seedu.address.logic.commands.AnakinCommandTestUtil.VALID_NAME_DECK_B;
+import static seedu.address.logic.commands.anakincommands.CommandTestUtil.INVALID_DECK_NAME_ARGS;
+import static seedu.address.logic.commands.anakincommands.CommandTestUtil.VALID_DECK_NAME_A_ARGS;
+import static seedu.address.logic.commands.anakincommands.CommandTestUtil.VALID_DECK_NAME_B_ARGS;
+import static seedu.address.logic.commands.anakincommands.CommandTestUtil.VALID_NAME_DECK_A;
+import static seedu.address.logic.commands.anakincommands.CommandTestUtil.VALID_NAME_DECK_B;
 import static seedu.address.logic.parser.AnakinCommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.AnakinCommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.AnakinTypicalIndexes.INDEX_FIRST_DECK;

@@ -23,7 +23,7 @@ import seedu.address.logic.AnakinLogicManager;
 import seedu.address.model.Anakin;
 import seedu.address.model.AnakinModel;
 import seedu.address.model.AnakinModelManager;
-import seedu.address.model.AnakinReadOnlyAnakin;
+import seedu.address.model.ReadOnlyAnakin;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.AnakinSampleDataUtil;
 import seedu.address.storage.AnakinAnakinStorage;
@@ -83,8 +83,8 @@ public class MainApp extends Application {
      * or an empty anakin will be used instead if errors occur when reading {@code storage}'s anakin.
      */
     private AnakinModel initModelManager(AnakinStorage storage, UserPrefs userPrefs) {
-        Optional<AnakinReadOnlyAnakin> anakinOptional;
-        AnakinReadOnlyAnakin initialData;
+        Optional<ReadOnlyAnakin> anakinOptional;
+        ReadOnlyAnakin initialData;
         try {
             anakinOptional = storage.readAnakin();
             if (!anakinOptional.isPresent()) {

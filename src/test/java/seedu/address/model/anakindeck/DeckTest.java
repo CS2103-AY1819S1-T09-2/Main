@@ -2,8 +2,8 @@ package seedu.address.model.anakindeck;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.AnakinCommandTestUtil.VALID_CARD_LIST;
-import static seedu.address.logic.commands.AnakinCommandTestUtil.VALID_NAME_DECK_A;
+import static seedu.address.logic.commands.anakincommands.CommandTestUtil.VALID_CARD_LIST;
+import static seedu.address.logic.commands.anakincommands.CommandTestUtil.VALID_NAME_DECK_A;
 import static seedu.address.testutil.AnakinTypicalCards.CARD_A;
 import static seedu.address.testutil.AnakinTypicalDecks.DECK_A;
 import static seedu.address.testutil.AnakinTypicalDecks.DECK_B;

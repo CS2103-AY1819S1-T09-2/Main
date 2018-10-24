@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.Anakin;
-import seedu.address.model.AnakinReadOnlyAnakin;
+import seedu.address.model.ReadOnlyAnakin;
 import seedu.address.model.anakindeck.Deck;
 
 /**
@@ -34,7 +34,7 @@ public class AnakinXmlSerializableAnakin {
     /**
      * Conversion
      */
-    public AnakinXmlSerializableAnakin(AnakinReadOnlyAnakin src) {
+    public AnakinXmlSerializableAnakin(ReadOnlyAnakin src) {
         this();
         decks.addAll(src.getDeckList().stream().map(AnakinXmlAdaptedDeck::new).collect(Collectors.toList()));
     }

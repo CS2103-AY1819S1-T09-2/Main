@@ -15,7 +15,7 @@ import seedu.address.model.anakindeck.anakinexceptions.DeckNotFoundException;
  * Wraps all data at the Anakin level
  * Duplicates are not allowed (by .isSameDeck comparison)
  */
-public class Anakin implements AnakinReadOnlyAnakin {
+public class Anakin implements ReadOnlyAnakin {
 
     private final UniqueDeckList decks;
 
@@ -44,7 +44,7 @@ public class Anakin implements AnakinReadOnlyAnakin {
     /**
      * Creates an Anakin using the Decks in the {@code toBeCopied}
      */
-    public Anakin(AnakinReadOnlyAnakin toBeCopied) {
+    public Anakin(ReadOnlyAnakin toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -70,7 +70,7 @@ public class Anakin implements AnakinReadOnlyAnakin {
     /**
      * Resets the existing data of this {@code Anakin} with {@code newData}.
      */
-    public void resetData(AnakinReadOnlyAnakin newData) {
+    public void resetData(ReadOnlyAnakin newData) {
         requireNonNull(newData);
 
         setIsInsideDeck(newData.isInsideDeck());
@@ -96,7 +96,7 @@ public class Anakin implements AnakinReadOnlyAnakin {
         isInsideDeck = set;
     }
 
-    public void setDisplayedCards(AnakinUniqueCardList cards){
+    public void setDisplayedCards(UniqueCardList cards){
         displayedCards = cards;
     }
 

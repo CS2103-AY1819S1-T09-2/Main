@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.anakincommands;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -16,6 +16,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.anakincommands.Command;
 import seedu.address.logic.anakincommands.exceptions.CommandException;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Anakin;
 import seedu.address.model.AnakinModel;
 import seedu.address.model.anakindeck.Card;
@@ -26,7 +27,7 @@ import seedu.address.testutil.AnakinTypicalCards;
 /**
  * Contains helper methods for testing commands.
  */
-public class AnakinCommandTestUtil {
+public class CommandTestUtil {
 
     public static final String VALID_NAME_DECK_A = "My Deck A";
     public static final String VALID_NAME_DECK_B = "Your deck";

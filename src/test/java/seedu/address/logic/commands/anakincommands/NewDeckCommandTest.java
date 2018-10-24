@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.anakincommands;
 
 import static java.util.Objects.requireNonNull;
 import static org.junit.Assert.assertEquals;
@@ -18,15 +18,16 @@ import javafx.collections.ObservableList;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.anakincommands.NewDeckCommand;
 import seedu.address.logic.anakincommands.exceptions.CommandException;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Anakin;
 import seedu.address.model.AnakinModel;
-import seedu.address.model.AnakinReadOnlyAnakin;
+import seedu.address.model.ReadOnlyAnakin;
 import seedu.address.model.anakindeck.Card;
 import seedu.address.model.anakindeck.Deck;
 import seedu.address.testutil.AnakinDeckBuilder;
 
 
-public class AnakinNewDeckCommandTest {
+public class NewDeckCommandTest {
 
     private static final CommandHistory EMPTY_COMMAND_HISTORY = new CommandHistory();
 
@@ -94,7 +95,7 @@ public class AnakinNewDeckCommandTest {
     private class ModelStub implements AnakinModel {
 
         @Override
-        public void resetData(AnakinReadOnlyAnakin anakin) {
+        public void resetData(ReadOnlyAnakin anakin) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -114,7 +115,7 @@ public class AnakinNewDeckCommandTest {
         }
 
         @Override
-        public AnakinReadOnlyAnakin getAnakin() {
+        public ReadOnlyAnakin getAnakin() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -253,7 +254,7 @@ public class AnakinNewDeckCommandTest {
         }
 
         @Override
-        public AnakinReadOnlyAnakin getAnakin() {
+        public ReadOnlyAnakin getAnakin() {
             return new Anakin();
         }
     }

@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.anakincommands;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -9,11 +9,12 @@ import org.junit.Test;
 
 import seedu.address.commons.events.ui.ExitAppRequestEvent;
 import seedu.address.logic.CommandHistory;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.AnakinModel;
 import seedu.address.model.AnakinModelManager;
 import seedu.address.ui.testutil.EventsCollectorRule;
 
-public class AnakinExitCommandTest {
+public class ExitCommandTest {
     @Rule
     public final EventsCollectorRule eventsCollectorRule = new EventsCollectorRule();
 

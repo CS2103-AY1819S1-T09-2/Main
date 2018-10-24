@@ -7,7 +7,7 @@ import java.util.Optional;
 import seedu.address.commons.events.model.AnakinChangedEvent;
 import seedu.address.commons.events.storage.DataSavingExceptionEvent;
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.AnakinReadOnlyAnakin;
+import seedu.address.model.ReadOnlyAnakin;
 import seedu.address.model.UserPrefs;
 
 /**
@@ -25,10 +25,10 @@ public interface AnakinStorage extends AnakinAnakinStorage, UserPrefsStorage {
     Path getAnakinFilePath();
 
     @Override
-    Optional<AnakinReadOnlyAnakin> readAnakin() throws DataConversionException, IOException;
+    Optional<ReadOnlyAnakin> readAnakin() throws DataConversionException, IOException;
 
     @Override
-    void saveAnakin(AnakinReadOnlyAnakin anakin) throws IOException;
+    void saveAnakin(ReadOnlyAnakin anakin) throws IOException;
 
     /**
      * Saves the current version of the Anakin to the hard disk.

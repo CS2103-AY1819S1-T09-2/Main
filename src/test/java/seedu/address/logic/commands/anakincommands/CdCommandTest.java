@@ -1,10 +1,10 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.anakincommands;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.AnakinCommandTestUtil.assertCommandFailure;
-import static seedu.address.logic.commands.AnakinCommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.AnakinCommandTestUtil.showDeckAtIndex;
+import static seedu.address.logic.commands.anakincommands.CommandTestUtil.assertCommandFailure;
+import static seedu.address.logic.commands.anakincommands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.anakincommands.CommandTestUtil.showDeckAtIndex;
 import static seedu.address.testutil.AnakinTypicalDecks.getTypicalAnakin;
 import static seedu.address.testutil.AnakinTypicalIndexes.INDEX_FIRST_DECK;
 import static seedu.address.testutil.AnakinTypicalIndexes.INDEX_SECOND_DECK;

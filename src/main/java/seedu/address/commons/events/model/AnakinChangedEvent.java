@@ -1,14 +1,14 @@
 package seedu.address.commons.events.model;
 
 import seedu.address.commons.events.BaseEvent;
-import seedu.address.model.AnakinReadOnlyAnakin;
+import seedu.address.model.ReadOnlyAnakin;
 
 /** Indicates Anakin in the model has changed*/
 public class AnakinChangedEvent extends BaseEvent {
 
-    public final AnakinReadOnlyAnakin data;
+    public final ReadOnlyAnakin data;
 
-    public AnakinChangedEvent(AnakinReadOnlyAnakin data) {
+    public AnakinChangedEvent(ReadOnlyAnakin data) {
         this.data = data;
     }
 

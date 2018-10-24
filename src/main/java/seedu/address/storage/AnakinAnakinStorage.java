@@ -5,10 +5,10 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.AnakinReadOnlyAnakin;
+import seedu.address.model.ReadOnlyAnakin;
 
 /**
- * Represents a storage for {@link seedu.address.model.AnakinReadOnlyAnakin}
+ * Represents a storage for {@link ReadOnlyAnakin}
  */
 public interface AnakinAnakinStorage {
 
@@ -18,30 +18,30 @@ public interface AnakinAnakinStorage {
     Path getAnakinFilePath();
 
     /**
-     * Returns Anakin data as a {@link seedu.address.model.AnakinReadOnlyAnakin}.
+     * Returns Anakin data as a {@link ReadOnlyAnakin}.
      * Returns {@code Optional.empty()} if storage file is not found.
      *
      * @throws DataConversionException if the data in storage is not in the expected format.
      * @throws IOException             if there was any problem when reading from the storage.
      */
-    Optional<AnakinReadOnlyAnakin> readAnakin() throws DataConversionException, IOException;
+    Optional<ReadOnlyAnakin> readAnakin() throws DataConversionException, IOException;
 
     /**
      * @see #getAnakinFilePath()
      */
-    Optional<AnakinReadOnlyAnakin> readAnakin(Path filePath) throws DataConversionException, IOException;
+    Optional<ReadOnlyAnakin> readAnakin(Path filePath) throws DataConversionException, IOException;
 
     /**
-     * Saves the given {@link AnakinReadOnlyAnakin} to the storage.
+     * Saves the given {@link ReadOnlyAnakin} to the storage.
      *
      * @param anakin cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
-    void saveAnakin(AnakinReadOnlyAnakin anakin) throws IOException;
+    void saveAnakin(ReadOnlyAnakin anakin) throws IOException;
 
     /**
-     * @see #saveAnakin(AnakinReadOnlyAnakin)
+     * @see #saveAnakin(ReadOnlyAnakin)
      */
-    void saveAnakin(AnakinReadOnlyAnakin anakin, Path filePath) throws IOException;
+    void saveAnakin(ReadOnlyAnakin anakin, Path filePath) throws IOException;
 
 }

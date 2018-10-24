@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.anakincommands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.testutil.AnakinTypicalCards.getTypicalDeck;
@@ -10,7 +10,7 @@ import seedu.address.model.Anakin;
 import seedu.address.model.anakindeck.Deck;
 import seedu.address.testutil.AnakinBuilder;
 
-public class AnakinSortCommandTest {
+public class SortCommandTest {
 
     @Test
     public void execute_sortDeckList() {

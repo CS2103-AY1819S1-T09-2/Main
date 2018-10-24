@@ -7,7 +7,7 @@ import seedu.address.model.anakindeck.Deck;
 /**
  * Unmodifiable view of Anakin
  */
-public interface AnakinReadOnlyAnakin {
+public interface ReadOnlyAnakin {
 
     /**
      * Returns an unmodifiable view of the decks list.
@@ -19,10 +19,7 @@ public interface AnakinReadOnlyAnakin {
      * Returns an unmodifiable view of the cards list.
      * This list will not contain any duplicate cards.
      */
-    ObservableList<AnakinCard> getCardList();
+    ObservableList<Card> getCardList();
 
     boolean isInsideDeck();
-     */
-     * Returns the state
-    /**
 }

@@ -1,7 +1,7 @@
 package seedu.address.model.util;
 
 import seedu.address.model.Anakin;
-import seedu.address.model.AnakinReadOnlyAnakin;
+import seedu.address.model.ReadOnlyAnakin;
 import seedu.address.model.anakindeck.Answer;
 import seedu.address.model.anakindeck.Card;
 import seedu.address.model.anakindeck.Deck;
@@ -36,7 +36,7 @@ public class AnakinSampleDataUtil {
         return sampleAnakin;
     }
 
-    public static AnakinReadOnlyAnakin getSampleAnakin() {
+    public static ReadOnlyAnakin getSampleAnakin() {
         Anakin sampleAnakin = new Anakin();
         addSampleDeck(sampleAnakin);
         return sampleAnakin;
