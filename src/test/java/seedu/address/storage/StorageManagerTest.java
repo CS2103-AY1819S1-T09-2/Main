@@ -27,13 +27,13 @@ public class StorageManagerTest {
     public final EventsCollectorRule eventsCollectorRule = new EventsCollectorRule();
     @Rule
     public TemporaryFolder testFolder = new TemporaryFolder();
-    private AnakinStorageManager storageManager;
+    private StorageManager storageManager;
 
     @Before
     public void setUp() {
         AnakinXmlAnakinStorage anakinStorage = new AnakinXmlAnakinStorage(getTempFilePath("ab"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
-        storageManager = new AnakinStorageManager(anakinStorage, userPrefsStorage);
+        storageManager = new StorageManager(anakinStorage, userPrefsStorage);
     }
 
     private Path getTempFilePath(String fileName) {
@@ -76,7 +76,7 @@ public class StorageManagerTest {
     @Test
     public void handleAnakinChangedEvent_exceptionThrown_eventRaised() {
         // Create a StorageManager while injecting a stub that  throws an exception when the save method is called
-        AnakinStorage storage = new AnakinStorageManager(new XmlAnakinStorageExceptionThrowingStub(Paths.get
+        Storage storage = new StorageManager(new XmlAnakinStorageExceptionThrowingStub(Paths.get
                 ("dummy")),
                 new JsonUserPrefsStorage(Paths.get("dummy")));
         storage.handleAnakinChangedEvent(new AnakinChangedEvent(new Anakin()));

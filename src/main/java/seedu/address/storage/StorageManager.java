@@ -18,14 +18,14 @@ import seedu.address.model.UserPrefs;
 /**
  * Manages storage of Anakin data in local storage.
  */
-public class AnakinStorageManager extends ComponentManager implements AnakinStorage {
+public class StorageManager extends ComponentManager implements Storage {
 
-    private static final Logger logger = LogsCenter.getLogger(AnakinStorageManager.class);
+    private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
     private AnakinAnakinStorage anakinStorage;
     private UserPrefsStorage userPrefsStorage;
 
 
-    public AnakinStorageManager(AnakinAnakinStorage anakinStorage, UserPrefsStorage userPrefsStorage) {
+    public StorageManager(AnakinAnakinStorage anakinStorage, UserPrefsStorage userPrefsStorage) {
         super();
         this.anakinStorage = anakinStorage;
         this.userPrefsStorage = userPrefsStorage;

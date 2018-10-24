@@ -27,8 +27,8 @@ import seedu.address.model.AnakinReadOnlyAnakin;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.AnakinSampleDataUtil;
 import seedu.address.storage.AnakinAnakinStorage;
-import seedu.address.storage.AnakinStorage;
-import seedu.address.storage.AnakinStorageManager;
+import seedu.address.storage.Storage;
+import seedu.address.storage.StorageManager;
 import seedu.address.storage.AnakinXmlAnakinStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.UserPrefsStorage;
@@ -49,7 +49,7 @@ public class MainApp extends Application {
     protected UserPrefs userPrefs;
     protected AnakinLogic logic;
     protected AnakinModel model;
-    protected AnakinStorage storage;
+    protected Storage storage;
 
 
     @Override
@@ -64,7 +64,7 @@ public class MainApp extends Application {
         userPrefs = initPrefs(userPrefsStorage);
 
         AnakinAnakinStorage anakinStorage = new AnakinXmlAnakinStorage(userPrefs.getAnakinFilePath());
-        storage = new AnakinStorageManager(anakinStorage, userPrefsStorage);
+        storage = new StorageManager(anakinStorage, userPrefsStorage);
 
         initLogging(config);
 
@@ -82,7 +82,7 @@ public class MainApp extends Application {
      * The data from the sample anakin will be used instead if {@code storage}'s anakin is not found,
      * or an empty anakin will be used instead if errors occur when reading {@code storage}'s anakin.
      */
-    private AnakinModel initModelManager(AnakinStorage storage, UserPrefs userPrefs) {
+    private AnakinModel initModelManager(Storage storage, UserPrefs userPrefs) {
         Optional<AnakinReadOnlyAnakin> anakinOptional;
         AnakinReadOnlyAnakin initialData;
         try {

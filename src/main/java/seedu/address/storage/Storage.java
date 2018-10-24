@@ -13,7 +13,7 @@ import seedu.address.model.UserPrefs;
 /**
  * API of the Storage component
  */
-public interface AnakinStorage extends AnakinAnakinStorage, UserPrefsStorage {
+public interface Storage extends AnakinAnakinStorage, UserPrefsStorage {
 
     @Override
     Optional<UserPrefs> readUserPrefs() throws DataConversionException, IOException;
