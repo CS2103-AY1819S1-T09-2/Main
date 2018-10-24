@@ -11,7 +11,7 @@ import seedu.address.model.anakindeck.AnakinAnswer;
 import seedu.address.model.anakindeck.AnakinQuestion;
 import seedu.address.testutil.Assert;
 
-public class AnakinXmlAdaptedCardTest {
+public class XmlAdaptedCardTest {
     private static final String INVALID_QUESTION = " ";
     private static final String INVALID_ANSWER = " ";
     private static final String VALID_QUESTION = CARD_A.getQuestion().toString();

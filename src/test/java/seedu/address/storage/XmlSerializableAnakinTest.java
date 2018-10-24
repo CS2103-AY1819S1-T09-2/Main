@@ -14,7 +14,7 @@ import seedu.address.commons.util.XmlUtil;
 import seedu.address.model.Anakin;
 import seedu.address.testutil.AnakinTypicalDecks;
 
-public class AnakinXmlSerializableAnakinTest {
+public class XmlSerializableAnakinTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data",
             "XmlSerializableAnakinTest");
     private static final Path TYPICAL_DECKS_FILE = TEST_DATA_FOLDER.resolve("typicalDecksAnakin.xml");

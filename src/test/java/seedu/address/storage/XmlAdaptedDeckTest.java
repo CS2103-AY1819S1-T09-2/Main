@@ -13,7 +13,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.anakindeck.Name;
 import seedu.address.testutil.Assert;
 
-public class AnakinXmlAdaptedDeckTest {
+public class XmlAdaptedDeckTest {
     private static final String INVALID_NAME = " ";
 
     private static final String VALID_NAME = DECK_A.getName().toString();
