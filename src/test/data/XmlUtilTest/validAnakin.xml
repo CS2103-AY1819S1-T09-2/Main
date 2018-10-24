@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<anakin>
+    <decks>
+        <name>Vive</name>
+        <cards>
+            <question>Aux armes</question>
+            <answer>citoyens</answer>
+        </cards>
+        <cards>
+            <question>Formez</question>
+            <answer>vos bataillons</answer>
+        </cards>
+    </decks>
+    <decks>
+        <name>La</name>
+        <cards>
+            <question>Marchons</question>
+            <answer>marchons</answer>
+        </cards>
+        <cards>
+            <question>Qu'un</question>
+            <answer>sang impur</answer>
+        </cards>
+    </decks>
+    <decks>
+        <name>France</name>
+        <cards>
+            <question>Abreuve</question>
+            <answer>nos sillons</answer>
+        </cards>
+    </decks>
+</anakin>
