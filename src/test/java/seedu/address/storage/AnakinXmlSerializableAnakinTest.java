@@ -31,6 +31,7 @@ public class AnakinXmlSerializableAnakinTest {
         Anakin typicalDecksAnakin = AnakinTypicalDecks.getTypicalAnakin();
         assertEquals(anakinFromFile, typicalDecksAnakin);
     }
+
     @Test
     public void toModelType_invalidDecksFile_throwsIllegalValueException() throws Exception {
         AnakinXmlSerializableAnakin dataFromFile = XmlUtil.getDataFromFile(INVALID_DECK_FILE,
@@ -38,6 +39,7 @@ public class AnakinXmlSerializableAnakinTest {
         thrown.expect(IllegalValueException.class);
         dataFromFile.toModelType();
     }
+
     @Test
     public void toModelType_duplicateDecksFile_throwsIllegalValueException() throws Exception {
         AnakinXmlSerializableAnakin dataFromFile = XmlUtil.getDataFromFile(DUPLICATE_DECK_FILE,
