@@ -21,11 +21,11 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.XmlUtil;
-import seedu.address.model.anakindeck.AnakinDeck;
+import seedu.address.model.anakindeck.Deck;
 import seedu.address.storage.AnakinXmlSerializableAnakin;
 
 public class DeckListPanelTest extends GuiUnitTest {
-    private static final ObservableList<AnakinDeck> TYPICAL_DECKS =
+    private static final ObservableList<Deck> TYPICAL_DECKS =
             FXCollections.observableList(getTypicalDecks());
 
     private static final JumpToListRequestEvent JUMP_TO_SECOND_EVENT = new JumpToListRequestEvent(INDEX_SECOND_DECK);
@@ -42,7 +42,7 @@ public class DeckListPanelTest extends GuiUnitTest {
 
         for (int i = 0; i < TYPICAL_DECKS.size(); i++) {
             deckListPanelHandle.navigateToCard(TYPICAL_DECKS.get(i));
-            AnakinDeck expectedDeck = TYPICAL_DECKS.get(i);
+            Deck expectedDeck = TYPICAL_DECKS.get(i);
             DeckCardHandle actualCard = deckListPanelHandle.getDeckCardHandle(i);
 
             assertDeckCardDisplaysDeck(expectedDeck, actualCard);
@@ -67,7 +67,7 @@ public class DeckListPanelTest extends GuiUnitTest {
      */
     @Test
     public void performanceTest() throws Exception {
-        ObservableList<AnakinDeck> backingList = createBackingList(10000);
+        ObservableList<Deck> backingList = createBackingList(10000);
 
         assertTimeoutPreemptively(ofMillis(CARD_CREATION_AND_DELETION_TIMEOUT), () -> {
             initUi(backingList);
@@ -79,7 +79,7 @@ public class DeckListPanelTest extends GuiUnitTest {
      * Returns a list of decks containing {@code deckCount} decks that is used to populate the
      * {@code DeckListPanel}.
      */
-    private ObservableList<AnakinDeck> createBackingList(int deckCount) throws Exception {
+    private ObservableList<Deck> createBackingList(int deckCount) throws Exception {
         Path xmlFile = createXmlFileWithDecks(deckCount);
         AnakinXmlSerializableAnakin xmlAnakin =
                 XmlUtil.getDataFromFile(xmlFile, AnakinXmlSerializableAnakin.class);
@@ -111,7 +111,7 @@ public class DeckListPanelTest extends GuiUnitTest {
      * Initializes {@code deckListPanelHandle} with a {@code DeckListPanel} backed by {@code backingList}.
      * Also shows the {@code Stage} that displays only {@code DeckListPanel}.
      */
-    private void initUi(ObservableList<AnakinDeck> backingList) {
+    private void initUi(ObservableList<Deck> backingList) {
         DeckListPanel deckListPanel = new DeckListPanel(backingList);
         uiPartRule.setUiPart(deckListPanel);
 

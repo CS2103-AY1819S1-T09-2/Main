@@ -8,7 +8,7 @@ import static seedu.address.testutil.AnakinTypicalDecks.getTypicalAnakin;
 import org.junit.Before;
 import org.junit.Test;
 
-import seedu.address.logic.anakincommands.AnakinRedoCommand;
+import seedu.address.logic.anakincommands.RedoCommand;
 
 
 import seedu.address.logic.CommandHistory;
@@ -40,13 +40,13 @@ public class AnakinRedoCommandTest {
     public void execute() {
         // multiple redoable states in model
         expectedModel.redoAnakin();
-        assertCommandSuccess(new AnakinRedoCommand(), model, commandHistory, AnakinRedoCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
 
         // single redoable state in model
         expectedModel.redoAnakin();
-        assertCommandSuccess(new AnakinRedoCommand(), model, commandHistory, AnakinRedoCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
 
         // no redoable state in model
-        assertCommandFailure(new AnakinRedoCommand(), model, commandHistory, AnakinRedoCommand.MESSAGE_FAILURE);
+        assertCommandFailure(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_FAILURE);
     }
 }

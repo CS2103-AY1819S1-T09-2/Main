@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.anakindeck.AnakinCard;
-import seedu.address.model.anakindeck.AnakinDeck;
+import seedu.address.model.anakindeck.Card;
+import seedu.address.model.anakindeck.Deck;
 import seedu.address.model.anakindeck.Name;
 
 /**
@@ -40,11 +40,11 @@ public class AnakinXmlAdaptedDeck {
     }
 
     /**
-     * Converts a given AnakinDeck into this class for JAXB use.
+     * Converts a given Deck into this class for JAXB use.
      *
      * @param source future changes to this will not affect the created AnakinXmlAdaptedDeck
      */
-    public AnakinXmlAdaptedDeck(AnakinDeck source) {
+    public AnakinXmlAdaptedDeck(Deck source) {
         name = source.getName().fullName;
         cards = source.getCards().internalList.stream()
                 .map(AnakinXmlAdaptedCard::new)
@@ -56,8 +56,8 @@ public class AnakinXmlAdaptedDeck {
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted person
      */
-    public AnakinDeck toModelType() throws IllegalValueException {
-        final List<AnakinCard> deckCards = new ArrayList<>();
+    public Deck toModelType() throws IllegalValueException {
+        final List<Card> deckCards = new ArrayList<>();
         for (AnakinXmlAdaptedCard card : cards) {
             deckCards.add(card.toModelType());
         }
@@ -70,7 +70,7 @@ public class AnakinXmlAdaptedDeck {
         }
         final Name deckName = new Name(name);
 
-        return new AnakinDeck(deckName, deckCards);
+        return new Deck(deckName, deckCards);
     }
 
     @Override

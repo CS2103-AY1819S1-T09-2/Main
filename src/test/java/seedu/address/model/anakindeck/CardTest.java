@@ -25,7 +25,7 @@ public class CardTest {
         assertFalse(CARD_A.isSameCard(null));
 
         // different question -> returns false
-        AnakinCard editedCard_A = new AnakinCardBuilder(CARD_A).withQuestion(VALID_QUESTION_A).build();
+        Card editedCard_A = new AnakinCardBuilder(CARD_A).withQuestion(VALID_QUESTION_A).build();
         assertFalse(CARD_A.isSameCard(editedCard_A));
 
         // same question, different answers -> returns true
@@ -36,7 +36,7 @@ public class CardTest {
     @Test
     public void equals() {
         // same values -> returns true
-        AnakinCard cardCopy = new AnakinCardBuilder(CARD_A).build();
+        Card cardCopy = new AnakinCardBuilder(CARD_A).build();
         assertTrue(CARD_A.equals(cardCopy));
 
         // same object -> returns true

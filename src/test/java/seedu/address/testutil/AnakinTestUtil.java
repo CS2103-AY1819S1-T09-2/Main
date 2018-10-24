@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.AnakinModel;
-import seedu.address.model.anakindeck.AnakinDeck;
+import seedu.address.model.anakindeck.Deck;
 
 /**
  * A utility class for test cases.
@@ -63,7 +63,7 @@ public class AnakinTestUtil {
     /**
      * Returns the deck in the {@code model}'s deck list at {@code index}.
      */
-    public static AnakinDeck getDeck(AnakinModel model, Index index) {
+    public static Deck getDeck(AnakinModel model, Index index) {
         return model.getFilteredDeckList().get(index.getZeroBased());
     }
 }

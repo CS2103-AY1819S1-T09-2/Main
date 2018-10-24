@@ -2,7 +2,7 @@ package guitests.guihandles;
 
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import seedu.address.model.anakindeck.AnakinDeck;
+import seedu.address.model.anakindeck.Deck;
 
 /**
  * Provides a handle to a deck card in the deck list panel.
@@ -32,7 +32,7 @@ public class DeckCardHandle extends NodeHandle<Node> {
     /**
      * Returns true if this handle contains {@code deck}.
      */
-    public boolean equals(AnakinDeck deck) {
+    public boolean equals(Deck deck) {
         return getName().equals(deck.getName().fullName);
     }
 }

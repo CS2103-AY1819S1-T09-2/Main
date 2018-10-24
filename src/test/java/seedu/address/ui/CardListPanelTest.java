@@ -22,11 +22,11 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.XmlUtil;
-import seedu.address.model.anakindeck.AnakinCard;
+import seedu.address.model.anakindeck.Card;
 import seedu.address.storage.AnakinXmlSerializableAnakin;
 
 public class CardListPanelTest extends GuiUnitTest {
-    private static final ObservableList<AnakinCard> TYPICAL_CARDS =
+    private static final ObservableList<Card> TYPICAL_CARDS =
             FXCollections.observableList(getTypicalCards());
 
     private static final JumpToListRequestEvent JUMP_TO_SECOND_EVENT = new JumpToListRequestEvent(INDEX_SECOND_CARD);
@@ -43,7 +43,7 @@ public class CardListPanelTest extends GuiUnitTest {
 
         for (int i = 0; i < TYPICAL_CARDS.size(); i++) {
             cardListPanelHandle.navigateToCard(TYPICAL_CARDS.get(i));
-            AnakinCard expectedCard = TYPICAL_CARDS.get(i);
+            Card expectedCard = TYPICAL_CARDS.get(i);
             CardCardHandle actualCard = cardListPanelHandle.getCardCardHandle(i);
 
             assertCardCardDisplaysCard(expectedCard, actualCard);
@@ -68,7 +68,7 @@ public class CardListPanelTest extends GuiUnitTest {
      */
     @Test
     public void performanceTest() throws Exception {
-        ObservableList<AnakinCard> backingList = createBackingList(10000);
+        ObservableList<Card> backingList = createBackingList(10000);
 
         assertTimeoutPreemptively(ofMillis(CARD_CREATION_AND_DELETION_TIMEOUT), () -> {
             initUi(backingList);
@@ -80,11 +80,11 @@ public class CardListPanelTest extends GuiUnitTest {
      * Returns a list of decks containing {@code deckCount} decks that is used to populate the
      * {@code DeckListPanel}.
      */
-    private ObservableList<AnakinCard> createBackingList(int cardCount) throws Exception {
+    private ObservableList<Card> createBackingList(int cardCount) throws Exception {
         Path xmlFile = createXmlFileWithDeckWithCards(cardCount);
         AnakinXmlSerializableAnakin xmlAnakin =
                 XmlUtil.getDataFromFile(xmlFile, AnakinXmlSerializableAnakin.class);
-        List<AnakinCard> cardList = xmlAnakin.toModelType().getDeckList().get(0).getCards().internalList;
+        List<Card> cardList = xmlAnakin.toModelType().getDeckList().get(0).getCards().internalList;
         return FXCollections.observableArrayList(cardList);
     }
 
@@ -117,7 +117,7 @@ public class CardListPanelTest extends GuiUnitTest {
      * Initializes {@code deckListPanelHandle} with a {@code DeckListPanel} backed by {@code backingList}.
      * Also shows the {@code Stage} that displays only {@code DeckListPanel}.
      */
-    private void initUi(ObservableList<AnakinCard> backingList) {
+    private void initUi(ObservableList<Card> backingList) {
         CardListPanel cardListPanel = new CardListPanel(backingList);
         uiPartRule.setUiPart(cardListPanel);
 

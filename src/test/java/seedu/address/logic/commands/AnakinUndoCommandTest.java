@@ -8,7 +8,7 @@ import static seedu.address.testutil.AnakinTypicalDecks.getTypicalAnakin;
 import org.junit.Before;
 import org.junit.Test;
 
-import seedu.address.logic.anakincommands.AnakinUndoCommand;
+import seedu.address.logic.anakincommands.UndoCommand;
 
 import seedu.address.logic.CommandHistory;
 import seedu.address.model.AnakinModel;
@@ -35,13 +35,13 @@ public class AnakinUndoCommandTest {
     public void execute() {
         // multiple undoable states in model
         expectedModel.undoAnakin();
-        assertCommandSuccess(new AnakinUndoCommand(), model, commandHistory, AnakinUndoCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
         // single undoable state in model
         expectedModel.undoAnakin();
-        assertCommandSuccess(new AnakinUndoCommand(), model, commandHistory, AnakinUndoCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
         // no undoable states in model
-        assertCommandFailure(new AnakinUndoCommand(), model, commandHistory, AnakinUndoCommand.MESSAGE_FAILURE);
+        assertCommandFailure(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_FAILURE);
     }
 }

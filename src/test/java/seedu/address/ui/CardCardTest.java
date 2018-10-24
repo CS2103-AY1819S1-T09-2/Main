@@ -8,7 +8,7 @@ import static seedu.address.ui.testutil.GuiTestAssert.assertCardCardDisplaysCard
 import org.junit.Test;
 
 import guitests.guihandles.CardCardHandle;
-import seedu.address.model.anakindeck.AnakinCard;
+import seedu.address.model.anakindeck.Card;
 import seedu.address.testutil.AnakinCardBuilder;
 
 public class CardCardTest extends GuiUnitTest {
@@ -16,7 +16,7 @@ public class CardCardTest extends GuiUnitTest {
     @Test
     public void display() {
         // no tags
-        AnakinCard card = new AnakinCardBuilder().build();
+        Card card = new AnakinCardBuilder().build();
         CardCard uiCard = new CardCard(card, 1);
         uiPartRule.setUiPart(uiCard);
         assertCardDisplay(uiCard, card, 1);
@@ -24,7 +24,7 @@ public class CardCardTest extends GuiUnitTest {
 
     @Test
     public void equals() {
-        AnakinCard card = new AnakinCardBuilder().build();
+        Card card = new AnakinCardBuilder().build();
         CardCard uiCard = new CardCard(card, 0);
 
         // same card, same index -> returns true
@@ -41,7 +41,7 @@ public class CardCardTest extends GuiUnitTest {
         assertFalse(uiCard.equals(0));
 
         // different card, same index -> returns false
-        AnakinCard differentCard = new AnakinCardBuilder().withQuestion("differentQuestion")
+        Card differentCard = new AnakinCardBuilder().withQuestion("differentQuestion")
                 .withAnswer("differentAnswer").build();
         assertFalse(uiCard.equals(new CardCard(differentCard, 0)));
 
@@ -53,7 +53,7 @@ public class CardCardTest extends GuiUnitTest {
      * Asserts that {@code uiCard} displays the details of {@code expectedCard} correctly and matches
      * {@code expectedId}.
      */
-    private void assertCardDisplay(CardCard uiCard, AnakinCard expectedCard, int expectedId) {
+    private void assertCardDisplay(CardCard uiCard, Card expectedCard, int expectedId) {
         guiRobot.pauseForHuman();
 
         CardCardHandle cardCardHandle = new CardCardHandle(uiCard.getRoot());

@@ -214,18 +214,18 @@ image::NewcardSequenceDiagram.png[width="790", align="left"]
 
 Deck-level operations are supported in Anakin class:
 
-* Anakin#addDeck(AnakinDeck deck) - Add a deck.
-* Anakin#removeDeck(AnakinDeck key) - Delete a deck with specified key.
-* Anakin#updateDeck(AnakinDeck target, AnakinDeck editedDeck) - Update the information of a card inside the current deck.
+* Anakin#addDeck(Deck deck) - Add a deck.
+* Anakin#removeDeck(Deck key) - Delete a deck with specified key.
+* Anakin#updateDeck(Deck target, Deck editedDeck) - Update the information of a card inside the current deck.
 
-These operations are exposed in the Model interface as: Model#addDeck(AnakinDeck deck), Model#deleteDeck(AnakinDeck deck), Model#updateDeck(AnakinDeck target, AnakinDeck editedDeck) respectively.
+These operations are exposed in the Model interface as: Model#addDeck(Deck deck), Model#deleteDeck(Deck deck), Model#updateDeck(Deck target, Deck editedDeck) respectively.
 
 Given below is an example usage scenario and how these operations are executed in Model.
 
 The user executes `newdeck n/My First Deck` to add a new deck with the name `My First Deck`.
 
 ****
-. The `newdeck` command calls Model#addDeck(AnakinDeck deck), or ModelManager#addDeck.
+. The `newdeck` command calls Model#addDeck(Deck deck), or ModelManager#addDeck.
 . ModelManager, which implements Model interface, will call Anakin#addDeck method.
 . Anakin#addDeck will call method addDeck(Card toAdd).
 . UniqueDeckList#add will throw DuplicateDeckException if the card already exist in the list. Otherwise, it will add the deck to its internal ObservableList<Deck>.

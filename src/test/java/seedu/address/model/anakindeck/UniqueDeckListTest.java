@@ -22,7 +22,7 @@ public class UniqueDeckListTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    private final AnakinUniqueDeckList uniqueDeckList = new AnakinUniqueDeckList();
+    private final UniqueDeckList uniqueDeckList = new UniqueDeckList();
 
     @Test
     public void contains_nullDeck_throwsNullPointerException() {
@@ -44,7 +44,7 @@ public class UniqueDeckListTest {
     @Test
     public void contains_deckWithSameIdentityFieldsInList_returnsTrue() {
         uniqueDeckList.add(DECK_A);
-        AnakinDeck editedDeck_A = new AnakinDeckBuilder(DECK_A).withCards(VALID_CARD_LIST).build();
+        Deck editedDeck_A = new AnakinDeckBuilder(DECK_A).withCards(VALID_CARD_LIST).build();
         assertTrue(uniqueDeckList.contains(editedDeck_A));
     }
 
@@ -83,7 +83,7 @@ public class UniqueDeckListTest {
     public void setDeck_editedDeckIsSameDeck_success() {
         uniqueDeckList.add(DECK_A);
         uniqueDeckList.setDeck(DECK_A, DECK_A);
-        AnakinUniqueDeckList expectedUniqueDeckList = new AnakinUniqueDeckList();
+        UniqueDeckList expectedUniqueDeckList = new UniqueDeckList();
         expectedUniqueDeckList.add(DECK_A);
         assertEquals(expectedUniqueDeckList, uniqueDeckList);
     }
@@ -91,9 +91,9 @@ public class UniqueDeckListTest {
     @Test
     public void setDeck_editedDeckHasSameIdentity_success() {
         uniqueDeckList.add(DECK_A);
-        AnakinDeck editedDeck_A = new AnakinDeckBuilder(DECK_A).withCards(VALID_CARD_LIST).build();
+        Deck editedDeck_A = new AnakinDeckBuilder(DECK_A).withCards(VALID_CARD_LIST).build();
         uniqueDeckList.setDeck(DECK_A, editedDeck_A);
-        AnakinUniqueDeckList expectedUniqueDeckList = new AnakinUniqueDeckList();
+        UniqueDeckList expectedUniqueDeckList = new UniqueDeckList();
         expectedUniqueDeckList.add(editedDeck_A);
         assertEquals(expectedUniqueDeckList, uniqueDeckList);
     }
@@ -102,7 +102,7 @@ public class UniqueDeckListTest {
     public void setDeck_editedDeckHasDifferentIdentity_success() {
         uniqueDeckList.add(DECK_A);
         uniqueDeckList.setDeck(DECK_A, DECK_B);
-        AnakinUniqueDeckList expectedUniqueDeckList = new AnakinUniqueDeckList();
+        UniqueDeckList expectedUniqueDeckList = new UniqueDeckList();
         expectedUniqueDeckList.add(DECK_B);
         assertEquals(expectedUniqueDeckList, uniqueDeckList);
     }
@@ -131,20 +131,20 @@ public class UniqueDeckListTest {
     public void remove_existingDeck_removesDeck() {
         uniqueDeckList.add(DECK_A);
         uniqueDeckList.remove(DECK_A);
-        AnakinUniqueDeckList expectedUniqueDeckList = new AnakinUniqueDeckList();
+        UniqueDeckList expectedUniqueDeckList = new UniqueDeckList();
         assertEquals(expectedUniqueDeckList, uniqueDeckList);
     }
 
     @Test
     public void setDecks_nullUniqueDeckList_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
-        uniqueDeckList.setDecks((AnakinUniqueDeckList) null);
+        uniqueDeckList.setDecks((UniqueDeckList) null);
     }
 
     @Test
     public void setDecks_uniqueDeckList_replacesOwnListWithProvidedUniqueDeckList() {
         uniqueDeckList.add(DECK_A);
-        AnakinUniqueDeckList expectedUniqueDeckList = new AnakinUniqueDeckList();
+        UniqueDeckList expectedUniqueDeckList = new UniqueDeckList();
         expectedUniqueDeckList.add(DECK_B);
         uniqueDeckList.setDecks(expectedUniqueDeckList);
         assertEquals(expectedUniqueDeckList, uniqueDeckList);
@@ -153,22 +153,22 @@ public class UniqueDeckListTest {
     @Test
     public void setDecks_nullList_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
-        uniqueDeckList.setDecks((List<AnakinDeck>) null);
+        uniqueDeckList.setDecks((List<Deck>) null);
     }
 
     @Test
     public void setDecks_list_replacesOwnListWithProvidedList() {
         uniqueDeckList.add(DECK_A);
-        List<AnakinDeck> deckList = Collections.singletonList(DECK_B);
+        List<Deck> deckList = Collections.singletonList(DECK_B);
         uniqueDeckList.setDecks(deckList);
-        AnakinUniqueDeckList expectedUniqueDeckList = new AnakinUniqueDeckList();
+        UniqueDeckList expectedUniqueDeckList = new UniqueDeckList();
         expectedUniqueDeckList.add(DECK_B);
         assertEquals(expectedUniqueDeckList, uniqueDeckList);
     }
 
     @Test
     public void setDecks_listWithDuplicateDecks_throwsDuplicateDeckException() {
-        List<AnakinDeck> listWithDuplicateDecks = Arrays.asList(DECK_A, DECK_A);
+        List<Deck> listWithDuplicateDecks = Arrays.asList(DECK_A, DECK_A);
         thrown.expect(DuplicateDeckException.class);
         uniqueDeckList.setDecks(listWithDuplicateDecks);
     }

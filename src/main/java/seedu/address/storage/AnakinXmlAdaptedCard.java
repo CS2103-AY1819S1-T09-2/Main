@@ -5,9 +5,9 @@ import java.util.Objects;
 import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.anakindeck.AnakinAnswer;
-import seedu.address.model.anakindeck.AnakinCard;
-import seedu.address.model.anakindeck.AnakinQuestion;
+import seedu.address.model.anakindeck.Answer;
+import seedu.address.model.anakindeck.Card;
+import seedu.address.model.anakindeck.Question;
 
 /**
  * JAXB-friendly version of the Card.
@@ -37,11 +37,11 @@ public class AnakinXmlAdaptedCard {
     }
 
     /**
-     * Converts a given AnakinCard into this class for JAXB use.
+     * Converts a given Card into this class for JAXB use.
      *
      * @param source future changes to this will not affect the created AnakinXmlAdaptedCard
      */
-    public AnakinXmlAdaptedCard(AnakinCard source) {
+    public AnakinXmlAdaptedCard(Card source) {
         question = source.getQuestion().fullQuestion;
         answer = source.getAnswer().fullAnswer;
     }
@@ -51,28 +51,28 @@ public class AnakinXmlAdaptedCard {
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted person
      */
-    public AnakinCard toModelType() throws IllegalValueException {
+    public Card toModelType() throws IllegalValueException {
         if (question == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    AnakinQuestion.class.getSimpleName()));
+                    Question.class.getSimpleName()));
         }
-        if (!AnakinQuestion.isValidQuestion(question)) {
-            throw new IllegalValueException(AnakinQuestion.MESSAGE_QUESTION_CONSTRAINTS);
+        if (!Question.isValidQuestion(question)) {
+            throw new IllegalValueException(Question.MESSAGE_QUESTION_CONSTRAINTS);
         }
 
-        final AnakinQuestion cardQuestion = new AnakinQuestion(question);
+        final Question cardQuestion = new Question(question);
 
         if (answer == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    AnakinAnswer.class.getSimpleName()));
+                    Answer.class.getSimpleName()));
         }
-        if (!AnakinAnswer.isValidAnswer(answer)) {
-            throw new IllegalValueException(AnakinAnswer.MESSAGE_ANSWER_CONSTRAINTS);
+        if (!Answer.isValidAnswer(answer)) {
+            throw new IllegalValueException(Answer.MESSAGE_ANSWER_CONSTRAINTS);
         }
 
-        final AnakinAnswer cardAnswer = new AnakinAnswer(answer);
+        final Answer cardAnswer = new Answer(answer);
 
-        return new AnakinCard(cardQuestion, cardAnswer);
+        return new Card(cardQuestion, cardAnswer);
     }
 
     @Override

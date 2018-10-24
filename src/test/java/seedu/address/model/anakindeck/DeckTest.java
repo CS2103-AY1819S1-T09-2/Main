@@ -19,7 +19,7 @@ public class DeckTest {
 
     @Test
     public void asObservableList_modifyList_throwsUnsupportedOperationException() {
-        AnakinDeck deck = new AnakinDeckBuilder().build();
+        Deck deck = new AnakinDeckBuilder().build();
         thrown.expect(UnsupportedOperationException.class);
         deck.getCards().remove(CARD_A);
     }
@@ -33,7 +33,7 @@ public class DeckTest {
         assertFalse(DECK_A.isSameDeck(null));
 
         // different name -> returns false
-        AnakinDeck editedDeck_A = new AnakinDeckBuilder(DECK_A).withName(VALID_NAME_DECK_A).build();
+        Deck editedDeck_A = new AnakinDeckBuilder(DECK_A).withName(VALID_NAME_DECK_A).build();
         assertFalse(DECK_A.isSameDeck(editedDeck_A));
 
         // same name, different attributes -> returns true
@@ -44,7 +44,7 @@ public class DeckTest {
     @Test
     public void equals() {
         // same values -> returns true
-        AnakinDeck aliceCopy = new AnakinDeckBuilder(DECK_A).build();
+        Deck aliceCopy = new AnakinDeckBuilder(DECK_A).build();
         assertTrue(DECK_A.equals(aliceCopy));
 
         // same object -> returns true
@@ -60,7 +60,7 @@ public class DeckTest {
         assertFalse(DECK_A.equals(DECK_B));
 
         // different name -> returns false
-        AnakinDeck editedDeck_A = new AnakinDeckBuilder(DECK_A).withName(VALID_NAME_DECK_A).build();
+        Deck editedDeck_A = new AnakinDeckBuilder(DECK_A).withName(VALID_NAME_DECK_A).build();
         assertFalse(DECK_A.equals(editedDeck_A));
 
         // different cardList -> returns false

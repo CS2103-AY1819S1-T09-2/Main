@@ -6,19 +6,19 @@ import java.util.Set;
 
 import javafx.scene.Node;
 import javafx.scene.control.ListView;
-import seedu.address.model.anakindeck.AnakinCard;
+import seedu.address.model.anakindeck.Card;
 
 /**
  * Provides a handle for {@code CardListPanel} containing the list of {@code CardCard}.
  */
-public class CardListPanelHandle extends NodeHandle<ListView<AnakinCard>> {
+public class CardListPanelHandle extends NodeHandle<ListView<Card>> {
     public static final String CARD_LIST_VIEW_ID = "#cardListView";
 
     private static final String CARD_PANE_ID = "#cardPane";
 
-    private Optional<AnakinCard> lastRememberedSelectedCardCard;
+    private Optional<Card> lastRememberedSelectedCardCard;
 
-    public CardListPanelHandle(ListView<AnakinCard> cardListPanelNode) {
+    public CardListPanelHandle(ListView<Card> cardListPanelNode) {
         super(cardListPanelNode);
     }
 
@@ -29,7 +29,7 @@ public class CardListPanelHandle extends NodeHandle<ListView<AnakinCard>> {
      * @throws IllegalStateException if the selected card is currently not in the scene graph.
      */
     public CardCardHandle getHandleToSelectedCard() {
-        List<AnakinCard> selectedCardList = getRootNode().getSelectionModel().getSelectedItems();
+        List<Card> selectedCardList = getRootNode().getSelectionModel().getSelectedItems();
 
         if (selectedCardList.size() != 1) {
             throw new AssertionError("Card list size expected 1.");
@@ -53,7 +53,7 @@ public class CardListPanelHandle extends NodeHandle<ListView<AnakinCard>> {
      * Returns true if a card is currently selected.
      */
     public boolean isAnyCardSelected() {
-        List<AnakinCard> selectedCardsList = getRootNode().getSelectionModel().getSelectedItems();
+        List<Card> selectedCardsList = getRootNode().getSelectionModel().getSelectedItems();
 
         if (selectedCardsList.size() > 1) {
             throw new AssertionError("Card list size expected 0 or 1.");
@@ -65,7 +65,7 @@ public class CardListPanelHandle extends NodeHandle<ListView<AnakinCard>> {
     /**
      * Navigates the listview to display {@code card}.
      */
-    public void navigateToCard(AnakinCard card) {
+    public void navigateToCard(Card card) {
         if (!getRootNode().getItems().contains(card)) {
             throw new IllegalArgumentException("Card does not exist.");
         }
@@ -109,7 +109,7 @@ public class CardListPanelHandle extends NodeHandle<ListView<AnakinCard>> {
                 .orElseThrow(IllegalStateException::new);
     }
 
-    private AnakinCard getAnakinCard(int index) {
+    private Card getAnakinCard(int index) {
         return getRootNode().getItems().get(index);
     }
 
@@ -126,7 +126,7 @@ public class CardListPanelHandle extends NodeHandle<ListView<AnakinCard>> {
      * Remembers the selected {@code CardCard} in the list.
      */
     public void rememberSelectedCardCard() {
-        List<AnakinCard> selectedItems = getRootNode().getSelectionModel().getSelectedItems();
+        List<Card> selectedItems = getRootNode().getSelectionModel().getSelectedItems();
 
         if (selectedItems.size() == 0) {
             lastRememberedSelectedCardCard = Optional.empty();
@@ -140,7 +140,7 @@ public class CardListPanelHandle extends NodeHandle<ListView<AnakinCard>> {
      * {@code rememberSelectedCardCard()} call.
      */
     public boolean isSelectedCardCardChanged() {
-        List<AnakinCard> selectedItems = getRootNode().getSelectionModel().getSelectedItems();
+        List<Card> selectedItems = getRootNode().getSelectionModel().getSelectedItems();
 
         if (selectedItems.size() == 0) {
             return lastRememberedSelectedCardCard.isPresent();

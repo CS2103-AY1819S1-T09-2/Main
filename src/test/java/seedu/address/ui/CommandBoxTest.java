@@ -11,13 +11,13 @@ import guitests.guihandles.CommandBoxHandle;
 import javafx.scene.input.KeyCode;
 import seedu.address.logic.AnakinLogic;
 import seedu.address.logic.AnakinLogicManager;
-import seedu.address.logic.anakincommands.AnakinSortCommand;
+import seedu.address.logic.anakincommands.SortCommand;
 import seedu.address.model.AnakinModel;
 import seedu.address.model.AnakinModelManager;
 
 public class CommandBoxTest extends GuiUnitTest {
 
-    private static final String COMMAND_THAT_SUCCEEDS = AnakinSortCommand.COMMAND_WORD;
+    private static final String COMMAND_THAT_SUCCEEDS = SortCommand.COMMAND_WORD;
     private static final String COMMAND_THAT_FAILS = "invalid command";
 
     private ArrayList<String> defaultStyleOfCommandBox;

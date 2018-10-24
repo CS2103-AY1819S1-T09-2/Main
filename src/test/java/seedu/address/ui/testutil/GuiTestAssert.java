@@ -9,8 +9,8 @@ import guitests.guihandles.CardListPanelHandle;
 import guitests.guihandles.DeckCardHandle;
 import guitests.guihandles.DeckListPanelHandle;
 import guitests.guihandles.ResultDisplayHandle;
-import seedu.address.model.anakindeck.AnakinCard;
-import seedu.address.model.anakindeck.AnakinDeck;
+import seedu.address.model.anakindeck.Card;
+import seedu.address.model.anakindeck.Deck;
 
 /**
  * A set of assertion methods useful for writing GUI tests.
@@ -27,7 +27,7 @@ public class GuiTestAssert {
     /**
      * Asserts that {@code actualDeckCard} displays the details of {@code expectedDeck}.
      */
-    public static void assertDeckCardDisplaysDeck(AnakinDeck expectedDeck, DeckCardHandle actualCard) {
+    public static void assertDeckCardDisplaysDeck(Deck expectedDeck, DeckCardHandle actualCard) {
         assertEquals(expectedDeck.getName().fullName, actualCard.getName());
     }
 
@@ -35,7 +35,7 @@ public class GuiTestAssert {
      * Asserts that the list in {@code deckListPanelHandle} displays the details of {@code decks} correctly and
      * in the correct order.
      */
-    public static void assertDeckListMatching(DeckListPanelHandle deckListPanelHandle, AnakinDeck... decks) {
+    public static void assertDeckListMatching(DeckListPanelHandle deckListPanelHandle, Deck... decks) {
         for (int i = 0; i < decks.length; i++) {
             deckListPanelHandle.navigateToCard(i);
             assertDeckCardDisplaysDeck(decks[i], deckListPanelHandle.getDeckCardHandle(i));
@@ -46,8 +46,8 @@ public class GuiTestAssert {
      * Asserts that the list in {@code deckListPanelHandle} displays the details of {@code decks} correctly and
      * in the correct order.
      */
-    public static void assertDeckListMatching(DeckListPanelHandle deckListPanelHandle, List<AnakinDeck> decks) {
-        assertDeckListMatching(deckListPanelHandle, decks.toArray(new AnakinDeck[0]));
+    public static void assertDeckListMatching(DeckListPanelHandle deckListPanelHandle, List<Deck> decks) {
+        assertDeckListMatching(deckListPanelHandle, decks.toArray(new Deck[0]));
     }
 
     /**
@@ -69,7 +69,7 @@ public class GuiTestAssert {
     /**
      * Asserts that {@code actualCardCard} displays the details of {@code expectedCard}.
      */
-    public static void assertCardCardDisplaysCard(AnakinCard expectedCard, CardCardHandle actualCard) {
+    public static void assertCardCardDisplaysCard(Card expectedCard, CardCardHandle actualCard) {
         assertEquals(expectedCard.getQuestion().fullQuestion, actualCard.getQuestion());
     }
 
@@ -77,7 +77,7 @@ public class GuiTestAssert {
      * Asserts that the list in {@code cardListPanelHandle} displays the details of {@code cards} correctly and
      * in the correct order.
      */
-    public static void assertCardListMatching(CardListPanelHandle cardListPanelHandle, AnakinCard... cards) {
+    public static void assertCardListMatching(CardListPanelHandle cardListPanelHandle, Card... cards) {
         for (int i = 0; i < cards.length; i++) {
             cardListPanelHandle.navigateToCard(i);
             assertCardCardDisplaysCard(cards[i], cardListPanelHandle.getCardCardHandle(i));
@@ -88,8 +88,8 @@ public class GuiTestAssert {
      * Asserts that the list in {@code cardListPanelHandle} displays the details of {@code cards} correctly and
      * in the correct order.
      */
-    public static void assertCardListMatching(CardListPanelHandle cardListPanelHandle, List<AnakinCard> cards) {
-        assertCardListMatching(cardListPanelHandle, cards.toArray(new AnakinCard[0]));
+    public static void assertCardListMatching(CardListPanelHandle cardListPanelHandle, List<Card> cards) {
+        assertCardListMatching(cardListPanelHandle, cards.toArray(new Card[0]));
     }
 
     /**

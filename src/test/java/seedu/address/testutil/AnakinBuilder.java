@@ -1,7 +1,7 @@
 package seedu.address.testutil;
 
 import seedu.address.model.Anakin;
-import seedu.address.model.anakindeck.AnakinDeck;
+import seedu.address.model.anakindeck.Deck;
 
 /**
  * A utility class to help with building Anakin objects.
@@ -23,7 +23,7 @@ public class AnakinBuilder {
     /**
      * Adds a new {@code Deck} to the {@code Anakin} that we are building.
      */
-    public AnakinBuilder withDeck(AnakinDeck deck) {
+    public AnakinBuilder withDeck(Deck deck) {
         anakin.addDeck(deck);
         return this;
     }

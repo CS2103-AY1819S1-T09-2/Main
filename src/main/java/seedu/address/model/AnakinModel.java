@@ -3,8 +3,8 @@ package seedu.address.model;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.anakindeck.AnakinCard;
-import seedu.address.model.anakindeck.AnakinDeck;
+import seedu.address.model.anakindeck.Card;
+import seedu.address.model.anakindeck.Deck;
 
 /**
  * The API of the AnakinModel component
@@ -12,10 +12,10 @@ import seedu.address.model.anakindeck.AnakinDeck;
 public interface AnakinModel {
 
     /** {@code Predicate} that always evaluate to true */
-    Predicate<AnakinDeck> PREDICATE_SHOW_ALL_DECKS = unused -> true;
+    Predicate<Deck> PREDICATE_SHOW_ALL_DECKS = unused -> true;
 
     /** {@code Predicate} that always evaluate to true */
-    Predicate<AnakinCard> PREDICATE_SHOW_ALL_CARDS = unused -> true;
+    Predicate<Card> PREDICATE_SHOW_ALL_CARDS = unused -> true;
 
     void resetData(AnakinReadOnlyAnakin newData);
 
@@ -23,33 +23,33 @@ public interface AnakinModel {
 
     void sort();
 
-    boolean hasDeck(AnakinDeck deck);
+    boolean hasDeck(Deck deck);
 
-    void addDeck(AnakinDeck deck);
+    void addDeck(Deck deck);
 
-    void deleteDeck(AnakinDeck deck);
+    void deleteDeck(Deck deck);
 
-    void updateDeck(AnakinDeck target, AnakinDeck editedDeck);
+    void updateDeck(Deck target, Deck editedDeck);
 
-    boolean hasCard(AnakinCard card);
+    boolean hasCard(Card card);
 
-    void addCard(AnakinCard card);
+    void addCard(Card card);
 
-    void deleteCard(AnakinCard card);
+    void deleteCard(Card card);
 
-    void goIntoDeck(AnakinDeck deck);
+    void goIntoDeck(Deck deck);
 
     void getOutOfDeck();
 
-    void updateCard(AnakinCard target, AnakinCard editedCard);
+    void updateCard(Card target, Card editedCard);
 
-    ObservableList<AnakinDeck> getFilteredDeckList();
+    ObservableList<Deck> getFilteredDeckList();
 
-    void updateFilteredDeckList(Predicate<AnakinDeck> predicate);
+    void updateFilteredDeckList(Predicate<Deck> predicate);
 
-    ObservableList<AnakinCard> getFilteredCardList();
+    ObservableList<Card> getFilteredCardList();
 
-    void updateFilteredCardList(Predicate<AnakinCard> predicate);
+    void updateFilteredCardList(Predicate<Card> predicate);
 
     boolean isInsideDeck();
 

@@ -5,10 +5,10 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.anakindeck.AnakinCard;
-import seedu.address.model.anakindeck.AnakinDeck;
-import seedu.address.model.anakindeck.AnakinUniqueCardList;
-import seedu.address.model.anakindeck.AnakinUniqueDeckList;
+import seedu.address.model.anakindeck.Card;
+import seedu.address.model.anakindeck.Deck;
+import seedu.address.model.anakindeck.UniqueCardList;
+import seedu.address.model.anakindeck.UniqueDeckList;
 import seedu.address.model.anakindeck.anakinexceptions.DeckNotFoundException;
 
 /**
@@ -17,14 +17,14 @@ import seedu.address.model.anakindeck.anakinexceptions.DeckNotFoundException;
  */
 public class Anakin implements AnakinReadOnlyAnakin {
 
-    private final AnakinUniqueDeckList decks;
+    private final UniqueDeckList decks;
 
     private boolean isInsideDeck;
     // Represent the current list of cards (when user get into a deck)
-    private AnakinUniqueCardList cards;
+    private UniqueCardList cards;
 
     // Represents the list of cards displayed on the UI
-    private AnakinUniqueCardList displayedCards;
+    private UniqueCardList displayedCards;
 
     /*
      * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
@@ -34,9 +34,9 @@ public class Anakin implements AnakinReadOnlyAnakin {
      *   among constructors.
      */
     {
-        decks = new AnakinUniqueDeckList();
-        cards = new AnakinUniqueCardList();
-        displayedCards = new AnakinUniqueCardList();
+        decks = new UniqueDeckList();
+        cards = new UniqueCardList();
+        displayedCards = new UniqueCardList();
     }
 
     public Anakin() { }
@@ -55,7 +55,7 @@ public class Anakin implements AnakinReadOnlyAnakin {
      * Replaces the contents of the deck list with {@code decks}.
      * {@code decks} must not contain duplicate decks.
      */
-    public void setDecks(List<AnakinDeck> decks) {
+    public void setDecks(List<Deck> decks) {
         this.decks.setDecks(decks);
     }
 
@@ -63,7 +63,7 @@ public class Anakin implements AnakinReadOnlyAnakin {
      * Replaces the contents of the card list with {@code cards}.
      * {@code cards} must not contain duplicate cards.
      */
-    public void setCards(List<AnakinCard> cards) {
+    public void setCards(List<Card> cards) {
         this.cards.setCards(cards);
     }
 
@@ -105,7 +105,7 @@ public class Anakin implements AnakinReadOnlyAnakin {
     /**
      * Navigating into a deck
      */
-    public void getIntoDeck(AnakinDeck deck) {
+    public void getIntoDeck(Deck deck) {
         requireNonNull(deck);
         isInsideDeck = true;
         cards = deck.getCards();
@@ -117,7 +117,7 @@ public class Anakin implements AnakinReadOnlyAnakin {
      */
     public void getOutOfDeck() {
         isInsideDeck = false;
-        cards = new AnakinUniqueCardList();
+        cards = new UniqueCardList();
         displayedCards.clear();
     }
 
@@ -135,7 +135,7 @@ public class Anakin implements AnakinReadOnlyAnakin {
     /**
      * Returns true if a deck with the same identity as {@code deck} exists in Anakin.
      */
-    public boolean hasDeck(AnakinDeck deck) {
+    public boolean hasDeck(Deck deck) {
         requireNonNull(deck);
         return decks.contains(deck);
     }
@@ -144,7 +144,7 @@ public class Anakin implements AnakinReadOnlyAnakin {
      * Adds a deck to the Anakin.
      * The deck must not already exist in the Anakin.
      */
-    public void addDeck(AnakinDeck d) {
+    public void addDeck(Deck d) {
         decks.add(d);
     }
 
@@ -153,7 +153,7 @@ public class Anakin implements AnakinReadOnlyAnakin {
      * {@code target} must exist in the Anakin.
      * The deck identity of {@code editedDeck} must not be the same as another existing deck in the Anakin.
      */
-    public void updateDeck(AnakinDeck target, AnakinDeck editedDeck) {
+    public void updateDeck(Deck target, Deck editedDeck) {
         requireNonNull(editedDeck);
 
         decks.setDeck(target, editedDeck);
@@ -163,7 +163,7 @@ public class Anakin implements AnakinReadOnlyAnakin {
      * Removes {@code key} from this {@code Anakin}.
      * {@code key} must exist in the Anakin.
      */
-    public void removeDeck(AnakinDeck key) {
+    public void removeDeck(Deck key) {
         decks.remove(key);
     }
 
@@ -172,7 +172,7 @@ public class Anakin implements AnakinReadOnlyAnakin {
     /**
      * Returns true if a card with the same identity as {@code card} exists in current deck.
      */
-    public boolean hasCard(AnakinCard card) {
+    public boolean hasCard(Card card) {
         requireNonNull(card);
         if (!isInsideDeck()) {
             throw new DeckNotFoundException();
@@ -184,7 +184,7 @@ public class Anakin implements AnakinReadOnlyAnakin {
      * Adds a card to the current deck.
      * The card must not already exist in the current deck.
      */
-    public void addCard(AnakinCard c) {
+    public void addCard(Card c) {
         if (!isInsideDeck()) {
             throw new DeckNotFoundException();
         }
@@ -197,7 +197,7 @@ public class Anakin implements AnakinReadOnlyAnakin {
      * {@code target} must exist in the current deck.
      * The card identity of {@code editedCard} must not be the same as another existing card in the current deck.
      */
-    public void updateCard(AnakinCard target, AnakinCard editedCard) {
+    public void updateCard(Card target, Card editedCard) {
         requireNonNull(editedCard);
         if (!isInsideDeck()) {
             throw new DeckNotFoundException();
@@ -210,7 +210,7 @@ public class Anakin implements AnakinReadOnlyAnakin {
      * Removes {@code key} from this {@code currentDeck}.
      * {@code key} must exist in the currentDeck.
      */
-    public void removeCard(AnakinCard key) {
+    public void removeCard(Card key) {
         if (!isInsideDeck()) {
             throw new DeckNotFoundException();
         }
@@ -227,12 +227,12 @@ public class Anakin implements AnakinReadOnlyAnakin {
     }
 
     @Override
-    public ObservableList<AnakinDeck> getDeckList() {
+    public ObservableList<Deck> getDeckList() {
         return decks.asUnmodifiableObservableList();
     }
 
     @Override
-    public ObservableList<AnakinCard> getCardList() {
+    public ObservableList<Card> getCardList() {
         return displayedCards.asUnmodifiableObservableList();
     }
 

@@ -16,13 +16,13 @@ import org.junit.rules.ExpectedException;
 import javafx.collections.ObservableList;
 
 import seedu.address.logic.CommandHistory;
-import seedu.address.logic.anakincommands.AnakinNewDeckCommand;
-import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.anakincommands.NewDeckCommand;
+import seedu.address.logic.anakincommands.exceptions.CommandException;
 import seedu.address.model.Anakin;
 import seedu.address.model.AnakinModel;
 import seedu.address.model.AnakinReadOnlyAnakin;
-import seedu.address.model.anakindeck.AnakinCard;
-import seedu.address.model.anakindeck.AnakinDeck;
+import seedu.address.model.anakindeck.Card;
+import seedu.address.model.anakindeck.Deck;
 import seedu.address.testutil.AnakinDeckBuilder;
 
 
@@ -38,44 +38,44 @@ public class AnakinNewDeckCommandTest {
     @Test
     public void constructor_nullPerson_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
-        new AnakinNewDeckCommand(null);
+        new NewDeckCommand(null);
     }
 
     @Test
     public void execute_personAcceptedByModel_addSuccessful() throws Exception {
         ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
-        AnakinDeck validDeck = new AnakinDeckBuilder().build();
+        Deck validDeck = new AnakinDeckBuilder().build();
 
-        CommandResult commandResult = new AnakinNewDeckCommand(validDeck).execute(modelStub, commandHistory);
+        CommandResult commandResult = new NewDeckCommand(validDeck).execute(modelStub, commandHistory);
 
-        assertEquals(String.format(AnakinNewDeckCommand.MESSAGE_SUCCESS, validDeck), commandResult.feedbackToUser);
+        assertEquals(String.format(NewDeckCommand.MESSAGE_SUCCESS, validDeck), commandResult.feedbackToUser);
         assertEquals(Arrays.asList(validDeck), modelStub.decksAdded);
         assertEquals(EMPTY_COMMAND_HISTORY, commandHistory);
     }
 
     @Test
     public void execute_duplicatePerson_throwsCommandException() throws Exception {
-        AnakinDeck validDeck = new AnakinDeckBuilder().build();
-        AnakinNewDeckCommand newDeckCommand = new AnakinNewDeckCommand(validDeck);
+        Deck validDeck = new AnakinDeckBuilder().build();
+        NewDeckCommand newDeckCommand = new NewDeckCommand(validDeck);
         ModelStub modelStub = new ModelStubWithDeck(validDeck);
 
         thrown.expect(CommandException.class);
-        thrown.expectMessage(AnakinNewDeckCommand.MESSAGE_DUPLICATE_DECK);
+        thrown.expectMessage(NewDeckCommand.MESSAGE_DUPLICATE_DECK);
         newDeckCommand.execute(modelStub, commandHistory);
     }
 
     @Test
     public void equals() {
-        AnakinDeck firstDeck = new AnakinDeckBuilder().withName("Test Deck1").build();
-        AnakinDeck secondDeck = new AnakinDeckBuilder().withName("Test Deck2").build();
-        AnakinNewDeckCommand addFirstDeckCommand = new AnakinNewDeckCommand(firstDeck);
-        AnakinNewDeckCommand addSecondDeckCommand = new AnakinNewDeckCommand(secondDeck);
+        Deck firstDeck = new AnakinDeckBuilder().withName("Test Deck1").build();
+        Deck secondDeck = new AnakinDeckBuilder().withName("Test Deck2").build();
+        NewDeckCommand addFirstDeckCommand = new NewDeckCommand(firstDeck);
+        NewDeckCommand addSecondDeckCommand = new NewDeckCommand(secondDeck);
 
         // same object -> returns true
         assertTrue(addFirstDeckCommand.equals(addFirstDeckCommand));
 
         // same values -> returns true
-        AnakinNewDeckCommand addFirstDeckCommandCopy = new AnakinNewDeckCommand(firstDeck);
+        NewDeckCommand addFirstDeckCommandCopy = new NewDeckCommand(firstDeck);
         assertTrue(addFirstDeckCommand.equals(addFirstDeckCommandCopy));
 
         // different types -> returns false
@@ -99,17 +99,17 @@ public class AnakinNewDeckCommandTest {
         }
 
         @Override
-        public void addDeck(AnakinDeck deck) {
+        public void addDeck(Deck deck) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public boolean hasDeck(AnakinDeck target) {
+        public boolean hasDeck(Deck target) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void addCard(AnakinCard card) {
+        public void addCard(Card card) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -124,28 +124,28 @@ public class AnakinNewDeckCommandTest {
         }
 
         @Override
-        public void deleteDeck(AnakinDeck target) {
+        public void deleteDeck(Deck target) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void updateDeck(AnakinDeck target, AnakinDeck newdeck) {
+        public void updateDeck(Deck target, Deck newdeck) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void updateCard(AnakinCard target, AnakinCard newcard) {
+        public void updateCard(Card target, Card newcard) {
             throw new AssertionError("This method should not be called.");
         }
 
 
         @Override
-        public boolean hasCard(AnakinCard card) {
+        public boolean hasCard(Card card) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void deleteCard(AnakinCard card) {
+        public void deleteCard(Card card) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -155,27 +155,27 @@ public class AnakinNewDeckCommandTest {
         }
 
         @Override
-        public void goIntoDeck(AnakinDeck target) {
+        public void goIntoDeck(Deck target) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ObservableList<AnakinCard> getFilteredCardList() {
+        public ObservableList<Card> getFilteredCardList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ObservableList<AnakinDeck> getFilteredDeckList() {
+        public ObservableList<Deck> getFilteredDeckList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void updateFilteredDeckList(Predicate<AnakinDeck> predicate) {
+        public void updateFilteredDeckList(Predicate<Deck> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void updateFilteredCardList(Predicate<AnakinCard> predicate) {
+        public void updateFilteredCardList(Predicate<Card> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -215,15 +215,15 @@ public class AnakinNewDeckCommandTest {
      * A Model stub that contains a single person.
      */
     private class ModelStubWithDeck extends ModelStub {
-        private final AnakinDeck deck;
+        private final Deck deck;
 
-        ModelStubWithDeck(AnakinDeck deck) {
+        ModelStubWithDeck(Deck deck) {
             requireNonNull(deck);
             this.deck = deck;
         }
 
         @Override
-        public boolean hasDeck(AnakinDeck deck) {
+        public boolean hasDeck(Deck deck) {
             requireNonNull(deck);
             return this.deck.isSameDeck(deck);
         }
@@ -233,23 +233,23 @@ public class AnakinNewDeckCommandTest {
      * A Model stub that always accept the person being added.
      */
     private class ModelStubAcceptingPersonAdded extends ModelStub {
-        final ArrayList<AnakinDeck> decksAdded = new ArrayList<>();
+        final ArrayList<Deck> decksAdded = new ArrayList<>();
 
         @Override
-        public boolean hasDeck(AnakinDeck deck) {
+        public boolean hasDeck(Deck deck) {
             requireNonNull(deck);
             return decksAdded.stream().anyMatch(deck::isSameDeck);
         }
 
         @Override
-        public void addDeck(AnakinDeck deck) {
+        public void addDeck(Deck deck) {
             requireNonNull(deck);
             decksAdded.add(deck);
         }
 
         @Override
         public void commitAnakin() {
-            // called by {@code AnakinNewDeckCommand#execute()}
+            // called by {@code NewDeckCommand#execute()}
         }
 
         @Override

@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import seedu.address.commons.events.ui.ExitAppRequestEvent;
 import seedu.address.logic.CommandHistory;
-import seedu.address.logic.anakincommands.AnakinExitCommand;
 import seedu.address.model.AnakinModel;
 import seedu.address.model.AnakinModelManager;
 import seedu.address.ui.testutil.EventsCollectorRule;
@@ -23,7 +22,7 @@ public class AnakinExitCommandTest {
 
     @Test
     public void execute_exit_success() {
-        CommandResult result = new AnakinExitCommand().execute(model, commandHistory);
+        CommandResult result = new seedu.address.logic.anakincommands.ExitCommand().execute(model, commandHistory);
         assertEquals(MESSAGE_EXIT_ACKNOWLEDGEMENT, result.feedbackToUser);
         assertTrue(eventsCollectorRule.eventsCollector.getMostRecent() instanceof ExitAppRequestEvent);
         assertTrue(eventsCollectorRule.eventsCollector.getSize() == 1);

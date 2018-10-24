@@ -1,7 +1,7 @@
 package seedu.address.commons.events.ui;
 
 import seedu.address.commons.events.BaseEvent;
-import seedu.address.model.anakindeck.AnakinDeck;
+import seedu.address.model.anakindeck.Deck;
 
 /**
  * Represents a selection change in the Deck List Panel
@@ -9,9 +9,9 @@ import seedu.address.model.anakindeck.AnakinDeck;
 public class DeckPanelSelectionChangedEvent extends BaseEvent {
 
 
-    private final AnakinDeck newSelection;
+    private final Deck newSelection;
 
-    public DeckPanelSelectionChangedEvent(AnakinDeck newSelection) {
+    public DeckPanelSelectionChangedEvent(Deck newSelection) {
         this.newSelection = newSelection;
     }
 
@@ -20,7 +20,7 @@ public class DeckPanelSelectionChangedEvent extends BaseEvent {
         return getClass().getSimpleName();
     }
 
-    public AnakinDeck getNewSelection() {
+    public Deck getNewSelection() {
         return newSelection;
     }
 }

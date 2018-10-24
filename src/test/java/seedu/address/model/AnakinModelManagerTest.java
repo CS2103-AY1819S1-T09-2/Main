@@ -11,7 +11,7 @@ import java.util.Arrays;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import seedu.address.model.anakindeck.AnakinDeckNameContainsKeywordsPredicate;
+import seedu.address.model.anakindeck.DeckNameContainsKeywordsPredicate;
 import seedu.address.testutil.AnakinBuilder;
 
 public class AnakinModelManagerTest {
@@ -68,7 +68,7 @@ public class AnakinModelManagerTest {
 
         // different filteredList -> returns false
         String[] keywords = DECK_A.getName().fullName.split("\\s+");
-        modelManager.updateFilteredDeckList(new AnakinDeckNameContainsKeywordsPredicate(Arrays.asList(keywords)));
+        modelManager.updateFilteredDeckList(new DeckNameContainsKeywordsPredicate(Arrays.asList(keywords)));
         assertFalse(modelManager.equals(new AnakinModelManager(anakin, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests

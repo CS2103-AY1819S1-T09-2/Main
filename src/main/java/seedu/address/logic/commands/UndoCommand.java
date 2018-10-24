@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import seedu.address.logic.CommandHistory;
-import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.anakincommands.exceptions.CommandException;
 import seedu.address.model.Model;
 
 /**

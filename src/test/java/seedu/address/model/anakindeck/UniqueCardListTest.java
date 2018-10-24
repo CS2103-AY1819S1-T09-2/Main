@@ -22,7 +22,7 @@ public class UniqueCardListTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    private final AnakinUniqueCardList uniqueCardList = new AnakinUniqueCardList();
+    private final UniqueCardList uniqueCardList = new UniqueCardList();
 
     @Test
     public void contains_nullCard_throwsNullPointerException() {
@@ -44,7 +44,7 @@ public class UniqueCardListTest {
     @Test
     public void contains_cardWithSameIdentityFieldsInList_returnsTrue() {
         uniqueCardList.add(CARD_A);
-        AnakinCard editedCard_A = new AnakinCardBuilder(CARD_A).withAnswer(VALID_ANSWER_A).build();
+        Card editedCard_A = new AnakinCardBuilder(CARD_A).withAnswer(VALID_ANSWER_A).build();
         assertTrue(uniqueCardList.contains(editedCard_A));
     }
 
@@ -83,7 +83,7 @@ public class UniqueCardListTest {
     public void setCard_editedCardIsSameCard_success() {
         uniqueCardList.add(CARD_A);
         uniqueCardList.setCard(CARD_A, CARD_A);
-        AnakinUniqueCardList expectedUniqueCardList = new AnakinUniqueCardList();
+        UniqueCardList expectedUniqueCardList = new UniqueCardList();
         expectedUniqueCardList.add(CARD_A);
         assertEquals(expectedUniqueCardList, uniqueCardList);
     }
@@ -91,9 +91,9 @@ public class UniqueCardListTest {
     @Test
     public void setCard_editedCardHasSameIdentity_success() {
         uniqueCardList.add(CARD_A);
-        AnakinCard editedCard_A = new AnakinCardBuilder(CARD_A).withAnswer(VALID_ANSWER_A).build();
+        Card editedCard_A = new AnakinCardBuilder(CARD_A).withAnswer(VALID_ANSWER_A).build();
         uniqueCardList.setCard(CARD_A, editedCard_A);
-        AnakinUniqueCardList expectedUniqueCardList = new AnakinUniqueCardList();
+        UniqueCardList expectedUniqueCardList = new UniqueCardList();
         expectedUniqueCardList.add(editedCard_A);
         assertEquals(expectedUniqueCardList, uniqueCardList);
     }
@@ -102,7 +102,7 @@ public class UniqueCardListTest {
     public void setCard_editedCardHasDifferentIdentity_success() {
         uniqueCardList.add(CARD_A);
         uniqueCardList.setCard(CARD_A, CARD_B);
-        AnakinUniqueCardList expectedUniqueCardList = new AnakinUniqueCardList();
+        UniqueCardList expectedUniqueCardList = new UniqueCardList();
         expectedUniqueCardList.add(CARD_B);
         assertEquals(expectedUniqueCardList, uniqueCardList);
     }
@@ -131,20 +131,20 @@ public class UniqueCardListTest {
     public void remove_existingCard_removesCard() {
         uniqueCardList.add(CARD_A);
         uniqueCardList.remove(CARD_A);
-        AnakinUniqueCardList expectedUniqueCardList = new AnakinUniqueCardList();
+        UniqueCardList expectedUniqueCardList = new UniqueCardList();
         assertEquals(expectedUniqueCardList, uniqueCardList);
     }
 
     @Test
     public void setCards_nullUniqueCardList_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
-        uniqueCardList.setCards((AnakinUniqueCardList) null);
+        uniqueCardList.setCards((UniqueCardList) null);
     }
 
     @Test
     public void setCards_uniqueCardList_replacesOwnListWithProvidedUniqueCardList() {
         uniqueCardList.add(CARD_A);
-        AnakinUniqueCardList expectedUniqueCardList = new AnakinUniqueCardList();
+        UniqueCardList expectedUniqueCardList = new UniqueCardList();
         expectedUniqueCardList.add(CARD_B);
         uniqueCardList.setCards(expectedUniqueCardList);
         assertEquals(expectedUniqueCardList, uniqueCardList);
@@ -153,22 +153,22 @@ public class UniqueCardListTest {
     @Test
     public void setCards_nullList_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
-        uniqueCardList.setCards((List<AnakinCard>) null);
+        uniqueCardList.setCards((List<Card>) null);
     }
 
     @Test
     public void setCards_list_replacesOwnListWithProvidedList() {
         uniqueCardList.add(CARD_A);
-        List<AnakinCard> cardList = Collections.singletonList(CARD_B);
+        List<Card> cardList = Collections.singletonList(CARD_B);
         uniqueCardList.setCards(cardList);
-        AnakinUniqueCardList expectedUniqueCardList = new AnakinUniqueCardList();
+        UniqueCardList expectedUniqueCardList = new UniqueCardList();
         expectedUniqueCardList.add(CARD_B);
         assertEquals(expectedUniqueCardList, uniqueCardList);
     }
 
     @Test
     public void setCards_listWithDuplicateCards_throwsDuplicateCardException() {
-        List<AnakinCard> listWithDuplicateCards = Arrays.asList(CARD_A, CARD_A);
+        List<Card> listWithDuplicateCards = Arrays.asList(CARD_A, CARD_A);
         thrown.expect(DuplicateCardException.class);
         uniqueCardList.setCards(listWithDuplicateCards);
     }

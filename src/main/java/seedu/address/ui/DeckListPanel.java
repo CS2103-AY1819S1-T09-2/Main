@@ -13,7 +13,7 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.DeckPanelSelectionChangedEvent;
 import seedu.address.commons.events.ui.JumpToListRequestEvent;
-import seedu.address.model.anakindeck.AnakinDeck;
+import seedu.address.model.anakindeck.Deck;
 
 /**
  * Panel containing the list of decks.
@@ -23,15 +23,15 @@ public class DeckListPanel extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(CardListPanel.class);
 
     @FXML
-    private ListView<AnakinDeck> deckListView;
+    private ListView<Deck> deckListView;
 
-    public DeckListPanel(ObservableList<AnakinDeck> deckList) {
+    public DeckListPanel(ObservableList<Deck> deckList) {
         super(FXML);
         setConnections(deckList);
         registerAsAnEventHandler(this);
     }
 
-    private void setConnections(ObservableList<AnakinDeck> deckList) {
+    private void setConnections(ObservableList<Deck> deckList) {
         deckListView.setItems(deckList);
         deckListView.setCellFactory(listView -> new DeckListViewCell());
         setEventHandlerForSelectionChangeEvent();
@@ -48,7 +48,7 @@ public class DeckListPanel extends UiPart<Region> {
     }
 
     /**
-     * Scrolls to the {@code AnakinDeck} at the {@code index} and selects it.
+     * Scrolls to the {@code Deck} at the {@code index} and selects it.
      */
     private void scrollTo(int index) {
         Platform.runLater(() -> {
@@ -66,9 +66,9 @@ public class DeckListPanel extends UiPart<Region> {
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Deck} using a {@code DeckCard}.
      */
-    class DeckListViewCell extends ListCell<AnakinDeck> {
+    class DeckListViewCell extends ListCell<Deck> {
         @Override
-        protected void updateItem(AnakinDeck card, boolean empty) {
+        protected void updateItem(Deck card, boolean empty) {
             super.updateItem(card, empty);
 
             if (empty || card == null) {
