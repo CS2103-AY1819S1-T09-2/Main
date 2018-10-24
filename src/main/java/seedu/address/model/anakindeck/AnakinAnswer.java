@@ -4,8 +4,8 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- *  Represents a Card's answer in the deck.
- *  Guarantees: immutable; is valid as declared in {@link #isValidAnswer(String)}
+ * Represents a Card's answer in the deck.
+ * Guarantees: immutable; is valid as declared in {@link #isValidAnswer(String)}
  */
 public class AnakinAnswer {
     public static final String MESSAGE_ANSWER_CONSTRAINTS =
@@ -34,9 +34,7 @@ public class AnakinAnswer {
      * Returns true if a given string is a valid answer.
      */
     public static boolean isValidAnswer(String test) {
-        // TODO: Update validation regex
-        // return test.matches(ANSWER_VALIDATION_REGEX);
-        return true;
+        return test.matches(ANSWER_VALIDATION_REGEX);
     }
 
     @Override
