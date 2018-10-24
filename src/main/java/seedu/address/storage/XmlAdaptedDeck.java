@@ -15,26 +15,26 @@ import seedu.address.model.anakindeck.Name;
 /**
  * JAXB-friendly version of the Deck.
  */
-public class AnakinXmlAdaptedDeck {
+public class XmlAdaptedDeck {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Deck's %s field is missing!";
 
     @XmlElement(required = true)
     private String name;
     @XmlElement(required = true)
-    private List<AnakinXmlAdaptedCard> cards = new ArrayList<>();
+    private List<XmlAdaptedCard> cards = new ArrayList<>();
 
     /**
-     * Constructs an AnakinXmlAdaptedDeck.
+     * Constructs an XmlAdaptedDeck.
      * This is the no-arg constructor that is required by JAXB.
      */
-    public AnakinXmlAdaptedDeck() {
+    public XmlAdaptedDeck() {
     }
 
     /**
-     * Constructs an {@code AnakinXmlAdaptedDeck} with the given person details.
+     * Constructs an {@code XmlAdaptedDeck} with the given person details.
      */
-    public AnakinXmlAdaptedDeck(String name, List<AnakinXmlAdaptedCard> cards) {
+    public XmlAdaptedDeck(String name, List<XmlAdaptedCard> cards) {
         this.name = name;
         this.cards = new ArrayList<>(cards);
     }
@@ -42,12 +42,12 @@ public class AnakinXmlAdaptedDeck {
     /**
      * Converts a given AnakinDeck into this class for JAXB use.
      *
-     * @param source future changes to this will not affect the created AnakinXmlAdaptedDeck
+     * @param source future changes to this will not affect the created XmlAdaptedDeck
      */
-    public AnakinXmlAdaptedDeck(AnakinDeck source) {
+    public XmlAdaptedDeck(AnakinDeck source) {
         name = source.getName().fullName;
         cards = source.getCards().internalList.stream()
-                .map(AnakinXmlAdaptedCard::new)
+                .map(XmlAdaptedCard::new)
                 .collect(Collectors.toList());
     }
 
@@ -58,7 +58,7 @@ public class AnakinXmlAdaptedDeck {
      */
     public AnakinDeck toModelType() throws IllegalValueException {
         final List<AnakinCard> deckCards = new ArrayList<>();
-        for (AnakinXmlAdaptedCard card : cards) {
+        for (XmlAdaptedCard card : cards) {
             deckCards.add(card.toModelType());
         }
 
@@ -79,11 +79,11 @@ public class AnakinXmlAdaptedDeck {
             return true;
         }
 
-        if (!(other instanceof AnakinXmlAdaptedDeck)) {
+        if (!(other instanceof XmlAdaptedDeck)) {
             return false;
         }
 
-        AnakinXmlAdaptedDeck otherDeck = (AnakinXmlAdaptedDeck) other;
+        XmlAdaptedDeck otherDeck = (XmlAdaptedDeck) other;
         return Objects.equals(name, otherDeck.name)
                 && cards.equals(otherDeck.cards);
     }

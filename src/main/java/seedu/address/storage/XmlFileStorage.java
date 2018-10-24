@@ -11,11 +11,11 @@ import seedu.address.commons.util.XmlUtil;
 /**
  * Stores anakin data in an XML file
  */
-public class AnakinXmlFileStorage {
+public class XmlFileStorage {
     /**
      * Saves the given anakin data to the specified file.
      */
-    public static void saveDataToFile(Path file, AnakinXmlSerializableAnakin anakin)
+    public static void saveDataToFile(Path file, XmlSerializableAnakin anakin)
             throws FileNotFoundException {
         try {
             XmlUtil.saveDataToFile(file, anakin);
@@ -27,10 +27,10 @@ public class AnakinXmlFileStorage {
     /**
      * Returns address book in the file or an empty address book
      */
-    public static AnakinXmlSerializableAnakin loadDataFromSaveFile(Path file) throws DataConversionException,
+    public static XmlSerializableAnakin loadDataFromSaveFile(Path file) throws DataConversionException,
             FileNotFoundException {
         try {
-            return XmlUtil.getDataFromFile(file, AnakinXmlSerializableAnakin.class);
+            return XmlUtil.getDataFromFile(file, XmlSerializableAnakin.class);
         } catch (JAXBException e) {
             throw new DataConversionException(e);
         }

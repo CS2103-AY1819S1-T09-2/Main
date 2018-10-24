@@ -23,7 +23,7 @@ import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.XmlUtil;
 import seedu.address.model.anakindeck.AnakinCard;
-import seedu.address.storage.AnakinXmlSerializableAnakin;
+import seedu.address.storage.XmlSerializableAnakin;
 
 public class CardListPanelTest extends GuiUnitTest {
     private static final ObservableList<AnakinCard> TYPICAL_CARDS =
@@ -82,8 +82,8 @@ public class CardListPanelTest extends GuiUnitTest {
      */
     private ObservableList<AnakinCard> createBackingList(int cardCount) throws Exception {
         Path xmlFile = createXmlFileWithDeckWithCards(cardCount);
-        AnakinXmlSerializableAnakin xmlAnakin =
-                XmlUtil.getDataFromFile(xmlFile, AnakinXmlSerializableAnakin.class);
+        XmlSerializableAnakin xmlAnakin =
+                XmlUtil.getDataFromFile(xmlFile, XmlSerializableAnakin.class);
         List<AnakinCard> cardList = xmlAnakin.toModelType().getDeckList().get(0).getCards().internalList;
         return FXCollections.observableArrayList(cardList);
     }

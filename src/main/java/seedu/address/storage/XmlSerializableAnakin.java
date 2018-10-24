@@ -16,38 +16,38 @@ import seedu.address.model.anakindeck.AnakinDeck;
  * An Immutable Anakin that is serializable to XML format
  */
 @XmlRootElement(name = "anakin")
-public class AnakinXmlSerializableAnakin {
+public class XmlSerializableAnakin {
 
     public static final String MESSAGE_DUPLICATE_DECK = "Deck list contains duplicate deck(s).";
 
     @XmlElement
-    private List<AnakinXmlAdaptedDeck> decks;
+    private List<XmlAdaptedDeck> decks;
 
     /**
      * Creates an empty XmlSerializableAnakin.
      * This empty constructor is required for marshalling.
      */
-    public AnakinXmlSerializableAnakin() {
+    public XmlSerializableAnakin() {
         decks = new ArrayList<>();
     }
 
     /**
      * Conversion
      */
-    public AnakinXmlSerializableAnakin(AnakinReadOnlyAnakin src) {
+    public XmlSerializableAnakin(AnakinReadOnlyAnakin src) {
         this();
-        decks.addAll(src.getDeckList().stream().map(AnakinXmlAdaptedDeck::new).collect(Collectors.toList()));
+        decks.addAll(src.getDeckList().stream().map(XmlAdaptedDeck::new).collect(Collectors.toList()));
     }
 
     /**
      * Converts this anakin into the model's {@code Anakin} object.
      *
      * @throws IllegalValueException if there were any data constraints violated or duplicates in the
-     *                               {@code AnakinXmlAdaptedDeck}.
+     *                               {@code XmlAdaptedDeck}.
      */
     public Anakin toModelType() throws IllegalValueException {
         Anakin anakin = new Anakin();
-        for (AnakinXmlAdaptedDeck d : decks) {
+        for (XmlAdaptedDeck d : decks) {
             AnakinDeck deck = d.toModelType();
             if (anakin.hasDeck(deck)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_DECK);
@@ -63,9 +63,9 @@ public class AnakinXmlSerializableAnakin {
             return true;
         }
 
-        if (!(other instanceof AnakinXmlSerializableAnakin)) {
+        if (!(other instanceof XmlSerializableAnakin)) {
             return false;
         }
-        return decks.equals(((AnakinXmlSerializableAnakin) other).decks);
+        return decks.equals(((XmlSerializableAnakin) other).decks);
     }
 }

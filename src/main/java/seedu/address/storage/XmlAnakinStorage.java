@@ -52,7 +52,7 @@ public class XmlAnakinStorage implements AnakinStorage {
             return Optional.empty();
         }
 
-        AnakinXmlSerializableAnakin xmlAnakin = AnakinXmlFileStorage.loadDataFromSaveFile(filePath);
+        XmlSerializableAnakin xmlAnakin = XmlFileStorage.loadDataFromSaveFile(filePath);
         try {
             return Optional.of(xmlAnakin.toModelType());
         } catch (IllegalValueException ive) {
@@ -76,7 +76,7 @@ public class XmlAnakinStorage implements AnakinStorage {
         requireNonNull(filePath);
 
         FileUtil.createIfMissing(filePath);
-        AnakinXmlFileStorage.saveDataToFile(filePath, new AnakinXmlSerializableAnakin(anakin));
+        XmlFileStorage.saveDataToFile(filePath, new XmlSerializableAnakin(anakin));
     }
 
 }

@@ -12,7 +12,7 @@ import seedu.address.model.anakindeck.AnakinQuestion;
 /**
  * JAXB-friendly version of the Card.
  */
-public class AnakinXmlAdaptedCard {
+public class XmlAdaptedCard {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Card's %s field is missing!";
 
@@ -22,16 +22,16 @@ public class AnakinXmlAdaptedCard {
     private String answer;
 
     /**
-     * Constructs an AnakinXmlAdaptedCard.
+     * Constructs an XmlAdaptedCard.
      * This is the no-arg constructor that is required by JAXB.
      */
-    public AnakinXmlAdaptedCard() {
+    public XmlAdaptedCard() {
     }
 
     /**
-     * Constructs an {@code AnakinXmlAdaptedCard} with the given person details.
+     * Constructs an {@code XmlAdaptedCard} with the given person details.
      */
-    public AnakinXmlAdaptedCard(String question, String answer) {
+    public XmlAdaptedCard(String question, String answer) {
         this.question = question;
         this.answer = answer;
     }
@@ -39,9 +39,9 @@ public class AnakinXmlAdaptedCard {
     /**
      * Converts a given AnakinCard into this class for JAXB use.
      *
-     * @param source future changes to this will not affect the created AnakinXmlAdaptedCard
+     * @param source future changes to this will not affect the created XmlAdaptedCard
      */
-    public AnakinXmlAdaptedCard(AnakinCard source) {
+    public XmlAdaptedCard(AnakinCard source) {
         question = source.getQuestion().fullQuestion;
         answer = source.getAnswer().fullAnswer;
     }
@@ -81,11 +81,11 @@ public class AnakinXmlAdaptedCard {
             return true;
         }
 
-        if (!(other instanceof AnakinXmlAdaptedCard)) {
+        if (!(other instanceof XmlAdaptedCard)) {
             return false;
         }
 
-        AnakinXmlAdaptedCard otherCard = (AnakinXmlAdaptedCard) other;
+        XmlAdaptedCard otherCard = (XmlAdaptedCard) other;
         return Objects.equals(question, otherCard.question)
                 && Objects.equals(answer, otherCard.answer);
     }

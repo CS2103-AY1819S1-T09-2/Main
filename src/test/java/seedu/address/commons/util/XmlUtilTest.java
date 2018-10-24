@@ -16,9 +16,9 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.address.model.Anakin;
-import seedu.address.storage.AnakinXmlAdaptedCard;
-import seedu.address.storage.AnakinXmlAdaptedDeck;
-import seedu.address.storage.AnakinXmlSerializableAnakin;
+import seedu.address.storage.XmlAdaptedCard;
+import seedu.address.storage.XmlAdaptedDeck;
+import seedu.address.storage.XmlSerializableAnakin;
 import seedu.address.testutil.AnakinBuilder;
 import seedu.address.testutil.AnakinDeckBuilder;
 import seedu.address.testutil.AnakinTestUtil;
@@ -37,7 +37,7 @@ public class XmlUtilTest {
     private static final String INVALID_NAME = " ";
 
     private static final String VALID_NAME = "Qui Gon Jinn";
-    private static final List<AnakinXmlAdaptedCard> VALID_CARDS = Collections.singletonList(new AnakinXmlAdaptedCard
+    private static final List<XmlAdaptedCard> VALID_CARDS = Collections.singletonList(new XmlAdaptedCard
             ("How is", "Gamora"));
 
     @Rule
@@ -69,33 +69,33 @@ public class XmlUtilTest {
 
     @Test
     public void getDataFromFile_validFile_validResult() throws Exception {
-        Anakin dataFromFile = XmlUtil.getDataFromFile(VALID_FILE, AnakinXmlSerializableAnakin.class).toModelType();
+        Anakin dataFromFile = XmlUtil.getDataFromFile(VALID_FILE, XmlSerializableAnakin.class).toModelType();
         assertEquals(3, dataFromFile.getDeckList().size());
     }
 
     @Test
     public void xmlAdaptedDeckFromFile_fileWithMissingDeckField_validResult() throws Exception {
-        AnakinXmlAdaptedDeck actualDeck = XmlUtil.getDataFromFile(
+        XmlAdaptedDeck actualDeck = XmlUtil.getDataFromFile(
                 MISSING_DECK_FIELD_FILE, XmlAdaptedDeckWithRootElement.class);
-        AnakinXmlAdaptedDeck expectedDeck = new AnakinXmlAdaptedDeck(
+        XmlAdaptedDeck expectedDeck = new XmlAdaptedDeck(
                 null, VALID_CARDS);
         assertEquals(expectedDeck, actualDeck);
     }
 
     @Test
     public void xmlAdaptedDeckFromFile_fileWithInvalidDeckField_validResult() throws Exception {
-        AnakinXmlAdaptedDeck actualDeck = XmlUtil.getDataFromFile(
+        XmlAdaptedDeck actualDeck = XmlUtil.getDataFromFile(
                 INVALID_DECK_FIELD_FILE, XmlAdaptedDeckWithRootElement.class);
-        AnakinXmlAdaptedDeck expectedDeck = new AnakinXmlAdaptedDeck(
+        XmlAdaptedDeck expectedDeck = new XmlAdaptedDeck(
                 INVALID_NAME, VALID_CARDS);
         assertEquals(expectedDeck, actualDeck);
     }
 
     @Test
     public void xmlAdaptedDeckFromFile_fileWithValidDeck_validResult() throws Exception {
-        AnakinXmlAdaptedDeck actualDeck = XmlUtil.getDataFromFile(
+        XmlAdaptedDeck actualDeck = XmlUtil.getDataFromFile(
                 VALID_DECK_FILE, XmlAdaptedDeckWithRootElement.class);
-        AnakinXmlAdaptedDeck expectedDeck = new AnakinXmlAdaptedDeck(
+        XmlAdaptedDeck expectedDeck = new XmlAdaptedDeck(
                 VALID_NAME, VALID_CARDS);
         assertEquals(expectedDeck, actualDeck);
     }
@@ -121,26 +121,26 @@ public class XmlUtilTest {
     @Test
     public void saveDataToFile_validFile_dataSaved() throws Exception {
         FileUtil.createFile(TEMP_FILE);
-        AnakinXmlSerializableAnakin dataToWrite = new AnakinXmlSerializableAnakin(new Anakin());
+        XmlSerializableAnakin dataToWrite = new XmlSerializableAnakin(new Anakin());
         XmlUtil.saveDataToFile(TEMP_FILE, dataToWrite);
-        AnakinXmlSerializableAnakin dataFromFile = XmlUtil.getDataFromFile(TEMP_FILE, AnakinXmlSerializableAnakin.class);
+        XmlSerializableAnakin dataFromFile = XmlUtil.getDataFromFile(TEMP_FILE, XmlSerializableAnakin.class);
         assertEquals(dataToWrite, dataFromFile);
 
         AnakinBuilder builder = new AnakinBuilder(new Anakin());
-        dataToWrite = new AnakinXmlSerializableAnakin(
+        dataToWrite = new XmlSerializableAnakin(
                 builder.withDeck(new AnakinDeckBuilder().build()).build());
 
         XmlUtil.saveDataToFile(TEMP_FILE, dataToWrite);
-        dataFromFile = XmlUtil.getDataFromFile(TEMP_FILE, AnakinXmlSerializableAnakin.class);
+        dataFromFile = XmlUtil.getDataFromFile(TEMP_FILE, XmlSerializableAnakin.class);
         assertEquals(dataToWrite, dataFromFile);
     }
 
     /**
      * Test class annotated with {@code XmlRootElement} to allow unmarshalling of .xml data to {@code
-     * AnakinXmlAdaptedDeck}
+     * XmlAdaptedDeck}
      * objects.
      */
     @XmlRootElement(name = "deck")
-    private static class XmlAdaptedDeckWithRootElement extends AnakinXmlAdaptedDeck {
+    private static class XmlAdaptedDeckWithRootElement extends XmlAdaptedDeck {
     }
 }
