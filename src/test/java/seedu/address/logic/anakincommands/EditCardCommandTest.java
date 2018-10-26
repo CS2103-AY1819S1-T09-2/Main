@@ -1,6 +1,7 @@
 package seedu.address.logic.anakincommands;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.anakincommands.CommandTestUtil.VALID_ANSWER_A;
 import static seedu.address.logic.anakincommands.CommandTestUtil.VALID_ANSWER_B;
