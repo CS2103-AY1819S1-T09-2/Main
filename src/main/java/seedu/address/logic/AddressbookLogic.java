@@ -12,6 +12,7 @@ import seedu.address.model.person.Person;
 public interface AddressbookLogic {
     /**
      * Executes the command and returns the result.
+     *
      * @param commandText The command as entered by the user.
      * @return the result of the command execution.
      * @throws CommandException If an error occurs during command execution.
@@ -19,9 +20,13 @@ public interface AddressbookLogic {
      */
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
-    /** Returns an unmodifiable view of the filtered list of persons */
+    /**
+     * Returns an unmodifiable view of the filtered list of persons
+     */
     ObservableList<Person> getFilteredPersonList();
 
-    /** Returns the list of input entered by the user, encapsulated in a {@code ListElementPointer} object */
+    /**
+     * Returns the list of input entered by the user, encapsulated in a {@code ListElementPointer} object
+     */
     ListElementPointer getHistorySnapshot();
 }

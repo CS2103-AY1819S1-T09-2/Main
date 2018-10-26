@@ -4,8 +4,8 @@ import java.util.List;
 
 import seedu.address.model.anakindeck.Card;
 import seedu.address.model.anakindeck.Deck;
-import seedu.address.model.anakindeck.UniqueCardList;
 import seedu.address.model.anakindeck.Name;
+import seedu.address.model.anakindeck.UniqueCardList;
 
 /**
  * A utility class to help with building Deck objects.

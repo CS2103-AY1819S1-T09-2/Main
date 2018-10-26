@@ -15,8 +15,10 @@ import seedu.address.model.UserPrefs;
 
 public class AddressbookUndoCommandTest {
 
-    private final AddressbookModel addressbookModel = new AddressbookModelManagerAddressbook(getTypicalAddressBook(), new UserPrefs());
-    private final AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(getTypicalAddressBook(), new UserPrefs());
+    private final AddressbookModel addressbookModel = new AddressbookModelManagerAddressbook(getTypicalAddressBook(),
+        new UserPrefs());
+    private final AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(
+        getTypicalAddressBook(), new UserPrefs());
     private final CommandHistory commandHistory = new CommandHistory();
 
     @Before
@@ -33,11 +35,13 @@ public class AddressbookUndoCommandTest {
     public void execute() {
         // multiple undoable states in addressbookModel
         expectedAddressbookModel.undoAddressBook();
-        assertCommandSuccess(new UndoCommand(), addressbookModel, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedAddressbookModel);
+        assertCommandSuccess(new UndoCommand(), addressbookModel, commandHistory, UndoCommand.MESSAGE_SUCCESS,
+            expectedAddressbookModel);
 
         // single undoable state in addressbookModel
         expectedAddressbookModel.undoAddressBook();
-        assertCommandSuccess(new UndoCommand(), addressbookModel, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedAddressbookModel);
+        assertCommandSuccess(new UndoCommand(), addressbookModel, commandHistory, UndoCommand.MESSAGE_SUCCESS,
+            expectedAddressbookModel);
 
         // no undoable states in addressbookModel
         assertCommandFailure(new UndoCommand(), addressbookModel, commandHistory, UndoCommand.MESSAGE_FAILURE);

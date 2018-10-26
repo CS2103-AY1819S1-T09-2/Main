@@ -11,6 +11,7 @@ import seedu.address.logic.commands.SelectCommand;
 
 /**
  * Test scope: similar to {@code AddressbookDeleteCommandParserTest}.
+ *
  * @see AddressbookDeleteCommandParserTest
  */
 public class AddressbookSelectCommandParserTest {

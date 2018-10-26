@@ -4,12 +4,12 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- *  Represents a Card's question in the deck.
- *  Guarantees: immutable; is valid as declared in {@link #isValidQuestion(String)}
+ * Represents a Card's question in the deck.
+ * Guarantees: immutable; is valid as declared in {@link #isValidQuestion(String)}
  */
 public class Question {
     public static final String MESSAGE_QUESTION_CONSTRAINTS =
-            "Questions can contain any text inputs but it should not be blank";
+        "Questions can contain any text inputs but it should not be blank";
 
     /*
      * The first character of the question must not be a whitespace,
@@ -46,8 +46,8 @@ public class Question {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Question // instanceof handles nulls
-                && fullQuestion.equals(((Question) other).fullQuestion)); // state check
+            || (other instanceof Question // instanceof handles nulls
+            && fullQuestion.equals(((Question) other).fullQuestion)); // state check
     }
 
     @Override

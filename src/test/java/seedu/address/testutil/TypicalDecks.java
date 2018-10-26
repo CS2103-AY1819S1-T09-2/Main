@@ -17,13 +17,14 @@ public class TypicalDecks {
     public static final Deck DECK_C = new DeckBuilder().withName("Calculus").build();
     public static final Deck DECK_D = new DeckBuilder().withName("Darwinian Studies").build();
     public static final Deck DECK_E = new DeckBuilder().withName("Epistemology").build();
-    public static final Deck DECK_WITH_CARDS =  TypicalCards.getTypicalDeck();
+    public static final Deck DECK_WITH_CARDS = TypicalCards.getTypicalDeck();
 
     // Manually added
     public static final Deck DECK_F = new DeckBuilder().withName("Finance").build();
     public static final Deck DECK_G = new DeckBuilder().withName("Geometry").build();
 
-    private TypicalDecks() {} // prevents instantiation
+    private TypicalDecks() {
+    } // prevents instantiation
 
     /**
      * Returns an {@code Anakin} with all the typical decks.

@@ -26,12 +26,12 @@ public class EditDeckCommand extends Command {
     public static final String COMMAND_WORD = "editdeck";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the deck identified "
-            + "by the index number used in the displayed deck list. "
-            + "Changes its name to NAME.\n"
-            + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_NAME + "NAME]...\n "
-            + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_NAME + "[NAME]";
+        + "by the index number used in the displayed deck list. "
+        + "Changes its name to NAME.\n"
+        + "Parameters: INDEX (must be a positive integer) "
+        + "[" + PREFIX_NAME + "NAME]...\n "
+        + "Example: " + COMMAND_WORD + " 1 "
+        + PREFIX_NAME + "[NAME]";
 
     public static final String MESSAGE_EDIT_DECK_SUCCESS = "Edited Deck: %1$s";
     public static final String MESSAGE_DECK_NOT_EDITED = "Index of Deck to edit and Name to edit to must be provided.";
@@ -50,6 +50,18 @@ public class EditDeckCommand extends Command {
 
         this.index = index;
         this.editDeckDescriptor = new EditDeckDescriptor(editDeckDescriptor);
+    }
+
+    /**
+     * Creates and returns a {@code Deck} with the details of {@code deckToEdit}
+     * edited with {@code editDeckDescriptor}.
+     */
+    private static Deck createEditedDeck(Deck deckToEdit, EditDeckDescriptor editDeckDescriptor) {
+        assert deckToEdit != null;
+
+        Name updatedName = editDeckDescriptor.getName().orElse(deckToEdit.getName());
+
+        return new Deck(updatedName);
     }
 
     @Override
@@ -74,18 +86,6 @@ public class EditDeckCommand extends Command {
         return new CommandResult(String.format(MESSAGE_EDIT_DECK_SUCCESS, editedDeck));
     }
 
-    /**
-     * Creates and returns a {@code Deck} with the details of {@code deckToEdit}
-     * edited with {@code editDeckDescriptor}.
-     */
-    private static Deck createEditedDeck(Deck deckToEdit, EditDeckDescriptor editDeckDescriptor) {
-        assert deckToEdit != null;
-
-        Name updatedName = editDeckDescriptor.getName().orElse(deckToEdit.getName());
-
-        return new Deck(updatedName);
-    }
-
     @Override
     public boolean equals(Object other) {
         // short circuit if same object
@@ -101,7 +101,7 @@ public class EditDeckCommand extends Command {
         // state check
         EditDeckCommand e = (EditDeckCommand) other;
         return index.equals(e.index)
-                && editDeckDescriptor.equals(e.editDeckDescriptor);
+            && editDeckDescriptor.equals(e.editDeckDescriptor);
     }
 
     /**
@@ -113,7 +113,8 @@ public class EditDeckCommand extends Command {
         // private List<Card> cards;
         private UniqueCardList cards;
 
-        public EditDeckDescriptor() {}
+        public EditDeckDescriptor() {
+        }
 
         /**
          * Copy constructor.
@@ -131,22 +132,12 @@ public class EditDeckCommand extends Command {
             return CollectionUtil.isAnyNonNull(name, cards);
         }
 
-        public void setName(Name name) {
-            this.name = name;
-        }
-
         public Optional<Name> getName() {
             return Optional.ofNullable(name);
         }
 
-
-        /**
-         * Sets {@code cards} to this object's {@code tags}.
-         * A defensive copy of {@code cards} is used internally.
-         */
-        public void setCards(UniqueCardList cards) {
-            // this.cards = (cards != null) ? new ArrayList<>(cards) : null;
-            this.cards = cards;
+        public void setName(Name name) {
+            this.name = name;
         }
 
         /**
@@ -157,6 +148,15 @@ public class EditDeckCommand extends Command {
         public Optional<UniqueCardList> getCards() {
             // return (cards != null) ? Optional.of(Collections.unmodifiableList(cards)) : Optional.empty();
             return Optional.of(cards);
+        }
+
+        /**
+         * Sets {@code cards} to this object's {@code tags}.
+         * A defensive copy of {@code cards} is used internally.
+         */
+        public void setCards(UniqueCardList cards) {
+            // this.cards = (cards != null) ? new ArrayList<>(cards) : null;
+            this.cards = cards;
         }
 
         @Override
@@ -175,7 +175,7 @@ public class EditDeckCommand extends Command {
             EditDeckDescriptor e = (EditDeckDescriptor) other;
 
             return getName().equals(e.getName())
-                    && getCards().equals(e.getCards());
+                && getCards().equals(e.getCards());
         }
     }
 }

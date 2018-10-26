@@ -49,6 +49,7 @@ public class Parser {
 
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
+
         switch (commandWord) {
         case NewDeckCommand.COMMAND_WORD:
             return new NewDeckCommandParser().parse(arguments);

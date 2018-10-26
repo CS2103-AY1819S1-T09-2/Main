@@ -18,8 +18,8 @@ public class XmlAdaptedDeckTest {
 
     private static final String VALID_NAME = DECK_A.getName().toString();
     private static final List<XmlAdaptedCard> VALID_CARDS = DECK_A.getCards()
-            .internalList.stream()
-            .map(XmlAdaptedCard::new).collect(Collectors.toList());
+        .internalList.stream()
+        .map(XmlAdaptedCard::new).collect(Collectors.toList());
 
     @Test
     public void toModelType_validDeckDetails_returnsDeck() throws Exception {

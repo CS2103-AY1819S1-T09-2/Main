@@ -21,17 +21,8 @@ public class ModelHelper {
      */
     public static void setFilteredDeckList(Model model, List<Deck> decksToDisplay) {
         Optional<Predicate<Deck>> deckPredicate =
-                decksToDisplay.stream().map(ModelHelper::getPredicateMatchingDecks).reduce(Predicate::or);
+            decksToDisplay.stream().map(ModelHelper::getPredicateMatchingDecks).reduce(Predicate::or);
         model.updateFilteredDeckList(deckPredicate.orElse(PREDICATE_MATCHING_NO_DECKS));
-    }
-
-    /**
-     * Updates {@code model}'s filtered list to display only {@code toDisplay}.
-     */
-    public static void setFilteredCardList(Model model, List<Card> cardsToDisplay) {
-        Optional<Predicate<Card>> cardPredicate =
-                cardsToDisplay.stream().map(ModelHelper::getPredicateMatchingCards).reduce(Predicate::or);
-        model.updateFilteredCardList(cardPredicate.orElse(PREDICATE_MATCHING_NO_CARDS));
     }
 
     /**
@@ -42,11 +33,21 @@ public class ModelHelper {
     }
 
     /**
+     * Updates {@code model}'s filtered list to display only {@code toDisplay}.
+     */
+    public static void setFilteredCardList(Model model, List<Card> cardsToDisplay) {
+        Optional<Predicate<Card>> cardPredicate =
+            cardsToDisplay.stream().map(ModelHelper::getPredicateMatchingCards).reduce(Predicate::or);
+        model.updateFilteredCardList(cardPredicate.orElse(PREDICATE_MATCHING_NO_CARDS));
+    }
+
+    /**
      * @see ModelHelper#setFilteredCardList(Model, List)
      */
     public static void setFilteredCardList(Model model, Card... toDisplay) {
         setFilteredCardList(model, Arrays.asList(toDisplay));
     }
+
 
     /**
      * Returns a predicate that evaluates to true if this {@code Deck} equals to {@code other}.

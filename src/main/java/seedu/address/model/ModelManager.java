@@ -54,7 +54,9 @@ public class ModelManager extends ComponentManager implements Model {
         return versionedAnakin;
     }
 
-    /** Raises an event to indicate the model has changed */
+    /**
+     * Raises an event to indicate the model has changed
+     */
     private void indicateAnakinChanged() {
         raise(new AnakinChangedEvent(versionedAnakin));
     }
@@ -224,6 +226,6 @@ public class ModelManager extends ComponentManager implements Model {
         // state check
         ModelManager other = (ModelManager) obj;
         return versionedAnakin.equals(other.versionedAnakin)
-                && filteredDecks.equals(other.filteredDecks);
+            && filteredDecks.equals(other.filteredDecks);
     }
 }

@@ -21,17 +21,21 @@ public class AddressbookClearCommandTest {
         AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook();
         expectedAddressbookModel.commitAddressBook();
 
-        assertCommandSuccess(new ClearCommand(), addressbookModel, commandHistory, ClearCommand.MESSAGE_SUCCESS, expectedAddressbookModel);
+        assertCommandSuccess(new ClearCommand(), addressbookModel, commandHistory, ClearCommand.MESSAGE_SUCCESS,
+            expectedAddressbookModel);
     }
 
     @Test
     public void execute_nonEmptyAddressBook_success() {
-        AddressbookModel addressbookModel = new AddressbookModelManagerAddressbook(getTypicalAddressBook(), new UserPrefs());
-        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(getTypicalAddressBook(), new UserPrefs());
+        AddressbookModel addressbookModel = new AddressbookModelManagerAddressbook(getTypicalAddressBook(),
+            new UserPrefs());
+        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(getTypicalAddressBook(),
+            new UserPrefs());
         expectedAddressbookModel.resetData(new AddressBook());
         expectedAddressbookModel.commitAddressBook();
 
-        assertCommandSuccess(new ClearCommand(), addressbookModel, commandHistory, ClearCommand.MESSAGE_SUCCESS, expectedAddressbookModel);
+        assertCommandSuccess(new ClearCommand(), addressbookModel, commandHistory, ClearCommand.MESSAGE_SUCCESS,
+            expectedAddressbookModel);
     }
 
 }

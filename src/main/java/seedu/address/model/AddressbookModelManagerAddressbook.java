@@ -51,7 +51,9 @@ public class AddressbookModelManagerAddressbook extends AddressbookComponentMana
         return versionedAddressBook;
     }
 
-    /** Raises an event to indicate the model has changed */
+    /**
+     * Raises an event to indicate the model has changed
+     */
     private void indicateAddressBookChanged() {
         raise(new AddressBookChangedEvent(versionedAddressBook));
     }
@@ -144,7 +146,7 @@ public class AddressbookModelManagerAddressbook extends AddressbookComponentMana
         // state check
         AddressbookModelManagerAddressbook other = (AddressbookModelManagerAddressbook) obj;
         return versionedAddressBook.equals(other.versionedAddressBook)
-                && filteredPersons.equals(other.filteredPersons);
+            && filteredPersons.equals(other.filteredPersons);
     }
 
 }

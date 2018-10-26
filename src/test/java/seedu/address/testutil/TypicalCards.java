@@ -21,7 +21,8 @@ public class TypicalCards {
     public static final Card CARD_F = new CardBuilder().withQuestion("Heart").withAnswer("I am").build();
     public static final Card CARD_G = new CardBuilder().withQuestion("All").withAnswer("Alone").build();
 
-    private TypicalCards() {} // prevents instantiation
+    private TypicalCards() {
+    } // prevents instantiation
 
     /**
      * Returns a {@code Deck} with all the typical cards.

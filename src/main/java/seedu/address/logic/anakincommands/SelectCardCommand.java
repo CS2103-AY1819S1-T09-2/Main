@@ -21,9 +21,9 @@ public class SelectCardCommand extends Command {
     public static final String COMMAND_WORD = "select";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Selects the card identified by the index number used in the displayed card list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+        + ": Selects the card identified by the index number used in the displayed card list.\n"
+        + "Parameters: INDEX (must be a positive integer)\n"
+        + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_SELECT_CARD_SUCCESS = "Selected Card: %1$s";
 
@@ -51,7 +51,7 @@ public class SelectCardCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof SelectCardCommand // instanceof handles nulls
-                && targetIndex.equals(((SelectCardCommand) other).targetIndex)); // state check
+            || (other instanceof SelectCardCommand // instanceof handles nulls
+            && targetIndex.equals(((SelectCardCommand) other).targetIndex)); // state check
     }
 }

@@ -21,6 +21,14 @@ import seedu.address.model.anakindeck.Question;
 public class NewCardCommandParser implements ParserInterface<NewCardCommand> {
 
     /**
+     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
+     * {@code ArgumentMultimap}.
+     */
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
+    }
+
+    /**
      * Parses the given {@code String} of arguments in the context of the NewCardCommand
      * and returns an NewCardCommand object for execution.
      *
@@ -28,12 +36,12 @@ public class NewCardCommandParser implements ParserInterface<NewCardCommand> {
      */
     public NewCardCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_ANSWER, PREFIX_QUESTION);
+            ArgumentTokenizer.tokenize(args, PREFIX_ANSWER, PREFIX_QUESTION);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_ANSWER, PREFIX_QUESTION)
-                || !argMultimap.getPreamble().isEmpty()) {
+            || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    NewCardCommand.MESSAGE_USAGE));
+                NewCardCommand.MESSAGE_USAGE));
         }
         Question question = ParserUtil.parseQuestion(argMultimap.getValue(PREFIX_QUESTION).get());
         Answer answer = ParserUtil.parseAnswer(argMultimap.getValue(PREFIX_ANSWER).get());
@@ -41,14 +49,6 @@ public class NewCardCommandParser implements ParserInterface<NewCardCommand> {
         Card card = new Card(question, answer);
 
         return new NewCardCommand(card);
-    }
-
-    /**
-     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
-     * {@code ArgumentMultimap}.
-     */
-    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
-        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 
 }

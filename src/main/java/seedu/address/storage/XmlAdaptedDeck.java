@@ -47,8 +47,8 @@ public class XmlAdaptedDeck {
     public XmlAdaptedDeck(Deck source) {
         name = source.getName().fullName;
         cards = source.getCards().internalList.stream()
-                .map(XmlAdaptedCard::new)
-                .collect(Collectors.toList());
+            .map(XmlAdaptedCard::new)
+            .collect(Collectors.toList());
     }
 
     /**
@@ -85,6 +85,6 @@ public class XmlAdaptedDeck {
 
         XmlAdaptedDeck otherDeck = (XmlAdaptedDeck) other;
         return Objects.equals(name, otherDeck.name)
-                && cards.equals(otherDeck.cards);
+            && cards.equals(otherDeck.cards);
     }
 }

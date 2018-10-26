@@ -53,7 +53,8 @@ public class AddressbookModelManagerTest {
 
         // same values -> returns true
         modelManager = new AddressbookModelManagerAddressbook(addressBook, userPrefs);
-        AddressbookModelManagerAddressbook modelManagerCopy = new AddressbookModelManagerAddressbook(addressBook, userPrefs);
+        AddressbookModelManagerAddressbook modelManagerCopy = new AddressbookModelManagerAddressbook(addressBook,
+            userPrefs);
         assertTrue(modelManager.equals(modelManagerCopy));
 
         // same object -> returns true

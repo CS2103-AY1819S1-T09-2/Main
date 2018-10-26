@@ -30,8 +30,8 @@ public class XmlAnakinStorageTest {
 
     private Path addToTestDataPathIfNotNull(String prefsFileInTestDataFolder) {
         return prefsFileInTestDataFolder != null
-                ? TEST_DATA_FOLDER.resolve(prefsFileInTestDataFolder)
-                : null;
+            ? TEST_DATA_FOLDER.resolve(prefsFileInTestDataFolder)
+            : null;
     }
 
     private java.util.Optional<ReadOnlyAnakin> readAnakin(String filePath) throws Exception {
@@ -98,7 +98,7 @@ public class XmlAnakinStorageTest {
     private void saveAnakin(ReadOnlyAnakin anakin, String filePath) {
         try {
             new XmlAnakinStorage(Paths.get(filePath))
-                    .saveAnakin(anakin, addToTestDataPathIfNotNull(filePath));
+                .saveAnakin(anakin, addToTestDataPathIfNotNull(filePath));
         } catch (IOException ioe) {
             throw new AssertionError("There should not be an error writing to the file.", ioe);
         }

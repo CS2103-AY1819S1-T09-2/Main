@@ -44,7 +44,7 @@ public class XmlAnakinStorage implements AnakinStorage {
      * @throws DataConversionException if the file is not in the correct format.
      */
     public Optional<ReadOnlyAnakin> readAnakin(Path filePath) throws DataConversionException,
-            FileNotFoundException {
+        FileNotFoundException {
         requireNonNull(filePath);
 
         if (!Files.exists(filePath)) {

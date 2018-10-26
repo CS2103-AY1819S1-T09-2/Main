@@ -18,14 +18,14 @@ public class DeckNameContainsKeywordsPredicate implements Predicate<Deck> {
     @Override
     public boolean test(Deck deck) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(deck.getName().fullName, keyword));
+            .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(deck.getName().fullName, keyword));
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DeckNameContainsKeywordsPredicate // instanceof handles nulls
-                && keywords.equals(((DeckNameContainsKeywordsPredicate) other).keywords)); // state check
+            || (other instanceof DeckNameContainsKeywordsPredicate // instanceof handles nulls
+            && keywords.equals(((DeckNameContainsKeywordsPredicate) other).keywords)); // state check
     }
 
 }

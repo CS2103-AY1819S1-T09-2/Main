@@ -77,8 +77,8 @@ public class StorageManagerTest {
     public void handleAnakinChangedEvent_exceptionThrown_eventRaised() {
         // Create a StorageManager while injecting a stub that  throws an exception when the save method is called
         Storage anakinStorageSwap = new StorageManager(new XmlAnakinStorageExceptionThrowingStub(Paths.get
-                ("dummy")),
-                new JsonUserPrefsStorage(Paths.get("dummy")));
+            ("dummy")),
+            new JsonUserPrefsStorage(Paths.get("dummy")));
         anakinStorageSwap.handleAnakinChangedEvent(new AnakinChangedEvent(new Anakin()));
         assertTrue(eventsCollectorRule.eventsCollector.getMostRecent() instanceof DataSavingExceptionEvent);
     }

@@ -18,6 +18,6 @@ public abstract class Command {
      * @throws CommandException If an error occurs during command execution.
      */
     public abstract CommandResult execute(AddressbookModel addressbookModel,
-                                          CommandHistory history) throws CommandException;
+        CommandHistory history) throws CommandException;
 
 }

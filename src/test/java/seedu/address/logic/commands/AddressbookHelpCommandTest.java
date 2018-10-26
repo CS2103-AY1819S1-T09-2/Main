@@ -23,7 +23,8 @@ public class AddressbookHelpCommandTest {
 
     @Test
     public void execute_help_success() {
-        assertCommandSuccess(new HelpCommand(), addressbookModel, commandHistory, SHOWING_HELP_MESSAGE, expectedAddressbookModel);
+        assertCommandSuccess(new HelpCommand(), addressbookModel, commandHistory, SHOWING_HELP_MESSAGE,
+            expectedAddressbookModel);
         assertTrue(eventsCollectorRule.eventsCollector.getMostRecent() instanceof ShowHelpRequestEvent);
         assertTrue(eventsCollectorRule.eventsCollector.getSize() == 1);
     }

@@ -27,19 +27,19 @@ public class Anakin implements ReadOnlyAnakin {
     private UniqueCardList displayedCards;
 
     /*
-     * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
-     * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
-     *
-     * Note that non-static init blocks are not recommended to use. There are other ways to avoid duplication
-     *   among constructors.
-     */
-    {
+    * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
+    * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
+    *
+    * Note that non-static init blocks are not recommended to use. There are other ways to avoid duplication
+    *   among constructors.
+    */ {
         decks = new UniqueDeckList();
         cards = new UniqueCardList();
         displayedCards = new UniqueCardList();
     }
 
-    public Anakin() { }
+    public Anakin() {
+    }
 
     /**
      * Creates an Anakin using the Decks in the {@code toBeCopied}
@@ -239,8 +239,8 @@ public class Anakin implements ReadOnlyAnakin {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Anakin // instanceof handles nulls
-                && decks.equals(((Anakin) other).decks));
+            || (other instanceof Anakin // instanceof handles nulls
+            && decks.equals(((Anakin) other).decks));
     }
 
     @Override

@@ -39,12 +39,12 @@ public class DeckListPanel extends UiPart<Region> {
 
     private void setEventHandlerForSelectionChangeEvent() {
         deckListView.getSelectionModel().selectedItemProperty()
-                .addListener((observable, oldValue, newValue) -> {
-                    if (newValue != null) {
-                        logger.fine("Selection in deck list panel changed to : '" + newValue + "'");
-                        raise(new DeckPanelSelectionChangedEvent(newValue));
-                    }
-                });
+            .addListener((observable, oldValue, newValue) -> {
+                if (newValue != null) {
+                    logger.fine("Selection in deck list panel changed to : '" + newValue + "'");
+                    raise(new DeckPanelSelectionChangedEvent(newValue));
+                }
+            });
     }
 
     /**

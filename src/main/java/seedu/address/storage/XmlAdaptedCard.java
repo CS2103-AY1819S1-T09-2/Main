@@ -54,7 +54,7 @@ public class XmlAdaptedCard {
     public Card toModelType() throws IllegalValueException {
         if (question == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    Question.class.getSimpleName()));
+                Question.class.getSimpleName()));
         }
         if (!Question.isValidQuestion(question)) {
             throw new IllegalValueException(Question.MESSAGE_QUESTION_CONSTRAINTS);
@@ -64,7 +64,7 @@ public class XmlAdaptedCard {
 
         if (answer == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    Answer.class.getSimpleName()));
+                Answer.class.getSimpleName()));
         }
         if (!Answer.isValidAnswer(answer)) {
             throw new IllegalValueException(Answer.MESSAGE_ANSWER_CONSTRAINTS);
@@ -87,6 +87,6 @@ public class XmlAdaptedCard {
 
         XmlAdaptedCard otherCard = (XmlAdaptedCard) other;
         return Objects.equals(question, otherCard.question)
-                && Objects.equals(answer, otherCard.answer);
+            && Objects.equals(answer, otherCard.answer);
     }
 }

@@ -6,6 +6,7 @@ import static seedu.address.testutil.TypicalDecks.DECK_A;
 import static seedu.address.testutil.TypicalDecks.DECK_B;
 
 import org.junit.Test;
+
 import seedu.address.model.Anakin;
 import seedu.address.model.anakindeck.Deck;
 import seedu.address.testutil.AnakinBuilder;
@@ -20,7 +21,8 @@ public class SortCommandTest {
         assertEquals(anakin, expectedAnakin);
     }
 
-    @Test void execute_sortCardList() {
+    @Test
+    void execute_sortCardList() {
         Deck deck = getTypicalDeck();
         Anakin anakin = new AnakinBuilder().withDeck(deck).build();
         anakin.getIntoDeck(deck);

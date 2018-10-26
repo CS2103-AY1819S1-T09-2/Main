@@ -4,15 +4,17 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+
 import seedu.address.testutil.Assert;
 
 public class AnswerTest {
     @Test
-    public void  constructor_null_throwsNullPointerException() {
+    public void constructor_null_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> new Answer(null));
     }
 
-    @Test public void constructor_invalidAnswer_throwsIllegalArgumentException() {
+    @Test
+    public void constructor_invalidAnswer_throwsIllegalArgumentException() {
         String invalidAnswer = "";
         Assert.assertThrows(IllegalArgumentException.class, () -> new Answer(invalidAnswer));
     }

@@ -8,7 +8,6 @@ import static seedu.address.testutil.TypicalDecks.getTypicalAnakin;
 import org.junit.Before;
 import org.junit.Test;
 
-
 import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;

@@ -14,7 +14,7 @@ import seedu.address.model.anakindeck.anakinexceptions.DuplicateCardException;
 
 /**
  * A list of cards that enforces uniqueness between its elements and does not allow nulls.
- *
+ * <p>
  * Supports a minimal set of list operations.
  */
 public class UniqueCardList implements Iterable<Card> {
@@ -119,8 +119,8 @@ public class UniqueCardList implements Iterable<Card> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof UniqueDeckList // instanceof handles nulls
-                && internalList.equals(((UniqueDeckList) other).internalList));
+            || (other instanceof UniqueDeckList // instanceof handles nulls
+            && internalList.equals(((UniqueDeckList) other).internalList));
     }
 
     @Override
@@ -130,6 +130,7 @@ public class UniqueCardList implements Iterable<Card> {
 
     /**
      * Returns true if {@code cards} contains only unique cards.
+     *
      * @param cards
      */
     private boolean cardsAreUnique(List<Card> cards) {

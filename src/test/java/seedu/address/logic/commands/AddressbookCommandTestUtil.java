@@ -62,11 +62,11 @@ public class AddressbookCommandTestUtil {
 
     static {
         DESC_AMY = new AddressbookEditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withTags(VALID_TAG_FRIEND).build();
+            .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
+            .withTags(VALID_TAG_FRIEND).build();
         DESC_BOB = new AddressbookEditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+            .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
+            .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
     }
 
     /**
@@ -75,8 +75,9 @@ public class AddressbookCommandTestUtil {
      * - the {@code actualAddressbookModel} matches {@code expectedAddressbookModel} <br>
      * - the {@code actualCommandHistory} remains unchanged.
      */
-    public static void assertCommandSuccess(Command command, AddressbookModel actualAddressbookModel, CommandHistory actualCommandHistory,
-                                            String expectedMessage, AddressbookModel expectedAddressbookModel) {
+    public static void assertCommandSuccess(Command command, AddressbookModel actualAddressbookModel,
+        CommandHistory actualCommandHistory,
+        String expectedMessage, AddressbookModel expectedAddressbookModel) {
         CommandHistory expectedCommandHistory = new CommandHistory(actualCommandHistory);
         try {
             CommandResult result = command.execute(actualAddressbookModel, actualCommandHistory);
@@ -95,8 +96,9 @@ public class AddressbookCommandTestUtil {
      * - the address book and the filtered person list in the {@code actualAddressbookModel} remain unchanged <br>
      * - {@code actualCommandHistory} remains unchanged.
      */
-    public static void assertCommandFailure(Command command, AddressbookModel actualAddressbookModel, CommandHistory actualCommandHistory,
-                                            String expectedMessage) {
+    public static void assertCommandFailure(Command command, AddressbookModel actualAddressbookModel,
+        CommandHistory actualCommandHistory,
+        String expectedMessage) {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
         AddressBook expectedAddressBook = new AddressBook(actualAddressbookModel.getAddressBook());
@@ -130,7 +132,8 @@ public class AddressbookCommandTestUtil {
     }
 
     /**
-     * Deletes the first person in {@code addressbookModel}'s filtered list from {@code addressbookModel}'s address book.
+     * Deletes the first person in {@code addressbookModel}'s filtered list from {@code addressbookModel}'s address
+     * book.
      */
     public static void deleteFirstPerson(AddressbookModel addressbookModel) {
         Person firstPerson = addressbookModel.getFilteredPersonList().get(0);

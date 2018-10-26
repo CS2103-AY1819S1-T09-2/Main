@@ -85,8 +85,8 @@ public class VersionedAnakin extends Anakin {
 
         // state check
         return super.equals(otherVersionedAnakin)
-                && anakinStateList.equals(otherVersionedAnakin.anakinStateList)
-                && currentStatePointer == otherVersionedAnakin.currentStatePointer;
+            && anakinStateList.equals(otherVersionedAnakin.anakinStateList)
+            && currentStatePointer == otherVersionedAnakin.currentStatePointer;
     }
 
     /**

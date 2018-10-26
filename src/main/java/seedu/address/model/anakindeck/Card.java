@@ -63,9 +63,9 @@ public class Card {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append("Question: ")
-                .append(question)
-                .append(" Answer: ")
-                .append(answer);
+            .append(question)
+            .append(" Answer: ")
+            .append(answer);
         return builder.toString();
     }
 }

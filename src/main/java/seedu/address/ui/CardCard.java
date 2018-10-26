@@ -52,6 +52,6 @@ public class CardCard extends UiPart<Region> {
         // state check
         CardCard card = (CardCard) other;
         return id.getText().equals(card.id.getText())
-                && this.card.equals(card.card);
+            && this.card.equals(card.card);
     }
 }

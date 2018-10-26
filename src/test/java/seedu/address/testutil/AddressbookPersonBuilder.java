@@ -57,7 +57,7 @@ public class AddressbookPersonBuilder {
     /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Person} that we are building.
      */
-    public AddressbookPersonBuilder withTags(String ... tags) {
+    public AddressbookPersonBuilder withTags(String... tags) {
         this.tags = AddressbookSampleDataUtil.getTagSet(tags);
         return this;
     }

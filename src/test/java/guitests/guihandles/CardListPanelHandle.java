@@ -25,6 +25,7 @@ public class CardListPanelHandle extends NodeHandle<ListView<Card>> {
     /**
      * Returns a handle to the selected {@code CardCardHandle}.
      * A maximum of 1 item can be selected at any time.
+     *
      * @throws AssertionError if no card is selected, or more than 1 card is selected.
      * @throws IllegalStateException if the selected card is currently not in the scene graph.
      */
@@ -36,10 +37,10 @@ public class CardListPanelHandle extends NodeHandle<ListView<Card>> {
         }
 
         return getAllCardNodes().stream()
-                .map(CardCardHandle::new)
-                .filter(handle -> handle.equals(selectedCardList.get(0)))
-                .findFirst()
-                .orElseThrow(IllegalStateException::new);
+            .map(CardCardHandle::new)
+            .filter(handle -> handle.equals(selectedCardList.get(0)))
+            .findFirst()
+            .orElseThrow(IllegalStateException::new);
     }
 
     /**
@@ -99,14 +100,15 @@ public class CardListPanelHandle extends NodeHandle<ListView<Card>> {
 
     /**
      * Returns the card card handle of a card associated with the {@code index} in the list.
+     *
      * @throws IllegalStateException if the selected card is currently not in the scene graph.
      */
     public CardCardHandle getCardCardHandle(int index) {
         return getAllCardNodes().stream()
-                .map(CardCardHandle::new)
-                .filter(handle -> handle.equals(getAnakinCard(index)))
-                .findFirst()
-                .orElseThrow(IllegalStateException::new);
+            .map(CardCardHandle::new)
+            .filter(handle -> handle.equals(getAnakinCard(index)))
+            .findFirst()
+            .orElseThrow(IllegalStateException::new);
     }
 
     private Card getAnakinCard(int index) {
@@ -146,7 +148,7 @@ public class CardListPanelHandle extends NodeHandle<ListView<Card>> {
             return lastRememberedSelectedCardCard.isPresent();
         } else {
             return !lastRememberedSelectedCardCard.isPresent()
-                    || !lastRememberedSelectedCardCard.get().equals(selectedItems.get(0));
+                || !lastRememberedSelectedCardCard.get().equals(selectedItems.get(0));
         }
     }
 

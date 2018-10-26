@@ -26,7 +26,7 @@ public class EditCardCommandParser implements ParserInterface<EditCardCommand> {
     public EditCardCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_QUESTION, PREFIX_ANSWER);
+            ArgumentTokenizer.tokenize(args, PREFIX_QUESTION, PREFIX_ANSWER);
 
         Index index;
 
@@ -34,7 +34,7 @@ public class EditCardCommandParser implements ParserInterface<EditCardCommand> {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    EditCardCommand.MESSAGE_USAGE), pe);
+                EditCardCommand.MESSAGE_USAGE), pe);
         }
 
         EditCardDescriptor editCardDescriptor = new EditCardDescriptor();

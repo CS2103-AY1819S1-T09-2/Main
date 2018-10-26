@@ -13,12 +13,13 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.Test;
+
 import seedu.address.testutil.AnakinBuilder;
 
 public class VersionedAnakinTest {
-    private final ReadOnlyAnakin anakinWithDeck_A = new AnakinBuilder().withDeck(DECK_A).build();
-    private final ReadOnlyAnakin anakinWithDeck_B = new AnakinBuilder().withDeck(DECK_B).build();
-    private final ReadOnlyAnakin anakinWithDeck_C = new AnakinBuilder().withDeck(DECK_C).build();
+    private final ReadOnlyAnakin anakinWithDeckA = new AnakinBuilder().withDeck(DECK_A).build();
+    private final ReadOnlyAnakin anakinWithDeckB = new AnakinBuilder().withDeck(DECK_B).build();
+    private final ReadOnlyAnakin anakinWithDeckC = new AnakinBuilder().withDeck(DECK_C).build();
     private final ReadOnlyAnakin emptyAnakin = new AnakinBuilder().build();
 
     @Test
@@ -27,40 +28,40 @@ public class VersionedAnakinTest {
 
         versionedAnakin.commit();
         assertAnakinListStatus(versionedAnakin,
-                Collections.singletonList(emptyAnakin),
-                emptyAnakin,
-                Collections.emptyList());
+            Collections.singletonList(emptyAnakin),
+            emptyAnakin,
+            Collections.emptyList());
     }
 
     @Test
     public void commit_multipleAnakinPointerAtEndOfStateList_noStatesRemovedCurrentStateSaved() {
         VersionedAnakin versionedAnakin = prepareAnakinList(
-                emptyAnakin, anakinWithDeck_A, anakinWithDeck_B);
+            emptyAnakin, anakinWithDeckA, anakinWithDeckB);
 
         versionedAnakin.commit();
         assertAnakinListStatus(versionedAnakin,
-                Arrays.asList(emptyAnakin, anakinWithDeck_A, anakinWithDeck_B),
-                anakinWithDeck_B,
-                Collections.emptyList());
+            Arrays.asList(emptyAnakin, anakinWithDeckA, anakinWithDeckB),
+            anakinWithDeckB,
+            Collections.emptyList());
     }
 
     @Test
     public void commit_multipleAnakinPointerNotAtEndOfStateList_statesAfterPointerRemovedCurrentStateSaved() {
         VersionedAnakin versionedAnakin = prepareAnakinList(
-                emptyAnakin, anakinWithDeck_A, anakinWithDeck_B);
+            emptyAnakin, anakinWithDeckA, anakinWithDeckB);
         shiftCurrentStatePointerLeftwards(versionedAnakin, 2);
 
         versionedAnakin.commit();
         assertAnakinListStatus(versionedAnakin,
-                Collections.singletonList(emptyAnakin),
-                emptyAnakin,
-                Collections.emptyList());
+            Collections.singletonList(emptyAnakin),
+            emptyAnakin,
+            Collections.emptyList());
     }
 
     @Test
     public void canUndo_multipleAnakinPointerAtEndOfStateList_returnsTrue() {
         VersionedAnakin versionedAnakin = prepareAnakinList(
-                emptyAnakin, anakinWithDeck_A, anakinWithDeck_B);
+            emptyAnakin, anakinWithDeckA, anakinWithDeckB);
 
         assertTrue(versionedAnakin.canUndo());
     }
@@ -68,7 +69,7 @@ public class VersionedAnakinTest {
     @Test
     public void canUndo_multipleAnakinPointerAtStartOfStateList_returnsTrue() {
         VersionedAnakin versionedAnakin = prepareAnakinList(
-                emptyAnakin, anakinWithDeck_A, anakinWithDeck_B);
+            emptyAnakin, anakinWithDeckA, anakinWithDeckB);
         shiftCurrentStatePointerLeftwards(versionedAnakin, 1);
 
         assertTrue(versionedAnakin.canUndo());
@@ -84,7 +85,7 @@ public class VersionedAnakinTest {
     @Test
     public void canUndo_multipleAnakinPointerAtStartOfStateList_returnsFalse() {
         VersionedAnakin versionedAnakin = prepareAnakinList(
-                emptyAnakin, anakinWithDeck_A, anakinWithDeck_B);
+            emptyAnakin, anakinWithDeckA, anakinWithDeckB);
         shiftCurrentStatePointerLeftwards(versionedAnakin, 2);
 
         assertFalse(versionedAnakin.canUndo());
@@ -93,7 +94,7 @@ public class VersionedAnakinTest {
     @Test
     public void canRedo_multipleAnakinPointerNotAtEndOfStateList_returnsTrue() {
         VersionedAnakin versionedAnakin = prepareAnakinList(
-                emptyAnakin, anakinWithDeck_A, anakinWithDeck_B);
+            emptyAnakin, anakinWithDeckA, anakinWithDeckB);
         shiftCurrentStatePointerLeftwards(versionedAnakin, 1);
 
         assertTrue(versionedAnakin.canRedo());
@@ -102,7 +103,7 @@ public class VersionedAnakinTest {
     @Test
     public void canRedo_multipleAnakinPointerAtStartOfStateList_returnsTrue() {
         VersionedAnakin versionedAnakin = prepareAnakinList(
-                emptyAnakin, anakinWithDeck_A, anakinWithDeck_B);
+            emptyAnakin, anakinWithDeckA, anakinWithDeckB);
         shiftCurrentStatePointerLeftwards(versionedAnakin, 2);
 
         assertTrue(versionedAnakin.canRedo());
@@ -118,7 +119,7 @@ public class VersionedAnakinTest {
     @Test
     public void canRedo_multipleAnakinPointerAtEndOfStateList_returnsFalse() {
         VersionedAnakin versionedAnakin = prepareAnakinList(
-                emptyAnakin, anakinWithDeck_A, anakinWithDeck_B);
+            emptyAnakin, anakinWithDeckA, anakinWithDeckB);
 
         assertFalse(versionedAnakin.canRedo());
     }
@@ -126,26 +127,26 @@ public class VersionedAnakinTest {
     @Test
     public void undo_multipleAnakinPointerAtEndOfStateList_success() {
         VersionedAnakin versionedAnakin = prepareAnakinList(
-                emptyAnakin, anakinWithDeck_A, anakinWithDeck_B);
+            emptyAnakin, anakinWithDeckA, anakinWithDeckB);
 
         versionedAnakin.undo();
         assertAnakinListStatus(versionedAnakin,
-                Collections.singletonList(emptyAnakin),
-                anakinWithDeck_A,
-                Collections.singletonList(anakinWithDeck_B));
+            Collections.singletonList(emptyAnakin),
+            anakinWithDeckA,
+            Collections.singletonList(anakinWithDeckB));
     }
 
     @Test
     public void undo_multipleAnakinPointerNotAtStartOfStateList_success() {
         VersionedAnakin versionedAnakin = prepareAnakinList(
-                emptyAnakin, anakinWithDeck_A, anakinWithDeck_B);
+            emptyAnakin, anakinWithDeckA, anakinWithDeckB);
         shiftCurrentStatePointerLeftwards(versionedAnakin, 1);
 
         versionedAnakin.undo();
         assertAnakinListStatus(versionedAnakin,
-                Collections.emptyList(),
-                emptyAnakin,
-                Arrays.asList(anakinWithDeck_A, anakinWithDeck_B));
+            Collections.emptyList(),
+            emptyAnakin,
+            Arrays.asList(anakinWithDeckA, anakinWithDeckB));
     }
 
     @Test
@@ -158,7 +159,7 @@ public class VersionedAnakinTest {
     @Test
     public void undo_multipleAnakinPointerAtStartOfStateList_throwsNoUndoableStateException() {
         VersionedAnakin versionedAnakin = prepareAnakinList(
-                emptyAnakin, anakinWithDeck_A, anakinWithDeck_B);
+            emptyAnakin, anakinWithDeckA, anakinWithDeckB);
         shiftCurrentStatePointerLeftwards(versionedAnakin, 2);
 
         assertThrows(VersionedAnakin.NoUndoableStateException.class, versionedAnakin::undo);
@@ -167,27 +168,27 @@ public class VersionedAnakinTest {
     @Test
     public void redo_multipleAnakinPointerNotAtEndOfStateList_success() {
         VersionedAnakin versionedAnakin = prepareAnakinList(
-                emptyAnakin, anakinWithDeck_A, anakinWithDeck_B);
+            emptyAnakin, anakinWithDeckA, anakinWithDeckB);
         shiftCurrentStatePointerLeftwards(versionedAnakin, 1);
 
         versionedAnakin.redo();
         assertAnakinListStatus(versionedAnakin,
-                Arrays.asList(emptyAnakin, anakinWithDeck_A),
-                anakinWithDeck_B,
-                Collections.emptyList());
+            Arrays.asList(emptyAnakin, anakinWithDeckA),
+            anakinWithDeckB,
+            Collections.emptyList());
     }
 
     @Test
     public void redo_multipleAnakinPointerAtStartOfStateList_success() {
         VersionedAnakin versionedAnakin = prepareAnakinList(
-                emptyAnakin, anakinWithDeck_A, anakinWithDeck_B);
+            emptyAnakin, anakinWithDeckA, anakinWithDeckB);
         shiftCurrentStatePointerLeftwards(versionedAnakin, 2);
 
         versionedAnakin.redo();
         assertAnakinListStatus(versionedAnakin,
-                Collections.singletonList(emptyAnakin),
-                anakinWithDeck_A,
-                Collections.singletonList(anakinWithDeck_B));
+            Collections.singletonList(emptyAnakin),
+            anakinWithDeckA,
+            Collections.singletonList(anakinWithDeckB));
     }
 
     @Test
@@ -200,17 +201,17 @@ public class VersionedAnakinTest {
     @Test
     public void redo_multipleAnakinPointerAtEndOfStateList_throwsNoRedoableStateException() {
         VersionedAnakin versionedAnakin = prepareAnakinList(
-                emptyAnakin, anakinWithDeck_A, anakinWithDeck_B);
+            emptyAnakin, anakinWithDeckA, anakinWithDeckB);
 
         assertThrows(VersionedAnakin.NoRedoableStateException.class, versionedAnakin::redo);
     }
 
     @Test
     public void equals() {
-        VersionedAnakin versionedAnakin = prepareAnakinList(anakinWithDeck_A, anakinWithDeck_B);
+        VersionedAnakin versionedAnakin = prepareAnakinList(anakinWithDeckA, anakinWithDeckB);
 
         // same values -> returns true
-        VersionedAnakin copy = prepareAnakinList(anakinWithDeck_A, anakinWithDeck_B);
+        VersionedAnakin copy = prepareAnakinList(anakinWithDeckA, anakinWithDeckB);
         assertTrue(versionedAnakin.equals(copy));
 
         // same object -> returns true
@@ -223,12 +224,12 @@ public class VersionedAnakinTest {
         assertFalse(versionedAnakin.equals(1));
 
         // different state list -> returns false
-        VersionedAnakin differentAnakinList = prepareAnakinList(anakinWithDeck_B, anakinWithDeck_C);
+        VersionedAnakin differentAnakinList = prepareAnakinList(anakinWithDeckB, anakinWithDeckC);
         assertFalse(versionedAnakin.equals(differentAnakinList));
 
         // different current pointer index -> returns false
         VersionedAnakin differentCurrentStatePointer = prepareAnakinList(
-                anakinWithDeck_A, anakinWithDeck_B);
+            anakinWithDeckA, anakinWithDeckB);
         shiftCurrentStatePointerLeftwards(versionedAnakin, 1);
         assertFalse(versionedAnakin.equals(differentCurrentStatePointer));
     }
@@ -239,9 +240,9 @@ public class VersionedAnakinTest {
      * and states after {@code versionedAnakin#currentStatePointer} is equal to {@code expectedStatesAfterPointer}.
      */
     private void assertAnakinListStatus(VersionedAnakin versionedAnakin,
-                                        List<ReadOnlyAnakin> expectedStatesBeforePointer,
-                                        ReadOnlyAnakin expectedCurrentState,
-                                        List<ReadOnlyAnakin> expectedStatesAfterPointer) {
+        List<ReadOnlyAnakin> expectedStatesBeforePointer,
+        ReadOnlyAnakin expectedCurrentState,
+        List<ReadOnlyAnakin> expectedStatesAfterPointer) {
         // check state currently pointing at is correct
         assertEquals(new Anakin(versionedAnakin), expectedCurrentState);
 

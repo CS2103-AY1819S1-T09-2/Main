@@ -42,7 +42,7 @@ public class CardCardTest extends GuiUnitTest {
 
         // different card, same index -> returns false
         Card differentCard = new CardBuilder().withQuestion("differentQuestion")
-                .withAnswer("differentAnswer").build();
+            .withAnswer("differentAnswer").build();
         assertFalse(uiCard.equals(new CardCard(differentCard, 0)));
 
         // same card, different index -> returns false

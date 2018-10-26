@@ -3,9 +3,9 @@ package seedu.address.ui;
 import static java.time.Duration.ofMillis;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
+import static seedu.address.testutil.EventsUtil.postNow;
 import static seedu.address.testutil.TypicalCards.getTypicalCards;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_CARD;
-import static seedu.address.testutil.EventsUtil.postNow;
 import static seedu.address.ui.testutil.GuiTestAssert.assertCardCardDisplaysCard;
 import static seedu.address.ui.testutil.GuiTestAssert.assertCardCardEquals;
 
@@ -27,7 +27,7 @@ import seedu.address.storage.XmlSerializableAnakin;
 
 public class CardListPanelTest extends GuiUnitTest {
     private static final ObservableList<Card> TYPICAL_CARDS =
-            FXCollections.observableList(getTypicalCards());
+        FXCollections.observableList(getTypicalCards());
 
     private static final JumpToListRequestEvent JUMP_TO_SECOND_EVENT = new JumpToListRequestEvent(INDEX_SECOND_CARD);
 
@@ -83,7 +83,7 @@ public class CardListPanelTest extends GuiUnitTest {
     private ObservableList<Card> createBackingList(int cardCount) throws Exception {
         Path xmlFile = createXmlFileWithDeckWithCards(cardCount);
         XmlSerializableAnakin xmlAnakin =
-                XmlUtil.getDataFromFile(xmlFile, XmlSerializableAnakin.class);
+            XmlUtil.getDataFromFile(xmlFile, XmlSerializableAnakin.class);
         List<Card> cardList = xmlAnakin.toModelType().getDeckList().get(0).getCards().internalList;
         return FXCollections.observableArrayList(cardList);
     }
@@ -122,6 +122,6 @@ public class CardListPanelTest extends GuiUnitTest {
         uiPartRule.setUiPart(cardListPanel);
 
         cardListPanelHandle = new CardListPanelHandle(getChildNode(cardListPanel.getRoot(),
-                CardListPanelHandle.CARD_LIST_VIEW_ID));
+            CardListPanelHandle.CARD_LIST_VIEW_ID));
     }
 }
