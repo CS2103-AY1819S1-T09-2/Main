@@ -9,7 +9,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Answer {
     public static final String MESSAGE_ANSWER_CONSTRAINTS =
-            "Answers can contain any text inputs but it should not be blank";
+        "Answers can contain any text inputs but it should not be blank";
 
     /*
      * The first character of the answer must not be a whitespace,
@@ -45,8 +45,8 @@ public class Answer {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Answer // instanceof handles nulls
-                && fullAnswer.equals(((Answer) other).fullAnswer)); // state check
+            || (other instanceof Answer // instanceof handles nulls
+            && fullAnswer.equals(((Answer) other).fullAnswer)); // state check
     }
 
     @Override

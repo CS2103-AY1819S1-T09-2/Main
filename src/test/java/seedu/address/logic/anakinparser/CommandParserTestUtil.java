@@ -3,7 +3,6 @@ package seedu.address.logic.anakinparser;
 import static org.junit.Assert.assertEquals;
 
 import seedu.address.logic.anakincommands.Command;
-import seedu.address.logic.anakinparser.ParserInterface;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**

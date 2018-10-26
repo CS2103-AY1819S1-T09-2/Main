@@ -12,6 +12,7 @@ import seedu.address.logic.parser.AddressbookDeleteCommandParserTest;
 
 /**
  * Test scope: similar to {@code AddressbookDeleteCommandParserTest}.
+ *
  * @see AddressbookDeleteCommandParserTest
  */
 public class ChangeDeckCommandParserTest {

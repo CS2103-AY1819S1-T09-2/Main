@@ -37,8 +37,8 @@ public class XmlUtilTest {
     private static final String INVALID_NAME = " ";
 
     private static final String VALID_NAME = "Qui Gon Jinn";
-    private static final List<XmlAdaptedCard> VALID_CARDS = Collections.singletonList(new XmlAdaptedCard
-            ("How is", "Gamora"));
+    private static final List<XmlAdaptedCard> VALID_CARDS = Collections
+        .singletonList(new XmlAdaptedCard("How is", "Gamora"));
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -76,27 +76,27 @@ public class XmlUtilTest {
     @Test
     public void xmlAdaptedDeckFromFile_fileWithMissingDeckField_validResult() throws Exception {
         XmlAdaptedDeck actualDeck = XmlUtil.getDataFromFile(
-                MISSING_DECK_FIELD_FILE, XmlAdaptedDeckWithRootElement.class);
+            MISSING_DECK_FIELD_FILE, XmlAdaptedDeckWithRootElement.class);
         XmlAdaptedDeck expectedDeck = new XmlAdaptedDeck(
-                null, VALID_CARDS);
+            null, VALID_CARDS);
         assertEquals(expectedDeck, actualDeck);
     }
 
     @Test
     public void xmlAdaptedDeckFromFile_fileWithInvalidDeckField_validResult() throws Exception {
         XmlAdaptedDeck actualDeck = XmlUtil.getDataFromFile(
-                INVALID_DECK_FIELD_FILE, XmlAdaptedDeckWithRootElement.class);
+            INVALID_DECK_FIELD_FILE, XmlAdaptedDeckWithRootElement.class);
         XmlAdaptedDeck expectedDeck = new XmlAdaptedDeck(
-                INVALID_NAME, VALID_CARDS);
+            INVALID_NAME, VALID_CARDS);
         assertEquals(expectedDeck, actualDeck);
     }
 
     @Test
     public void xmlAdaptedDeckFromFile_fileWithValidDeck_validResult() throws Exception {
         XmlAdaptedDeck actualDeck = XmlUtil.getDataFromFile(
-                VALID_DECK_FILE, XmlAdaptedDeckWithRootElement.class);
+            VALID_DECK_FILE, XmlAdaptedDeckWithRootElement.class);
         XmlAdaptedDeck expectedDeck = new XmlAdaptedDeck(
-                VALID_NAME, VALID_CARDS);
+            VALID_NAME, VALID_CARDS);
         assertEquals(expectedDeck, actualDeck);
     }
 
@@ -128,7 +128,7 @@ public class XmlUtilTest {
 
         AnakinBuilder builder = new AnakinBuilder(new Anakin());
         dataToWrite = new XmlSerializableAnakin(
-                builder.withDeck(new DeckBuilder().build()).build());
+            builder.withDeck(new DeckBuilder().build()).build());
 
         XmlUtil.saveDataToFile(TEMP_FILE, dataToWrite);
         dataFromFile = XmlUtil.getDataFromFile(TEMP_FILE, XmlSerializableAnakin.class);

@@ -14,6 +14,7 @@ import java.util.List;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
 import seedu.address.model.anakindeck.anakinexceptions.CardNotFoundException;
 import seedu.address.model.anakindeck.anakinexceptions.DuplicateCardException;
 import seedu.address.testutil.CardBuilder;
@@ -36,16 +37,16 @@ public class UniqueCardListTest {
     }
 
     @Test
-    public void contains_CardInList_returnsTrue() {
+    public void contains_cardInList_returnsTrue() {
         uniqueCardList.add(CARD_A);
         assertTrue(uniqueCardList.contains(CARD_A));
     }
 
     @Test
-    public void contains_cardWithSameIdentityFieldsInList_returnsTrue() {
+    public void contains_cardWithSameIdentityFieldsInList_success() {
         uniqueCardList.add(CARD_A);
-        Card editedCard_A = new CardBuilder(CARD_A).withAnswer(VALID_ANSWER_A).build();
-        assertTrue(uniqueCardList.contains(editedCard_A));
+        Card editedCardA = new CardBuilder(CARD_A).withAnswer(VALID_ANSWER_A).build();
+        assertTrue(uniqueCardList.contains(editedCardA));
     }
 
     @Test
@@ -91,10 +92,10 @@ public class UniqueCardListTest {
     @Test
     public void setCard_editedCardHasSameIdentity_success() {
         uniqueCardList.add(CARD_A);
-        Card editedCard_A = new CardBuilder(CARD_A).withAnswer(VALID_ANSWER_A).build();
-        uniqueCardList.setCard(CARD_A, editedCard_A);
+        Card editedCardA = new CardBuilder(CARD_A).withAnswer(VALID_ANSWER_A).build();
+        uniqueCardList.setCard(CARD_A, editedCardA);
         UniqueCardList expectedUniqueCardList = new UniqueCardList();
-        expectedUniqueCardList.add(editedCard_A);
+        expectedUniqueCardList.add(editedCardA);
         assertEquals(expectedUniqueCardList, uniqueCardList);
     }
 

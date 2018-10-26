@@ -21,7 +21,7 @@ public class ResultDisplayTest extends GuiUnitTest {
         uiPartRule.setUiPart(resultDisplay);
 
         resultDisplayHandle = new ResultDisplayHandle(getChildNode(resultDisplay.getRoot(),
-                ResultDisplayHandle.RESULT_DISPLAY_ID));
+            ResultDisplayHandle.RESULT_DISPLAY_ID));
     }
 
     @Test

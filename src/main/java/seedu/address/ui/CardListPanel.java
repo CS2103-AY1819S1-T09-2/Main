@@ -39,12 +39,12 @@ public class CardListPanel extends UiPart<Region> {
 
     private void setEventHandlerForSelectionChangeEvent() {
         cardListView.getSelectionModel().selectedItemProperty()
-                .addListener((observable, oldValue, newValue) -> {
-                    if (newValue != null) {
-                        logger.fine("Selection in card list panel changed to : '" + newValue + "'");
-                        raise(new CardPanelSelectionChangedEvent(newValue));
-                    }
-                });
+            .addListener((observable, oldValue, newValue) -> {
+                if (newValue != null) {
+                    logger.fine("Selection in card list panel changed to : '" + newValue + "'");
+                    raise(new CardPanelSelectionChangedEvent(newValue));
+                }
+            });
     }
 
     /**

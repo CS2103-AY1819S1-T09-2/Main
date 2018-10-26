@@ -31,19 +31,20 @@ public class AddressbookAddCommandIntegrationTest {
     public void execute_newPerson_success() {
         Person validPerson = new AddressbookPersonBuilder().build();
 
-        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(addressbookModel.getAddressBook(), new UserPrefs());
+        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(
+            addressbookModel.getAddressBook(), new UserPrefs());
         expectedAddressbookModel.addPerson(validPerson);
         expectedAddressbookModel.commitAddressBook();
 
         assertCommandSuccess(new AddCommand(validPerson), addressbookModel, commandHistory,
-                String.format(AddCommand.MESSAGE_SUCCESS, validPerson), expectedAddressbookModel);
+            String.format(AddCommand.MESSAGE_SUCCESS, validPerson), expectedAddressbookModel);
     }
 
     @Test
     public void execute_duplicatePerson_throwsCommandException() {
         Person personInList = addressbookModel.getAddressBook().getPersonList().get(0);
         assertCommandFailure(new AddCommand(personInList), addressbookModel, commandHistory,
-                AddCommand.MESSAGE_DUPLICATE_PERSON);
+            AddCommand.MESSAGE_DUPLICATE_PERSON);
     }
 
 }

@@ -14,7 +14,6 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-
 import seedu.address.model.Model;
 import seedu.address.model.anakindeck.Answer;
 import seedu.address.model.anakindeck.Card;
@@ -28,13 +27,13 @@ public class EditCardCommand extends Command {
     public static final String COMMAND_WORD = "editcard";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the card "
-            + "by the index number used in the deck. "
-            + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_QUESTION + "QUESTION] "
-            + "[" + PREFIX_ANSWER + "ANSWER]\n"
-            + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_QUESTION + "Why is Earth round?";
+        + "by the index number used in the deck. "
+        + "Existing values will be overwritten by the input values.\n"
+        + "Parameters: INDEX (must be a positive integer) "
+        + "[" + PREFIX_QUESTION + "QUESTION] "
+        + "[" + PREFIX_ANSWER + "ANSWER]\n"
+        + "Example: " + COMMAND_WORD + " 1 "
+        + PREFIX_QUESTION + "Why is Earth round?";
 
     public static final String MESSAGE_EDIT_CARD_SUCCESS = "Edited Card: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -53,6 +52,19 @@ public class EditCardCommand extends Command {
 
         this.index = index;
         this.editCardDescriptor = new EditCardDescriptor(editCardDescriptor);
+    }
+
+    /**
+     * Creates and returns a {@code Card} with the details of {@code cardToEdit}
+     * edited with {@code editCardDescriptor}.
+     */
+    private static Card createEditedCard(Card cardToEdit, EditCardDescriptor editCardDescriptor) {
+        assert cardToEdit != null;
+
+        Question updatedQuestion = editCardDescriptor.getQuestion().orElse(cardToEdit.getQuestion());
+        Answer updatedAnswer = editCardDescriptor.getAnswer().orElse(cardToEdit.getAnswer());
+
+        return new Card(updatedQuestion, updatedAnswer);
     }
 
     @Override
@@ -78,19 +90,6 @@ public class EditCardCommand extends Command {
         return new CommandResult(String.format(MESSAGE_EDIT_CARD_SUCCESS, editedCard));
     }
 
-    /**
-     * Creates and returns a {@code Card} with the details of {@code cardToEdit}
-     * edited with {@code editCardDescriptor}.
-     */
-    private static Card createEditedCard(Card cardToEdit, EditCardDescriptor editCardDescriptor) {
-        assert cardToEdit != null;
-
-        Question updatedQuestion = editCardDescriptor.getQuestion().orElse(cardToEdit.getQuestion());
-        Answer updatedAnswer = editCardDescriptor.getAnswer().orElse(cardToEdit.getAnswer());
-
-        return new Card(updatedQuestion, updatedAnswer);
-    }
-
     @Override
     public boolean equals(Object other) {
         // short circuit if same object
@@ -106,7 +105,7 @@ public class EditCardCommand extends Command {
         // state check
         EditCardCommand e = (EditCardCommand) other;
         return index.equals(e.index)
-                && editCardDescriptor.equals(e.editCardDescriptor);
+            && editCardDescriptor.equals(e.editCardDescriptor);
     }
 
     /**
@@ -117,7 +116,8 @@ public class EditCardCommand extends Command {
         private Question question;
         private Answer answer;
 
-        public EditCardDescriptor() {}
+        public EditCardDescriptor() {
+        }
 
         /**
          * Copy constructor.
@@ -134,20 +134,20 @@ public class EditCardCommand extends Command {
             return CollectionUtil.isAnyNonNull(question, answer);
         }
 
-        public void setQuestion(Question question) {
-            this.question = question;
-        }
-
         public Optional<Question> getQuestion() {
             return Optional.ofNullable(question);
         }
 
-        public void setAnswer(Answer answer) {
-            this.answer = answer;
+        public void setQuestion(Question question) {
+            this.question = question;
         }
 
         public Optional<Answer> getAnswer() {
             return Optional.ofNullable(answer);
+        }
+
+        public void setAnswer(Answer answer) {
+            this.answer = answer;
         }
 
         @Override
@@ -166,7 +166,7 @@ public class EditCardCommand extends Command {
             EditCardDescriptor e = (EditCardDescriptor) other;
 
             return getQuestion().equals(e.getQuestion())
-                    && getAnswer().equals(e.getAnswer());
+                && getAnswer().equals(e.getAnswer());
         }
     }
 }

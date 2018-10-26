@@ -14,7 +14,6 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import javafx.collections.ObservableList;
-
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -206,7 +205,7 @@ public class NewDeckCommandTest {
         }
 
         @Override
-        public boolean isInsideDeck(){
+        public boolean isInsideDeck() {
             throw new AssertionError("This method should not be called.");
         }
     }

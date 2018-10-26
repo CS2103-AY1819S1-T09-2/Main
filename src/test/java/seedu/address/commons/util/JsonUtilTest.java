@@ -7,8 +7,8 @@ import java.nio.file.Path;
 
 import org.junit.Test;
 
-import seedu.address.testutil.SerializableTestClass;
 import seedu.address.testutil.AddressbookTestUtil;
+import seedu.address.testutil.SerializableTestClass;
 
 /**
  * Tests JSON Read and Write
@@ -32,7 +32,7 @@ public class JsonUtilTest {
         FileUtil.writeToFile(SERIALIZATION_FILE, SerializableTestClass.JSON_STRING_REPRESENTATION);
 
         SerializableTestClass serializableTestClass = JsonUtil
-                .deserializeObjectFromJsonFile(SERIALIZATION_FILE, SerializableTestClass.class);
+            .deserializeObjectFromJsonFile(SERIALIZATION_FILE, SerializableTestClass.class);
 
         assertEquals(serializableTestClass.getName(), SerializableTestClass.getNameTestValue());
         assertEquals(serializableTestClass.getListOfLocalDateTimes(), SerializableTestClass.getListTestValues());

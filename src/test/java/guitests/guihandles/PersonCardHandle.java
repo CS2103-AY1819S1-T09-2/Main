@@ -39,10 +39,10 @@ public class PersonCardHandle extends NodeHandle<Node> {
 
         Region tagsContainer = getChildNode(TAGS_FIELD_ID);
         tagLabels = tagsContainer
-                .getChildrenUnmodifiable()
-                .stream()
-                .map(Label.class::cast)
-                .collect(Collectors.toList());
+            .getChildrenUnmodifiable()
+            .stream()
+            .map(Label.class::cast)
+            .collect(Collectors.toList());
     }
 
     public String getId() {
@@ -67,9 +67,9 @@ public class PersonCardHandle extends NodeHandle<Node> {
 
     public List<String> getTags() {
         return tagLabels
-                .stream()
-                .map(Label::getText)
-                .collect(Collectors.toList());
+            .stream()
+            .map(Label::getText)
+            .collect(Collectors.toList());
     }
 
     /**
@@ -77,11 +77,11 @@ public class PersonCardHandle extends NodeHandle<Node> {
      */
     public boolean equals(Person person) {
         return getName().equals(person.getName().fullName)
-                && getAddress().equals(person.getAddress().value)
-                && getPhone().equals(person.getPhone().value)
-                && getEmail().equals(person.getEmail().value)
-                && ImmutableMultiset.copyOf(getTags()).equals(ImmutableMultiset.copyOf(person.getTags().stream()
-                        .map(tag -> tag.tagName)
-                        .collect(Collectors.toList())));
+            && getAddress().equals(person.getAddress().value)
+            && getPhone().equals(person.getPhone().value)
+            && getEmail().equals(person.getEmail().value)
+            && ImmutableMultiset.copyOf(getTags()).equals(ImmutableMultiset.copyOf(person.getTags().stream()
+            .map(tag -> tag.tagName)
+            .collect(Collectors.toList())));
     }
 }

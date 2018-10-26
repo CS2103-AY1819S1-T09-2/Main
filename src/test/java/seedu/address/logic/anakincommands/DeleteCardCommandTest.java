@@ -47,7 +47,8 @@ public class DeleteCardCommandTest {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredCardList().size() + 1);
         DeleteCardCommand deleteCommand = new DeleteCardCommand(outOfBoundIndex);
 
-        assertCommandFailure(deleteCommand, model, commandHistory, AddressbookMessages.MESSAGE_INVALID_CARD_DISPLAYED_INDEX);
+        assertCommandFailure(deleteCommand, model, commandHistory,
+            AddressbookMessages.MESSAGE_INVALID_CARD_DISPLAYED_INDEX);
     }
 
     @Test

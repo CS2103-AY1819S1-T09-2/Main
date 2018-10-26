@@ -4,16 +4,18 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+
 import seedu.address.testutil.Assert;
 
 public class QuestionTest {
 
     @Test
-    public void  constructor_null_throwsNullPointerException() {
+    public void constructor_null_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> new Question(null));
     }
 
-    @Test public void constructor_invalidQuestion_throwsIllegalArgumentException() {
+    @Test
+    public void constructor_invalidQuestion_throwsIllegalArgumentException() {
         String invalidQuestion = "";
         Assert.assertThrows(IllegalArgumentException.class, () -> new Question(invalidQuestion));
     }

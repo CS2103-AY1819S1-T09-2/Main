@@ -26,7 +26,8 @@ import seedu.address.model.person.Person;
  */
 public class AddressbookDeleteCommandTest {
 
-    private AddressbookModel addressbookModel = new AddressbookModelManagerAddressbook(getTypicalAddressBook(), new UserPrefs());
+    private AddressbookModel addressbookModel = new AddressbookModelManagerAddressbook(getTypicalAddressBook(),
+        new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test
@@ -36,7 +37,8 @@ public class AddressbookDeleteCommandTest {
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, personToDelete);
 
-        AddressbookModelManagerAddressbook expectedModel = new AddressbookModelManagerAddressbook(addressbookModel.getAddressBook(), new UserPrefs());
+        AddressbookModelManagerAddressbook expectedModel = new AddressbookModelManagerAddressbook(
+            addressbookModel.getAddressBook(), new UserPrefs());
         expectedModel.deletePerson(personToDelete);
         expectedModel.commitAddressBook();
 
@@ -48,7 +50,8 @@ public class AddressbookDeleteCommandTest {
         Index outOfBoundIndex = Index.fromOneBased(addressbookModel.getFilteredPersonList().size() + 1);
         DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
 
-        assertCommandFailure(deleteCommand, addressbookModel, commandHistory, AddressbookMessages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(deleteCommand, addressbookModel, commandHistory,
+            AddressbookMessages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
     @Test
@@ -60,12 +63,14 @@ public class AddressbookDeleteCommandTest {
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, personToDelete);
 
-        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(addressbookModel.getAddressBook(), new UserPrefs());
+        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(
+            addressbookModel.getAddressBook(), new UserPrefs());
         expectedAddressbookModel.deletePerson(personToDelete);
         expectedAddressbookModel.commitAddressBook();
         showNoPerson(expectedAddressbookModel);
 
-        assertCommandSuccess(deleteCommand, addressbookModel, commandHistory, expectedMessage, expectedAddressbookModel);
+        assertCommandSuccess(deleteCommand, addressbookModel, commandHistory, expectedMessage,
+            expectedAddressbookModel);
     }
 
     @Test
@@ -78,14 +83,16 @@ public class AddressbookDeleteCommandTest {
 
         DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
 
-        assertCommandFailure(deleteCommand, addressbookModel, commandHistory, AddressbookMessages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(deleteCommand, addressbookModel, commandHistory,
+            AddressbookMessages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
     @Test
     public void executeUndoRedo_validIndexUnfilteredList_success() throws Exception {
         Person personToDelete = addressbookModel.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_PERSON);
-        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(addressbookModel.getAddressBook(), new UserPrefs());
+        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(
+            addressbookModel.getAddressBook(), new UserPrefs());
         expectedAddressbookModel.deletePerson(personToDelete);
         expectedAddressbookModel.commitAddressBook();
 
@@ -94,11 +101,13 @@ public class AddressbookDeleteCommandTest {
 
         // undo -> reverts addressbook back to previous state and filtered person list to show all persons
         expectedAddressbookModel.undoAddressBook();
-        assertCommandSuccess(new UndoCommand(), addressbookModel, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedAddressbookModel);
+        assertCommandSuccess(new UndoCommand(), addressbookModel, commandHistory, UndoCommand.MESSAGE_SUCCESS,
+            expectedAddressbookModel);
 
         // redo -> same first person deleted again
         expectedAddressbookModel.redoAddressBook();
-        assertCommandSuccess(new RedoCommand(), addressbookModel, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedAddressbookModel);
+        assertCommandSuccess(new RedoCommand(), addressbookModel, commandHistory, RedoCommand.MESSAGE_SUCCESS,
+            expectedAddressbookModel);
     }
 
     @Test
@@ -107,7 +116,8 @@ public class AddressbookDeleteCommandTest {
         DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
 
         // execution failed -> address book state not added into addressbookModel
-        assertCommandFailure(deleteCommand, addressbookModel, commandHistory, AddressbookMessages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(deleteCommand, addressbookModel, commandHistory,
+            AddressbookMessages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
 
         // single address book state in addressbookModel -> undoCommand and redoCommand fail
         assertCommandFailure(new UndoCommand(), addressbookModel, commandHistory, UndoCommand.MESSAGE_FAILURE);
@@ -124,7 +134,8 @@ public class AddressbookDeleteCommandTest {
     @Test
     public void executeUndoRedo_validIndexFilteredList_samePersonDeleted() throws Exception {
         DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_PERSON);
-        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(addressbookModel.getAddressBook(), new UserPrefs());
+        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(
+            addressbookModel.getAddressBook(), new UserPrefs());
 
         showPersonAtIndex(addressbookModel, INDEX_SECOND_PERSON);
         Person personToDelete = addressbookModel.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
@@ -136,12 +147,15 @@ public class AddressbookDeleteCommandTest {
 
         // undo -> reverts addressbook back to previous state and filtered person list to show all persons
         expectedAddressbookModel.undoAddressBook();
-        assertCommandSuccess(new UndoCommand(), addressbookModel, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedAddressbookModel);
+        assertCommandSuccess(new UndoCommand(), addressbookModel, commandHistory, UndoCommand.MESSAGE_SUCCESS,
+            expectedAddressbookModel);
 
-        assertNotEquals(personToDelete, addressbookModel.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()));
+        assertNotEquals(personToDelete,
+            addressbookModel.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()));
         // redo -> deletes same second person in unfiltered person list
         expectedAddressbookModel.redoAddressBook();
-        assertCommandSuccess(new RedoCommand(), addressbookModel, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedAddressbookModel);
+        assertCommandSuccess(new RedoCommand(), addressbookModel, commandHistory, RedoCommand.MESSAGE_SUCCESS,
+            expectedAddressbookModel);
     }
 
     @Test

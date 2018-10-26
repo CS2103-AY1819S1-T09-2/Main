@@ -6,7 +6,7 @@ import seedu.address.model.anakindeck.Deck;
 /**
  * A utility class to help with building Anakin objects.
  * Example usage: <br>
- *     {@code Anakin ak = new AnakinBuilder().withDeck(DECK_A).build();}
+ * {@code Anakin ak = new AnakinBuilder().withDeck(DECK_A).build();}
  */
 
 public class AnakinBuilder {

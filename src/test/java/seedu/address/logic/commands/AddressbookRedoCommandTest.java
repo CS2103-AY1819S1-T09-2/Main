@@ -15,8 +15,10 @@ import seedu.address.model.UserPrefs;
 
 public class AddressbookRedoCommandTest {
 
-    private final AddressbookModel addressbookModel = new AddressbookModelManagerAddressbook(getTypicalAddressBook(), new UserPrefs());
-    private final AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(getTypicalAddressBook(), new UserPrefs());
+    private final AddressbookModel addressbookModel = new AddressbookModelManagerAddressbook(getTypicalAddressBook(),
+        new UserPrefs());
+    private final AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(
+        getTypicalAddressBook(), new UserPrefs());
     private final CommandHistory commandHistory = new CommandHistory();
 
     @Before
@@ -37,11 +39,13 @@ public class AddressbookRedoCommandTest {
     public void execute() {
         // multiple redoable states in addressbookModel
         expectedAddressbookModel.redoAddressBook();
-        assertCommandSuccess(new RedoCommand(), addressbookModel, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedAddressbookModel);
+        assertCommandSuccess(new RedoCommand(), addressbookModel, commandHistory, RedoCommand.MESSAGE_SUCCESS,
+            expectedAddressbookModel);
 
         // single redoable state in addressbookModel
         expectedAddressbookModel.redoAddressBook();
-        assertCommandSuccess(new RedoCommand(), addressbookModel, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedAddressbookModel);
+        assertCommandSuccess(new RedoCommand(), addressbookModel, commandHistory, RedoCommand.MESSAGE_SUCCESS,
+            expectedAddressbookModel);
 
         // no redoable state in addressbookModel
         assertCommandFailure(new RedoCommand(), addressbookModel, commandHistory, RedoCommand.MESSAGE_FAILURE);

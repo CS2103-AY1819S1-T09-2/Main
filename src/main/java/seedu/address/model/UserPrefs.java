@@ -12,7 +12,7 @@ import seedu.address.commons.core.GuiSettings;
 public class UserPrefs {
 
     private GuiSettings guiSettings;
-    private Path anakinFilePath = Paths.get("data" , "anakin.xml");
+    private Path anakinFilePath = Paths.get("data", "anakin.xml");
 
     public UserPrefs() {
         setGuiSettings(500, 500, 0, 0);
@@ -50,7 +50,7 @@ public class UserPrefs {
         UserPrefs o = (UserPrefs) other;
 
         return Objects.equals(guiSettings, o.guiSettings)
-                && Objects.equals(anakinFilePath, o.anakinFilePath);
+            && Objects.equals(anakinFilePath, o.anakinFilePath);
     }
 
     @Override

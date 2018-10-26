@@ -30,11 +30,13 @@ import seedu.address.testutil.AddressbookEditPersonDescriptorBuilder;
 import seedu.address.testutil.AddressbookPersonBuilder;
 
 /**
- * Contains integration tests (interaction with the AddressbookModel, UndoCommand and RedoCommand) and unit tests for EditCommand.
+ * Contains integration tests (interaction with the AddressbookModel, UndoCommand and RedoCommand) and unit tests for
+ * EditCommand.
  */
 public class AddressbookEditCommandTest {
 
-    private AddressbookModel addressbookModel = new AddressbookModelManagerAddressbook(getTypicalAddressBook(), new UserPrefs());
+    private AddressbookModel addressbookModel = new AddressbookModelManagerAddressbook(getTypicalAddressBook(),
+        new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test
@@ -45,7 +47,8 @@ public class AddressbookEditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedPerson);
 
-        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(new AddressBook(addressbookModel.getAddressBook()), new UserPrefs());
+        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(
+            new AddressBook(addressbookModel.getAddressBook()), new UserPrefs());
         expectedAddressbookModel.updatePerson(addressbookModel.getFilteredPersonList().get(0), editedPerson);
         expectedAddressbookModel.commitAddressBook();
 
@@ -59,15 +62,16 @@ public class AddressbookEditCommandTest {
 
         AddressbookPersonBuilder personInList = new AddressbookPersonBuilder(lastPerson);
         Person editedPerson = personInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
-                .withTags(VALID_TAG_HUSBAND).build();
+            .withTags(VALID_TAG_HUSBAND).build();
 
         EditPersonDescriptor descriptor = new AddressbookEditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withPhone(VALID_PHONE_BOB).withTags(VALID_TAG_HUSBAND).build();
+            .withPhone(VALID_PHONE_BOB).withTags(VALID_TAG_HUSBAND).build();
         EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedPerson);
 
-        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(new AddressBook(addressbookModel.getAddressBook()), new UserPrefs());
+        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(
+            new AddressBook(addressbookModel.getAddressBook()), new UserPrefs());
         expectedAddressbookModel.updatePerson(lastPerson, editedPerson);
         expectedAddressbookModel.commitAddressBook();
 
@@ -81,7 +85,8 @@ public class AddressbookEditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedPerson);
 
-        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(new AddressBook(addressbookModel.getAddressBook()), new UserPrefs());
+        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(
+            new AddressBook(addressbookModel.getAddressBook()), new UserPrefs());
         expectedAddressbookModel.commitAddressBook();
 
         assertCommandSuccess(editCommand, addressbookModel, commandHistory, expectedMessage, expectedAddressbookModel);
@@ -94,11 +99,12 @@ public class AddressbookEditCommandTest {
         Person personInFilteredList = addressbookModel.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = new AddressbookPersonBuilder(personInFilteredList).withName(VALID_NAME_BOB).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
-                new AddressbookEditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build());
+            new AddressbookEditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build());
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedPerson);
 
-        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(new AddressBook(addressbookModel.getAddressBook()), new UserPrefs());
+        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(
+            new AddressBook(addressbookModel.getAddressBook()), new UserPrefs());
         expectedAddressbookModel.updatePerson(addressbookModel.getFilteredPersonList().get(0), editedPerson);
         expectedAddressbookModel.commitAddressBook();
 
@@ -121,7 +127,7 @@ public class AddressbookEditCommandTest {
         // edit person in filtered list into a duplicate in address book
         Person personInList = addressbookModel.getAddressBook().getPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
-                new AddressbookEditPersonDescriptorBuilder(personInList).build());
+            new AddressbookEditPersonDescriptorBuilder(personInList).build());
 
         assertCommandFailure(editCommand, addressbookModel, commandHistory, EditCommand.MESSAGE_DUPLICATE_PERSON);
     }
@@ -132,7 +138,8 @@ public class AddressbookEditCommandTest {
         EditPersonDescriptor descriptor = new AddressbookEditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build();
         EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
 
-        assertCommandFailure(editCommand, addressbookModel, commandHistory, AddressbookMessages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(editCommand, addressbookModel, commandHistory,
+            AddressbookMessages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
     /**
@@ -147,9 +154,10 @@ public class AddressbookEditCommandTest {
         assertTrue(outOfBoundIndex.getZeroBased() < addressbookModel.getAddressBook().getPersonList().size());
 
         EditCommand editCommand = new EditCommand(outOfBoundIndex,
-                new AddressbookEditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build());
+            new AddressbookEditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build());
 
-        assertCommandFailure(editCommand, addressbookModel, commandHistory, AddressbookMessages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(editCommand, addressbookModel, commandHistory,
+            AddressbookMessages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
     @Test
@@ -158,7 +166,8 @@ public class AddressbookEditCommandTest {
         Person personToEdit = addressbookModel.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         EditPersonDescriptor descriptor = new AddressbookEditPersonDescriptorBuilder(editedPerson).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, descriptor);
-        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(new AddressBook(addressbookModel.getAddressBook()), new UserPrefs());
+        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(
+            new AddressBook(addressbookModel.getAddressBook()), new UserPrefs());
         expectedAddressbookModel.updatePerson(personToEdit, editedPerson);
         expectedAddressbookModel.commitAddressBook();
 
@@ -167,11 +176,13 @@ public class AddressbookEditCommandTest {
 
         // undo -> reverts addressbook back to previous state and filtered person list to show all persons
         expectedAddressbookModel.undoAddressBook();
-        assertCommandSuccess(new UndoCommand(), addressbookModel, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedAddressbookModel);
+        assertCommandSuccess(new UndoCommand(), addressbookModel, commandHistory, UndoCommand.MESSAGE_SUCCESS,
+            expectedAddressbookModel);
 
         // redo -> same first person edited again
         expectedAddressbookModel.redoAddressBook();
-        assertCommandSuccess(new RedoCommand(), addressbookModel, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedAddressbookModel);
+        assertCommandSuccess(new RedoCommand(), addressbookModel, commandHistory, RedoCommand.MESSAGE_SUCCESS,
+            expectedAddressbookModel);
     }
 
     @Test
@@ -181,7 +192,8 @@ public class AddressbookEditCommandTest {
         EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
 
         // execution failed -> address book state not added into addressbookModel
-        assertCommandFailure(editCommand, addressbookModel, commandHistory, AddressbookMessages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(editCommand, addressbookModel, commandHistory,
+            AddressbookMessages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
 
         // single address book state in addressbookModel -> undoCommand and redoCommand fail
         assertCommandFailure(new UndoCommand(), addressbookModel, commandHistory, UndoCommand.MESSAGE_FAILURE);
@@ -200,7 +212,8 @@ public class AddressbookEditCommandTest {
         Person editedPerson = new AddressbookPersonBuilder().build();
         EditPersonDescriptor descriptor = new AddressbookEditPersonDescriptorBuilder(editedPerson).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, descriptor);
-        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(new AddressBook(addressbookModel.getAddressBook()), new UserPrefs());
+        AddressbookModel expectedAddressbookModel = new AddressbookModelManagerAddressbook(
+            new AddressBook(addressbookModel.getAddressBook()), new UserPrefs());
 
         showPersonAtIndex(addressbookModel, INDEX_SECOND_PERSON);
         Person personToEdit = addressbookModel.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
@@ -212,12 +225,14 @@ public class AddressbookEditCommandTest {
 
         // undo -> reverts addressbook back to previous state and filtered person list to show all persons
         expectedAddressbookModel.undoAddressBook();
-        assertCommandSuccess(new UndoCommand(), addressbookModel, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedAddressbookModel);
+        assertCommandSuccess(new UndoCommand(), addressbookModel, commandHistory, UndoCommand.MESSAGE_SUCCESS,
+            expectedAddressbookModel);
 
         assertNotEquals(addressbookModel.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()), personToEdit);
         // redo -> edits same second person in unfiltered person list
         expectedAddressbookModel.redoAddressBook();
-        assertCommandSuccess(new RedoCommand(), addressbookModel, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedAddressbookModel);
+        assertCommandSuccess(new RedoCommand(), addressbookModel, commandHistory, RedoCommand.MESSAGE_SUCCESS,
+            expectedAddressbookModel);
     }
 
     @Test

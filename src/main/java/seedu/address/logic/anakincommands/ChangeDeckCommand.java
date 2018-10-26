@@ -22,9 +22,9 @@ public class ChangeDeckCommand extends Command {
     public static final String EXIT_DECK_ARGS = " ..";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Navigates into the deck identified by the index number used in the displayed deck list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+        + ": Navigates into the deck identified by the index number used in the displayed deck list.\n"
+        + "Parameters: INDEX (must be a positive integer)\n"
+        + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_CD_SUCCESS = "Successfully navigated into %1$s";
     public static final String MESSAGE_EXIT_SUCCESS = "Successfully exited deck";
@@ -75,8 +75,8 @@ public class ChangeDeckCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof ChangeDeckCommand // instanceof handles nulls
-                && targetIndex.equals(((ChangeDeckCommand) other).targetIndex)); // state check
+            || (other instanceof ChangeDeckCommand // instanceof handles nulls
+            && targetIndex.equals(((ChangeDeckCommand) other).targetIndex)); // state check
     }
 }
 

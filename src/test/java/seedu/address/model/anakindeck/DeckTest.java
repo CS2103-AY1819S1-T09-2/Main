@@ -11,6 +11,7 @@ import static seedu.address.testutil.TypicalDecks.DECK_B;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
 import seedu.address.testutil.DeckBuilder;
 
 public class DeckTest {
@@ -33,12 +34,12 @@ public class DeckTest {
         assertFalse(DECK_A.isSameDeck(null));
 
         // different name -> returns false
-        Deck editedDeck_A = new DeckBuilder(DECK_A).withName(VALID_NAME_DECK_A).build();
-        assertFalse(DECK_A.isSameDeck(editedDeck_A));
+        Deck editedDeckA = new DeckBuilder(DECK_A).withName(VALID_NAME_DECK_A).build();
+        assertFalse(DECK_A.isSameDeck(editedDeckA));
 
         // same name, different attributes -> returns true
-        editedDeck_A = new DeckBuilder(DECK_A).withCards(VALID_CARD_LIST).build();
-        assertTrue(DECK_A.isSameDeck(editedDeck_A));
+        editedDeckA = new DeckBuilder(DECK_A).withCards(VALID_CARD_LIST).build();
+        assertTrue(DECK_A.isSameDeck(editedDeckA));
     }
 
     @Test
@@ -60,11 +61,11 @@ public class DeckTest {
         assertFalse(DECK_A.equals(DECK_B));
 
         // different name -> returns false
-        Deck editedDeck_A = new DeckBuilder(DECK_A).withName(VALID_NAME_DECK_A).build();
-        assertFalse(DECK_A.equals(editedDeck_A));
+        Deck editedDeckA = new DeckBuilder(DECK_A).withName(VALID_NAME_DECK_A).build();
+        assertFalse(DECK_A.equals(editedDeckA));
 
         // different cardList -> returns false
-        editedDeck_A = new DeckBuilder(DECK_A).withCards(VALID_CARD_LIST).build();
-        assertFalse(DECK_A.equals(editedDeck_A));
+        editedDeckA = new DeckBuilder(DECK_A).withCards(VALID_CARD_LIST).build();
+        assertFalse(DECK_A.equals(editedDeckA));
     }
 }

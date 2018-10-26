@@ -14,6 +14,7 @@ public class SelectCardCommandParser implements ParserInterface<SelectCardComman
     /**
      * Parses the given {@code String} of arguments in the context of the AnakinSelectCommand
      * and returns an AnakinSelectCommand object for execution.
+     *
      * @throws ParseException if the user input does not conform the expected format
      */
     public SelectCardCommand parse(String args) throws ParseException {
@@ -21,8 +22,8 @@ public class SelectCardCommandParser implements ParserInterface<SelectCardComman
             Index index = ParserUtil.parseIndex(args);
             return new SelectCardCommand(index);
         } catch (ParseException pe) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, SelectCardCommand.MESSAGE_USAGE), pe);
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                SelectCardCommand.MESSAGE_USAGE), pe);
         }
     }
 }

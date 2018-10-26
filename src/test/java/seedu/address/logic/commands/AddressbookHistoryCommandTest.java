@@ -15,12 +15,13 @@ public class AddressbookHistoryCommandTest {
 
     @Test
     public void execute() {
-        assertCommandSuccess(new HistoryCommand(), addressbookModel, history, HistoryCommand.MESSAGE_NO_HISTORY, expectedAddressbookModel);
+        assertCommandSuccess(new HistoryCommand(), addressbookModel, history, HistoryCommand.MESSAGE_NO_HISTORY,
+            expectedAddressbookModel);
 
         String command1 = "clear";
         history.add(command1);
         assertCommandSuccess(new HistoryCommand(), addressbookModel, history,
-                String.format(HistoryCommand.MESSAGE_SUCCESS, command1), expectedAddressbookModel);
+            String.format(HistoryCommand.MESSAGE_SUCCESS, command1), expectedAddressbookModel);
 
         String command2 = "randomCommand";
         String command3 = "select 1";
@@ -28,8 +29,9 @@ public class AddressbookHistoryCommandTest {
         history.add(command3);
 
         String expectedMessage = String.format(HistoryCommand.MESSAGE_SUCCESS,
-                String.join("\n", command3, command2, command1));
-        assertCommandSuccess(new HistoryCommand(), addressbookModel, history, expectedMessage, expectedAddressbookModel);
+            String.join("\n", command3, command2, command1));
+        assertCommandSuccess(new HistoryCommand(), addressbookModel, history, expectedMessage,
+            expectedAddressbookModel);
     }
 
 }

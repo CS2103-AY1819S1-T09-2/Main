@@ -3,10 +3,10 @@ package seedu.address.logic.anakincommands;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.anakincommands.CommandTestUtil.TYPICAL_CARD_LIST;
-import static seedu.address.logic.anakincommands.CommandTestUtil.VALID_NAME_JOHN;
 import static seedu.address.logic.anakincommands.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.anakincommands.CommandTestUtil.DESC_BOB;
+import static seedu.address.logic.anakincommands.CommandTestUtil.TYPICAL_CARD_LIST;
+import static seedu.address.logic.anakincommands.CommandTestUtil.VALID_NAME_JOHN;
 import static seedu.address.logic.anakincommands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.anakincommands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.anakincommands.CommandTestUtil.showDeckAtIndex;
@@ -17,6 +17,7 @@ import static seedu.address.testutil.TypicalDecks.getTypicalAnakin;
 import org.junit.Test;
 
 import seedu.address.commons.core.AddressbookMessages;
+import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.anakincommands.EditDeckCommand.EditDeckDescriptor;
@@ -25,12 +26,13 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.anakindeck.Deck;
-import seedu.address.testutil.EditDeckDescriptorBuilder;
 import seedu.address.testutil.DeckBuilder;
+import seedu.address.testutil.EditDeckDescriptorBuilder;
 
 
 /**
- * Contains integration tests (interaction with the AddressbookModel, UndoCommand and RedoCommand) and unit tests for EditCommand.
+ * Contains integration tests (interaction with the AddressbookModel, UndoCommand and RedoCommand) and unit tests for
+ * EditCommand.
  */
 public class EditDeckCommandTest {
 
@@ -61,7 +63,7 @@ public class EditDeckCommandTest {
         Deck editedDeck = deckInList.withName(VALID_NAME_JOHN).withCards(TYPICAL_CARD_LIST).build();
 
         EditDeckDescriptor descriptor = new EditDeckDescriptorBuilder().withName(VALID_NAME_JOHN)
-                .withCards(TYPICAL_CARD_LIST).build();
+            .withCards(TYPICAL_CARD_LIST).build();
         EditDeckCommand editCommand = new EditDeckCommand(indexLastAnakinDeck, descriptor);
 
         String expectedMessage = String.format(EditDeckCommand.MESSAGE_EDIT_DECK_SUCCESS, editedDeck);
@@ -93,7 +95,7 @@ public class EditDeckCommandTest {
         Deck deckInFilteredList = model.getFilteredDeckList().get(INDEX_FIRST_DECK.getZeroBased());
         Deck editedDeck = new DeckBuilder(deckInFilteredList).withName(VALID_NAME_JOHN).build();
         EditDeckCommand editCommand = new EditDeckCommand(INDEX_FIRST_DECK,
-                new EditDeckDescriptorBuilder().withName(VALID_NAME_JOHN).build());
+            new EditDeckDescriptorBuilder().withName(VALID_NAME_JOHN).build());
 
         String expectedMessage = String.format(EditDeckCommand.MESSAGE_EDIT_DECK_SUCCESS, editedDeck);
 
@@ -120,7 +122,7 @@ public class EditDeckCommandTest {
         // edit deck in filtered list into a duplicate in address book
         Deck deckInList = model.getAnakin().getDeckList().get(INDEX_SECOND_DECK.getZeroBased());
         EditDeckCommand editCommand = new EditDeckCommand(INDEX_FIRST_DECK,
-                new EditDeckDescriptorBuilder(deckInList).build());
+            new EditDeckDescriptorBuilder(deckInList).build());
 
         assertCommandFailure(editCommand, model, commandHistory, EditDeckCommand.MESSAGE_DUPLICATE_DECK);
     }
@@ -131,7 +133,7 @@ public class EditDeckCommandTest {
         EditDeckDescriptor descriptor = new EditDeckDescriptorBuilder().withName(VALID_NAME_JOHN).build();
         EditDeckCommand editCommand = new EditDeckCommand(outOfBoundIndex, descriptor);
 
-        assertCommandFailure(editCommand, model, commandHistory, AddressbookMessages.MESSAGE_INVALID_DECK_DISPLAYED_INDEX);
+        assertCommandFailure(editCommand, model, commandHistory, Messages.MESSAGE_INVALID_DECK_DISPLAYED_INDEX);
     }
 
     /**
@@ -146,9 +148,10 @@ public class EditDeckCommandTest {
         assertTrue(outOfBoundIndex.getZeroBased() < model.getAnakin().getDeckList().size());
 
         EditDeckCommand editCommand = new EditDeckCommand(outOfBoundIndex,
-                new EditDeckDescriptorBuilder().withName(VALID_NAME_JOHN).build());
+            new EditDeckDescriptorBuilder().withName(VALID_NAME_JOHN).build());
 
-        assertCommandFailure(editCommand, model, commandHistory, AddressbookMessages.MESSAGE_INVALID_DECK_DISPLAYED_INDEX);
+        assertCommandFailure(editCommand, model, commandHistory,
+            AddressbookMessages.MESSAGE_INVALID_DECK_DISPLAYED_INDEX);
     }
 
     @Test
@@ -166,11 +169,13 @@ public class EditDeckCommandTest {
 
         // undo -> reverts anakin back to previous state and filtered deck list to show all decks
         expectedModel.undoAnakin();
-        assertCommandSuccess(new UndoCommand(), model, commandHistory, seedu.address.logic.commands.UndoCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new UndoCommand(), model, commandHistory,
+            seedu.address.logic.commands.UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
         // redo -> same first deck edited again
         expectedModel.redoAnakin();
-        assertCommandSuccess(new RedoCommand(), model, commandHistory, seedu.address.logic.commands.RedoCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new RedoCommand(), model, commandHistory,
+            seedu.address.logic.commands.RedoCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
     @Test
@@ -180,11 +185,14 @@ public class EditDeckCommandTest {
         EditDeckCommand editCommand = new EditDeckCommand(outOfBoundIndex, descriptor);
 
         // execution failed -> address book state not added into model
-        assertCommandFailure(editCommand, model, commandHistory, AddressbookMessages.MESSAGE_INVALID_DECK_DISPLAYED_INDEX);
+        assertCommandFailure(editCommand, model, commandHistory,
+            AddressbookMessages.MESSAGE_INVALID_DECK_DISPLAYED_INDEX);
 
         // single address book state in model -> undoCommand and redoCommand fail
-        assertCommandFailure(new seedu.address.logic.anakincommands.UndoCommand(), model, commandHistory, seedu.address.logic.commands.UndoCommand.MESSAGE_FAILURE);
-        assertCommandFailure(new RedoCommand(), model, commandHistory, seedu.address.logic.commands.RedoCommand.MESSAGE_FAILURE);
+        assertCommandFailure(new seedu.address.logic.anakincommands.UndoCommand(), model, commandHistory,
+            seedu.address.logic.commands.UndoCommand.MESSAGE_FAILURE);
+        assertCommandFailure(new RedoCommand(), model, commandHistory,
+            seedu.address.logic.commands.RedoCommand.MESSAGE_FAILURE);
     }
 
     /**
@@ -211,12 +219,14 @@ public class EditDeckCommandTest {
 
         // undo -> reverts anakin back to previous state and filtered deck list to show all decks
         expectedModel.undoAnakin();
-        assertCommandSuccess(new seedu.address.logic.anakincommands.UndoCommand(), model, commandHistory, seedu.address.logic.commands.UndoCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new seedu.address.logic.anakincommands.UndoCommand(), model, commandHistory,
+            seedu.address.logic.commands.UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
         assertNotEquals(model.getFilteredDeckList().get(INDEX_FIRST_DECK.getZeroBased()), deckToEdit);
         // redo -> edits same second deck in unfiltered deck list
         expectedModel.redoAnakin();
-        assertCommandSuccess(new RedoCommand(), model, commandHistory, seedu.address.logic.commands.RedoCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new RedoCommand(), model, commandHistory,
+            seedu.address.logic.commands.RedoCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
     @Test

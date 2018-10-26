@@ -5,9 +5,8 @@ import java.util.List;
 import seedu.address.logic.anakincommands.EditDeckCommand.EditDeckDescriptor;
 import seedu.address.model.anakindeck.Card;
 import seedu.address.model.anakindeck.Deck;
-import seedu.address.model.anakindeck.UniqueCardList;
-
 import seedu.address.model.anakindeck.Name;
+import seedu.address.model.anakindeck.UniqueCardList;
 
 /**
  * A utility class to help with building EditDeckDescriptor objects.
@@ -25,7 +24,6 @@ public class EditDeckDescriptorBuilder {
     }
 
     /**
-
      * Returns an {@code EditDeckDescriptor} with fields containing {@code person}'s details
      */
     public EditDeckDescriptorBuilder(Deck deck) {
@@ -50,7 +48,6 @@ public class EditDeckDescriptorBuilder {
         uniqueCardList.setCards(cardlist);
         return this;
     }
-
 
 
     public EditDeckDescriptor build() {

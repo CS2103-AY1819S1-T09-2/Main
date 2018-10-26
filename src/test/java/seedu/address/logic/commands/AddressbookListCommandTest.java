@@ -25,17 +25,20 @@ public class AddressbookListCommandTest {
     @Before
     public void setUp() {
         addressbookModel = new AddressbookModelManagerAddressbook(getTypicalAddressBook(), new UserPrefs());
-        expectedAddressbookModel = new AddressbookModelManagerAddressbook(addressbookModel.getAddressBook(), new UserPrefs());
+        expectedAddressbookModel = new AddressbookModelManagerAddressbook(addressbookModel.getAddressBook(),
+            new UserPrefs());
     }
 
     @Test
     public void execute_listIsNotFiltered_showsSameList() {
-        assertCommandSuccess(new ListCommand(), addressbookModel, commandHistory, ListCommand.MESSAGE_SUCCESS, expectedAddressbookModel);
+        assertCommandSuccess(new ListCommand(), addressbookModel, commandHistory, ListCommand.MESSAGE_SUCCESS,
+            expectedAddressbookModel);
     }
 
     @Test
     public void execute_listIsFiltered_showsEverything() {
         showPersonAtIndex(addressbookModel, INDEX_FIRST_PERSON);
-        assertCommandSuccess(new ListCommand(), addressbookModel, commandHistory, ListCommand.MESSAGE_SUCCESS, expectedAddressbookModel);
+        assertCommandSuccess(new ListCommand(), addressbookModel, commandHistory, ListCommand.MESSAGE_SUCCESS,
+            expectedAddressbookModel);
     }
 }

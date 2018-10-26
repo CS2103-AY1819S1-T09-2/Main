@@ -20,9 +20,9 @@ public class DeleteDeckCommand extends Command {
     public static final String COMMAND_WORD = "deldeck";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the deck identified by the index number used in the displayed deck list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+        + ": Deletes the deck identified by the index number used in the displayed deck list.\n"
+        + "Parameters: INDEX (must be a positive integer)\n"
+        + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_DECK_SUCCESS = "Deleted Deck: %1$s";
 
@@ -50,8 +50,8 @@ public class DeleteDeckCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DeleteDeckCommand // instanceof handles nulls
-                && targetIndex.equals(((DeleteDeckCommand) other).targetIndex)); // state check
+            || (other instanceof DeleteDeckCommand // instanceof handles nulls
+            && targetIndex.equals(((DeleteDeckCommand) other).targetIndex)); // state check
     }
 }
 

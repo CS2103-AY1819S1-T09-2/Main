@@ -19,12 +19,12 @@ public class NewCardCommand extends Command {
     public static final String COMMAND_WORD = "newcard";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Add a new card to the current deck"
-            + "Parameters: "
-            + "[" + PREFIX_QUESTION + "QUESTION] "
-            + "[" + PREFIX_ANSWER + "ANSWER]\n"
-            + "Example: " + COMMAND_WORD
-            + PREFIX_QUESTION + "What does Socrates know?"
-            + PREFIX_ANSWER + "Nothing";
+        + "Parameters: "
+        + "[" + PREFIX_QUESTION + "QUESTION] "
+        + "[" + PREFIX_ANSWER + "ANSWER]\n"
+        + "Example: " + COMMAND_WORD
+        + PREFIX_QUESTION + "What does Socrates know?"
+        + PREFIX_ANSWER + "Nothing";
 
     public static final String MESSAGE_NEW_CARD_SUCCESS = "New card added: %1$s";
     public static final String MESSAGE_DUPLICATE_CARD = "This card already exists in the deck.";
@@ -55,7 +55,7 @@ public class NewCardCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof NewCardCommand // instanceof handles nulls
-                && toAdd.equals(((NewCardCommand) other).toAdd));
+            || (other instanceof NewCardCommand // instanceof handles nulls
+            && toAdd.equals(((NewCardCommand) other).toAdd));
     }
 }

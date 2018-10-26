@@ -11,10 +11,14 @@ import seedu.address.model.anakindeck.Deck;
  */
 public interface Model {
 
-    /** {@code Predicate} that always evaluate to true */
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Deck> PREDICATE_SHOW_ALL_DECKS = unused -> true;
 
-    /** {@code Predicate} that always evaluate to true */
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Card> PREDICATE_SHOW_ALL_CARDS = unused -> true;
 
     void resetData(ReadOnlyAnakin newData);

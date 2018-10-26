@@ -16,6 +16,7 @@ public class Deck {
         this.name = name;
         cards = new UniqueCardList();
     }
+
     public Deck(Name name, List<Card> cards) {
         this(name);
         for (Card card : cards) {

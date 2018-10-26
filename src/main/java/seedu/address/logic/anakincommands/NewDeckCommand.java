@@ -17,10 +17,10 @@ public class NewDeckCommand extends Command {
     public static final String COMMAND_WORD = "newdeck";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Create a new deck inside Anakin. "
-            + "Parameters: "
-            + PREFIX_NAME + "NAME\n"
-            + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "Deck 1";
+        + "Parameters: "
+        + PREFIX_NAME + "NAME\n"
+        + "Example: " + COMMAND_WORD + " "
+        + PREFIX_NAME + "Deck 1";
 
     public static final String MESSAGE_SUCCESS = "New deck added: %1$s";
     public static final String MESSAGE_DUPLICATE_DECK = "This deck already exists in Anakin";
@@ -51,7 +51,7 @@ public class NewDeckCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof NewDeckCommand // instanceof handles nulls
-                && toAdd.equals(((NewDeckCommand) other).toAdd));
+            || (other instanceof NewDeckCommand // instanceof handles nulls
+            && toAdd.equals(((NewDeckCommand) other).toAdd));
     }
 }

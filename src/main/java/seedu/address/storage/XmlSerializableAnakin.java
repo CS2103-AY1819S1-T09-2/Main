@@ -43,7 +43,7 @@ public class XmlSerializableAnakin {
      * Converts this anakin into the model's {@code Anakin} object.
      *
      * @throws IllegalValueException if there were any data constraints violated or duplicates in the
-     *                               {@code XmlAdaptedDeck}.
+     * {@code XmlAdaptedDeck}.
      */
     public Anakin toModelType() throws IllegalValueException {
         Anakin anakin = new Anakin();
