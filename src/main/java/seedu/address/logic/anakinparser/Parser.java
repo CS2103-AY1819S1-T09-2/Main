@@ -17,8 +17,10 @@ import seedu.address.logic.anakincommands.HelpCommand;
 import seedu.address.logic.anakincommands.HistoryCommand;
 import seedu.address.logic.anakincommands.NewCardCommand;
 import seedu.address.logic.anakincommands.NewDeckCommand;
+import seedu.address.logic.anakincommands.RedoCommand;
 import seedu.address.logic.anakincommands.SortCommand;
 import seedu.address.logic.anakincommands.ClearCommand;
+import seedu.address.logic.anakincommands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 
@@ -77,6 +79,12 @@ public class Parser {
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
+
+        case UndoCommand.COMMAND_WORD:
+            return new UndoCommand();
+
+        case RedoCommand.COMMAND_WORD:
+            return new RedoCommand();
 
         // TO DO
             /*
