@@ -15,7 +15,7 @@ public class Answer {
      * The first character of the answer must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String ANSWER_VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    public static final String ANSWER_VALIDATION_REGEX = "[\\p{Graph}][\\p{Graph} ]*";
 
     public final String fullAnswer;
 
