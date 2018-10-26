@@ -7,6 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.address.logic.anakincommands.ChangeDeckCommand;
+import seedu.address.logic.anakincommands.ClearCommand;
 import seedu.address.logic.anakincommands.Command;
 import seedu.address.logic.anakincommands.DeleteCardCommand;
 import seedu.address.logic.anakincommands.DeleteDeckCommand;
@@ -19,7 +20,6 @@ import seedu.address.logic.anakincommands.NewCardCommand;
 import seedu.address.logic.anakincommands.NewDeckCommand;
 import seedu.address.logic.anakincommands.RedoCommand;
 import seedu.address.logic.anakincommands.SortCommand;
-import seedu.address.logic.anakincommands.ClearCommand;
 import seedu.address.logic.anakincommands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
