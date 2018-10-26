@@ -14,6 +14,7 @@ import seedu.address.logic.anakincommands.EditCardCommand;
 import seedu.address.logic.anakincommands.EditDeckCommand;
 import seedu.address.logic.anakincommands.ExitCommand;
 import seedu.address.logic.anakincommands.HelpCommand;
+import seedu.address.logic.anakincommands.HistoryCommand;
 import seedu.address.logic.anakincommands.NewCardCommand;
 import seedu.address.logic.anakincommands.NewDeckCommand;
 import seedu.address.logic.anakincommands.SortCommand;
@@ -70,6 +71,9 @@ public class Parser {
         case SortCommand.COMMAND_WORD:
             return new SortCommand();
 
+        case HistoryCommand.COMMAND_WORD:
+            return new HistoryCommand();
+
         // TO DO
             /*
         case SelectCommand.COMMAND_WORD:
@@ -83,9 +87,6 @@ public class Parser {
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
-
-        case HistoryCommand.COMMAND_WORD:
-            return new HistoryCommand();
 */
 
         case ExitCommand.COMMAND_WORD:
