@@ -10,7 +10,7 @@ import java.util.Arrays;
 import org.junit.Before;
 import org.junit.Test;
 
-public class AddressbookCommandHistoryTest {
+public class CommandHistoryTest {
     private CommandHistory history;
 
     @Before
