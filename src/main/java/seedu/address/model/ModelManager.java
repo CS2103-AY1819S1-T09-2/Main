@@ -141,6 +141,10 @@ public class ModelManager extends ComponentManager implements Model {
         indicateAnakinChanged();
     }
 
+    public void exportDeck(Deck deck){
+        requireAllNonNull(deck);
+    }
+
     @Override
     public boolean isInsideDeck() {
         return versionedAnakin.isInsideDeck();
