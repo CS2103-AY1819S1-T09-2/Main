@@ -3,21 +3,21 @@ package seedu.address.logic;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
-import seedu.address.commons.core.AddressbookComponentManager;
+import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.anakincommands.Command;
 import seedu.address.logic.anakinparser.Parser;
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.anakincommands.CommandResult;
+import seedu.address.logic.anakincommands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.anakindeck.Card;
 import seedu.address.model.anakindeck.Deck;
 
 /**
- * The main AddressbookLogicManager of the app. Implements Logic
+ * The main LogicManager of the app. Implements Logic
  */
-public class LogicManager extends AddressbookComponentManager implements Logic {
+public class LogicManager extends ComponentManager implements Logic {
     private final Logger logger = LogsCenter.getLogger(LogicManager.class);
 
     private final Model model;

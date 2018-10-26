@@ -1,8 +1,8 @@
 package seedu.address.logic;
 
 import javafx.collections.ObservableList;
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.anakincommands.CommandResult;
+import seedu.address.logic.anakincommands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.anakindeck.Card;
 import seedu.address.model.anakindeck.Deck;

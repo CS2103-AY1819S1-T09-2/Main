@@ -3,7 +3,6 @@ package seedu.address.logic.anakincommands;
 import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.events.ui.ShowHelpRequestEvent;
 import seedu.address.logic.CommandHistory;
-import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Model;
 
 /**

@@ -1,8 +1,7 @@
 package seedu.address.logic.anakincommands;
 
 import seedu.address.logic.CommandHistory;
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.anakincommands.exceptions.CommandException;
 import seedu.address.model.Model;
 
 /**

@@ -11,8 +11,8 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.NewResultAvailableEvent;
 import seedu.address.logic.ListElementPointer;
 import seedu.address.logic.Logic;
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.anakincommands.CommandResult;
+import seedu.address.logic.anakincommands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
