@@ -40,6 +40,10 @@ public class Deck {
             return true;
         }
 
+        if (otherDeck == null) {
+            return false;
+        }
+
         return otherDeck.getName().equals(getName());
     }
 

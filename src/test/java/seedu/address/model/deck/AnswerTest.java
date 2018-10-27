@@ -21,16 +21,16 @@ public class AnswerTest {
 
     @Test
     public void isValidAnswer() {
-        // null question
+        // null answer
         Assert.assertThrows(NullPointerException.class, () -> Answer.isValidAnswer(null));
 
-        // invalid name
+        // invalid answer
         assertFalse(Answer.isValidAnswer("")); // empty string
         assertFalse(Answer.isValidAnswer(" ")); // spaces only
-        assertFalse(Answer.isValidAnswer("^")); // only non-alphanumeric characters
-        assertFalse(Answer.isValidAnswer("peter*")); // contains non-alphanumeric characters
 
-        // valid name
+        // valid answer
+        assertTrue(Answer.isValidAnswer("^")); // only non-alphanumeric characters
+        assertTrue(Answer.isValidAnswer("peter*")); // contains non-alphanumeric characters
         assertTrue(Answer.isValidAnswer("mr awesome")); // alphabets only
         assertTrue(Answer.isValidAnswer("12345")); // numbers only
         assertTrue(Answer.isValidAnswer("what the 1st")); // alphanumeric characters

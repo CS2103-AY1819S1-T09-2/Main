@@ -207,14 +207,14 @@ public class Anakin implements ReadOnlyAnakin {
     }
 
     /**
-     * Removes {@code key} from this {@code currentDeck}.
-     * {@code key} must exist in the currentDeck.
+     * Removes {@code card} from this {@code currentDeck}.
+     * {@code card} must exist in the currentDeck.
      */
-    public void removeCard(Card key) {
+    public void removeCard(Card card) {
         if (!isInsideDeck()) {
             throw new DeckNotFoundException();
         }
-        cards.remove(key);
+        cards.remove(card);
         displayedCards.setCards(cards);
     }
 
