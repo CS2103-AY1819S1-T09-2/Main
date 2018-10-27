@@ -198,32 +198,32 @@ public class EditCardCommandTest {
     /**
      * 1. Edits a {@code Card} from a filtered list.
      * 2. Undo the edit.
-     * 3. The unfiltered list should be shown now. Verify that the index of the previously edited anakincard in the
+     * 3. The unfiltered list should be shown now. Verify that the index of the previously edited card in the
      * unfiltered list is different from the index at the filtered list.
-     * 4. Redo the edit. This ensures {@code RedoCommand} edits the anakincard object regardless of indexing.
+     * 4. Redo the edit. This ensures {@code RedoCommand} edits the card object regardless of indexing.
      */
 
     @Test
-    public void executeUndoRedo_validIndexFilteredList_sameAnakinCardEdited() throws Exception {
-        Card editedAnakinCard = new CardBuilder().build();
-        EditCardDescriptor descriptor = new EditCardDescriptorBuilder(editedAnakinCard).build();
-        EditCardCommand anakinEditCardCommand = new EditCardCommand(INDEX_FIRST_CARD, descriptor);
+    public void executeUndoRedo_validIndexFilteredList_sameCardEdited() throws Exception {
+        Card editedCard = new CardBuilder().build();
+        EditCardDescriptor descriptor = new EditCardDescriptorBuilder(editedCard).build();
+        EditCardCommand editCardCommand = new EditCardCommand(INDEX_FIRST_CARD, descriptor);
         Model expectedModel = new ModelManager(new Anakin(model.getAnakin()), new UserPrefs());
 
-        //showAnakinCardAtIndex(model, INDEX_SECOND_CARD);
-        Card anakincardToEdit = model.getFilteredCardList().get(INDEX_FIRST_CARD.getZeroBased());
-        expectedModel.updateCard(anakincardToEdit, editedAnakinCard);
+        //showCardAtIndex(model, INDEX_SECOND_CARD);
+        Card cardToEdit = model.getFilteredCardList().get(INDEX_FIRST_CARD.getZeroBased());
+        expectedModel.updateCard(cardToEdit, editedCard);
         expectedModel.commitAnakin();
 
-        // edit -> edits second anakincard in unfiltered anakincard list / first anakincard in filtered anakincard list
-        anakinEditCardCommand.execute(model, commandHistory);
+        // edit -> edits second card in unfiltered card list / first card in filtered card list
+        editCardCommand.execute(model, commandHistory);
 
-        // undo -> reverts anakin back to previous state and filtered anakincard list to show all anakincards
+        // undo -> reverts Anakin back to previous state and filtered card list to show all cards
         expectedModel.undoAnakin();
         assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
-        assertNotEquals(model.getFilteredCardList().get(INDEX_FIRST_CARD.getZeroBased()), anakincardToEdit);
-        // redo -> edits same second anakincard in unfiltered anakincard list
+        assertNotEquals(model.getFilteredCardList().get(INDEX_FIRST_CARD.getZeroBased()), cardToEdit);
+        // redo -> edits same second card in unfiltered card list
         expectedModel.redoAnakin();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
     }

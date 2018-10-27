@@ -25,13 +25,13 @@ public class QuestionTest {
         // null question
         Assert.assertThrows(NullPointerException.class, () -> Question.isValidQuestion(null));
 
-        // invalid name
+        // invalid question
         assertFalse(Question.isValidQuestion("")); // empty string
         assertFalse(Question.isValidQuestion(" ")); // spaces only
-        assertFalse(Question.isValidQuestion("^")); // only non-alphanumeric characters
-        assertFalse(Question.isValidQuestion("peter*")); // contains non-alphanumeric characters
 
-        // valid name
+        // valid question
+        assertTrue(Question.isValidQuestion("^")); // only non-alphanumeric characters
+        assertTrue(Question.isValidQuestion("peter*")); // contains non-alphanumeric
         assertTrue(Question.isValidQuestion("mr awesome")); // alphabets only
         assertTrue(Question.isValidQuestion("12345")); // numbers only
         assertTrue(Question.isValidQuestion("abcdefg the 1st")); // alphanumeric characters
