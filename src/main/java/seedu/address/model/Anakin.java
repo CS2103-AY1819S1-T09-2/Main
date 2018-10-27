@@ -215,7 +215,7 @@ public class Anakin implements ReadOnlyAnakin {
         if (!isInsideDeck()) {
             throw new DeckNotFoundException();
         }
-        cards.remove(key);
+        cards.remove(card);
         updateDisplayedCards();
     }
 
