@@ -22,7 +22,7 @@ public class UniqueCardList implements Iterable<Card> {
     public final ObservableList<Card> internalList = FXCollections.observableArrayList();
 
     /**
-     * Returns true if the list contains an equivalent deck as the given argument.
+     * Returns true if the list contains an equivalent card as the given argument.
      */
     public boolean contains(Card toCheck) {
         requireNonNull(toCheck);
@@ -119,8 +119,8 @@ public class UniqueCardList implements Iterable<Card> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof UniqueDeckList // instanceof handles nulls
-            && internalList.equals(((UniqueDeckList) other).internalList));
+            || (other instanceof UniqueCardList // instanceof handles nulls
+            && internalList.equals(((UniqueCardList) other).internalList));
     }
 
     @Override
