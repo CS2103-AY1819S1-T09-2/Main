@@ -45,8 +45,6 @@ public interface Model {
 
     void getOutOfDeck();
 
-    void exportDeck(Deck deck);
-
     void updateCard(Card target, Card editedCard);
 
     ObservableList<Deck> getFilteredDeckList();

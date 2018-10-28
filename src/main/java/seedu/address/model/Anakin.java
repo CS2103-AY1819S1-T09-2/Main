@@ -219,14 +219,6 @@ public class Anakin implements ReadOnlyAnakin {
         updateDisplayedCards();
     }
 
-    /**
-     * Exports the target {@code deck}.
-     */
-    public void exportDeck(Deck deck){
-
-
-    }
-
     //// util methods
 
     @Override
