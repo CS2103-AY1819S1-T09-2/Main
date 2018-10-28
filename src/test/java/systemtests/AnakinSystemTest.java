@@ -25,9 +25,9 @@ import org.junit.ClassRule;
 
 import guitests.guihandles.BrowserPanelHandle;
 import guitests.guihandles.CommandBoxHandle;
+import guitests.guihandles.DeckListPanelHandle;
 import guitests.guihandles.MainMenuHandle;
 import guitests.guihandles.MainWindowHandle;
-import guitests.guihandles.DeckListPanelHandle;
 import guitests.guihandles.ResultDisplayHandle;
 import guitests.guihandles.StatusBarFooterHandle;
 import seedu.address.MainApp;
@@ -143,7 +143,7 @@ public abstract class AnakinSystemTest {
     //     */
     //    protected void showAllDecks() {
     //        executeCommand(ListCommand.COMMAND_WORD);
-    //        assertEquals(getModel().getAddressBook().getPersonList().size(), getModel().getFilteredPersonList().size());
+    //      assertEquals(getModel().getAddressBook().getPersonList().size(), getModel().getFilteredPersonList().size());
     //    }
 
     /**

@@ -1,6 +1,6 @@
 package systemtests;
 
-import static seedu.address.ui.testutil.GuiTestAssert.assertDeckListMatching;
+//import static seedu.address.ui.testutil.GuiTestAssert.assertDeckListMatching;
 
 import java.io.IOException;
 import java.nio.file.Files;

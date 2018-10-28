@@ -65,8 +65,7 @@ public class ClearCommandSystemTest extends AnakinSystemTest {
      * {@code expectedResultMessage} and the model related components equal to {@code expectedModel}.
      * @see ClearCommandSystemTest#assertCommandSuccess(String)
      */
-    private void assertCommandSuccess(String command, String expectedResultMessage, Model
- expectedModel) {
+    private void assertCommandSuccess(String command, String expectedResultMessage, Model expectedModel) {
         executeCommand(command);
         assertApplicationDisplaysExpected("", expectedResultMessage, expectedModel);
         assertCommandBoxShowsDefaultStyle();

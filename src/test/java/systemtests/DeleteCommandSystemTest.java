@@ -4,9 +4,9 @@ package systemtests;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_DECK_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.DeleteDeckCommand.MESSAGE_DELETE_DECK_SUCCESS;
+import static seedu.address.testutil.TestUtil.getDeck;
 import static seedu.address.testutil.TestUtil.getLastIndexDeck;
 //import static seedu.address.testutil.TestUtil.getMidIndexDeck;
-import static seedu.address.testutil.TestUtil.getDeck;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_DECK;
 //import static seedu.address.testutil.TypicalDecks.KEYWORD_MATCHING_JOHN;
 
@@ -153,8 +153,7 @@ public class DeleteCommandSystemTest extends AnakinSystemTest {
      * {@code AnakinSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.
      * @see AnakinSystemTest#assertApplicationDisplaysExpected(String, String, Model)
      */
-    private void assertCommandSuccess(String command, Model expectedModel, String
- expectedResultMessage) {
+    private void assertCommandSuccess(String command, Model expectedModel, String expectedResultMessage) {
         assertCommandSuccess(command, expectedModel, expectedResultMessage, null);
     }
 
@@ -167,8 +166,7 @@ public class DeleteCommandSystemTest extends AnakinSystemTest {
      * @see AnakinSystemTest#assertSelectedCardChanged(Index)
      */
     private void assertCommandSuccess(String command, Model expectedModel, String
- expectedResultMessage,
-                                      Index expectedSelectedCardIndex) {
+ expectedResultMessage, Index expectedSelectedCardIndex) {
         executeCommand(command);
         assertApplicationDisplaysExpected("", expectedResultMessage, expectedModel);
 
