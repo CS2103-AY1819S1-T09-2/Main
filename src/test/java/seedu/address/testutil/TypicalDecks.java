@@ -26,6 +26,7 @@ public class TypicalDecks {
             .withCards(TypicalCards.getTypicalCards()).build();
     public static final Deck NOTHING = new DeckBuilder().withName("is nothing").build();
     public static final Deck HOLDING = new DeckBuilder().withName("holding me back").build();
+    public static final String KEYWORD_MATCHING_JOHN = "JOHN";
 
     private TypicalDecks() {
     } // prevents instantiation
