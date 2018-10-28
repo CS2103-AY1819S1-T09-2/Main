@@ -60,13 +60,14 @@ public class DeleteCommandSystemTest extends AnakinSystemTest {
         /* ------------------ Performing delete operation while a filtered list is being shown
  ---------------------- */
 
-        //        /* Case: filtered person list, delete index within bounds of address book and person list -> deleted */
+        //        /* Case: filtered person list, delete index within bounds of address book and person list -> deleted*/
         //        showDecksWithName(KEYWORD_MATCHING_JOHN);
         //        Index index = INDEX_FIRST_DECK;
         //        assertTrue(index.getZeroBased() < getModel().getFilteredDeckList().size());
         //        assertCommandSuccess(index);
 
-        //        /* Case: filtered person list, delete index within bounds of address book but out of bounds of person list
+        //        /* Case: filtered person list, delete index within bounds of address book but out of bounds of person
+        //        list
         //         * -> rejected
         //         */
         //        showDecksWithName(KEYWORD_MATCHING_JOHN);
@@ -109,7 +110,8 @@ public class DeleteCommandSystemTest extends AnakinSystemTest {
         assertCommandFailure(DeleteDeckCommand.COMMAND_WORD + " abc", MESSAGE_INVALID_DELETE_COMMAND_FORMAT);
 
         /* Case: invalid arguments (extra argument) -> rejected */
-        assertCommandFailure(DeleteDeckCommand.COMMAND_WORD + " 1 abc", MESSAGE_INVALID_DELETE_COMMAND_FORMAT);
+        assertCommandFailure(DeleteDeckCommand.COMMAND_WORD + " 1 abc",
+                MESSAGE_INVALID_DELETE_COMMAND_FORMAT);
 
         /* Case: mixed case command word -> rejected */
         assertCommandFailure("DelETE 1", MESSAGE_UNKNOWN_COMMAND);
@@ -137,7 +139,7 @@ public class DeleteCommandSystemTest extends AnakinSystemTest {
 
         assertCommandSuccess(
                 DeleteDeckCommand.COMMAND_WORD + " " + toDelete.getOneBased(), expectedModel,
- expectedResultMessage);
+                expectedResultMessage);
     }
 
     /**

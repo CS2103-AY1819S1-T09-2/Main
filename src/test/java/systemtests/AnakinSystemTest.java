@@ -138,13 +138,13 @@ public abstract class AnakinSystemTest {
         waitUntilBrowserLoaded(getBrowserPanel());
     }
 
-//    /**
-//     * Displays all persons in the address book.
-//     */
-//    protected void showAllDecks() {
-//        executeCommand(ListCommand.COMMAND_WORD);
-//        assertEquals(getModel().getAddressBook().getPersonList().size(), getModel().getFilteredPersonList().size());
-//    }
+    //    /**
+    //     * Displays all persons in the address book.
+    //     */
+    //    protected void showAllDecks() {
+    //        executeCommand(ListCommand.COMMAND_WORD);
+    //        assertEquals(getModel().getAddressBook().getPersonList().size(), getModel().getFilteredPersonList().size());
+    //    }
 
     /**
      * Displays all decks with any parts of their names matching {@code keyword} (case-insensitive).
@@ -154,13 +154,13 @@ public abstract class AnakinSystemTest {
         assertTrue(getModel().getFilteredDeckList().size() < getModel().getAnakin().getDeckList().size());
     }
 
-//    /**
-//     * Selects the person at {@code index} of the displayed list.
-//     */
-//    protected void selectPerson(Index index) {
-//        executeCommand(SelectCommand.COMMAND_WORD + " " + index.getOneBased());
-//        assertEquals(index.getZeroBased(), getPersonListPanel().getSelectedCardIndex());
-//    }
+    //    /**
+    //     * Selects the person at {@code index} of the displayed list.
+    //     */
+    //    protected void selectPerson(Index index) {
+    //        executeCommand(SelectCommand.COMMAND_WORD + " " + index.getOneBased());
+    //        assertEquals(index.getZeroBased(), getPersonListPanel().getSelectedCardIndex());
+    //    }
 
     /**
      * Deletes all decks in the address book.
