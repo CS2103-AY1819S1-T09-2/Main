@@ -1,6 +1,6 @@
 package systemtests;
 
-public class DeleteCommandSystemTest extends AddressBookSystemTest {
+public class DeleteCommandSystemTest extends AnakinSystemTest {
 //
 //    private static final String MESSAGE_INVALID_DELETE_COMMAND_FORMAT =
 //            String.format(AddressbookMessages.MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE);

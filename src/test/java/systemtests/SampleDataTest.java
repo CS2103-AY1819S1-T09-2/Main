@@ -2,7 +2,7 @@ package systemtests;
 
 //import static seedu.address.ui.testutil.GuiTestAssert.assertListMatching;
 
-public class SampleDataTest extends AddressBookSystemTest {
+public class SampleDataTest extends AnakinSystemTest {
 //    /**
 //     * Returns null to force test app to load data of the file in {@code getDataFileLocation()}.
 //     */

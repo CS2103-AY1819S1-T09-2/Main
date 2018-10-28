@@ -1,6 +1,6 @@
 package systemtests;
 
-public class ClearCommandSystemTest extends AddressBookSystemTest {
+public class ClearCommandSystemTest extends AnakinSystemTest {
 //
 //    @Test
 //    public void clear() {

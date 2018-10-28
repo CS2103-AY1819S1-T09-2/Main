@@ -1,6 +1,6 @@
 package systemtests;
 
-public class FindCommandSystemTest extends AddressBookSystemTest {
+public class FindCommandSystemTest extends AnakinSystemTest {
 
 //    @Test
 //    public void find() {

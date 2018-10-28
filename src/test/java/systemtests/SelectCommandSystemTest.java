@@ -1,6 +1,6 @@
 package systemtests;
 
-public class SelectCommandSystemTest extends AddressBookSystemTest {
+public class SelectCommandSystemTest extends AnakinSystemTest {
 //    @Test
 //    public void select() {
 //        /* ------------------------ Perform select operations on the shown unfiltered list
