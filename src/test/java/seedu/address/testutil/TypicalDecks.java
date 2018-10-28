@@ -12,8 +12,8 @@ import seedu.address.model.deck.Deck;
  */
 public class TypicalDecks {
 
-    public static final Deck DECK_A = new DeckBuilder().withName("Algebra").build();
-    public static final Deck DECK_B = new DeckBuilder().withName("Bacon Salad Recipe").build();
+    public static final Deck DECK_A = new DeckBuilder().withName("Algebra John").build();
+    public static final Deck DECK_B = new DeckBuilder().withName("Bacon Salad Recipe John").build();
     public static final Deck DECK_C = new DeckBuilder().withName("Calculus").build();
     public static final Deck DECK_D = new DeckBuilder().withName("Darwinian Studies").build();
     public static final Deck DECK_E = new DeckBuilder().withName("Epistemology").build();
@@ -26,7 +26,7 @@ public class TypicalDecks {
             .withCards(TypicalCards.getTypicalCards()).build();
     public static final Deck NOTHING = new DeckBuilder().withName("is nothing").build();
     public static final Deck HOLDING = new DeckBuilder().withName("holding me back").build();
-    public static final String KEYWORD_MATCHING_JOHN = "JOHN";
+    public static final String KEYWORD_MATCHING_JOHN = "John";
 
     private TypicalDecks() {
     } // prevents instantiation
