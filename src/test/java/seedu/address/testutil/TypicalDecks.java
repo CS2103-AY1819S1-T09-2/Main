@@ -22,6 +22,10 @@ public class TypicalDecks {
     // Manually added
     public static final Deck DECK_F = new DeckBuilder().withName("Finance").build();
     public static final Deck DECK_G = new DeckBuilder().withName("Geometry").build();
+    public static final Deck THERE = new DeckBuilder().withName("Baby there")
+            .withCards(TypicalCards.getTypicalCards()).build();
+    public static final Deck NOTHING = new DeckBuilder().withName("is nothing").build();
+    public static final Deck HOLDING = new DeckBuilder().withName("holding me back").build();
 
     private TypicalDecks() {
     } // prevents instantiation
@@ -52,6 +56,7 @@ public class TypicalDecks {
     }
 
     public static List<Deck> getTypicalDecks() {
-        return new ArrayList<>(Arrays.asList(DECK_WITH_CARDS, DECK_A, DECK_B, DECK_C, DECK_D, DECK_E));
+        return new ArrayList<>(Arrays.asList(DECK_WITH_CARDS, DECK_A,
+                DECK_B, DECK_C, DECK_D, DECK_E, THERE, NOTHING, HOLDING));
     }
 }

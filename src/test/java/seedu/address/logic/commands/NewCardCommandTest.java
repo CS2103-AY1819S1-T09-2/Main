@@ -86,7 +86,7 @@ public class NewCardCommandTest {
         Deck validDeck = new DeckBuilder().withName("Deck with Card B").build();
 
         Model model = testModel;
-        model.goIntoDeck(validDeck);
+        model.getIntoDeck(validDeck);
 
         CommandResult commandResult = newCardCommand.execute(model, commandHistory);
 
@@ -184,7 +184,7 @@ public class NewCardCommandTest {
         }
 
         @Override
-        public void goIntoDeck(Deck target) {
+        public void getIntoDeck(Deck target) {
             throw new AssertionError("This method should not be called.");
         }
 

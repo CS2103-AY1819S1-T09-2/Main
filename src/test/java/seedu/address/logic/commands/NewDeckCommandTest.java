@@ -153,7 +153,7 @@ public class NewDeckCommandTest {
         }
 
         @Override
-        public void goIntoDeck(Deck target) {
+        public void getIntoDeck(Deck target) {
             throw new AssertionError("This method should not be called.");
         }
 

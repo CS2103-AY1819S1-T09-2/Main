@@ -127,7 +127,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public void goIntoDeck(Deck deck) {
+    public void getIntoDeck(Deck deck) {
         requireAllNonNull(deck);
         versionedAnakin.getIntoDeck(deck);
         updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);

@@ -61,7 +61,6 @@ public class EditDeckParserTest {
     public void parse_repeatedFields_acceptsLast() {
         Index targetIndex = INDEX_FIRST_DECK;
         String userInput = targetIndex.getOneBased() + VALID_DECK_NAME_A_ARGS + VALID_DECK_NAME_B_ARGS;
-
         EditDeckDescriptor descriptor = new EditDeckDescriptorBuilder()
             .withName(VALID_NAME_DECK_B).build();
         EditDeckCommand expectedCommand = new EditDeckCommand(targetIndex, descriptor);

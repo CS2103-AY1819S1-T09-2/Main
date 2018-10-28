@@ -246,10 +246,10 @@ public class EditDeckCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new EditDeckCommand(INDEX_SECOND_DECK, DESC_BOB)));
+        assertFalse(standardCommand.equals(new EditDeckCommand(INDEX_SECOND_DECK, DESC_AMY)));
 
         // different descriptor -> returns false
-        assertFalse(standardCommand.equals(new EditDeckCommand(INDEX_FIRST_DECK, DESC_AMY)));
+        assertFalse(standardCommand.equals(new EditDeckCommand(INDEX_FIRST_DECK, DESC_BOB)));
     }
 
 }

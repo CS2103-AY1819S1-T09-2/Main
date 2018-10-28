@@ -36,7 +36,7 @@ public class ChangeDeckCommandTest {
         String expectedMessage = String.format(ChangeDeckCommand.MESSAGE_CD_SUCCESS, deckToEnter);
 
         ModelManager expectedModel = new ModelManager(model.getAnakin(), new UserPrefs());
-        expectedModel.goIntoDeck(deckToEnter);
+        expectedModel.getIntoDeck(deckToEnter);
         expectedModel.commitAnakin();
 
         assertCommandSuccess(cdCommand, model, commandHistory, expectedMessage, expectedModel);
@@ -61,7 +61,7 @@ public class ChangeDeckCommandTest {
     //        String expectedMessage = String.format(ChangeDeckCommand.MESSAGE_CD_SUCCESS, deckToEnter);
     //
     //        Model expectedModel = new ModelManager(model.getAnakin(), new UserPrefs());
-    //        expectedModel.goIntoDeck(deckToEnter);
+    //        expectedModel.getIntoDeck(deckToEnter);
     //        expectedModel.commitAnakin();
     //
     //        assertCommandSuccess(cdCommand, model, commandHistory, expectedMessage, expectedModel);
@@ -76,7 +76,7 @@ public class ChangeDeckCommandTest {
         String expectedMessage = String.format(ChangeDeckCommand.MESSAGE_EXIT_SUCCESS);
 
         // Enter deck so that cdCommand can leave it
-        executedModel.goIntoDeck(deckToEnter);
+        executedModel.getIntoDeck(deckToEnter);
 
         Model expectedModel = new ModelManager(model.getAnakin(), new UserPrefs());
         expectedModel.commitAnakin();

@@ -21,6 +21,10 @@ public class TypicalCards {
     public static final Card CARD_F = new CardBuilder().withQuestion("Heart").withAnswer("I am").build();
     public static final Card CARD_G = new CardBuilder().withQuestion("All").withAnswer("Alone").build();
 
+    public static final Card MILLION = new CardBuilder().withQuestion("A million").build();
+    public static final Card IS = new CardBuilder().withQuestion("dreams is").build();
+    public static final Card ALL = new CardBuilder().withQuestion("all it's gonna take").build();
+
     private TypicalCards() {
     } // prevents instantiation
 
@@ -33,6 +37,7 @@ public class TypicalCards {
     }
 
     public static List<Card> getTypicalCards() {
-        return new ArrayList<>(Arrays.asList(CARD_A, CARD_B, CARD_C, CARD_D, CARD_E, CARD_F, CARD_G));
+        return new ArrayList<>(Arrays.asList(CARD_A, CARD_B, CARD_C, CARD_D, CARD_E, CARD_F, CARD_G,
+                MILLION, IS, ALL));
     }
 }

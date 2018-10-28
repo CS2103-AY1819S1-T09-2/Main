@@ -41,7 +41,7 @@ public interface Model {
 
     void deleteCard(Card card);
 
-    void goIntoDeck(Deck deck);
+    void getIntoDeck(Deck deck);
 
     void getOutOfDeck();
 

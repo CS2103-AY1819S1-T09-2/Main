@@ -14,6 +14,7 @@ import seedu.address.logic.commands.DeleteDeckCommand;
 import seedu.address.logic.commands.EditCardCommand;
 import seedu.address.logic.commands.EditDeckCommand;
 import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.NewCardCommand;
@@ -87,27 +88,14 @@ public class Parser {
         case RedoCommand.COMMAND_WORD:
             return new RedoCommand();
 
-        // TO DO
-            /*
-        case SelectCommand.COMMAND_WORD:
-            return new SelectCommandParser().parse(arguments);
-
-        case DeleteCommand.COMMAND_WORD:
-            return new DeleteCommandParser().parse(arguments);
-
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
-
-        case ListCommand.COMMAND_WORD:
-            return new ListCommand();
-*/
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
-
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

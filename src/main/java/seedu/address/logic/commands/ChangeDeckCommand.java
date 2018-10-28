@@ -65,7 +65,7 @@ public class ChangeDeckCommand extends Command {
             }
 
             Deck deckToEnter = lastShownList.get(targetIndex.getZeroBased());
-            model.goIntoDeck(deckToEnter);
+            model.getIntoDeck(deckToEnter);
             model.commitAnakin();
             return new CommandResult(String.format(MESSAGE_CD_SUCCESS, deckToEnter));
         }

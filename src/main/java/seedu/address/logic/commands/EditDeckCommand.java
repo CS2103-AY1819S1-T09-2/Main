@@ -147,7 +147,7 @@ public class EditDeckCommand extends Command {
          */
         public Optional<UniqueCardList> getCards() {
             // return (cards != null) ? Optional.of(Collections.unmodifiableList(cards)) : Optional.empty();
-            return Optional.of(cards);
+            return (cards != null) ? Optional.of(cards) : Optional.empty();
         }
 
         /**
