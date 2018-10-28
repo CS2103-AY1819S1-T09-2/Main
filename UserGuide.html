@@ -24,12 +24,11 @@
 <li><a href="#editing-a-card-code-editcard-code">3.9. Editing a card : <code>editcard</code></a></li>
 <li><a href="#sort-current-list-in-lexicographical-order-code-sort-code">3.10. Sort current list in lexicographical order : <code>sort</code></a></li>
 <li><a href="#sort-the-list-of-cards-by-performance-code-rank-code">3.11. Sort the list of cards by performance : <code>rank</code></a></li>
-<li><a href="#locate-a-deck-by-name-code-find-code">3.12. Locate a deck by name : <code>find</code></a></li>
-<li><a href="#locate-a-card-by-question-code-find-code">3.13. Locate a card by question : <code>find</code></a></li>
-<li><a href="#export-deck-to-csv-file-code-exportdeck-code">3.14. Export deck to csv file : <code>exportdeck</code></a></li>
-<li><a href="#import-deck-from-csv-file-code-importdeck-code">3.15. Import deck from csv file : <code>importdeck</code></a></li>
-<li><a href="#card-difficulty-classification-code-classify-code">3.16. Card difficulty classification : <code>classify</code></a></li>
-<li><a href="#exiting-anakin-code-exit-code">3.17. Exiting Anakin : <code>exit</code></a></li>
+<li><a href="#locate-a-deck-card-by-name-code-find-code">3.12. Locate a deck / card by name : <code>find</code></a></li>
+<li><a href="#export-deck-to-csv-file-code-exportdeck-code">3.13. Export deck to csv file : <code>exportdeck</code></a></li>
+<li><a href="#import-deck-from-csv-file-code-importdeck-code">3.14. Import deck from csv file : <code>importdeck</code></a></li>
+<li><a href="#card-difficulty-classification-code-classify-code">3.15. Card difficulty classification : <code>classify</code></a></li>
+<li><a href="#exiting-anakin-code-exit-code">3.16. Exiting Anakin : <code>exit</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -360,10 +359,22 @@ Format: <code>rank</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locate-a-deck-by-name-code-find-code"><a class="link" href="#locate-a-deck-by-name-code-find-code">3.12. Locate a deck by name : <code>find</code></a></h3>
+<h3 id="locate-a-deck-card-by-name-code-find-code"><a class="link" href="#locate-a-deck-card-by-name-code-find-code">3.12. Locate a deck / card by name : <code>find</code></a></h3>
 <div class="paragraph">
-<p>Finds decks with names that contain any of the given keywords.
-Format: <code>find KEYWORD [MORE_KEYWORDS]…</code></p>
+<p>Finds decks with names or cards with questions that contain any of the given keywords.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If user is currently in a deck, find cards.</p>
+</li>
+<li>
+<p>If user is not in a deck, find decks.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Format: <code>find KEYWORD [MORE_KEYWORDS]…</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -376,13 +387,13 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]…</code></p>
 <p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
 </li>
 <li>
-<p>Only the name is searched.</p>
+<p>Only the name / question is searched.</p>
 </li>
 <li>
 <p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
 </li>
 <li>
-<p>Decks matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+<p>Decks / cards matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
 </li>
 </ul>
 </div>
@@ -398,59 +409,18 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]…</code></p>
 Returns <code>algo</code> and <code>Easy Algo</code></p>
 </li>
 <li>
-<p><code>find Bio Chem Physics</code><br>
-Returns any deck having names <code>Bio</code>, <code>Chem</code>, or <code>Physics</code></p>
+<p>User is not inside any decks: <code>find Bio Chem Physics</code><br>
+Returns any decks having names <code>Bio</code>, <code>Chem</code>, or <code>Physics</code></p>
+</li>
+<li>
+<p>User is inside a deck: <code>find John Snow</code><br>
+Returns any cards having questions <code>John</code> or <code>Snow</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locate-a-card-by-question-code-find-code"><a class="link" href="#locate-a-card-by-question-code-find-code">3.13. Locate a card by question : <code>find</code></a></h3>
-<div class="paragraph">
-<p>Finds cards in a specified deck with questions that contain any of the given keywords.
-Format: <code>find d/INDEX_OF_DECK KEYWORD [MORE_KEYWORDS]…</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
-</li>
-<li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
-</li>
-<li>
-<p>Only the name is searched.</p>
-</li>
-<li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
-</li>
-<li>
-<p>Cards matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>find d/1 NP</code><br>
-Returns <code>Is p = np?</code> and <code>Explain NP-hard</code> from the first deck.</p>
-</li>
-<li>
-<p><code>find d/1 P NP</code><br>
-Returns any cards having questions including <code>P</code> or <code>NP</code> in the first deck.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="export-deck-to-csv-file-code-exportdeck-code"><a class="link" href="#export-deck-to-csv-file-code-exportdeck-code">3.14. Export deck to csv file : <code>exportdeck</code></a></h3>
+<h3 id="export-deck-to-csv-file-code-exportdeck-code"><a class="link" href="#export-deck-to-csv-file-code-exportdeck-code">3.13. Export deck to csv file : <code>exportdeck</code></a></h3>
 <div class="paragraph">
 <p>Creates a CSV file at the specified FILEPATH containing the deck at INDEX_OF_DECK.<br>
 Format: <code>exportdeck INDEX_OF_DECK [f/FILEPATH]</code></p>
@@ -471,7 +441,7 @@ Format: <code>exportdeck INDEX_OF_DECK [f/FILEPATH]</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="import-deck-from-csv-file-code-importdeck-code"><a class="link" href="#import-deck-from-csv-file-code-importdeck-code">3.15. Import deck from csv file : <code>importdeck</code></a></h3>
+<h3 id="import-deck-from-csv-file-code-importdeck-code"><a class="link" href="#import-deck-from-csv-file-code-importdeck-code">3.14. Import deck from csv file : <code>importdeck</code></a></h3>
 <div class="paragraph">
 <p>Imports a deck from the CSV at the specified FILEPATH.<br>
 Format: <code>exportdeck FILEPATH</code></p>
@@ -489,7 +459,7 @@ Format: <code>exportdeck FILEPATH</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="card-difficulty-classification-code-classify-code"><a class="link" href="#card-difficulty-classification-code-classify-code">3.16. Card difficulty classification : <code>classify</code></a></h3>
+<h3 id="card-difficulty-classification-code-classify-code"><a class="link" href="#card-difficulty-classification-code-classify-code">3.15. Card difficulty classification : <code>classify</code></a></h3>
 <div class="paragraph">
 <p>Allocates card into one of four bins {Easy, Good, Hard, Review}<br>
 Format: <code>classify d/INDEX_OF_DECK INDEX_OF_CARD RATING</code></p>
@@ -516,7 +486,7 @@ Format: <code>classify RATING</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-anakin-code-exit-code"><a class="link" href="#exiting-anakin-code-exit-code">3.17. Exiting Anakin : <code>exit</code></a></h3>
+<h3 id="exiting-anakin-code-exit-code"><a class="link" href="#exiting-anakin-code-exit-code">3.16. Exiting Anakin : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
@@ -616,4 +586,4 @@ You must be inside a deck to perform this operation.</p></td>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-28 00:49:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-28 11:22:58 UTC</div></div></div></body></html>
