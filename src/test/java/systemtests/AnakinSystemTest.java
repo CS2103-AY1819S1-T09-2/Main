@@ -34,10 +34,8 @@ import seedu.address.MainApp;
 import seedu.address.TestApp;
 import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.core.index.Index;
-//import seedu.address.logic.anakincommands.ClearCommand;
-//import seedu.address.logic.anakincommands.FindCommand;
-//import seedu.address.logic.anakincommands.ListCommand;
-//import seedu.address.logic.anakincommands.SelectCommand;
+import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.FindCommand;
 import seedu.address.model.Anakin;
 import seedu.address.model.Model;
 import seedu.address.testutil.TypicalDecks;
@@ -143,19 +141,19 @@ public abstract class AnakinSystemTest {
 //    /**
 //     * Displays all persons in the address book.
 //     */
-//    protected void showAllPersons() {
+//    protected void showAllDecks() {
 //        executeCommand(ListCommand.COMMAND_WORD);
 //        assertEquals(getModel().getAddressBook().getPersonList().size(), getModel().getFilteredPersonList().size());
 //    }
-//
-//    /**
-//     * Displays all persons with any parts of their names matching {@code keyword} (case-insensitive).
-//     */
-//    protected void showPersonsWithName(String keyword) {
-//        executeCommand(FindCommand.COMMAND_WORD + " " + keyword);
-//        assertTrue(getModel().getFilteredPersonList().size() < getModel().getAddressBook().getPersonList().size());
-//    }
-//
+
+    /**
+     * Displays all decks with any parts of their names matching {@code keyword} (case-insensitive).
+     */
+    protected void showDecksWithName(String keyword) {
+        executeCommand(FindCommand.COMMAND_WORD + " " + keyword);
+        assertTrue(getModel().getFilteredDeckList().size() < getModel().getAnakin().getDeckList().size());
+    }
+
 //    /**
 //     * Selects the person at {@code index} of the displayed list.
 //     */
@@ -163,15 +161,15 @@ public abstract class AnakinSystemTest {
 //        executeCommand(SelectCommand.COMMAND_WORD + " " + index.getOneBased());
 //        assertEquals(index.getZeroBased(), getPersonListPanel().getSelectedCardIndex());
 //    }
-//
-//    /**
-//     * Deletes all persons in the address book.
-//     */
-//    protected void deleteAllPersons() {
-//        executeCommand(ClearCommand.COMMAND_WORD);
-//        assertEquals(0, getModel().getAddressBook().getPersonList().size());
-//    }
-//
+
+    /**
+     * Deletes all decks in the address book.
+     */
+    protected void deleteAllDecks() {
+        executeCommand(ClearCommand.COMMAND_WORD);
+        assertEquals(0, getModel().getAnakin().getDeckList().size());
+    }
+
     /**
      * Asserts that the {@code CommandBox} displays {@code expectedCommandInput}, the {@code ResultDisplay} displays
      * {@code expectedResultMessage}, the storage contains the same Deck objects as {@code expectedAnakinModel}
