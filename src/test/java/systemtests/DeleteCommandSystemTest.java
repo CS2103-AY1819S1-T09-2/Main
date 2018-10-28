@@ -165,8 +165,8 @@ public class DeleteCommandSystemTest extends AnakinSystemTest {
      * @see DeleteCommandSystemTest#assertCommandSuccess(String, Model, String)
      * @see AnakinSystemTest#assertSelectedCardChanged(Index)
      */
-    private void assertCommandSuccess(String command, Model expectedModel, String
- expectedResultMessage, Index expectedSelectedCardIndex) {
+    private void assertCommandSuccess(String command, Model expectedModel, String expectedResultMessage,
+                                      Index expectedSelectedCardIndex) {
         executeCommand(command);
         assertApplicationDisplaysExpected("", expectedResultMessage, expectedModel);
 
