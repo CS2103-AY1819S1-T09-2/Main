@@ -11,6 +11,7 @@ import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.UniqueCardList;
 import seedu.address.model.deck.UniqueDeckList;
 import seedu.address.model.deck.anakinexceptions.DeckNotFoundException;
+import seedu.address.storage.portmanager.PortManager;
 
 /**
  * Wraps all data at the Anakin level
@@ -27,6 +28,9 @@ public class Anakin implements ReadOnlyAnakin {
     // Represents the list of cards displayed on the UI
     private UniqueCardList displayedCards;
 
+    // Manager to handle imports/exports
+    private PortManager portManager;
+
     /*
     * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
     * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
@@ -37,6 +41,7 @@ public class Anakin implements ReadOnlyAnakin {
         decks = new UniqueDeckList();
         cards = new UniqueCardList();
         displayedCards = new UniqueCardList();
+        portManager = new PortManager();
     }
 
     public Anakin() {
