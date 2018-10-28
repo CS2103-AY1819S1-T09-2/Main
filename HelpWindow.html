@@ -22,12 +22,12 @@
 <li><a href="#deleting-a-deck-code-deldeck-code">3.7. Deleting a deck : <code>deldeck</code></a></li>
 <li><a href="#adding-a-card-code-newcard-code">3.8. Adding a card : <code>newcard</code></a></li>
 <li><a href="#editing-a-card-code-editcard-code">3.9. Editing a card : <code>editcard</code></a></li>
-<li><a href="#sort-current-list-by-name-code-sortname-code">3.10. Sort current list by name : <code>sortname</code></a></li>
-<li><a href="#locate-a-deck-by-name-code-find-code">3.11. Locate a deck by name : <code>find</code></a></li>
-<li><a href="#locate-a-card-by-question-code-find-code">3.12. Locate a card by question : <code>find</code></a></li>
-<li><a href="#export-deck-to-csv-file-code-exportdeck-code">3.13. Export deck to csv file : <code>exportdeck</code></a></li>
-<li><a href="#import-deck-from-csv-file-code-importdeck-code">3.14. Import deck from csv file : <code>importdeck</code></a></li>
-<li><a href="#sort-by-rank-code-sortrank-code">3.15. Sort by rank : <code>sortrank</code></a></li>
+<li><a href="#sort-current-list-in-lexicographical-order-code-sort-code">3.10. Sort current list in lexicographical order : <code>sort</code></a></li>
+<li><a href="#sort-the-list-of-cards-by-performance-code-rank-code">3.11. Sort the list of cards by performance : <code>rank</code></a></li>
+<li><a href="#locate-a-deck-by-name-code-find-code">3.12. Locate a deck by name : <code>find</code></a></li>
+<li><a href="#locate-a-card-by-question-code-find-code">3.13. Locate a card by question : <code>find</code></a></li>
+<li><a href="#export-deck-to-csv-file-code-exportdeck-code">3.14. Export deck to csv file : <code>exportdeck</code></a></li>
+<li><a href="#import-deck-from-csv-file-code-importdeck-code">3.15. Import deck from csv file : <code>importdeck</code></a></li>
 <li><a href="#card-difficulty-classification-code-classify-code">3.16. Card difficulty classification : <code>classify</code></a></li>
 <li><a href="#exiting-anakin-code-exit-code">3.17. Exiting Anakin : <code>exit</code></a></li>
 </ul>
@@ -333,14 +333,34 @@ Edits the answer of the first card in the first deck to be <code>A</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sort-current-list-by-name-code-sortname-code"><a class="link" href="#sort-current-list-by-name-code-sortname-code">3.10. Sort current list by name : <code>sortname</code></a></h3>
+<h3 id="sort-current-list-in-lexicographical-order-code-sort-code"><a class="link" href="#sort-current-list-in-lexicographical-order-code-sort-code">3.10. Sort current list in lexicographical order : <code>sort</code></a></h3>
 <div class="paragraph">
-<p>If user is currently in a deck, sort all card in alphabetical order.<br>
-Format: <code>sortname</code></p>
+<p>If user is currently in a deck, sort all cards in alphabetical order according to the question.<br>
+If user is not in a deck, sort all decks in alphabetical order according to the deck&#8217;s name.<br>
+Format: <code>sort</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locate-a-deck-by-name-code-find-code"><a class="link" href="#locate-a-deck-by-name-code-find-code">3.11. Locate a deck by name : <code>find</code></a></h3>
+<h3 id="sort-the-list-of-cards-by-performance-code-rank-code"><a class="link" href="#sort-the-list-of-cards-by-performance-code-rank-code">3.11. Sort the list of cards by performance : <code>rank</code></a></h3>
+<div class="paragraph">
+<p>User must be inside a deck to perform this operation.<br>
+Sorts the cards in current deck by rank (card performance).<br>
+Format: <code>rank</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Note: User must be inside a deck to perform this command.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="locate-a-deck-by-name-code-find-code"><a class="link" href="#locate-a-deck-by-name-code-find-code">3.12. Locate a deck by name : <code>find</code></a></h3>
 <div class="paragraph">
 <p>Finds decks with names that contain any of the given keywords.
 Format: <code>find KEYWORD [MORE_KEYWORDS]…</code></p>
@@ -385,7 +405,7 @@ Returns any deck having names <code>Bio</code>, <code>Chem</code>, or <code>Phys
 </div>
 </div>
 <div class="sect2">
-<h3 id="locate-a-card-by-question-code-find-code"><a class="link" href="#locate-a-card-by-question-code-find-code">3.12. Locate a card by question : <code>find</code></a></h3>
+<h3 id="locate-a-card-by-question-code-find-code"><a class="link" href="#locate-a-card-by-question-code-find-code">3.13. Locate a card by question : <code>find</code></a></h3>
 <div class="paragraph">
 <p>Finds cards in a specified deck with questions that contain any of the given keywords.
 Format: <code>find d/INDEX_OF_DECK KEYWORD [MORE_KEYWORDS]…</code></p>
@@ -430,7 +450,7 @@ Returns any cards having questions including <code>P</code> or <code>NP</code> i
 </div>
 </div>
 <div class="sect2">
-<h3 id="export-deck-to-csv-file-code-exportdeck-code"><a class="link" href="#export-deck-to-csv-file-code-exportdeck-code">3.13. Export deck to csv file : <code>exportdeck</code></a></h3>
+<h3 id="export-deck-to-csv-file-code-exportdeck-code"><a class="link" href="#export-deck-to-csv-file-code-exportdeck-code">3.14. Export deck to csv file : <code>exportdeck</code></a></h3>
 <div class="paragraph">
 <p>Creates a CSV file at the specified FILEPATH containing the deck at INDEX_OF_DECK.<br>
 Format: <code>exportdeck INDEX_OF_DECK [f/FILEPATH]</code></p>
@@ -451,7 +471,7 @@ Format: <code>exportdeck INDEX_OF_DECK [f/FILEPATH]</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="import-deck-from-csv-file-code-importdeck-code"><a class="link" href="#import-deck-from-csv-file-code-importdeck-code">3.14. Import deck from csv file : <code>importdeck</code></a></h3>
+<h3 id="import-deck-from-csv-file-code-importdeck-code"><a class="link" href="#import-deck-from-csv-file-code-importdeck-code">3.15. Import deck from csv file : <code>importdeck</code></a></h3>
 <div class="paragraph">
 <p>Imports a deck from the CSV at the specified FILEPATH.<br>
 Format: <code>exportdeck FILEPATH</code></p>
@@ -462,24 +482,6 @@ Format: <code>exportdeck FILEPATH</code></p>
 <ul>
 <li>
 <p>FILEPATH must include the filename of the target file.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="sort-by-rank-code-sortrank-code"><a class="link" href="#sort-by-rank-code-sortrank-code">3.15. Sort by rank : <code>sortrank</code></a></h3>
-<div class="paragraph">
-<p>Sorts the cards in current deck by rank (card performance).<br>
-Format: <code>sortrank</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Note: User must be inside a deck to perform this command.</p>
 </li>
 </ul>
 </div>
@@ -559,7 +561,7 @@ Format: <code>exit</code></p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>newdeck [n/NAME]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Creates a new deck. /n is optional</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Creates a new deck. n/ is optional</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>editdeck  INDEX n/NAME</code></p></td>
@@ -614,4 +616,4 @@ You must be inside a deck to perform this operation.</p></td>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-17 11:05:31 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-28 00:49:37 UTC</div></div></div></body></html>
