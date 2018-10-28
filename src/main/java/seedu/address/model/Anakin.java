@@ -161,11 +161,11 @@ public class Anakin implements ReadOnlyAnakin {
     }
 
     /**
-     * Removes {@code key} from this {@code Anakin}.
-     * {@code key} must exist in the Anakin.
+     * Removes {@code deck} from this {@code Anakin}.
+     * {@code deck} must exist in the Anakin.
      */
-    public void removeDeck(Deck key) {
-        decks.remove(key);
+    public void removeDeck(Deck deck) {
+        decks.remove(deck);
     }
 
     //// card-level operations

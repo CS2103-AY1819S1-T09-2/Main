@@ -121,7 +121,7 @@ public class CommandTestUtil {
 
     /**
      * Updates {@code model}'s filtered list to show only the deck at the given {@code targetIndex} in the
-     * {@code model}'s address book.
+     * {@code model}'s Anakin.
      */
 
     public static void showDeckAtIndex(Model model, Index targetIndex) {

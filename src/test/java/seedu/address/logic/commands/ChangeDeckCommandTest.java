@@ -51,21 +51,19 @@ public class ChangeDeckCommandTest {
             Messages.MESSAGE_INVALID_DECK_DISPLAYED_INDEX);
     }
 
-    //    @Test
-    //    public void execute_validIndexFilteredList_success() {
-    //        showDeckAtIndex(model, INDEX_FIRST_DECK);
-    //
-    //        Deck deckToEnter = model.getFilteredDeckList().get(INDEX_FIRST_DECK.getZeroBased());
-    //        ChangeDeckCommand cdCommand = new ChangeDeckCommand(INDEX_FIRST_DECK);
-    //
-    //        String expectedMessage = String.format(ChangeDeckCommand.MESSAGE_CD_SUCCESS, deckToEnter);
-    //
-    //        Model expectedModel = new ModelManager(model.getAnakin(), new UserPrefs());
-    //        expectedModel.getIntoDeck(deckToEnter);
-    //        expectedModel.commitAnakin();
-    //
-    //        assertCommandSuccess(cdCommand, model, commandHistory, expectedMessage, expectedModel);
-    //    }
+    @Test
+    public void execute_validIndexFilteredList_success() {
+        Deck deckToEnter = model.getFilteredDeckList().get(INDEX_FIRST_DECK.getZeroBased());
+        ChangeDeckCommand cdCommand = new ChangeDeckCommand(INDEX_FIRST_DECK);
+
+        String expectedMessage = String.format(ChangeDeckCommand.MESSAGE_CD_SUCCESS, deckToEnter);
+
+        Model expectedModel = new ModelManager(model.getAnakin(), new UserPrefs());
+        expectedModel.getIntoDeck(deckToEnter);
+        expectedModel.commitAnakin();
+
+        assertCommandSuccess(cdCommand, model, commandHistory, expectedMessage, expectedModel);
+    }
 
     @Test
     public void execute_validLeaveDeck_success() {
