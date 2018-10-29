@@ -30,7 +30,7 @@ public class FindCommandSystemTest extends AnakinSystemTest {
     @Test
     public void find() {
         /* Case: find multiple decks in Anakin, command with leading spaces and trailing spaces
-         * -> 2 persons found
+         * -> 2 decks found
          */
         String command = "   " + FindCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_JOHN + "   ";
         Model expectedModel = getModel();
@@ -51,7 +51,7 @@ public class FindCommandSystemTest extends AnakinSystemTest {
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find multiple decks in Anakin, 2 keywords -> 2 persons found */
+        /* Case: find multiple decks in Anakin, 2 keywords -> 2 decks found */
         command = FindCommand.COMMAND_WORD + " Bacon Calculus";
         ModelHelper.setFilteredDeckList(expectedModel, DECK_B, DECK_C);
         assertCommandSuccess(command, expectedModel);
@@ -93,51 +93,51 @@ public class FindCommandSystemTest extends AnakinSystemTest {
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find deck in Anakin, keyword is same as name but of different case -> 1 person found */
+        /* Case: find deck in Anakin, keyword is same as name but of different case -> 1 decks found */
         command = FindCommand.COMMAND_WORD + " JoHn";
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find person in Anakin, keyword is substring of name -> 0 persons found */
+        /* Case: find decks in Anakin, keyword is substring of name -> 0 decks found */
         command = FindCommand.COMMAND_WORD + " Joh";
         ModelHelper.setFilteredDeckList(expectedModel);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find person in Anakin, name is substring of keyword -> 0 persons found */
+        /* Case: find decks in Anakin, name is substring of keyword -> 0 decks found */
         command = FindCommand.COMMAND_WORD + " Johnny";
         ModelHelper.setFilteredDeckList(expectedModel);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find person not in Anakin -> 0 persons found */
+        /* Case: find decks not in Anakin -> 0 decks found */
         command = FindCommand.COMMAND_WORD + " Julius";
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
         // TODO: Write Card level checks for find
-        //        /* Case: find phone number of person in Anakin -> 0 persons found */
+        //        /* Case: find phone number of decks in Anakin -> 0 decks found */
         //        command = FindCommand.COMMAND_WORD + " " + DECK_D.getPhone().value;
         //        assertCommandSuccess(command, expectedModel);
         //        assertSelectedCardUnchanged();
         //
-        //        /* Case: find address of person in Anakin -> 0 persons found */
+        //        /* Case: find address of decks in Anakin -> 0 decks found */
         //        command = FindCommand.COMMAND_WORD + " " + DECK_D.getAddress().value;
         //        assertCommandSuccess(command, expectedModel);
         //        assertSelectedCardUnchanged();
         //
-        //        /* Case: find email of person in Anakin -> 0 persons found */
+        //        /* Case: find email of decks in Anakin -> 0 decks found */
         //        command = FindCommand.COMMAND_WORD + " " + DECK_D.getEmail().value;
         //        assertCommandSuccess(command, expectedModel);
         //        assertSelectedCardUnchanged();
         //
-        //        /* Case: find tags of person in Anakin -> 0 persons found */
+        //        /* Case: find tags of decks in Anakin -> 0 decks found */
         //        List<Tag> tags = new ArrayList<>(DANIEL.getTags());
         //        command = FindCommand.COMMAND_WORD + " " + tags.get(0).tagName;
         //        assertCommandSuccess(command, expectedModel);
         //        assertSelectedCardUnchanged();
 
 
-        /* Case: find person in empty Anakin -> 0 persons found */
+        /* Case: find decks in empty Anakin -> 0 decks found */
         deleteAllDecks();
         command = FindCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_JOHN;
         expectedModel = getModel();
