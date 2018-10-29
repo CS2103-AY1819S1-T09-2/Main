@@ -9,8 +9,6 @@ import static seedu.address.testutil.TypicalDecks.DECK_D;
 import static seedu.address.testutil.TypicalDecks.DECK_G;
 import static seedu.address.testutil.TypicalDecks.DECK_H;
 
-
-
 import static seedu.address.testutil.TypicalDecks.KEYWORD_MATCHING_JOHN;
 
 //import java.util.ArrayList;
