@@ -21,10 +21,10 @@ public class ImportDeckCommand extends Command {
 
     public static final String MESSAGE_IMPORT_DECK_SUCCESS = "Successfully Imported Deck: %1$s";
 
-    private final String targetpath;
+    private final String targetPath;
 
-    public ImportDeckCommand(String targetpath) {
-        this.targetpath = targetpath;
+    public ImportDeckCommand(String targetPath) {
+        this.targetPath = targetPath;
     }
 
     @Override
@@ -33,7 +33,7 @@ public class ImportDeckCommand extends Command {
 
         requireNonNull(model);
 
-        importedDeck = model.importDeck(targetpath);
+        importedDeck = model.importDeck(targetPath);
         model.commitAnakin();
         return new CommandResult(String.format(MESSAGE_IMPORT_DECK_SUCCESS, importedDeck));
     }
@@ -42,7 +42,7 @@ public class ImportDeckCommand extends Command {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
             || (other instanceof ImportDeckCommand // instanceof handles nulls
-            && targetpath.equals(((ImportDeckCommand) other).targetpath)); // state check
+            && targetPath.equals(((ImportDeckCommand) other).targetPath)); // state check
     }
 }
 

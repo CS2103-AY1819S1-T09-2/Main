@@ -16,17 +16,13 @@ public class ImportDeckCommandParser implements ParserInterface<ImportDeckComman
      * @throws ParseException if the user input does not conform the expected format
      */
     public ImportDeckCommand parse(String args) throws ParseException {
-        String trimmedArgs = args.trim();
-        if (trimmedArgs.isEmpty()) {
+        String targetPath = args.trim();
+        if (targetPath.isEmpty()) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, ImportDeckCommand.MESSAGE_USAGE));
         }
 
-        String[] keywords = trimmedArgs.split("\\s+");
-
-        String targetpath = keywords[0];
-
-        return new ImportDeckCommand(targetpath);
+        return new ImportDeckCommand(targetPath);
     }
 
 }

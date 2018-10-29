@@ -5,6 +5,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.logging.Logger;
 
+import javax.xml.bind.JAXBException;
+
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -24,14 +26,14 @@ public class PortManager implements Porter {
 
     private static final Logger logger = LogsCenter.getLogger(PortManager.class);
 
-    private Path basefilepath;
+    private Path baseFilePath;
 
     public PortManager() {
-        basefilepath = Paths.get("");
+        baseFilePath = Paths.get("");
     }
 
     public PortManager(Path bfp) {
-        basefilepath = bfp;
+        baseFilePath = bfp;
     }
 
     @Override
@@ -79,12 +81,10 @@ public class PortManager implements Porter {
         XmlExportableDeck xmlDeck;
         try {
             xmlDeck = XmlUtil.getDataFromFile(filepath, XmlExportableDeck.class);
-            return xmlDeck;
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new AssertionError("Unexpected exception " + e.getMessage(), e);
+        } catch (JAXBException e) {
+            throw new DataConversionException(e);
         }
-
+        return xmlDeck;
     }
 
     /**
@@ -104,9 +104,18 @@ public class PortManager implements Porter {
 
     }
 
+    /**
+     * Convert the string into a file path.
+     * @param name The name of the file, can be the absolute or relative file path
+     * @return a Path that represents the file path
+     */
 
     private Path makeFilePath(String name) {
-        return basefilepath.resolve(name + ".xml");
+        if (name.substring(name.length() - 4).equals(".xml")) {
+            return baseFilePath.resolve(name);
+        } else {
+            return baseFilePath.resolve(name + ".xml");
+        }
     }
 
 }
