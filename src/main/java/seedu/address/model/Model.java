@@ -5,6 +5,8 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.model.deck.Card;
 import seedu.address.model.deck.Deck;
+import seedu.address.model.deck.anakinexceptions.DeckImportException;
+import seedu.address.model.deck.anakinexceptions.DuplicateDeckException;
 
 /**
  * The API of the Model component
@@ -59,7 +61,7 @@ public interface Model {
 
     String exportDeck(Deck deck);
 
-    Deck importDeck (String filepath);
+    Deck importDeck (String filepath) throws DeckImportException, DuplicateDeckException;
 
     boolean canUndoAnakin();
 

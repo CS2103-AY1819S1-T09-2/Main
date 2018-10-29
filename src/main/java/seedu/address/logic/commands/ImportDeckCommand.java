@@ -1,11 +1,14 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_DECK;
 
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.deck.Deck;
+import seedu.address.model.deck.anakinexceptions.DeckImportException;
+import seedu.address.model.deck.anakinexceptions.DuplicateDeckException;
 
 /**
  * Imports a deck identified using it's displayed index from Anakin.
@@ -33,9 +36,18 @@ public class ImportDeckCommand extends Command {
 
         requireNonNull(model);
 
-        importedDeck = model.importDeck(targetpath);
-        model.commitAnakin();
-        return new CommandResult(String.format(MESSAGE_IMPORT_DECK_SUCCESS, importedDeck));
+        try {
+            importedDeck = model.importDeck(targetpath);
+            model.commitAnakin();
+            return new CommandResult(String.format(MESSAGE_IMPORT_DECK_SUCCESS, importedDeck));
+
+        } catch(DeckImportException ie){
+            System.out.println(ie.getMessage());
+            throw new CommandException(ie.getMessage());
+
+        } catch(DuplicateDeckException de){
+            throw new CommandException(MESSAGE_DUPLICATE_DECK);
+        }
     }
 
     @Override
