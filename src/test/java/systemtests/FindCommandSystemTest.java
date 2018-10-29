@@ -3,10 +3,13 @@ package systemtests;
 import static org.junit.Assert.assertFalse;
 import static seedu.address.commons.core.Messages.MESSAGE_DECKS_LISTED_OVERVIEW;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.address.testutil.TypicalDecks.DECK_A;
 import static seedu.address.testutil.TypicalDecks.DECK_B;
 import static seedu.address.testutil.TypicalDecks.DECK_C;
 import static seedu.address.testutil.TypicalDecks.DECK_D;
+import static seedu.address.testutil.TypicalDecks.DECK_G;
+import static seedu.address.testutil.TypicalDecks.DECK_H;
+
+
 
 import static seedu.address.testutil.TypicalDecks.KEYWORD_MATCHING_JOHN;
 
@@ -33,7 +36,7 @@ public class FindCommandSystemTest extends AnakinSystemTest {
          */
         String command = "   " + FindCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_JOHN + "   ";
         Model expectedModel = getModel();
-        ModelHelper.setFilteredDeckList(expectedModel, DECK_A, DECK_B); // first names of Benson and Daniel are "Meier"
+        ModelHelper.setFilteredDeckList(expectedModel, DECK_G, DECK_H); // first names of Deck_G and Deck_H are John
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
@@ -85,10 +88,10 @@ public class FindCommandSystemTest extends AnakinSystemTest {
 
         /* Case: find same decks in Anakin after deleting 1 of them -> 1 deck found */
         executeCommand(DeleteDeckCommand.COMMAND_WORD + " 1");
-        assertFalse(getModel().getAnakin().getDeckList().contains(DECK_B));
+        assertFalse(getModel().getAnakin().getDeckList().contains(DECK_G));
         command = FindCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_JOHN;
         expectedModel = getModel();
-        ModelHelper.setFilteredDeckList(expectedModel, DECK_A);
+        ModelHelper.setFilteredDeckList(expectedModel, DECK_H);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 

@@ -12,16 +12,27 @@ import seedu.address.model.deck.Deck;
  */
 public class TypicalDecks {
 
-    public static final Deck DECK_A = new DeckBuilder().withName("Algebra John").build();
-    public static final Deck DECK_B = new DeckBuilder().withName("Bacon Salad Recipe John").build();
+    public static final Deck DECK_A = new DeckBuilder().withName("Algebra").build();
+    public static final Deck DECK_B = new DeckBuilder().withName("Bacon Salad Recipe").build();
     public static final Deck DECK_C = new DeckBuilder().withName("Calculus").build();
     public static final Deck DECK_D = new DeckBuilder().withName("Darwinian Studies").build();
     public static final Deck DECK_E = new DeckBuilder().withName("Epistemology").build();
+
+
     public static final Deck DECK_WITH_CARDS = TypicalCards.getTypicalDeck();
 
     // Manually added
     public static final Deck DECK_F = new DeckBuilder().withName("Finance").build();
     public static final Deck DECK_G = new DeckBuilder().withName("Geometry").build();
+    public static final Deck DECK_H = new DeckBuilder().withName("John GraphQL").build();
+    public static final Deck DECK_I = new DeckBuilder().withName("John History").build();
+
+
+
+
+
+
+
     public static final Deck THERE = new DeckBuilder().withName("Baby there")
             .withCards(TypicalCards.getTypicalCards()).build();
     public static final Deck NOTHING = new DeckBuilder().withName("is nothing").build();
