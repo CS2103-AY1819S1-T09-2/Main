@@ -11,6 +11,8 @@ import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.UniqueCardList;
 import seedu.address.model.deck.UniqueDeckList;
 import seedu.address.model.deck.anakinexceptions.DeckNotFoundException;
+import seedu.address.model.deck.anakinexceptions.DuplicateDeckException;
+import seedu.address.storage.portmanager.PortManager;
 
 /**
  * Wraps all data at the Anakin level
@@ -27,16 +29,20 @@ public class Anakin implements ReadOnlyAnakin {
     // Represents the list of cards displayed on the UI
     private UniqueCardList displayedCards;
 
+    // Manager to handle imports/exports
+    private PortManager portManager;
+
     /*
     * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
     * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
     *
     * Note that non-static init blocks are not recommended to use. There are other ways to avoid duplication
-    *   among constructors.
+    * among constructors.
     */ {
         decks = new UniqueDeckList();
         cards = new UniqueCardList();
         displayedCards = new UniqueCardList();
+        portManager = new PortManager();
     }
 
     public Anakin() {
@@ -161,11 +167,11 @@ public class Anakin implements ReadOnlyAnakin {
     }
 
     /**
-     * Removes {@code key} from this {@code Anakin}.
-     * {@code key} must exist in the Anakin.
+     * Removes {@code deck} from this {@code Anakin}.
+     * {@code deck} must exist in the Anakin.
      */
-    public void removeDeck(Deck key) {
-        decks.remove(key);
+    public void removeDeck(Deck deck) {
+        decks.remove(deck);
     }
 
     //// card-level operations
@@ -217,6 +223,34 @@ public class Anakin implements ReadOnlyAnakin {
         }
         cards.remove(key);
         updateDisplayedCards();
+    }
+
+    /**
+     * Attempts to export {@deck}
+     * Returns the exported file location as a string.
+     */
+    public String exportDeck(Deck deck) {
+        try {
+            return portManager.exportDeck(deck);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    /**
+     * Attempts to import a deck at the specified file location.
+     * If there is an existing duplicate deck, throw DuplicateDeckException.
+     */
+
+    public Deck importDeck(String filepath) {
+        Deck targetDeck = portManager.importDeck(filepath);
+        if (decks.contains(targetDeck)) {
+            throw new DuplicateDeckException();
+        }
+        return targetDeck;
     }
 
     //// util methods

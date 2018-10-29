@@ -1,12 +1,8 @@
 package seedu.address.logic.commands;
 
-import static java.util.Objects.requireNonNull;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.address.testutil.TypicalDecks.DECK_WITH_CARDS;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.function.Predicate;
 
 import org.junit.Rule;
@@ -15,16 +11,14 @@ import org.junit.rules.ExpectedException;
 
 import javafx.collections.ObservableList;
 import seedu.address.logic.CommandHistory;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.Anakin;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAnakin;
 import seedu.address.model.deck.Card;
 import seedu.address.model.deck.Deck;
-import seedu.address.testutil.DeckBuilder;
+import seedu.address.model.deck.anakinexceptions.DeckImportException;
+import seedu.address.storage.portmanager.Porter;
 
-
-public class NewDeckCommandTest {
+public class ImportDeckCommandTest {
 
     private static final CommandHistory EMPTY_COMMAND_HISTORY = new CommandHistory();
 
@@ -33,57 +27,17 @@ public class NewDeckCommandTest {
 
     private CommandHistory commandHistory = new CommandHistory();
 
-    @Test
-    public void constructor_nullPerson_throwsNullPointerException() {
-        thrown.expect(NullPointerException.class);
-        new NewDeckCommand(null);
-    }
 
     @Test
-    public void execute_personAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
-        Deck validDeck = new DeckBuilder().build();
+    public void importDeck_successs() throws Exception {
+        Model testModel = new ModelAlwaysImports();
+        Deck deckToImport = DECK_WITH_CARDS;
+        ImportDeckCommand importCommand = new ImportDeckCommand("Unused");
+        CommandResult commandResult = importCommand.execute(testModel, commandHistory);
 
-        CommandResult commandResult = new NewDeckCommand(validDeck).execute(modelStub, commandHistory);
-
-        assertEquals(String.format(NewDeckCommand.MESSAGE_SUCCESS, validDeck), commandResult.feedbackToUser);
-        assertEquals(Arrays.asList(validDeck), modelStub.decksAdded);
+        assertEquals(String.format(ImportDeckCommand.MESSAGE_IMPORT_DECK_SUCCESS, deckToImport),
+            commandResult.feedbackToUser);
         assertEquals(EMPTY_COMMAND_HISTORY, commandHistory);
-    }
-
-    @Test
-    public void execute_duplicatePerson_throwsCommandException() throws Exception {
-        Deck validDeck = new DeckBuilder().build();
-        NewDeckCommand newDeckCommand = new NewDeckCommand(validDeck);
-        ModelStub modelStub = new ModelStubWithDeck(validDeck);
-
-        thrown.expect(CommandException.class);
-        thrown.expectMessage(NewDeckCommand.MESSAGE_DUPLICATE_DECK);
-        newDeckCommand.execute(modelStub, commandHistory);
-    }
-
-    @Test
-    public void equals() {
-        Deck firstDeck = new DeckBuilder().withName("Test Deck1").build();
-        Deck secondDeck = new DeckBuilder().withName("Test Deck2").build();
-        NewDeckCommand addFirstDeckCommand = new NewDeckCommand(firstDeck);
-        NewDeckCommand addSecondDeckCommand = new NewDeckCommand(secondDeck);
-
-        // same object -> returns true
-        assertTrue(addFirstDeckCommand.equals(addFirstDeckCommand));
-
-        // same values -> returns true
-        NewDeckCommand addFirstDeckCommandCopy = new NewDeckCommand(firstDeck);
-        assertTrue(addFirstDeckCommand.equals(addFirstDeckCommandCopy));
-
-        // different types -> returns false
-        assertFalse(addFirstDeckCommand.equals(1));
-
-        // null -> returns false
-        assertFalse(addFirstDeckCommand.equals(null));
-
-        // different person -> returns false
-        assertFalse(addFirstDeckCommand.equals(addSecondDeckCommand));
     }
 
     /**
@@ -117,11 +71,6 @@ public class NewDeckCommandTest {
         }
 
         @Override
-        public void sort() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public void deleteDeck(Deck target) {
             throw new AssertionError("This method should not be called.");
         }
@@ -135,7 +84,6 @@ public class NewDeckCommandTest {
         public void updateCard(Card target, Card newcard) {
             throw new AssertionError("This method should not be called.");
         }
-
 
         @Override
         public boolean hasCard(Card card) {
@@ -177,7 +125,6 @@ public class NewDeckCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
-
         @Override
         public boolean canUndoAnakin() {
             throw new AssertionError("This method should not be called.");
@@ -218,53 +165,41 @@ public class NewDeckCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        @Override
+        public void sort() {
+            throw new AssertionError("This method should not be called.");
+        }
+
     }
 
     /**
-     * A Model stub that contains a single deck.
+     * A Model stub that always imports the same deck.
      */
-    private class ModelStubWithDeck extends ModelStub {
-        private final Deck deck;
 
-        ModelStubWithDeck(Deck deck) {
-            requireNonNull(deck);
-            this.deck = deck;
-        }
+    private class ModelAlwaysImports extends ModelStub {
+        final Porter porter = new PortManagerStub();
 
         @Override
-        public boolean hasDeck(Deck deck) {
-            requireNonNull(deck);
-            return this.deck.isSameDeck(deck);
-        }
-    }
-
-    /**
-     * A Model stub that always accept the person being added.
-     */
-    private class ModelStubAcceptingPersonAdded extends ModelStub {
-        final ArrayList<Deck> decksAdded = new ArrayList<>();
-
-        @Override
-        public boolean hasDeck(Deck deck) {
-            requireNonNull(deck);
-            return decksAdded.stream().anyMatch(deck::isSameDeck);
-        }
-
-        @Override
-        public void addDeck(Deck deck) {
-            requireNonNull(deck);
-            decksAdded.add(deck);
+        public Deck importDeck(String filepath) {
+            return porter.importDeck("unused");
         }
 
         @Override
         public void commitAnakin() {
-            // called by {@code NewDeckCommand#execute()}
+            // called by {@code ImportDeckCommand#execute()}
+        }
+
+    }
+
+    private static class PortManagerStub implements Porter {
+        @Override
+        public String exportDeck(Deck deck) {
+            return null;
         }
 
         @Override
-        public ReadOnlyAnakin getAnakin() {
-            return new Anakin();
+        public Deck importDeck(String stringPath) throws DeckImportException {
+            return DECK_WITH_CARDS;
         }
     }
-
 }

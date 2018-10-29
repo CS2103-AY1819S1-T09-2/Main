@@ -61,7 +61,7 @@ public class EditDeckCommand extends Command {
 
         Name updatedName = editDeckDescriptor.getName().orElse(deckToEdit.getName());
 
-        return new Deck(updatedName);
+        return new Deck(updatedName, deckToEdit.getCards().internalList);
     }
 
     @Override

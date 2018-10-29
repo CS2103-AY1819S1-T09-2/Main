@@ -13,6 +13,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.AnakinChangedEvent;
 import seedu.address.model.deck.Card;
 import seedu.address.model.deck.Deck;
+import seedu.address.storage.portmanager.PortManager;
 
 /**
  * Represents the in-memory model of Anakin data.
@@ -24,6 +25,7 @@ public class ModelManager extends ComponentManager implements Model {
     private final FilteredList<Deck> filteredDecks;
     // The filteredCards is not assigned. Should have methods to assign filteredCards (when user is inside a deck).
     private FilteredList<Card> filteredCards;
+    private PortManager portManager;
 
     /**
      * Initializes a ModelManager with the given Anakin and userPrefs.
@@ -146,6 +148,17 @@ public class ModelManager extends ComponentManager implements Model {
         return versionedAnakin.isInsideDeck();
     }
 
+    @Override
+    public String exportDeck(Deck deck) {
+        return versionedAnakin.exportDeck(deck);
+    }
+
+    @Override
+    public Deck importDeck (String filepath) {
+        Deck imported = versionedAnakin.importDeck(filepath);
+        addDeck(imported);
+        return imported;
+    }
     //=========== Filtered Deck List Accessors =============================================================
 
     /**
