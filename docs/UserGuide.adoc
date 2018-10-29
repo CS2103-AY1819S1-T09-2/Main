@@ -67,19 +67,7 @@ Format: `help`
 Displays a list of all available decks or displays all cards if the command is typed inside a deck. +
 Format: `list`
 
-=== Adding a deck: `newdeck`
 
-Adds a new deck to Anakin +
-Format: `newdeck [n/NAME]`
-
-****
-* NAME will be taken as a string.
-* If NAME is left blank, the name of the deck will be “New Deck #number”.
-****
-
-Examples:
-
-* `newdeck n/My First Deck`
 
 === Navigating into a deck : `cd`
 Enters the deck identified by the index number used in the displayed deck list. +
@@ -92,13 +80,33 @@ Format: `cd INDEX_OF_DECK`
 
 Examples:
 
-* `list` +
-`select 2` +
+* `cd 2` +
 Enter the 2nd deck in the deck list
 
-=== Navigating out of the current deck : `cd`
-Exits the current deck and returns the user to the list of decks. +
+=== Navigating out of the current deck : `cd ..`
+Exit the current deck and returns the user to the list of decks. +
 Format: `cd ..`
+
+Examples:
+
+* `cd 1` +
+* `cd ..` +
+Enter the 1st deck
+then return back to the Anakin's deck list (get out of the 1st deck)
+
+=== Adding a deck: `newdeck`
+
+Adds a new deck to Anakin +
+Format: `newdeck [n/NAME]`
+
+****
+* NAME will be taken as a string.
+// * If NAME is left blank, the name of the deck will be “New Deck #number”.
+****
+
+Examples:
+
+* `newdeck n/My First Deck`
 
 
 === Editing a deck : `editdeck`
@@ -108,12 +116,13 @@ Format: `editdeck INDEX_OF_DECK n/NAME`
 
 ****
 * INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
+* The new deck will maintain the card list of the old one.
 ****
 
 Examples:
 
 * `editdeck 1 n/My Deck` +
-Edits the name of the first deck in the list to be `My Deck`.
+Edits the name of the first deck in the list to be `My Deck` and keeps the old card list.
 
 === Deleting a deck : `deldeck`
 
@@ -159,12 +168,29 @@ Examples:
 * `edit 1 d/1 a/A` +
 Edits the answer of the first card in the first deck to be `A`.
 
+=== Deleting a card : `delcard`
+
+Deletes the specified card from the current deck. +
+Format: `delcard INDEX_OF_CARD`
+
+****
+* Deletes the card at the specified `INDEX`.
+* User must be inside a deck to perform this operation.
+* INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
+****
+
+Examples:
+
+* `cd 1` +
+`delcard 2` +
+Get into the first deck then deletes the 2nd card that appears in the card list.
+
 === Sort current list in lexicographical order : `sort`
 If user is currently in a deck, sort all cards in alphabetical order according to the question. +
 If user is not in a deck, sort all decks in alphabetical order according to the deck's name. +
 Format: `sort`
 
-=== Sort the list of cards by performance : `rank`
+=== Sort the list of cards by performance : `rank` `[coming in v1.4]`
 User must be inside a deck to perform this operation. +
 Sorts the cards in current deck by rank (card performance). +
 Format: `rank`
@@ -232,6 +258,72 @@ Format: `classify RATING`
 *RATING* {‘easy’ | ‘good’ | ‘hard’ | ‘review’}
 ****
 
+=== Listing entered commands : `history`
+
+Lists all the commands that you have entered in reverse chronological order. +
+Format: `history`
+
+[NOTE]
+====
+Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and next input respectively in the command box.
+====
+
+// tag::undoredo[]
+=== Undoing previous command : `undo`
+
+Restores the address book to the state before the previous _undoable_ command was executed. +
+Format: `undo`
+
+[NOTE]
+====
+Undoable commands: those commands that modify the state of Anakin.
+(`cd`, `cd ..`, `newdeck`, `editdeck`, `deldeck`, `newcard`, `editcard`, `delcard`,
+`sort`, `rank` and `find`).
+====
+
+Examples:
+
+* `deldeck 1` +
+`list` +
+`undo` (reverses the `deldeck 1` command) +
+
+* `history` +
+`undo` +
+The `undo` command fails as there are no undoable commands executed previously.
+
+* `deldeck 1` +
+`clear` +
+`undo` (reverses the `clear` command) +
+`undo` (reverses the `deldeck 1` command) +
+
+=== Redoing the previously undone command : `redo`
+
+Reverses the most recent `undo` command. +
+Format: `redo`
+
+Examples:
+
+* `deldeck 1` +
+`undo` (reverses the `deldeck 1` command) +
+`redo` (reapplies the `deldeck 1` command) +
+
+* `delcard 1` +
+`redo` +
+The `redo` command fails as there are no `undo` commands executed previously.
+
+* `delcard 1` +
+`clear` +
+`undo` (reverses the `clear` command) +
+`undo` (reverses the `delcard 1` command) +
+`redo` (reapplies the `delcard 1` command) +
+`redo` (reapplies the `clear` command) +
+// end::undoredo[]
+
+=== Clearing all entries : `clear`
+Clears all entries from the address book.
+Format: `clear`
+
+
 === Exiting Anakin : `exit`
 Exits the program. +
 Format: `exit`
@@ -253,7 +345,7 @@ A convenient cheat sheet of commands
 |Command | What does it do?
 |`list` | Lists all decks
 |`newdeck [n/NAME]` | Creates a new deck. n/ is optional
-|`editdeck  INDEX n/NAME` | Edits the deck
+|`editdeck  INDEX n/NAME` | Edits the name of the deck
 |`cd INDEX` | Navigates into the deck at INDEX. +
 Use `cd ..` to navigate out of the deck
 |`deldeck INDEX` | Deletes the deck at the specified INDEX
@@ -263,9 +355,9 @@ Use `cd ..` to navigate out of the deck
 You must be inside a deck to perform this operation.
 |`newcard [q/QUESTION] [a/ANSWER]` | Creates a new card in the current deck. q/ and a/ are optional.
 |`editcard INDEX_OF_CARD [q/QUESTION] [a/ANSWER]` | Edits a new card in the current  at INDEX_OF_CARD. Either q/ or a/ must be provided.
-|`sortname` | Sort the currently displayed list of decks or cards by name
+|`sort` | Sort the currently displayed list of decks/cards by name/question
 |`find KEYWORD [MORE_KEYWORDS]` | Finds decks with names that contain any of the given keywords.
-|`find d/INDEX_OF_DECK KEYWORD [MORE_KEYWORDS]` | Finds cards in a specified deck with questions that contain any of the given keywords.
+//|`find d/INDEX_OF_DECK KEYWORD [MORE_KEYWORDS]` | Finds cards in a specified deck with questions that contain any of the given keywords.
 |`classify RATING` | Classifies the current card into one of the following categories: {‘easy’, ‘good’ , ‘hard’ , ‘review’}
 
 

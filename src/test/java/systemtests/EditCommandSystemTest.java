@@ -1,6 +1,6 @@
 package systemtests;
 
-public class EditCommandSystemTest extends AddressBookSystemTest {
+public class EditCommandSystemTest extends AnakinSystemTest {
 //
 //    @Test
 //    public void edit() {
