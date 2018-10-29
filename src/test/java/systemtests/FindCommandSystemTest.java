@@ -152,7 +152,7 @@ public class FindCommandSystemTest extends AnakinSystemTest {
 
     /**
      * Executes {@code command} and verifies that the command box displays an empty string, the result display
-     * box displays {@code AddressbookMessages#MESSAGE_PERSONS_LISTED_OVERVIEW} with the number of people in the
+     * box displays {@code Messages#MESSAGE_DECKS_LISTED_OVERVIEW} with the number of deck in the
  filtered list,
      * and the model related components equal to {@code expectedModel}.
      * These verifications are done by
