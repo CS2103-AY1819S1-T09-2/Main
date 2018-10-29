@@ -57,6 +57,10 @@ public interface Model {
 
     boolean isInsideDeck();
 
+    String exportDeck(Deck deck);
+
+    Deck importDeck (String filepath);
+
     boolean canUndoAnakin();
 
     boolean canRedoAnakin();

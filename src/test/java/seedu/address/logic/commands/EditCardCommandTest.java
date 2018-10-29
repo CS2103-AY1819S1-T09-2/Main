@@ -1,7 +1,6 @@
 package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertFalse;
-//import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ANSWER_A;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ANSWER_B;
@@ -26,6 +25,8 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.deck.Card;
 import seedu.address.testutil.CardBuilder;
 import seedu.address.testutil.EditCardDescriptorBuilder;
+
+//import static org.junit.Assert.assertNotEquals;
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for

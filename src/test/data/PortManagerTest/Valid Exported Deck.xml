@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<deck>
+    <name>Valid Exported Deck</name>
+    <cards>
+        <question>An</question>
+        <answer>Empty</answer>
+    </cards>
+    <cards>
+        <question>Street</question>
+        <answer>An</answer>
+    </cards>
+    <cards>
+        <question>Empty</question>
+        <answer>House</answer>
+    </cards>
+    <cards>
+        <question>A</question>
+        <answer>Hole</answer>
+    </cards>
+    <cards>
+        <question>Inside</question>
+        <answer>My</answer>
+    </cards>
+    <cards>
+        <question>Heart</question>
+        <answer>I am</answer>
+    </cards>
+    <cards>
+        <question>All</question>
+        <answer>Alone</answer>
+    </cards>
+    <cards>
+        <question>A million</question>
+        <answer>Default answer for default question lmao</answer>
+    </cards>
+    <cards>
+        <question>dreams is</question>
+        <answer>Default answer for default question lmao</answer>
+    </cards>
+    <cards>
+        <question>all it's gonna take</question>
+        <answer>Default answer for default question lmao</answer>
+    </cards>
+</deck>
