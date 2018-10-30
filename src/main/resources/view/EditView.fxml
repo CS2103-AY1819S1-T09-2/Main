@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<SplitPane id="splitPane" fx:id="splitPane" dividerPositions="0.4" VBox.vgrow="ALWAYS"
+           xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <VBox fx:id="deckList" minWidth="340" prefWidth="340" SplitPane.resizableWithParent="false">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10" />
+        </padding>
+        <Text text="Decks" styleClass="text-id"/>
+        <StackPane fx:id="deckListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+    </VBox>
+
+    <VBox fx:id="cardList" minWidth="340" prefWidth="340" SplitPane.resizableWithParent="false">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10" />
+        </padding>
+        <Text text="Cards" styleClass="text-id"/>
+        <StackPane fx:id="cardListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+    </VBox>
+
+    <StackPane fx:id="browserPlaceholder" prefWidth="340" >
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10" />
+        </padding>
+    </StackPane>
+</SplitPane>

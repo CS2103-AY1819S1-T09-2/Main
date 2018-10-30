@@ -42,6 +42,9 @@ public class MainWindow extends UiPart<Stage> {
     private HelpWindow helpWindow;
 
     @FXML
+    private StackPane mainAreaPlaceholder;
+
+    @FXML
     private StackPane browserPlaceholder;
 
     @FXML
@@ -49,12 +52,6 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private MenuItem helpMenuItem;
-
-    @FXML
-    private StackPane deckListPanelPlaceholder;
-
-    @FXML
-    private StackPane cardListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -124,14 +121,17 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        browserPanel = new BrowserPanel();
-        browserPlaceholder.getChildren().add(browserPanel.getRoot());
-
+//        browserPanel = new BrowserPanel();
+//        browserPlaceholder.getChildren().add(browserPanel.getRoot());
+//
         cardListPanel = new CardListPanel(logic.getFilteredCardList());
-        cardListPanelPlaceholder.getChildren().add(cardListPanel.getRoot());
-
+//        cardListPanelPlaceholder.getChildren().add(cardListPanel.getRoot());
+//
         deckListPanel = new DeckListPanel(logic.getFilteredDeckList());
-        deckListPanelPlaceholder.getChildren().add(deckListPanel.getRoot());
+//        deckListPanelPlaceholder.getChildren().add(deckListPanel.getRoot());
+
+        EditView editView = new EditView(deckListPanel, cardListPanel);
+        mainAreaPlaceholder.getChildren().add(editView.getRoot());
 
         ResultDisplay resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
