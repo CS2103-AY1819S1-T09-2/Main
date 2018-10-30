@@ -84,7 +84,6 @@ public class EditCardCommand extends Command {
 
         model.updateCard(cardToEdit, editedCard);
         model.updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
-        // TODO: Check that card changes are saved when committing
         model.commitAnakin();
         return new CommandResult(String.format(MESSAGE_EDIT_CARD_SUCCESS, editedCard));
     }
