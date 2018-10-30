@@ -13,10 +13,11 @@ import seedu.address.logic.commands.DeleteCardCommand;
 import seedu.address.logic.commands.DeleteDeckCommand;
 import seedu.address.logic.commands.EditCardCommand;
 import seedu.address.logic.commands.EditDeckCommand;
-import seedu.address.logic.commands.EndCommand;
+import seedu.address.logic.commands.EndReviewCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.ExportDeckCommand;
 import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.commands.FlipCardCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.ImportDeckCommand;
@@ -114,8 +115,11 @@ public class Parser {
         case ReviewCommand.COMMAND_WORD:
             return new ReviewCommandParser().parse(arguments);
 
-        case EndCommand.COMMAND_WORD:
-            return new EndCommand();
+        case EndReviewCommand.COMMAND_WORD:
+            return new EndReviewCommand();
+
+        case FlipCardCommand.COMMAND_WORD:
+            return new FlipCardCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

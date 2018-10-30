@@ -53,8 +53,8 @@ public class ReviewCommand extends Command {
         // TODO: Else, switch gameplay to the new deck
         // TODO: for anakin, block cd commands when in gameplay
 
-        Deck deckToPlay = lastShownList.get(index.getZeroBased());
-        model.getIntoDeck(deckToPlay);
+        Deck targetDeck = lastShownList.get(index.getZeroBased());
+        model.getIntoDeck(targetDeck);
 
         ObservableList<Card> cardList = model.getFilteredCardList();
         if (cardList.size() == 0) {
@@ -63,7 +63,7 @@ public class ReviewCommand extends Command {
 
         // TODO: Get last known card to resume from and pass into event
         EventsCenter.getInstance().post(new StartReviewRequestEvent(cardList, Index.fromZeroBased(0)));
-        return new CommandResult(String.format(MESSAGE_SUCCESS, deckToPlay));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, targetDeck));
     }
 
     @Override

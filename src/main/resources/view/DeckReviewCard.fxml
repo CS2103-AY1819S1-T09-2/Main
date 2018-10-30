@@ -13,10 +13,7 @@
             <Insets top="10" right="10" bottom="10" left="10" />
         </padding>
         <HBox spacing="5" alignment="CENTER">
-            <Label fx:id="question" styleClass="cell_big_label" />
-        </HBox>
-        <HBox spacing="5" alignment="CENTER">
-            <Label fx:id="answer" styleClass="cell_big_label" />
+            <Label fx:id="text" styleClass="cell_big_label" />
         </HBox>
     </VBox>
 </StackPane>

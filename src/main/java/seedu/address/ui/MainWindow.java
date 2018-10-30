@@ -231,7 +231,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     @Subscribe
-    private void handleStartReview(StartReviewRequestEvent event) {
+    private void handleStartReviewEvent(StartReviewRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         handleStartReview(event.getCards(), event.getStartIndex());
     }
@@ -242,7 +242,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     @Subscribe
-    private void handleEndReview(EndReviewRequestEvent event) {
+    private void handleEndReviewEvent(EndReviewRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         handleEndReview();
     }

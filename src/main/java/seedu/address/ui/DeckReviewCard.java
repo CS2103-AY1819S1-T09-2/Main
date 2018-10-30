@@ -18,16 +18,15 @@ public class DeckReviewCard extends UiPart<Region> {
     public final Card card;
 
     @FXML
-    private Label question;
-    @FXML
-    private Label answer;
+    private Label text;
 
     public DeckReviewCard(Card card, Boolean showAnswer) {
         super(FXML);
         this.card = card;
-        question.setText(card.getQuestion().fullQuestion);
-        if (showAnswer) {
-            answer.setText(card.getAnswer().fullAnswer);
+        if (!showAnswer) {
+            text.setText("Q: " + card.getQuestion().fullQuestion);
+        } else {
+            text.setText("A: " + card.getAnswer().fullAnswer);
         }
     }
 
@@ -45,8 +44,7 @@ public class DeckReviewCard extends UiPart<Region> {
 
         // state check
         DeckReviewCard card = (DeckReviewCard) other;
-        return question.getText().equals(card.question.getText())
-                && answer.getText().equals(card.answer.getText())
+        return text.getText().equals(card.text.getText())
                 && this.card.equals(card.card);
     }
 }
