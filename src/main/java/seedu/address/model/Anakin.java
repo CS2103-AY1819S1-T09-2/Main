@@ -320,6 +320,9 @@ public class Anakin implements ReadOnlyAnakin {
         isReviewingDeck = true;
     }
 
+    /**
+     * Concludes the end of a deck review by setting isReviewingDeck flag to false
+     */
     public void endReview() {
         if (!isReviewingDeck()) {
             throw new NotReviewingDeckException();

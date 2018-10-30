@@ -12,10 +12,9 @@ import seedu.address.model.deck.Card;
  * An UI component that displays information of a {@code Card} during deck review.
  */
 public class DeckReviewCard extends UiPart<Region> {
+    public final Card card;
     private static final String FXML = "DeckReviewCard.fxml";
     private final Logger logger = LogsCenter.getLogger(DeckReviewScreen.class);
-
-    public final Card card;
 
     @FXML
     private Label text;

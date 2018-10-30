@@ -5,7 +5,6 @@ import static seedu.address.commons.core.Messages.MESSAGE_NOT_REVIEWING_DECK;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.EventsCenter;
-import seedu.address.commons.events.ui.FlipCardRequestEvent;
 import seedu.address.commons.events.ui.ReviewNextCardEvent;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;

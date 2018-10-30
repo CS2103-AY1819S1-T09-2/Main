@@ -4,7 +4,6 @@ import java.util.logging.Logger;
 
 import com.google.common.eventbus.Subscribe;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.Region;
@@ -20,7 +19,6 @@ import seedu.address.model.deck.Card;
  */
 public class DeckReviewScreen extends UiPart<Region> {
     private static final String FXML = "DeckReviewScreen.fxml";
-    public static final String id = "deckReview";
     private final Logger logger = LogsCenter.getLogger(DeckReviewScreen.class);
 
     @FXML
@@ -36,6 +34,10 @@ public class DeckReviewScreen extends UiPart<Region> {
         updateCard(card);
     }
 
+    /**
+     * Updates UI with new cardToShow
+     * @param cardToShow on the screen
+     */
     public void updateCard(Card cardToShow) {
         DeckReviewCard gameCardWithoutAnswer = new DeckReviewCard(cardToShow, false);
         DeckReviewCard gameCardWithAnswer = new DeckReviewCard(cardToShow, true);
@@ -43,6 +45,9 @@ public class DeckReviewScreen extends UiPart<Region> {
         reviewCardPlaceholder.getChildren().add(gameCardWithoutAnswer.getRoot());
     }
 
+    /**
+     * Reorders the nodes in stack pane to show different cards
+     */
     public void handleFlipCard() {
         Node currentFront = reviewCardPlaceholder.getChildren().get(reviewCardPlaceholder.getChildren().size() - 1);
         currentFront.toBack();

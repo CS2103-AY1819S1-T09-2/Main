@@ -211,7 +211,7 @@ public class MainWindow extends UiPart<Stage> {
         handleHelp();
     }
 
-    public void handleStartReview(Card cardToShow) {
+    private void handleStartReview(Card cardToShow) {
         Node currentFront = mainAreaPlaceholder.getChildren().get(mainAreaPlaceholder.getChildren().size() - 1);
         mainAreaPlaceholder.getChildren().set(0, (new DeckReviewScreen(cardToShow)).getRoot());
         currentFront.toBack();
@@ -223,7 +223,7 @@ public class MainWindow extends UiPart<Stage> {
         handleStartReview(event.getCard());
     }
 
-    public void handleEndReview() {
+    private void handleEndReview() {
         Node currentFront = mainAreaPlaceholder.getChildren().get(mainAreaPlaceholder.getChildren().size() - 1);
         currentFront.toBack();
     }
