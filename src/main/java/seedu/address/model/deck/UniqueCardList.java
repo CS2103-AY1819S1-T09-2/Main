@@ -21,6 +21,8 @@ public class UniqueCardList implements Iterable<Card> {
 
     public final ObservableList<Card> internalList = FXCollections.observableArrayList();
 
+    private int currentIndex;
+
     /**
      * Returns true if the list contains an equivalent deck as the given argument.
      */
@@ -102,6 +104,17 @@ public class UniqueCardList implements Iterable<Card> {
         }
 
         internalList.setAll(cards);
+    }
+
+    public int getCurrentIndex() {
+        return currentIndex;
+    }
+
+    public void setCurrentIndex(int newIndex) {
+        if (newIndex < 0 || newIndex >= internalList.size()) {
+            throw new CardNotFoundException();
+        }
+        currentIndex = newIndex;
     }
 
     /**

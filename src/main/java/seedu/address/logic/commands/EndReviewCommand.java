@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_NOT_REVIEWING_DECK;
 
 import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.events.ui.EndReviewRequestEvent;
@@ -20,9 +21,13 @@ public class EndReviewCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
 
-        // TODO: check for when not in game
+        if (!model.isReviewingDeck()) {
+            throw new CommandException(MESSAGE_NOT_REVIEWING_DECK);
+        }
 
         EventsCenter.getInstance().post(new EndReviewRequestEvent());
+        model.endReview();
+        model.commitAnakin();
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

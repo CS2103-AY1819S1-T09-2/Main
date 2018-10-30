@@ -12,6 +12,7 @@ import seedu.address.model.deck.UniqueCardList;
 import seedu.address.model.deck.UniqueDeckList;
 import seedu.address.model.deck.anakinexceptions.DeckNotFoundException;
 import seedu.address.model.deck.anakinexceptions.DuplicateDeckException;
+import seedu.address.model.deck.anakinexceptions.NotReviewingDeckException;
 import seedu.address.storage.portmanager.PortManager;
 
 /**
@@ -28,6 +29,9 @@ public class Anakin implements ReadOnlyAnakin {
 
     // Represents the list of cards displayed on the UI
     private UniqueCardList displayedCards;
+
+    // Boolean flag to indicate whether user is in deck review mode
+    private boolean isReviewingDeck;
 
     // Manager to handle imports/exports
     private PortManager portManager;
@@ -223,6 +227,35 @@ public class Anakin implements ReadOnlyAnakin {
         }
         cards.remove(key);
         updateDisplayedCards();
+    }
+
+    /**
+     * Return true if user is inside deck review mode
+     */
+    public boolean isReviewingDeck() {
+        return isReviewingDeck;
+    }
+
+    public void startReview() {
+        isReviewingDeck = true;
+    }
+
+    public void endReview() {
+        isReviewingDeck = false;
+    }
+
+    public int getIndexOfCurrentCard() {
+        if (!isReviewingDeck()) {
+            throw new NotReviewingDeckException();
+        }
+        return cards.getCurrentIndex();
+    }
+
+    public void setIndexOfCurrentCard(int newIndex) {
+        if (!isReviewingDeck()) {
+            throw new NotReviewingDeckException();
+        }
+        cards.setCurrentIndex(newIndex);
     }
 
     /**

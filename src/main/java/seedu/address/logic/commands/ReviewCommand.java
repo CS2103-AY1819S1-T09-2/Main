@@ -49,10 +49,6 @@ public class ReviewCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_DECK_DISPLAYED_INDEX);
         }
 
-        // TODO: If user is already playing selected deck, throw error
-        // TODO: Else, switch gameplay to the new deck
-        // TODO: for anakin, block cd commands when in gameplay
-
         Deck targetDeck = lastShownList.get(index.getZeroBased());
         model.getIntoDeck(targetDeck);
 
@@ -61,8 +57,10 @@ public class ReviewCommand extends Command {
             throw new CommandException(MESSAGE_NO_CARDS);
         }
 
-        // TODO: Get last known card to resume from and pass into event
-        EventsCenter.getInstance().post(new StartReviewRequestEvent(cardList, Index.fromZeroBased(0)));
+        Card cardToShow = cardList.get(0);
+        EventsCenter.getInstance().post(new StartReviewRequestEvent(cardToShow));
+        model.startReview();
+        model.commitAnakin();
         return new CommandResult(String.format(MESSAGE_SUCCESS, targetDeck));
     }
 

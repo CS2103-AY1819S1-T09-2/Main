@@ -1,7 +1,5 @@
 package seedu.address.commons.events.ui;
 
-import javafx.collections.ObservableList;
-import seedu.address.commons.core.index.Index;
 import seedu.address.commons.events.BaseEvent;
 import seedu.address.model.deck.Card;
 
@@ -9,12 +7,10 @@ import seedu.address.model.deck.Card;
  * Indicates a request to start reviewing deck.
  */
 public class StartReviewRequestEvent extends BaseEvent {
-    private final ObservableList<Card> cardList;
-    private final int startIndex;
+    private final Card card;
 
-    public StartReviewRequestEvent(ObservableList<Card> cardList, Index startIndex) {
-        this.cardList = cardList;
-        this.startIndex = startIndex.getZeroBased();
+    public StartReviewRequestEvent(Card card) {
+        this.card = card;
     }
 
     @Override
@@ -22,11 +18,7 @@ public class StartReviewRequestEvent extends BaseEvent {
         return getClass().getSimpleName();
     }
 
-    public ObservableList<Card> getCards() {
-        return cardList;
-    }
-
-    public int getStartIndex() {
-        return startIndex;
+    public Card getCard() {
+        return card;
     }
 }

@@ -4,7 +4,6 @@ import java.util.logging.Logger;
 
 import com.google.common.eventbus.Subscribe;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -128,17 +127,11 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-//        browserPanel = new BrowserPanel();
-//        browserPlaceholder.getChildren().add(browserPanel.getRoot());
-//
         cardListPanel = new CardListPanel(logic.getFilteredCardList());
-//        cardListPanelPlaceholder.getChildren().add(cardListPanel.getRoot());
-//
         deckListPanel = new DeckListPanel(logic.getFilteredDeckList());
-//        deckListPanelPlaceholder.getChildren().add(deckListPanel.getRoot());
 
-        EditView editView = new EditView(deckListPanel, cardListPanel);
-        DeckReviewScreen deckReviewScreen = new DeckReviewScreen();
+        editView = new EditView(deckListPanel, cardListPanel);
+        deckReviewScreen = new DeckReviewScreen();
         mainAreaPlaceholder.getChildren().add(deckReviewScreen.getRoot());
         mainAreaPlaceholder.getChildren().add(editView.getRoot());
 
@@ -218,22 +211,16 @@ public class MainWindow extends UiPart<Stage> {
         handleHelp();
     }
 
-    public void handleStartReview(ObservableList<Card> cards, int startIndex) {
+    public void handleStartReview(Card cardToShow) {
         Node currentFront = mainAreaPlaceholder.getChildren().get(mainAreaPlaceholder.getChildren().size() - 1);
-        // Check if user is already in deck review mode
-        if (currentFront.getId().equals(DeckReviewScreen.id)) {
-            // TODO: If user is already playing selected deck, throw error
-            // TODO: Else, switch gameplay to the new deck
-        } else {
-            mainAreaPlaceholder.getChildren().set(0, (new DeckReviewScreen(cards, startIndex)).getRoot());
-            currentFront.toBack();
-        }
+        mainAreaPlaceholder.getChildren().set(0, (new DeckReviewScreen(cardToShow)).getRoot());
+        currentFront.toBack();
     }
 
     @Subscribe
     private void handleStartReviewEvent(StartReviewRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        handleStartReview(event.getCards(), event.getStartIndex());
+        handleStartReview(event.getCard());
     }
 
     public void handleEndReview() {

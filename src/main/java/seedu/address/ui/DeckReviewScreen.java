@@ -23,9 +23,6 @@ public class DeckReviewScreen extends UiPart<Region> {
     public static final String id = "deckReview";
     private final Logger logger = LogsCenter.getLogger(DeckReviewScreen.class);
 
-    private int index;
-    private ObservableList<Card> cardList;
-
     @FXML
     private StackPane reviewCardPlaceholder;
 
@@ -33,15 +30,10 @@ public class DeckReviewScreen extends UiPart<Region> {
         super(FXML);
     }
 
-    public DeckReviewScreen(ObservableList<Card> cardList, int index) {
+    public DeckReviewScreen(Card card) {
         super(FXML);
         registerAsAnEventHandler(this);
-        // TODO: should UI handle the card list?
-        this.index = index;
-        this.cardList = cardList;
-
-        Card cardToShow = cardList.get(index);
-        updateCard(cardToShow);
+        updateCard(card);
     }
 
     public void updateCard(Card cardToShow) {
@@ -51,8 +43,6 @@ public class DeckReviewScreen extends UiPart<Region> {
         reviewCardPlaceholder.getChildren().add(gameCardWithoutAnswer.getRoot());
     }
 
-    // TODO: keep an index to track which card
-    // TODO: Listen to flip card event to flip
     public void handleFlipCard() {
         Node currentFront = reviewCardPlaceholder.getChildren().get(reviewCardPlaceholder.getChildren().size() - 1);
         currentFront.toBack();
@@ -64,36 +54,23 @@ public class DeckReviewScreen extends UiPart<Region> {
         handleFlipCard();
     }
 
-    // TODO: Listen to prev and next commands to iterate through cards
-    public void handleNextCard() {
-        int newIndex = index + 1;
-        if (newIndex == cardList.size()) {
-            newIndex = 0;
-        }
-        Card nextCard = cardList.get(newIndex);
+    public void handleNextCard(Card nextCard) {
         updateCard(nextCard);
-        index = newIndex;
     }
 
     @Subscribe
     private void handleNextCardEvent(ReviewNextCardEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        handleNextCard();
+        handleNextCard(event.getNextCard());
     }
 
-    public void handlePreviousCard() {
-        int newIndex = index - 1;
-        if (newIndex < 0) {
-            newIndex = cardList.size() - 1;
-        }
-        Card nextCard = cardList.get(newIndex);
-        updateCard(nextCard);
-        index = newIndex;
+    public void handlePreviousCard(Card prevCard) {
+        updateCard(prevCard);
     }
 
     @Subscribe
     private void handlePreviousCardEvent(ReviewPreviousCardEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        handlePreviousCard();
+        handlePreviousCard(event.getPreviousCard());
     }
 }

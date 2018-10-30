@@ -57,6 +57,16 @@ public interface Model {
 
     boolean isInsideDeck();
 
+    boolean isReviewingDeck();
+
+    void startReview();
+
+    void endReview();
+
+    int getIndexOfCurrentCard();
+
+    void setIndexOfCurrentCard(int newIndex);
+
     String exportDeck(Deck deck);
 
     Deck importDeck (String filepath);

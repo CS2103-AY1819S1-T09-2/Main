@@ -149,6 +149,34 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
+    public boolean isReviewingDeck() {
+        return versionedAnakin.isReviewingDeck();
+    }
+
+    @Override
+    public void startReview() {
+        versionedAnakin.startReview();
+        indicateAnakinChanged();
+    }
+
+    @Override
+    public void endReview() {
+        versionedAnakin.endReview();
+        indicateAnakinChanged();
+    }
+
+    @Override
+    public int getIndexOfCurrentCard() {
+        return versionedAnakin.getIndexOfCurrentCard();
+    }
+
+    @Override
+    public void setIndexOfCurrentCard(int newIndex) {
+        versionedAnakin.setIndexOfCurrentCard(newIndex);
+        indicateAnakinChanged();
+    }
+
+    @Override
     public String exportDeck(Deck deck) {
         return versionedAnakin.exportDeck(deck);
     }
