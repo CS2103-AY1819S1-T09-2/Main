@@ -24,6 +24,8 @@ import seedu.address.logic.commands.ImportDeckCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.NewCardCommand;
 import seedu.address.logic.commands.NewDeckCommand;
+import seedu.address.logic.commands.NextCardCommand;
+import seedu.address.logic.commands.PreviousCardCommand;
 import seedu.address.logic.commands.ReviewCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SortCommand;
@@ -120,6 +122,12 @@ public class Parser {
 
         case FlipCardCommand.COMMAND_WORD:
             return new FlipCardCommand();
+
+        case NextCardCommand.COMMAND_WORD:
+            return new NextCardCommand();
+
+        case PreviousCardCommand.COMMAND_WORD:
+            return new PreviousCardCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
