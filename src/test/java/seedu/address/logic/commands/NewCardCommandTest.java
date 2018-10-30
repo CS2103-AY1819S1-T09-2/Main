@@ -189,6 +189,31 @@ public class NewCardCommandTest {
         }
 
         @Override
+        public boolean isReviewingDeck() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void startReview() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void endReview() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public int getIndexOfCurrentCard() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setIndexOfCurrentCard(int newIndex) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Card> getFilteredCardList() {
             throw new AssertionError("This method should not be called.");
         }

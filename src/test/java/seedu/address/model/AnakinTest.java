@@ -113,5 +113,10 @@ public class AnakinTest {
         public boolean isInsideDeck() {
             return false;
         }
+
+        @Override
+        public boolean isReviewingDeck() {
+            return false;
+        }
     }
 }
