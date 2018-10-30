@@ -37,7 +37,6 @@ public class NextCardCommand extends Command {
 
         EventsCenter.getInstance().post(new ReviewNextCardEvent(nextCard));
         model.setIndexOfCurrentCard(newIndex);
-        model.commitAnakin();
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

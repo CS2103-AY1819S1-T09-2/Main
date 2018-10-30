@@ -27,7 +27,8 @@ public class ReviewCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1 ";
 
     public static final String MESSAGE_SUCCESS = "Deck review started: %1$s";
-    public static final String MESSAGE_NO_CARDS = "Cannot review deck with no cards";
+    public static final String MESSAGE_DECK_NO_CARDS = "Cannot review deck with no cards";
+    public static final String MESSAGE_ALREADY_REVIEWING_DECK = "End current deck review before reviewing another deck";
 
     private final Index index;
 
@@ -43,6 +44,10 @@ public class ReviewCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
+        if (model.isReviewingDeck()) {
+            throw new CommandException(MESSAGE_ALREADY_REVIEWING_DECK);
+        }
+
         List<Deck> lastShownList = model.getFilteredDeckList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
@@ -54,13 +59,12 @@ public class ReviewCommand extends Command {
 
         ObservableList<Card> cardList = model.getFilteredCardList();
         if (cardList.size() == 0) {
-            throw new CommandException(MESSAGE_NO_CARDS);
+            throw new CommandException(MESSAGE_DECK_NO_CARDS);
         }
 
-        Card cardToShow = cardList.get(0);
-        EventsCenter.getInstance().post(new StartReviewRequestEvent(cardToShow));
         model.startReview();
-        model.commitAnakin();
+        Card cardToShow = cardList.get(model.getIndexOfCurrentCard());
+        EventsCenter.getInstance().post(new StartReviewRequestEvent(cardToShow));
         return new CommandResult(String.format(MESSAGE_SUCCESS, targetDeck));
     }
 

@@ -25,4 +25,9 @@ public interface ReadOnlyAnakin {
      * Returns the state
      */
     boolean isInsideDeck();
+
+    /**
+     * @return boolean of whether deck is being reviewed.
+     */
+    boolean isReviewingDeck();
 }

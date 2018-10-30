@@ -27,7 +27,6 @@ public class EndReviewCommand extends Command {
 
         EventsCenter.getInstance().post(new EndReviewRequestEvent());
         model.endReview();
-        model.commitAnakin();
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }
