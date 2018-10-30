@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_DECK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
 import seedu.address.logic.CommandHistory;
@@ -22,7 +23,6 @@ public class NewDeckCommand extends Command {
         + PREFIX_NAME + "Deck 1";
 
     public static final String MESSAGE_SUCCESS = "New deck added: %1$s";
-    public static final String MESSAGE_DUPLICATE_DECK = "This deck already exists in Anakin";
 
     private final Deck toAdd;
 

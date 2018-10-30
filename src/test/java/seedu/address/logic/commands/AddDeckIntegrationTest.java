@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_DECK;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalDecks.getTypicalAnakin;
@@ -42,8 +43,7 @@ public class AddDeckIntegrationTest {
     @Test
     public void execute_duplicatePerson_throwsCommandException() {
         Deck deckInList = anakinModel.getAnakin().getDeckList().get(0);
-        assertCommandFailure(new NewDeckCommand(deckInList), anakinModel, commandHistory,
-                NewDeckCommand.MESSAGE_DUPLICATE_DECK);
+        assertCommandFailure(new NewDeckCommand(deckInList), anakinModel, commandHistory, MESSAGE_DUPLICATE_DECK);
     }
 
 }

@@ -105,6 +105,9 @@ public class Parser {
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
 
+        case ListCommand.COMMAND_WORD:
+            return new ListCommand();
+
         case ExportDeckCommand.COMMAND_WORD:
             return new ExportDeckCommandParser().parse(arguments);
 

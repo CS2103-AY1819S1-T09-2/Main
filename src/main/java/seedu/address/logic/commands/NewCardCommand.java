@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_NOT_INSIDE_DECK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ANSWER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUESTION;
 
@@ -8,6 +9,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.deck.Card;
+import seedu.address.model.deck.anakinexceptions.DeckNotFoundException;
 
 
 /**
@@ -43,11 +45,15 @@ public class NewCardCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
-        if (model.hasCard(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_CARD);
+        try {
+            if (model.hasCard(toAdd)) {
+                throw new CommandException(MESSAGE_DUPLICATE_CARD);
+            }
+            model.addCard(toAdd);
+            model.commitAnakin();
+        } catch (DeckNotFoundException e) {
+            throw new CommandException(MESSAGE_NOT_INSIDE_DECK);
         }
-        model.addCard(toAdd);
-        model.commitAnakin();
         return new CommandResult(String.format(MESSAGE_NEW_CARD_SUCCESS, toAdd));
     }
 

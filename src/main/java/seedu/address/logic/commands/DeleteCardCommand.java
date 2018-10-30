@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_NOT_INSIDE_DECK;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.deck.Card;
+import seedu.address.model.deck.anakinexceptions.DeckNotFoundException;
 
 
 /**
@@ -46,8 +48,13 @@ public class DeleteCardCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_CARD_DISPLAYED_INDEX);
         }
         Card cardToDelete = lastShownList.get(targetIndex.getZeroBased());
-        model.deleteCard(cardToDelete);
-        model.commitAnakin();
+        try {
+            model.deleteCard(cardToDelete);
+            model.commitAnakin();
+        } catch (DeckNotFoundException e) {
+            throw new CommandException(MESSAGE_NOT_INSIDE_DECK);
+        }
+
         return new CommandResult(String.format(MESSAGE_DELETE_CARD_SUCCESS, cardToDelete));
     }
 

@@ -41,7 +41,7 @@
 //    @Test
 //    public void execute_validCommand_success() {
 //        String listCommand = ListCommand.COMMAND_WORD;
-//        assertCommandSuccess(listCommand, ListCommand.MESSAGE_SUCCESS, addressbookModel);
+//        assertCommandSuccess(listCommand, ListCommand.MESSAGE_SUCCESS_DECK, addressbookModel);
 //        assertHistoryCorrect(listCommand);
 //    }
 //
@@ -121,7 +121,7 @@
 //        try {
 //            CommandResult result = addressbookLogic.execute(HistoryCommand.COMMAND_WORD);
 //            String expectedMessage = String.format(
-//                HistoryCommand.MESSAGE_SUCCESS, String.join("\n", expectedCommands));
+//                HistoryCommand.MESSAGE_SUCCESS_DECK, String.join("\n", expectedCommands));
 //            assertEquals(expectedMessage, result.feedbackToUser);
 //        } catch (ParseException | CommandException e) {
 //            throw new AssertionError("Parsing and execution of HistoryCommand.COMMAND_WORD should succeed.", e);

@@ -17,6 +17,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Anakin;
 import seedu.address.model.Model;
 import seedu.address.model.deck.Card;
+import seedu.address.model.deck.CardQuestionContainsKeywordsPredicate;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.DeckNameContainsKeywordsPredicate;
 import seedu.address.testutil.EditDeckDescriptorBuilder;
@@ -134,6 +135,23 @@ public class CommandTestUtil {
             new DeckNameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredDeckList().size());
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show only the CARD at the given {@code targetIndex} in the
+     * {@code model}'s current deck.
+     */
+
+    public static void showCardAtIndexOfCurrentDeck(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredCardList().size());
+
+        Card card = model.getFilteredCardList().get(targetIndex.getZeroBased());
+
+        final String[] splitName = card.getQuestion().fullQuestion.split("\\s+");
+        model.updateFilteredCardList(
+                new CardQuestionContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+
+        assertEquals(1, model.getFilteredCardList().size());
     }
 
     /**

@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_DECK;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,7 +59,7 @@ public class NewDeckCommandTest {
         ModelStub modelStub = new ModelStubWithDeck(validDeck);
 
         thrown.expect(CommandException.class);
-        thrown.expectMessage(NewDeckCommand.MESSAGE_DUPLICATE_DECK);
+        thrown.expectMessage(MESSAGE_DUPLICATE_DECK);
         newDeckCommand.execute(modelStub, commandHistory);
     }
 

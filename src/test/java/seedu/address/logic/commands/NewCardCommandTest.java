@@ -73,7 +73,7 @@ public class NewCardCommandTest {
         Card validCard = CARD_B;
         NewCardCommand newCardCommand = new NewCardCommand(validCard);
         Model model = testModel;
-        thrown.expect(RuntimeException.class);
+        thrown.expect(CommandException.class);
         newCardCommand.execute(model, commandHistory);
 
     }

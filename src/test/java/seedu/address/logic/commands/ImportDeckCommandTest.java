@@ -1,8 +1,12 @@
 package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.address.commons.core.Messages.MESSAGE_FILEPATH_INVALID;
+import static seedu.address.storage.XmlSerializableAnakin.MESSAGE_DUPLICATE_DECK;
 import static seedu.address.testutil.TypicalDecks.DECK_WITH_CARDS;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.function.Predicate;
 
 import org.junit.Rule;
@@ -11,11 +15,13 @@ import org.junit.rules.ExpectedException;
 
 import javafx.collections.ObservableList;
 import seedu.address.logic.CommandHistory;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAnakin;
 import seedu.address.model.deck.Card;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.anakinexceptions.DeckImportException;
+import seedu.address.storage.portmanager.PortManager;
 import seedu.address.storage.portmanager.Porter;
 
 public class ImportDeckCommandTest {
@@ -38,6 +44,30 @@ public class ImportDeckCommandTest {
         assertEquals(String.format(ImportDeckCommand.MESSAGE_IMPORT_DECK_SUCCESS, deckToImport),
             commandResult.feedbackToUser);
         assertEquals(EMPTY_COMMAND_HISTORY, commandHistory);
+    }
+
+    @Test
+    public void importFileCantBeFound_throwsException() throws Exception {
+        Model testModel = new ModelCantFindFile();
+        String filepath = "test filepath.xml";
+        ImportDeckCommand importCommand = new ImportDeckCommand(filepath);
+
+        thrown.expect(CommandException.class);
+        thrown.expectMessage(String.format(MESSAGE_FILEPATH_INVALID, filepath));
+
+        importCommand.execute(testModel, commandHistory);
+    }
+
+    @Test
+    public void importDuplicate_throwsException() throws Exception {
+        Model testModel = new ModelThrowsDe();
+        Deck deckToImport = DECK_WITH_CARDS;
+        ImportDeckCommand importCommand = new ImportDeckCommand("Unused");
+
+        thrown.expect(CommandException.class);
+        thrown.expectMessage(MESSAGE_DUPLICATE_DECK);
+
+        importCommand.execute(testModel, commandHistory);
     }
 
     /**
@@ -177,11 +207,11 @@ public class ImportDeckCommandTest {
      */
 
     private class ModelAlwaysImports extends ModelStub {
-        final Porter porter = new PortManagerStub();
+        private final Porter porter = new PortManagerStub();
 
         @Override
         public Deck importDeck(String filepath) {
-            return porter.importDeck("unused");
+            return porter.importDeck(filepath);
         }
 
         @Override
@@ -191,10 +221,39 @@ public class ImportDeckCommandTest {
 
     }
 
+    private class ModelCantFindFile extends ModelStub {
+        final Porter porter = new PortManagerFileNotFound();
+
+        @Override
+        public Deck importDeck(String filepath) {
+            return porter.importDeck(filepath);
+        }
+
+        @Override
+        public void commitAnakin() {
+            // called by {@code ImportDeckCommand#execute()}
+        }
+    }
+
+    private class ModelThrowsDe extends ModelStub {
+        final Porter porter = new PortManager();
+
+        @Override
+        public Deck importDeck(String filepath) {
+            throw new DeckImportException(MESSAGE_DUPLICATE_DECK);
+        }
+
+        @Override
+        public void commitAnakin() {
+            // called by {@code ImportDeckCommand#execute()}
+        }
+    }
+
+
     private static class PortManagerStub implements Porter {
         @Override
         public String exportDeck(Deck deck) {
-            return null;
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
@@ -202,4 +261,33 @@ public class ImportDeckCommandTest {
             return DECK_WITH_CARDS;
         }
     }
+
+    private static class PortManagerFileNotFound implements Porter {
+
+        private static Path baseFilePath = Paths.get("");
+
+        @Override
+        public String exportDeck(Deck deck) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Deck importDeck(String stringPath) throws DeckImportException {
+            Path filepath = makeFilePath(stringPath);
+            throw new DeckImportException(String.format(MESSAGE_FILEPATH_INVALID, filepath));
+        }
+
+        /**
+         * Makes a string into a path.
+         */
+
+        private Path makeFilePath(String name) {
+            if (name.substring(name.length() - 4).equals(".xml")) {
+                return baseFilePath.resolve(name);
+            } else {
+                return baseFilePath.resolve(name + ".xml");
+            }
+        }
+    }
 }
+

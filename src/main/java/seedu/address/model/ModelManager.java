@@ -13,6 +13,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.AnakinChangedEvent;
 import seedu.address.model.deck.Card;
 import seedu.address.model.deck.Deck;
+import seedu.address.model.deck.anakinexceptions.DeckNotFoundException;
 import seedu.address.storage.portmanager.PortManager;
 
 /**
@@ -102,26 +103,26 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public boolean hasCard(Card card) {
+    public boolean hasCard(Card card) throws DeckNotFoundException {
         requireAllNonNull(card);
         return versionedAnakin.hasCard(card);
     }
 
     @Override
-    public void deleteCard(Card card) {
+    public void deleteCard(Card card) throws DeckNotFoundException {
         versionedAnakin.removeCard(card);
         indicateAnakinChanged();
     }
 
     @Override
-    public void addCard(Card card) {
+    public void addCard(Card card) throws DeckNotFoundException {
         versionedAnakin.addCard(card);
         updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
         indicateAnakinChanged();
     }
 
     @Override
-    public void updateCard(Card target, Card editedCard) {
+    public void updateCard(Card target, Card editedCard) throws DeckNotFoundException {
         requireAllNonNull(target, editedCard);
 
         versionedAnakin.updateCard(target, editedCard);

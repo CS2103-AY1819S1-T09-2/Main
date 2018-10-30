@@ -1,5 +1,6 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.commons.core.Messages.MESSAGE_DECK_NOT_EDITED;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_DECK_NAME_ARGS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_NAME_A_ARGS;
@@ -31,7 +32,7 @@ public class EditDeckParserTest {
         assertParseFailure(parser, VALID_NAME_DECK_A, MESSAGE_INVALID_FORMAT);
 
         // no field specified
-        assertParseFailure(parser, "1", EditDeckCommand.MESSAGE_DECK_NOT_EDITED);
+        assertParseFailure(parser, "1", MESSAGE_DECK_NOT_EDITED);
 
         // no index and no field specified
         assertParseFailure(parser, "", MESSAGE_INVALID_FORMAT);

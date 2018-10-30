@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_NOT_INSIDE_DECK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ANSWER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUESTION;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CARDS;
@@ -17,6 +18,7 @@ import seedu.address.model.Model;
 import seedu.address.model.deck.Answer;
 import seedu.address.model.deck.Card;
 import seedu.address.model.deck.Question;
+import seedu.address.model.deck.anakinexceptions.DeckNotFoundException;
 
 /**
  * Edits the details of an existing card in a deck.
@@ -82,9 +84,15 @@ public class EditCardCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_CARD);
         }
 
-        model.updateCard(cardToEdit, editedCard);
-        model.updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
-        model.commitAnakin();
+        try {
+            model.updateCard(cardToEdit, editedCard);
+            model.updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
+            model.commitAnakin();
+        } catch (DeckNotFoundException e) {
+            throw new CommandException(MESSAGE_NOT_INSIDE_DECK);
+        }
+
+        // TODO: Check that card changes are saved when committing
         return new CommandResult(String.format(MESSAGE_EDIT_CARD_SUCCESS, editedCard));
     }
 

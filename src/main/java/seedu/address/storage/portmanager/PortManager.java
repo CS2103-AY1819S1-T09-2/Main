@@ -1,11 +1,12 @@
 package seedu.address.storage.portmanager;
 
+import static seedu.address.commons.core.Messages.MESSAGE_FILEPATH_INVALID;
+import static seedu.address.commons.core.Messages.MESSAGE_IMPORTED_DECK_INVALID;
+
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.logging.Logger;
-
-import javax.xml.bind.JAXBException;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
@@ -34,6 +35,10 @@ public class PortManager implements Porter {
 
     public PortManager(Path bfp) {
         baseFilePath = bfp;
+    }
+
+    public String getBfp() {
+        return baseFilePath.toAbsolutePath().toString();
     }
 
     @Override
@@ -65,10 +70,10 @@ public class PortManager implements Porter {
             return getImportedDeck(xmlDeck);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            throw new DeckImportException("Target file not found");
+            throw new DeckImportException(String.format(MESSAGE_FILEPATH_INVALID, filepath));
         } catch (DataConversionException e) {
             e.printStackTrace();
-            throw new DeckImportException("Target deck contains invalid data");
+            throw new DeckImportException(MESSAGE_IMPORTED_DECK_INVALID);
         }
     }
 
@@ -77,14 +82,17 @@ public class PortManager implements Porter {
      * Returns a XmlExportableDeck object.
      */
 
-    private XmlExportableDeck loadDeckFromFile(Path filepath) throws FileNotFoundException, DataConversionException {
+    private XmlExportableDeck loadDeckFromFile(Path filepath) throws FileNotFoundException {
         XmlExportableDeck xmlDeck;
         try {
             xmlDeck = XmlUtil.getDataFromFile(filepath, XmlExportableDeck.class);
-        } catch (JAXBException e) {
-            throw new DataConversionException(e);
+            return xmlDeck;
+        } catch (FileNotFoundException e) {
+            throw new FileNotFoundException();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new AssertionError("Unexpected exception " + e.getMessage(), e);
         }
-        return xmlDeck;
     }
 
     /**
@@ -106,12 +114,13 @@ public class PortManager implements Porter {
 
     /**
      * Convert the string into a file path.
+     *
      * @param name The name of the file, can be the absolute or relative file path
      * @return a Path that represents the file path
      */
 
     private Path makeFilePath(String name) {
-        if (name.substring(name.length() - 4).equals(".xml")) {
+        if (name.length() > 4 && name.substring(name.length() - 4).equals(".xml")) {
             return baseFilePath.resolve(name);
         } else {
             return baseFilePath.resolve(name + ".xml");
