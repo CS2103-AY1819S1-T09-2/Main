@@ -376,3 +376,11 @@
     -fx-background-radius: 2;
     -fx-font-size: 11;
 }
+
+#deckReview {
+    -fx-background-color: #1c1c1c;
+}
+
+#deckReviewCard {
+    -fx-background-color: #d8d8d8;
+}

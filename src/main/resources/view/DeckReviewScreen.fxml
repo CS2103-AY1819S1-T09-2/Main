@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<StackPane id="deckReview" fx:id="deckReview" VBox.vgrow="ALWAYS"
+           xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <VBox minWidth="680" prefWidth="680">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10" />
+        </padding>
+        <Text text="Playing" styleClass="text-id"/>
+        <StackPane fx:id="reviewCardPlaceholder" prefWidth="600" VBox.vgrow="ALWAYS">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10" />
+            </padding>
+        </StackPane>
+    </VBox>
+</StackPane>

@@ -4,8 +4,10 @@ import java.util.logging.Logger;
 
 import com.google.common.eventbus.Subscribe;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
@@ -15,10 +17,13 @@ import javafx.stage.Stage;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.events.ui.EndReviewRequestEvent;
 import seedu.address.commons.events.ui.ExitAppRequestEvent;
 import seedu.address.commons.events.ui.ShowHelpRequestEvent;
+import seedu.address.commons.events.ui.StartReviewRequestEvent;
 import seedu.address.logic.Logic;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.deck.Card;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -37,6 +42,8 @@ public class MainWindow extends UiPart<Stage> {
     private BrowserPanel browserPanel;
     private DeckListPanel deckListPanel;
     private CardListPanel cardListPanel;
+    private EditView editView;
+    private DeckReviewScreen deckReviewScreen;
     private Config config;
     private UserPrefs prefs;
     private HelpWindow helpWindow;
@@ -131,6 +138,8 @@ public class MainWindow extends UiPart<Stage> {
 //        deckListPanelPlaceholder.getChildren().add(deckListPanel.getRoot());
 
         EditView editView = new EditView(deckListPanel, cardListPanel);
+        DeckReviewScreen deckReviewScreen = new DeckReviewScreen();
+        mainAreaPlaceholder.getChildren().add(deckReviewScreen.getRoot());
         mainAreaPlaceholder.getChildren().add(editView.getRoot());
 
         ResultDisplay resultDisplay = new ResultDisplay();
@@ -207,5 +216,34 @@ public class MainWindow extends UiPart<Stage> {
     private void handleShowHelpEvent(ShowHelpRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         handleHelp();
+    }
+
+    public void handleStartReview(ObservableList<Card> cards, int startIndex) {
+        Node currentFront = mainAreaPlaceholder.getChildren().get(mainAreaPlaceholder.getChildren().size() - 1);
+        // Check if user is already in deck review mode
+        if (currentFront.getId().equals(DeckReviewScreen.id)) {
+            // TODO: If user is already playing selected deck, throw error
+            // TODO: Else, switch gameplay to the new deck
+        } else {
+            mainAreaPlaceholder.getChildren().set(0, (new DeckReviewScreen(cards, startIndex)).getRoot());
+            currentFront.toBack();
+        }
+    }
+
+    @Subscribe
+    private void handleStartReview(StartReviewRequestEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        handleStartReview(event.getCards(), event.getStartIndex());
+    }
+
+    public void handleEndReview() {
+        Node currentFront = mainAreaPlaceholder.getChildren().get(mainAreaPlaceholder.getChildren().size() - 1);
+        currentFront.toBack();
+    }
+
+    @Subscribe
+    private void handleEndReview(EndReviewRequestEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        handleEndReview();
     }
 }

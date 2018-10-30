@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane id="deckReviewCard" fx:id="deckReviewCard"
+           xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <VBox alignment="CENTER" minWidth="380" prefWidth="600">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10" />
+        </padding>
+        <HBox spacing="5" alignment="CENTER">
+            <Label fx:id="question" styleClass="cell_big_label" />
+        </HBox>
+        <HBox spacing="5" alignment="CENTER">
+            <Label fx:id="answer" styleClass="cell_big_label" />
+        </HBox>
+    </VBox>
+</StackPane>
