@@ -10,9 +10,9 @@ import seedu.address.commons.core.LogsCenter;
 /**
  * A view container for edit operations.
  */
-public class EditView extends UiPart<Region> {
-    private static final String FXML = "EditView.fxml";
-    private final Logger logger = LogsCenter.getLogger(EditView.class);
+public class DeckEditScreen extends UiPart<Region> {
+    private static final String FXML = "DeckEditScreen.fxml";
+    private final Logger logger = LogsCenter.getLogger(DeckEditScreen.class);
 
     @FXML
     private StackPane deckListPanelPlaceholder;
@@ -20,7 +20,7 @@ public class EditView extends UiPart<Region> {
     @FXML
     private StackPane cardListPanelPlaceholder;
 
-    public EditView(DeckListPanel deckListPanel, CardListPanel cardListPanel) {
+    public DeckEditScreen(DeckListPanel deckListPanel, CardListPanel cardListPanel) {
         super(FXML);
         cardListPanelPlaceholder.getChildren().add(cardListPanel.getRoot());
         deckListPanelPlaceholder.getChildren().add(deckListPanel.getRoot());

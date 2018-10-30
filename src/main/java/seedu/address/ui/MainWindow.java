@@ -41,7 +41,7 @@ public class MainWindow extends UiPart<Stage> {
     private BrowserPanel browserPanel;
     private DeckListPanel deckListPanel;
     private CardListPanel cardListPanel;
-    private EditView editView;
+    private DeckEditScreen deckEditScreen;
     private DeckReviewScreen deckReviewScreen;
     private Config config;
     private UserPrefs prefs;
@@ -130,10 +130,10 @@ public class MainWindow extends UiPart<Stage> {
         cardListPanel = new CardListPanel(logic.getFilteredCardList());
         deckListPanel = new DeckListPanel(logic.getFilteredDeckList());
 
-        editView = new EditView(deckListPanel, cardListPanel);
+        deckEditScreen = new DeckEditScreen(deckListPanel, cardListPanel);
         deckReviewScreen = new DeckReviewScreen();
         mainAreaPlaceholder.getChildren().add(deckReviewScreen.getRoot());
-        mainAreaPlaceholder.getChildren().add(editView.getRoot());
+        mainAreaPlaceholder.getChildren().add(deckEditScreen.getRoot());
 
         ResultDisplay resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());

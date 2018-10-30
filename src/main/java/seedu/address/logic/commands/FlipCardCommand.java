@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_NOT_REVIEWING_DECK;
 
 import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.events.ui.FlipCardRequestEvent;
@@ -20,7 +21,9 @@ public class FlipCardCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
 
-        // TODO: check if in deck review mode
+        if (!model.isReviewingDeck()) {
+            throw new CommandException(MESSAGE_NOT_REVIEWING_DECK);
+        }
 
         EventsCenter.getInstance().post(new FlipCardRequestEvent());
         return new CommandResult(MESSAGE_SUCCESS);
