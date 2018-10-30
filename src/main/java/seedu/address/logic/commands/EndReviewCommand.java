@@ -11,9 +11,9 @@ import seedu.address.model.Model;
 /**
  * Ends a review for a deck.
  */
-public class EndCommand extends Command {
+public class EndReviewCommand extends Command {
 
-    public static final String COMMAND_WORD = "end";
+    public static final String COMMAND_WORD = "endreview";
     public static final String MESSAGE_SUCCESS = "Deck review ended.";
 
     @Override
