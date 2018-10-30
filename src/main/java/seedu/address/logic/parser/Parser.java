@@ -22,6 +22,7 @@ import seedu.address.logic.commands.ImportDeckCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.NewCardCommand;
 import seedu.address.logic.commands.NewDeckCommand;
+import seedu.address.logic.commands.PlayCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.commands.UndoCommand;
@@ -108,6 +109,9 @@ public class Parser {
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
+
+        case PlayCommand.COMMAND_WORD:
+            return new PlayCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
