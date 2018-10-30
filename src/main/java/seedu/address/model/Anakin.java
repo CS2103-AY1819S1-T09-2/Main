@@ -341,42 +341,6 @@ public class Anakin implements ReadOnlyAnakin {
         cards.setCurrentIndex(newIndex);
     }
 
-    /**
-     * Attempts to export {@deck}
-     * Returns the exported file location as a string.
-     */
-    public String exportDeck(Deck deck) {
-        if (isReviewingDeck()) {
-            throw new IllegalOperationWhileReviewingDeckException();
-        }
-
-        try {
-            return portManager.exportDeck(deck);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
-    }
-
-
-    /**
-     * Attempts to import a deck at the specified file location.
-     * If there is an existing duplicate deck, throw DuplicateDeckException.
-     */
-
-    public Deck importDeck(String filepath) {
-        if (isReviewingDeck()) {
-            throw new IllegalOperationWhileReviewingDeckException();
-        }
-
-        Deck targetDeck = portManager.importDeck(filepath);
-        if (decks.contains(targetDeck)) {
-            throw new DuplicateDeckException();
-        }
-        return targetDeck;
-    }
-
     //// util methods
 
     @Override

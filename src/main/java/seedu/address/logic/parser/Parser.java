@@ -114,9 +114,6 @@ public class Parser {
         case ImportDeckCommand.COMMAND_WORD:
             return new ImportDeckCommandParser().parse(arguments);
 
-        case ListCommand.COMMAND_WORD:
-            return new ListCommand();
-
         case ReviewCommand.COMMAND_WORD:
             return new ReviewCommandParser().parse(arguments);
 
