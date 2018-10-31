@@ -23,17 +23,22 @@
 <li><a href="#adding-a-card-code-newcard-code">3.8. Adding a card : <code>newcard</code></a></li>
 <li><a href="#editing-a-card-code-editcard-code">3.9. Editing a card : <code>editcard</code></a></li>
 <li><a href="#deleting-a-card-code-delcard-code">3.10. Deleting a card : <code>delcard</code></a></li>
-<li><a href="#sort-current-list-in-lexicographical-order-code-sort-code">3.11. Sort current list in lexicographical order : <code>sort</code></a></li>
-<li><a href="#sort-the-list-of-cards-by-performance-code-rank-code-code-coming-in-v1-4-code">3.12. Sort the list of cards by performance : <code>rank</code> <code>[coming in v1.4]</code></a></li>
-<li><a href="#locate-a-deck-card-by-name-code-find-code">3.13. Locate a deck / card by name : <code>find</code></a></li>
-<li><a href="#export-deck-to-csv-file-code-exportdeck-code">3.14. Export deck to csv file : <code>exportdeck</code></a></li>
-<li><a href="#import-deck-from-csv-file-code-importdeck-code">3.15. Import deck from csv file : <code>importdeck</code></a></li>
-<li><a href="#card-difficulty-classification-code-classify-code">3.16. Card difficulty classification : <code>classify</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.17. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.18. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.19. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.20. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-anakin-code-exit-code">3.21. Exiting Anakin : <code>exit</code></a></li>
+<li><a href="#review-the-cards-in-a-deck-code-review-code">3.11. Review the cards in a deck: <code>review</code></a></li>
+<li><a href="#flip-a-card-in-a-review-code-flipcard-code">3.12. Flip a card in a review: <code>flipcard</code></a></li>
+<li><a href="#go-to-the-next-card-in-a-review-code-nextcard-code">3.13. Go to the next card in a review <code>nextcard</code></a></li>
+<li><a href="#go-to-the-previous-card-in-a-review-code-prevcard-code">3.14. Go to the previous card in a review <code>prevcard</code></a></li>
+<li><a href="#exit-review-mode-code-endreview-code">3.15. Exit review mode <code>endreview</code></a></li>
+<li><a href="#sort-current-list-in-lexicographical-order-code-sort-code">3.16. Sort current list in lexicographical order : <code>sort</code></a></li>
+<li><a href="#sort-the-list-of-cards-by-performance-code-rank-code-code-coming-in-v1-4-code">3.17. Sort the list of cards by performance : <code>rank</code> <code>[coming in v1.4]</code></a></li>
+<li><a href="#locate-a-deck-by-name-card-by-question-code-find-code">3.18. Locate a deck by name / card by question : <code>find</code></a></li>
+<li><a href="#export-deck-to-xml-file-code-export-code">3.19. Export deck to xml file : <code>export</code></a></li>
+<li><a href="#import-deck-from-csv-file-code-import-code">3.20. Import deck from csv file : <code>import</code></a></li>
+<li><a href="#card-difficulty-classification-code-classify-code">3.21. Card difficulty classification : <code>classify</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">3.22. Listing entered commands : <code>history</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">3.23. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.24. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.25. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-anakin-code-exit-code">3.26. Exiting Anakin : <code>exit</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -103,10 +108,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </ul>
 </div>
 </li>
-<li>
-<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
-</li>
 </ol>
+</div>
+<div class="paragraph">
+<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for more details on the available commands.</p>
 </div>
 </div>
 </div>
@@ -146,14 +151,14 @@ Format: <code>help</code></p>
 <div class="sect2">
 <h3 id="lists-all-decks-or-all-cards-code-list-code"><a class="link" href="#lists-all-decks-or-all-cards-code-list-code">3.2. Lists all decks (or all cards) : <code>list</code></a></h3>
 <div class="paragraph">
-<p>Displays a list of all available decks or displays all cards if the command is typed inside a deck.<br>
+<p>Displays a list of all available decks. If inside a deck displays all cards in that deck.<br>
 Format: <code>list</code></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="navigating-into-a-deck-code-cd-code"><a class="link" href="#navigating-into-a-deck-code-cd-code">3.3. Navigating into a deck : <code>cd</code></a></h3>
 <div class="paragraph">
-<p>Enters the deck identified by the index number used in the displayed deck list.<br>
+<p>Enters the deck identified by the index in the displayed deck list.<br>
 Format: <code>cd INDEX_OF_DECK</code></p>
 </div>
 <div class="sidebarblock">
@@ -177,7 +182,7 @@ Format: <code>cd INDEX_OF_DECK</code></p>
 <ul>
 <li>
 <p><code>cd 2</code><br>
-Enter the 2nd deck in the deck list</p>
+Enter the 2nd deck in the currently displayed deck list.</p>
 </li>
 </ul>
 </div>
@@ -198,7 +203,7 @@ Format: <code>cd ..</code></p>
 </li>
 <li>
 <p><code>cd ..</code><br>
-Enter the 1st deck
+Enter the 1st deck in the currently displayed deck list.
 then return back to the Anakin&#8217;s deck list (get out of the 1st deck)</p>
 </li>
 </ul>
@@ -207,8 +212,8 @@ then return back to the Anakin&#8217;s deck list (get out of the 1st deck)</p>
 <div class="sect2">
 <h3 id="adding-a-deck-code-newdeck-code"><a class="link" href="#adding-a-deck-code-newdeck-code">3.5. Adding a deck: <code>newdeck</code></a></h3>
 <div class="paragraph">
-<p>Adds a new deck to Anakin<br>
-Format: <code>newdeck [n/NAME]</code></p>
+<p>Adds a new deck with no cards to Anakin<br>
+Format: <code>newdeck n/NAME</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -275,10 +280,10 @@ Format: <code>deldeck INDEX_OF_DECK</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Deletes the deck at the specified <code>INDEX</code>.</p>
+<p>Deletes the deck at the specified <code>INDEX_OF_DECK</code>.</p>
 </li>
 <li>
-<p>INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.</p>
+<p><code>INDEX_OF_DECK</code> must be a positive integer from 1 onwards and is based on the currently displayed list.</p>
 </li>
 </ul>
 </div>
@@ -292,7 +297,7 @@ Format: <code>deldeck INDEX_OF_DECK</code></p>
 <li>
 <p><code>list</code><br>
 <code>deldeck 2</code><br>
-Deletes the 2nd deck that appears in the list.</p>
+Deletes the 2nd deck that appears in the currently displayed list of decks.</p>
 </li>
 </ul>
 </div>
@@ -305,7 +310,21 @@ Format: <code>newcard d/INDEX_OF_DECK [q/QUESTION] [a/ANSWER]</code></p>
 </div>
 <div class="paragraph">
 <p>If user is inside a deck, can omit: d/INDEX_OF_DECK.<br>
-Format: <code>newcard [q/QUESTION] [a/ANSWER]</code></p>
+Format: <code>newcard q/QUESTION a/ANSWER</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>q/QUESTION</code> and <code>a/ANSWER</code> can be in any order.</p>
+</li>
+<li>
+<p><code>INDEX_OF_DECK</code> must be a positive integer from 1 onwards and is based on the currently displayed list.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -315,7 +334,7 @@ Format: <code>newcard [q/QUESTION] [a/ANSWER]</code></p>
 Format: <code>editcard INDEX_OF_CARD d/INDEX_OF_DECK [q/QUESTION] [a/ANSWER]</code></p>
 </div>
 <div class="paragraph">
-<p>If user is inside a deck, can omit: d/INDEX_OF_DECK.<br>
+<p>If user is inside a deck, can omit: <code>d/INDEX_OF_DECK</code>.<br>
 Format: <code>editcard INDEX_OF_CARD [q/QUESTION] [a/ANSWER]</code></p>
 </div>
 <div class="sidebarblock">
@@ -344,8 +363,8 @@ Format: <code>editcard INDEX_OF_CARD [q/QUESTION] [a/ANSWER]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 d/1 a/A</code><br>
-Edits the answer of the first card in the first deck to be <code>A</code>.</p>
+<p><code>edit 1 d/1 a/New Answer</code><br>
+Edits the answer of the first card in the first deck to be "New Answer".</p>
 </li>
 </ul>
 </div>
@@ -361,7 +380,7 @@ Format: <code>delcard INDEX_OF_CARD</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Deletes the card at the specified <code>INDEX</code>.</p>
+<p>Deletes the card at the specified <code>INDEX_OF_CARD</code>.</p>
 </li>
 <li>
 <p>User must be inside a deck to perform this operation.</p>
@@ -387,7 +406,42 @@ Get into the first deck then deletes the 2nd card that appears in the card list.
 </div>
 </div>
 <div class="sect2">
-<h3 id="sort-current-list-in-lexicographical-order-code-sort-code"><a class="link" href="#sort-current-list-in-lexicographical-order-code-sort-code">3.11. Sort current list in lexicographical order : <code>sort</code></a></h3>
+<h3 id="review-the-cards-in-a-deck-code-review-code"><a class="link" href="#review-the-cards-in-a-deck-code-review-code">3.11. Review the cards in a deck: <code>review</code></a></h3>
+<div class="paragraph">
+<p>Starts a review of the deck specified.<br>
+Format: <code>review INDEX_OF_DECK</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="flip-a-card-in-a-review-code-flipcard-code"><a class="link" href="#flip-a-card-in-a-review-code-flipcard-code">3.12. Flip a card in a review: <code>flipcard</code></a></h3>
+<div class="paragraph">
+<p>View the flipside of the current card during a review.<br>
+Format: <code>flipcard</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="go-to-the-next-card-in-a-review-code-nextcard-code"><a class="link" href="#go-to-the-next-card-in-a-review-code-nextcard-code">3.13. Go to the next card in a review <code>nextcard</code></a></h3>
+<div class="paragraph">
+<p>Views the subsequent card in the deck.<br>
+Format: <code>nextcard</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="go-to-the-previous-card-in-a-review-code-prevcard-code"><a class="link" href="#go-to-the-previous-card-in-a-review-code-prevcard-code">3.14. Go to the previous card in a review <code>prevcard</code></a></h3>
+<div class="paragraph">
+<p>Views the previous card in the deck.<br>
+Format: <code>prevcard</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exit-review-mode-code-endreview-code"><a class="link" href="#exit-review-mode-code-endreview-code">3.15. Exit review mode <code>endreview</code></a></h3>
+<div class="paragraph">
+<p>Exits the review and returns to the editing menu
+Format: <code>endreview</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sort-current-list-in-lexicographical-order-code-sort-code"><a class="link" href="#sort-current-list-in-lexicographical-order-code-sort-code">3.16. Sort current list in lexicographical order : <code>sort</code></a></h3>
 <div class="paragraph">
 <p>If user is currently in a deck, sort all cards in alphabetical order according to the question.<br>
 If user is not in a deck, sort all decks in alphabetical order according to the deck&#8217;s name.<br>
@@ -395,7 +449,7 @@ Format: <code>sort</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sort-the-list-of-cards-by-performance-code-rank-code-code-coming-in-v1-4-code"><a class="link" href="#sort-the-list-of-cards-by-performance-code-rank-code-code-coming-in-v1-4-code">3.12. Sort the list of cards by performance : <code>rank</code> <code>[coming in v1.4]</code></a></h3>
+<h3 id="sort-the-list-of-cards-by-performance-code-rank-code-code-coming-in-v1-4-code"><a class="link" href="#sort-the-list-of-cards-by-performance-code-rank-code-code-coming-in-v1-4-code">3.17. Sort the list of cards by performance : <code>rank</code> <code>[coming in v1.4]</code></a></h3>
 <div class="paragraph">
 <p>User must be inside a deck to perform this operation.<br>
 Sorts the cards in current deck by rank (card performance).<br>
@@ -414,9 +468,9 @@ Format: <code>rank</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locate-a-deck-card-by-name-code-find-code"><a class="link" href="#locate-a-deck-card-by-name-code-find-code">3.13. Locate a deck / card by name : <code>find</code></a></h3>
+<h3 id="locate-a-deck-by-name-card-by-question-code-find-code"><a class="link" href="#locate-a-deck-by-name-card-by-question-code-find-code">3.18. Locate a deck by name / card by question : <code>find</code></a></h3>
 <div class="paragraph">
-<p>Finds decks with names or cards with questions that contain any of the given keywords.</p>
+<p>Filters decks by names or cards by questions that contain any of the given keywords.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -465,19 +519,19 @@ Returns <code>algo</code> and <code>Easy Algo</code></p>
 </li>
 <li>
 <p>User is not inside any decks: <code>find Bio Chem Physics</code><br>
-Returns any decks having names <code>Bio</code>, <code>Chem</code>, or <code>Physics</code></p>
+Returns any decks containing <code>Bio</code>, <code>Chem</code>, or <code>Physics</code> in their name.</p>
 </li>
 <li>
 <p>User is inside a deck: <code>find John Snow</code><br>
-Returns any cards having questions <code>John</code> or <code>Snow</code></p>
+Returns any cards containing <code>John</code> or <code>Snow</code> in their questions.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="export-deck-to-csv-file-code-exportdeck-code"><a class="link" href="#export-deck-to-csv-file-code-exportdeck-code">3.14. Export deck to csv file : <code>exportdeck</code></a></h3>
+<h3 id="export-deck-to-xml-file-code-export-code"><a class="link" href="#export-deck-to-xml-file-code-export-code">3.19. Export deck to xml file : <code>export</code></a></h3>
 <div class="paragraph">
-<p>Creates a CSV file at the specified FILEPATH containing the deck at INDEX_OF_DECK.<br>
+<p>Creates an <code>xml</code> file at the specified FILEPATH containing the deck at INDEX_OF_DECK.<br>
 Format: <code>exportdeck INDEX_OF_DECK [f/FILEPATH]</code></p>
 </div>
 <div class="sidebarblock">
@@ -496,10 +550,10 @@ Format: <code>exportdeck INDEX_OF_DECK [f/FILEPATH]</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="import-deck-from-csv-file-code-importdeck-code"><a class="link" href="#import-deck-from-csv-file-code-importdeck-code">3.15. Import deck from csv file : <code>importdeck</code></a></h3>
+<h3 id="import-deck-from-csv-file-code-import-code"><a class="link" href="#import-deck-from-csv-file-code-import-code">3.20. Import deck from csv file : <code>import</code></a></h3>
 <div class="paragraph">
-<p>Imports a deck from the CSV at the specified FILEPATH.<br>
-Format: <code>exportdeck FILEPATH</code></p>
+<p>Imports an deck from the <code>xml</code> file at the specified FILEPATH.<br>
+Format: <code>import FILEPATH</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -514,7 +568,7 @@ Format: <code>exportdeck FILEPATH</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="card-difficulty-classification-code-classify-code"><a class="link" href="#card-difficulty-classification-code-classify-code">3.16. Card difficulty classification : <code>classify</code></a></h3>
+<h3 id="card-difficulty-classification-code-classify-code"><a class="link" href="#card-difficulty-classification-code-classify-code">3.21. Card difficulty classification : <code>classify</code></a></h3>
 <div class="paragraph">
 <p>Allocates card into one of four bins {Easy, Good, Hard, Review}<br>
 Format: <code>classify d/INDEX_OF_DECK INDEX_OF_CARD RATING</code></p>
@@ -541,7 +595,7 @@ Format: <code>classify RATING</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.17. Listing entered commands : <code>history</code></a></h3>
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.22. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -562,7 +616,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.18. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.23. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -608,7 +662,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.19. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.24. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -640,14 +694,14 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.20. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.25. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-anakin-code-exit-code"><a class="link" href="#exiting-anakin-code-exit-code">3.21. Exiting Anakin : <code>exit</code></a></h3>
+<h3 id="exiting-anakin-code-exit-code"><a class="link" href="#exiting-anakin-code-exit-code">3.26. Exiting Anakin : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
@@ -660,11 +714,11 @@ Format: <code>exit</code></p>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Export all your decks, copy the .csv files to the other Computer, then use the import command to import your decks.</p>
+<strong>A</strong>: Export all your decks, copy the .xml files to the other Computer, then use the import command to import your decks.</p>
 </div>
 <div class="paragraph">
 <p><strong>Q</strong>: Why is it called <strong>Anakin</strong>?<br>
-<strong>A</strong>: Because using CLI is as cool as using the Force.</p>
+<strong>A</strong>: Because using CLI is as cool and mysterious as using the Force.</p>
 </div>
 </div>
 </div>
@@ -733,6 +787,14 @@ You must be inside a deck to perform this operation.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sort the currently displayed list of decks/cards by name/question</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>export INDEX_OF_DECK</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exports the deck at the specified INDEX_OF_DECK. (Default location is the same folder as Anakin)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>import FILEPATH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Imports a deck from the <code>xml</code> file at the specified FILEPATH.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>find KEYWORD [MORE_KEYWORDS]</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Finds decks with names that contain any of the given keywords.</p></td>
 </tr>
@@ -743,4 +805,4 @@ You must be inside a deck to perform this operation.</p></td>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 07:33:12 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 07:46:13 UTC</div></div></div></body></html>
