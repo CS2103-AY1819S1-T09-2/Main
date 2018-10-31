@@ -20,10 +20,10 @@ public class FindCommand extends Command {
     public static final String COMMAND_WORD = "find";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all decks / cards in the current list,"
-            + " which has identity field contains any of the argument keywords. "
+            + " which has identity field contains any of the argument keywords.\n"
             + "The specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + "Donald Duck";
+            + "Example: " + COMMAND_WORD + " Donald Duck";
 
     private final DeckNameContainsKeywordsPredicate deckPredicate;
     private final CardQuestionContainsKeywordsPredicate cardPredicate;
