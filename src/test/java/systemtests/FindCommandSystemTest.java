@@ -1,15 +1,15 @@
 package systemtests;
 
-import static org.junit.Assert.assertFalse;
+//import static org.junit.Assert.assertFalse;
 import static seedu.address.commons.core.Messages.MESSAGE_DECKS_LISTED_OVERVIEW;
-import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.address.testutil.TypicalDecks.DECK_B;
-import static seedu.address.testutil.TypicalDecks.DECK_C;
-import static seedu.address.testutil.TypicalDecks.DECK_D;
-import static seedu.address.testutil.TypicalDecks.DECK_G;
-import static seedu.address.testutil.TypicalDecks.DECK_H;
+//import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+//import static seedu.address.testutil.TypicalDecks.DECK_B;
+//import static seedu.address.testutil.TypicalDecks.DECK_C;
+//import static seedu.address.testutil.TypicalDecks.DECK_D;
+//import static seedu.address.testutil.TypicalDecks.DECK_G;
+//import static seedu.address.testutil.TypicalDecks.DECK_H;
 
-import static seedu.address.testutil.TypicalDecks.KEYWORD_MATCHING_JOHN;
+//import static seedu.address.testutil.TypicalDecks.KEYWORD_MATCHING_JOHN;
 
 //import java.util.ArrayList;
 //import java.util.List;
@@ -34,7 +34,8 @@ public class FindCommandSystemTest extends AnakinSystemTest {
         //         */
         //        String command = "   " + FindCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_JOHN + "   ";
         //        Model expectedModel = getModel();
-        //        ModelHelper.setFilteredDeckList(expectedModel, DECK_G, DECK_H); // first names of Deck_G and Deck_H are John
+        //        ModelHelper.setFilteredDeckList(expectedModel, DECK_G, DECK_H);
+        // // first names of Deck_G and Deck_H are John
         //        assertCommandSuccess(command, expectedModel);
         //        assertSelectedCardUnchanged();
         //

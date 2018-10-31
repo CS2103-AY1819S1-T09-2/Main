@@ -13,7 +13,7 @@ public class MainWindowHandle extends StageHandle {
     private final CommandBoxHandle commandBox;
     private final StatusBarFooterHandle statusBarFooter;
     private final MainMenuHandle mainMenu;
-//    private final BrowserPanelHandle browserPanel;
+    //    private final BrowserPanelHandle browserPanel;
 
     public MainWindowHandle(Stage stage) {
         super(stage);

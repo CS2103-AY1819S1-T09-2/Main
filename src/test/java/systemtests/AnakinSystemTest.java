@@ -128,7 +128,7 @@ public abstract class AnakinSystemTest {
 
         mainWindowHandle.getCommandBox().run(command);
 
-//        waitUntilBrowserLoaded(getBrowserPanel());
+        //        waitUntilBrowserLoaded(getBrowserPanel());
     }
 
     //    /**
@@ -271,7 +271,7 @@ public abstract class AnakinSystemTest {
         assertEquals("", getCommandBox().getInput());
         assertEquals("", getResultDisplay().getText());
         assertDeckListMatching(getDeckListPanel(), getModel().getFilteredDeckList());
-        //        assertEquals(MainApp.class.getResource(FXML_FILE_FOLDER + DEFAULT_PAGE), getBrowserPanel().getLoadedUrl());
+        // assertEquals(MainApp.class.getResource(FXML_FILE_FOLDER + DEFAULT_PAGE), getBrowserPanel().getLoadedUrl());
         assertEquals(Paths.get(".").resolve(testApp.getStorageSaveLocation()).toString(),
                 getStatusBarFooter().getSaveLocation());
         assertEquals(SYNC_STATUS_INITIAL, getStatusBarFooter().getSyncStatus());
