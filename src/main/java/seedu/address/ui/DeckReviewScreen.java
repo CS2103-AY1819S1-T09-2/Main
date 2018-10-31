@@ -39,6 +39,7 @@ public class DeckReviewScreen extends UiPart<Region> {
      * @param cardToShow on the screen
      */
     public void updateCard(Card cardToShow) {
+        reviewCardPlaceholder.getChildren().clear();
         DeckReviewCard gameCardWithoutAnswer = new DeckReviewCard(cardToShow, false);
         DeckReviewCard gameCardWithAnswer = new DeckReviewCard(cardToShow, true);
         reviewCardPlaceholder.getChildren().add(gameCardWithAnswer.getRoot());
