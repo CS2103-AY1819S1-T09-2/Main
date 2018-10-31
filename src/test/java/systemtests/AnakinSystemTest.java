@@ -1,17 +1,12 @@
 package systemtests;
 
-import static guitests.guihandles.WebViewUtil.waitUntilBrowserLoaded;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.ui.BrowserPanel.DEFAULT_PAGE;
 import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_INITIAL;
 import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_UPDATED;
-import static seedu.address.ui.UiPart.FXML_FILE_FOLDER;
 import static seedu.address.ui.testutil.GuiTestAssert.assertDeckListMatching;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -30,7 +25,6 @@ import guitests.guihandles.MainMenuHandle;
 import guitests.guihandles.MainWindowHandle;
 import guitests.guihandles.ResultDisplayHandle;
 import guitests.guihandles.StatusBarFooterHandle;
-import seedu.address.MainApp;
 import seedu.address.TestApp;
 import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.core.index.Index;
@@ -39,7 +33,6 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.model.Anakin;
 import seedu.address.model.Model;
 import seedu.address.testutil.TypicalDecks;
-import seedu.address.ui.BrowserPanel;
 import seedu.address.ui.CommandBox;
 
 
@@ -71,7 +64,7 @@ public abstract class AnakinSystemTest {
         testApp = setupHelper.setupApplication(this::getInitialData, getDataFileLocation());
         mainWindowHandle = setupHelper.setupMainWindowHandle();
 
-//        waitUntilBrowserLoaded(getBrowserPanel());
+        //        waitUntilBrowserLoaded(getBrowserPanel());
         assertApplicationStartingStateIsCorrect();
     }
 
@@ -111,9 +104,9 @@ public abstract class AnakinSystemTest {
         return mainWindowHandle.getMainMenu();
     }
 
-//    public BrowserPanelHandle getBrowserPanel() {
-//        return mainWindowHandle.getBrowserPanel();
-//    }
+    //    public BrowserPanelHandle getBrowserPanel() {
+    //        return mainWindowHandle.getBrowserPanel();
+    //    }
 
     public StatusBarFooterHandle getStatusBarFooter() {
         return mainWindowHandle.getStatusBarFooter();
@@ -189,7 +182,7 @@ public abstract class AnakinSystemTest {
      */
     private void rememberStates() {
         StatusBarFooterHandle statusBarFooterHandle = getStatusBarFooter();
-//        getBrowserPanel().rememberUrl();
+        //        getBrowserPanel().rememberUrl();
         statusBarFooterHandle.rememberSaveLocation();
         statusBarFooterHandle.rememberSyncStatus();
         getDeckListPanel().rememberSelectedDeckCard();
@@ -202,7 +195,7 @@ public abstract class AnakinSystemTest {
      * @see BrowserPanelHandle#isUrlChanged()
      */
     protected void assertSelectedCardDeselected() {
-//        assertFalse(getBrowserPanel().isUrlChanged());
+        //        assertFalse(getBrowserPanel().isUrlChanged());
         assertFalse(getDeckListPanel().isAnyCardSelected());
     }
 
@@ -215,13 +208,13 @@ public abstract class AnakinSystemTest {
     protected void assertSelectedCardChanged(Index expectedSelectedCardIndex) {
         getDeckListPanel().navigateToCard(getDeckListPanel().getSelectedCardIndex());
         String selectedCardName = getDeckListPanel().getHandleToSelectedCard().getName();
-//        URL expectedUrl;
-//        try {
-//            expectedUrl = new URL(BrowserPanel.SEARCH_PAGE_URL + selectedCardName.replaceAll(" ", "%20"));
-//        } catch (MalformedURLException mue) {
-//            throw new AssertionError("URL expected to be valid.", mue);
-//        }
-//        assertEquals(expectedUrl, getBrowserPanel().getLoadedUrl());
+        //        URL expectedUrl;
+        //        try {
+        //            expectedUrl = new URL(BrowserPanel.SEARCH_PAGE_URL + selectedCardName.replaceAll(" ", "%20"));
+        //        } catch (MalformedURLException mue) {
+        //            throw new AssertionError("URL expected to be valid.", mue);
+        //        }
+        //        assertEquals(expectedUrl, getBrowserPanel().getLoadedUrl());
 
         assertEquals(expectedSelectedCardIndex.getZeroBased(), getDeckListPanel().getSelectedCardIndex());
     }
@@ -232,7 +225,7 @@ public abstract class AnakinSystemTest {
      * @see DeckListPanelHandle#isSelectedDeckCardChanged()
      */
     protected void assertSelectedCardUnchanged() {
-//        assertFalse(getBrowserPanel().isUrlChanged());
+        //        assertFalse(getBrowserPanel().isUrlChanged());
         assertFalse(getDeckListPanel().isSelectedDeckCardChanged());
     }
 
@@ -278,7 +271,7 @@ public abstract class AnakinSystemTest {
         assertEquals("", getCommandBox().getInput());
         assertEquals("", getResultDisplay().getText());
         assertDeckListMatching(getDeckListPanel(), getModel().getFilteredDeckList());
-//        assertEquals(MainApp.class.getResource(FXML_FILE_FOLDER + DEFAULT_PAGE), getBrowserPanel().getLoadedUrl());
+        //        assertEquals(MainApp.class.getResource(FXML_FILE_FOLDER + DEFAULT_PAGE), getBrowserPanel().getLoadedUrl());
         assertEquals(Paths.get(".").resolve(testApp.getStorageSaveLocation()).toString(),
                 getStatusBarFooter().getSaveLocation());
         assertEquals(SYNC_STATUS_INITIAL, getStatusBarFooter().getSyncStatus());

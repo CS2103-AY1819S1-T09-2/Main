@@ -1,13 +1,8 @@
 package systemtests;
 
-import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.address.testutil.TypicalDecks.KEYWORD_MATCHING_JOHN;
-
 import org.junit.Test;
 
 import seedu.address.logic.commands.ClearCommand;
-import seedu.address.logic.commands.RedoCommand;
-import seedu.address.logic.commands.UndoCommand;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 
@@ -17,7 +12,8 @@ public class ClearCommandSystemTest extends AnakinSystemTest {
     public void clear() {
         //        final Model defaultModel = getModel();
         //
-        //        /* Case: clear non-empty address book, command with leading spaces and trailing alphanumeric characters and
+        //        /* Case: clear non-empty address book, command with leading spaces and trailing alphanumeric
+        // characters and
         //         * spaces -> cleared
         //         */
         //        assertCommandSuccess("   " + ClearCommand.COMMAND_WORD + " ab12   ");
