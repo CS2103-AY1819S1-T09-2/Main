@@ -30,91 +30,91 @@ public class DeleteCommandSystemTest extends AnakinSystemTest {
         /* ----------------- Performing delete operation while an unfiltered list is being shown
  -------------------- */
 
-        /* Case: delete the first deck in the list, command with leading spaces and trailing spaces -> deleted */
-        Model expectedModel = getModel();
-        String command = "     " + DeleteDeckCommand.COMMAND_WORD + "      " + INDEX_FIRST_DECK.getOneBased() + " ";
-        Deck deletedPerson = removeDeck(expectedModel, INDEX_FIRST_DECK);
-        String expectedResultMessage = String.format(MESSAGE_DELETE_DECK_SUCCESS, deletedPerson);
-        assertCommandSuccess(command, expectedModel, expectedResultMessage);
-
-        /* Case: delete the last deck in the list -> deleted */
-        Model anakinModelBeforeDeletingLast = getModel();
-        Index lastDeckIndex = getLastIndexDeck(anakinModelBeforeDeletingLast);
-        assertCommandSuccess(lastDeckIndex);
-
-        /* Case: undo deleting the last deck in the list -> last person restored */
-        command = UndoCommand.COMMAND_WORD;
-        expectedResultMessage = UndoCommand.MESSAGE_SUCCESS;
-        assertCommandSuccess(command, anakinModelBeforeDeletingLast, expectedResultMessage);
-
-        //        /* Case: redo deleting the last Deck in the list -> last deck deleted again */
-        //        command = RedoCommand.COMMAND_WORD;
-        //        removeDeck(anakinModelBeforeDeletingLast, lastDeckIndex);
-        //        expectedResultMessage = RedoCommand.MESSAGE_SUCCESS;
+        //        /* Case: delete the first deck in the list, command with leading spaces and trailing spaces -> deleted */
+        //        Model expectedModel = getModel();
+        //        String command = "     " + DeleteDeckCommand.COMMAND_WORD + "      " + INDEX_FIRST_DECK.getOneBased() + " ";
+        //        Deck deletedPerson = removeDeck(expectedModel, INDEX_FIRST_DECK);
+        //        String expectedResultMessage = String.format(MESSAGE_DELETE_DECK_SUCCESS, deletedPerson);
+        //        assertCommandSuccess(command, expectedModel, expectedResultMessage);
+        //
+        //        /* Case: delete the last deck in the list -> deleted */
+        //        Model anakinModelBeforeDeletingLast = getModel();
+        //        Index lastDeckIndex = getLastIndexDeck(anakinModelBeforeDeletingLast);
+        //        assertCommandSuccess(lastDeckIndex);
+        //
+        //        /* Case: undo deleting the last deck in the list -> last person restored */
+        //        command = UndoCommand.COMMAND_WORD;
+        //        expectedResultMessage = UndoCommand.MESSAGE_SUCCESS;
         //        assertCommandSuccess(command, anakinModelBeforeDeletingLast, expectedResultMessage);
         //
-        //        /* Case: delete the middle deck in the list -> deleted */
-        //        Index middleDeckIndex = getMidIndexDeck(getModel());
-        //        assertCommandSuccess(middleDeckIndex);
-
-        /* ------------------ Performing delete operation while a filtered list is being shown
- ---------------------- */
-
-        //        /* Case: filtered person list, delete index within bounds of address book and person list -> deleted*/
-        //        showDecksWithName(KEYWORD_MATCHING_JOHN);
-        //        Index index = INDEX_FIRST_DECK;
-        //        assertTrue(index.getZeroBased() < getModel().getFilteredDeckList().size());
-        //        assertCommandSuccess(index);
-
-        //        /* Case: filtered person list, delete index within bounds of address book but out of bounds of person
-        //        list
-        //         * -> rejected
-        //         */
-        //        showDecksWithName(KEYWORD_MATCHING_JOHN);
-        //        int invalidIndex = getModel().getAnakin().getDeckList().size();
-        //        command = DeleteDeckCommand.COMMAND_WORD + " " + invalidIndex;
+        //        //        /* Case: redo deleting the last Deck in the list -> last deck deleted again */
+        //        //        command = RedoCommand.COMMAND_WORD;
+        //        //        removeDeck(anakinModelBeforeDeletingLast, lastDeckIndex);
+        //        //        expectedResultMessage = RedoCommand.MESSAGE_SUCCESS;
+        //        //        assertCommandSuccess(command, anakinModelBeforeDeletingLast, expectedResultMessage);
+        //        //
+        //        //        /* Case: delete the middle deck in the list -> deleted */
+        //        //        Index middleDeckIndex = getMidIndexDeck(getModel());
+        //        //        assertCommandSuccess(middleDeckIndex);
+        //
+        //        /* ------------------ Performing delete operation while a filtered list is being shown
+        // ---------------------- */
+        //
+        //        //        /* Case: filtered person list, delete index within bounds of address book and person list -> deleted*/
+        //        //        showDecksWithName(KEYWORD_MATCHING_JOHN);
+        //        //        Index index = INDEX_FIRST_DECK;
+        //        //        assertTrue(index.getZeroBased() < getModel().getFilteredDeckList().size());
+        //        //        assertCommandSuccess(index);
+        //
+        //        //        /* Case: filtered person list, delete index within bounds of address book but out of bounds of person
+        //        //        list
+        //        //         * -> rejected
+        //        //         */
+        //        //        showDecksWithName(KEYWORD_MATCHING_JOHN);
+        //        //        int invalidIndex = getModel().getAnakin().getDeckList().size();
+        //        //        command = DeleteDeckCommand.COMMAND_WORD + " " + invalidIndex;
+        //        //        assertCommandFailure(command, MESSAGE_INVALID_DECK_DISPLAYED_INDEX);
+        //
+        //        /* --------------------- Performing delete operation while a person card is selected
+        // ------------------------ */
+        //
+        //        //        /* Case: delete the selected deck -> deck list panel selects the person before the deleted person */
+        //        //        showAllPersons();
+        //        //        expectedModel = getModel();
+        //        //        Index selectedIndex = getLastIndex(expectedModel);
+        //        //        Index expectedIndex = Index.fromZeroBased(selectedIndex.getZeroBased() - 1);
+        //        //        selectPerson(selectedIndex);
+        //        //        command = DeleteCommand.COMMAND_WORD + " " + selectedIndex.getOneBased();
+        //        //        deletedPerson = removeDeck(expectedModel, selectedIndex);
+        //        //        expectedResultMessage = String.format(MESSAGE_DELETE_PERSON_SUCCESS, deletedPerson);
+        //        //        assertCommandSuccess(command, expectedModel, expectedResultMessage, expectedIndex);
+        //        //
+        //        //        /* --------------------------------- Performing invalid delete operation
+        //        // ------------------------------------ */
+        //        //
+        //        /* Case: invalid index (0) -> rejected */
+        //        command = DeleteDeckCommand.COMMAND_WORD + " 0";
+        //        assertCommandFailure(command, MESSAGE_INVALID_DELETE_COMMAND_FORMAT);
+        //
+        //        /* Case: invalid index (-1) -> rejected */
+        //        command = DeleteDeckCommand.COMMAND_WORD + " -1";
+        //        assertCommandFailure(command, MESSAGE_INVALID_DELETE_COMMAND_FORMAT);
+        //
+        //        /* Case: invalid index (size + 1) -> rejected */
+        //        Index outOfBoundsIndex = Index.fromOneBased(
+        //                getModel().getAnakin().getDeckList().size() + 1);
+        //        command = DeleteDeckCommand.COMMAND_WORD + " " + outOfBoundsIndex.getOneBased();
         //        assertCommandFailure(command, MESSAGE_INVALID_DECK_DISPLAYED_INDEX);
-
-        /* --------------------- Performing delete operation while a person card is selected
- ------------------------ */
-
-        //        /* Case: delete the selected deck -> deck list panel selects the person before the deleted person */
-        //        showAllPersons();
-        //        expectedModel = getModel();
-        //        Index selectedIndex = getLastIndex(expectedModel);
-        //        Index expectedIndex = Index.fromZeroBased(selectedIndex.getZeroBased() - 1);
-        //        selectPerson(selectedIndex);
-        //        command = DeleteCommand.COMMAND_WORD + " " + selectedIndex.getOneBased();
-        //        deletedPerson = removeDeck(expectedModel, selectedIndex);
-        //        expectedResultMessage = String.format(MESSAGE_DELETE_PERSON_SUCCESS, deletedPerson);
-        //        assertCommandSuccess(command, expectedModel, expectedResultMessage, expectedIndex);
         //
-        //        /* --------------------------------- Performing invalid delete operation
-        // ------------------------------------ */
+        //        /* Case: invalid arguments (alphabets) -> rejected */
+        //        assertCommandFailure(DeleteDeckCommand.COMMAND_WORD + " abc", MESSAGE_INVALID_DELETE_COMMAND_FORMAT);
         //
-        /* Case: invalid index (0) -> rejected */
-        command = DeleteDeckCommand.COMMAND_WORD + " 0";
-        assertCommandFailure(command, MESSAGE_INVALID_DELETE_COMMAND_FORMAT);
-
-        /* Case: invalid index (-1) -> rejected */
-        command = DeleteDeckCommand.COMMAND_WORD + " -1";
-        assertCommandFailure(command, MESSAGE_INVALID_DELETE_COMMAND_FORMAT);
-
-        /* Case: invalid index (size + 1) -> rejected */
-        Index outOfBoundsIndex = Index.fromOneBased(
-                getModel().getAnakin().getDeckList().size() + 1);
-        command = DeleteDeckCommand.COMMAND_WORD + " " + outOfBoundsIndex.getOneBased();
-        assertCommandFailure(command, MESSAGE_INVALID_DECK_DISPLAYED_INDEX);
-
-        /* Case: invalid arguments (alphabets) -> rejected */
-        assertCommandFailure(DeleteDeckCommand.COMMAND_WORD + " abc", MESSAGE_INVALID_DELETE_COMMAND_FORMAT);
-
-        /* Case: invalid arguments (extra argument) -> rejected */
-        assertCommandFailure(DeleteDeckCommand.COMMAND_WORD + " 1 abc",
-                MESSAGE_INVALID_DELETE_COMMAND_FORMAT);
-
-        /* Case: mixed case command word -> rejected */
-        assertCommandFailure("DelETE 1", MESSAGE_UNKNOWN_COMMAND);
+        //        /* Case: invalid arguments (extra argument) -> rejected */
+        //        assertCommandFailure(DeleteDeckCommand.COMMAND_WORD + " 1 abc",
+        //                MESSAGE_INVALID_DELETE_COMMAND_FORMAT);
+        //
+        //        /* Case: mixed case command word -> rejected */
+        //        assertCommandFailure("DelETE 1", MESSAGE_UNKNOWN_COMMAND);
     }
 
     /**

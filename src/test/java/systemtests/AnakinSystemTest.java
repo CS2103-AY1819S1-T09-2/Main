@@ -71,7 +71,7 @@ public abstract class AnakinSystemTest {
         testApp = setupHelper.setupApplication(this::getInitialData, getDataFileLocation());
         mainWindowHandle = setupHelper.setupMainWindowHandle();
 
-        waitUntilBrowserLoaded(getBrowserPanel());
+//        waitUntilBrowserLoaded(getBrowserPanel());
         assertApplicationStartingStateIsCorrect();
     }
 
@@ -111,9 +111,9 @@ public abstract class AnakinSystemTest {
         return mainWindowHandle.getMainMenu();
     }
 
-    public BrowserPanelHandle getBrowserPanel() {
-        return mainWindowHandle.getBrowserPanel();
-    }
+//    public BrowserPanelHandle getBrowserPanel() {
+//        return mainWindowHandle.getBrowserPanel();
+//    }
 
     public StatusBarFooterHandle getStatusBarFooter() {
         return mainWindowHandle.getStatusBarFooter();
@@ -135,7 +135,7 @@ public abstract class AnakinSystemTest {
 
         mainWindowHandle.getCommandBox().run(command);
 
-        waitUntilBrowserLoaded(getBrowserPanel());
+//        waitUntilBrowserLoaded(getBrowserPanel());
     }
 
     //    /**
@@ -189,7 +189,7 @@ public abstract class AnakinSystemTest {
      */
     private void rememberStates() {
         StatusBarFooterHandle statusBarFooterHandle = getStatusBarFooter();
-        getBrowserPanel().rememberUrl();
+//        getBrowserPanel().rememberUrl();
         statusBarFooterHandle.rememberSaveLocation();
         statusBarFooterHandle.rememberSyncStatus();
         getDeckListPanel().rememberSelectedDeckCard();
@@ -202,7 +202,7 @@ public abstract class AnakinSystemTest {
      * @see BrowserPanelHandle#isUrlChanged()
      */
     protected void assertSelectedCardDeselected() {
-        assertFalse(getBrowserPanel().isUrlChanged());
+//        assertFalse(getBrowserPanel().isUrlChanged());
         assertFalse(getDeckListPanel().isAnyCardSelected());
     }
 
@@ -215,13 +215,13 @@ public abstract class AnakinSystemTest {
     protected void assertSelectedCardChanged(Index expectedSelectedCardIndex) {
         getDeckListPanel().navigateToCard(getDeckListPanel().getSelectedCardIndex());
         String selectedCardName = getDeckListPanel().getHandleToSelectedCard().getName();
-        URL expectedUrl;
-        try {
-            expectedUrl = new URL(BrowserPanel.SEARCH_PAGE_URL + selectedCardName.replaceAll(" ", "%20"));
-        } catch (MalformedURLException mue) {
-            throw new AssertionError("URL expected to be valid.", mue);
-        }
-        assertEquals(expectedUrl, getBrowserPanel().getLoadedUrl());
+//        URL expectedUrl;
+//        try {
+//            expectedUrl = new URL(BrowserPanel.SEARCH_PAGE_URL + selectedCardName.replaceAll(" ", "%20"));
+//        } catch (MalformedURLException mue) {
+//            throw new AssertionError("URL expected to be valid.", mue);
+//        }
+//        assertEquals(expectedUrl, getBrowserPanel().getLoadedUrl());
 
         assertEquals(expectedSelectedCardIndex.getZeroBased(), getDeckListPanel().getSelectedCardIndex());
     }
@@ -232,7 +232,7 @@ public abstract class AnakinSystemTest {
      * @see DeckListPanelHandle#isSelectedDeckCardChanged()
      */
     protected void assertSelectedCardUnchanged() {
-        assertFalse(getBrowserPanel().isUrlChanged());
+//        assertFalse(getBrowserPanel().isUrlChanged());
         assertFalse(getDeckListPanel().isSelectedDeckCardChanged());
     }
 
@@ -278,7 +278,7 @@ public abstract class AnakinSystemTest {
         assertEquals("", getCommandBox().getInput());
         assertEquals("", getResultDisplay().getText());
         assertDeckListMatching(getDeckListPanel(), getModel().getFilteredDeckList());
-        assertEquals(MainApp.class.getResource(FXML_FILE_FOLDER + DEFAULT_PAGE), getBrowserPanel().getLoadedUrl());
+//        assertEquals(MainApp.class.getResource(FXML_FILE_FOLDER + DEFAULT_PAGE), getBrowserPanel().getLoadedUrl());
         assertEquals(Paths.get(".").resolve(testApp.getStorageSaveLocation()).toString(),
                 getStatusBarFooter().getSaveLocation());
         assertEquals(SYNC_STATUS_INITIAL, getStatusBarFooter().getSyncStatus());
