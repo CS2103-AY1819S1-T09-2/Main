@@ -16,13 +16,13 @@ import static seedu.address.commons.core.Messages.MESSAGE_DECKS_LISTED_OVERVIEW;
 
 import org.junit.Test;
 
+import seedu.address.model.Model;
 //import seedu.address.commons.core.index.Index;
 
 //import seedu.address.logic.commands.DeleteDeckCommand;
 //import seedu.address.logic.commands.FindCommand;
 //import seedu.address.logic.commands.RedoCommand;
 //import seedu.address.logic.commands.UndoCommand;
-import seedu.address.model.Model;
 
 
 public class FindCommandSystemTest extends AnakinSystemTest {
