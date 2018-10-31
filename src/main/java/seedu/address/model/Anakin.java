@@ -39,12 +39,12 @@ public class Anakin implements ReadOnlyAnakin {
     private PortManager portManager;
 
     /*
-    * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
-    * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
-    *
-    * Note that non-static init blocks are not recommended to use. There are other ways to avoid duplication
-    * among constructors.
-    */ {
+     * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
+     * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
+     *
+     * Note that non-static init blocks are not recommended to use. There are other ways to avoid duplication
+     * among constructors.
+     */ {
         decks = new UniqueDeckList();
         cards = new UniqueCardList();
         displayedCards = new UniqueCardList();
@@ -69,9 +69,6 @@ public class Anakin implements ReadOnlyAnakin {
      * {@code decks} must not contain duplicate decks.
      */
     public void setDecks(List<Deck> decks) {
-        if (isReviewingDeck()) {
-            throw new IllegalOperationWhileReviewingDeckException();
-        }
         this.decks.setDecks(decks);
     }
 
@@ -80,9 +77,6 @@ public class Anakin implements ReadOnlyAnakin {
      * {@code cards} must not contain duplicate cards.
      */
     public void setCards(List<Card> cards) {
-        if (isReviewingDeck()) {
-            throw new IllegalOperationWhileReviewingDeckException();
-        }
         this.cards.setCards(cards);
     }
 
@@ -277,10 +271,6 @@ public class Anakin implements ReadOnlyAnakin {
      * The card identity of {@code editedCard} must not be the same as another existing card in the current deck.
      */
     public void updateCard(Card target, Card editedCard) {
-        if (isReviewingDeck()) {
-            throw new IllegalOperationWhileReviewingDeckException();
-        }
-
         requireNonNull(editedCard);
         if (!isInsideDeck()) {
             throw new DeckNotFoundException();
@@ -376,8 +366,8 @@ public class Anakin implements ReadOnlyAnakin {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof Anakin // instanceof handles nulls
-            && decks.equals(((Anakin) other).decks));
+                || (other instanceof Anakin // instanceof handles nulls
+                && decks.equals(((Anakin) other).decks));
     }
 
     @Override
