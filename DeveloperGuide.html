@@ -33,8 +33,9 @@
 <li><a href="#performance-tracking-implementation">3.3. Performance Tracking Implementation</a></li>
 <li><a href="#ui-implementation">3.4. UI implementation</a></li>
 <li><a href="#keep-cards-panel-updated-by-ui">3.5. Keep cards panel updated by UI</a></li>
-<li><a href="#logging">3.6. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
+<li><a href="#import-export-implementation">3.6. Import/Export Implementation</a></li>
+<li><a href="#logging">3.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -619,7 +620,7 @@ abstract <code>UiPart</code> class.</p>
 <div class="sect2">
 <h3 id="performance-tracking-implementation"><a class="link" href="#performance-tracking-implementation">3.3. Performance Tracking Implementation</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation-v1-3"><a class="link" href="#proposed-implementation-v1-3">3.3.1. Proposed Implementation (v1.3)</a></h4>
+<h4 id="current-implementation-v1-3"><a class="link" href="#current-implementation-v1-3">3.3.1. Current Implementation (v1.3)</a></h4>
 <div class="paragraph">
 <p>The user can assign to a card a difficulty after reviewing it in "play" mode. Users can only do this assignment on
 the card they are currently reviewing, as it is the only time it makes sense.</p>
@@ -791,14 +792,66 @@ and update the cards panel accordingly</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
+<h3 id="import-export-implementation"><a class="link" href="#import-export-implementation">3.6. Import/Export Implementation</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-v1-3-2"><a class="link" href="#current-implementation-v1-3-2">3.6.1. Current implementation (v1.3)</a></h4>
+<div class="paragraph">
+<p>Imports and exports in Anakin are managed by a PortManager.</p>
+</div>
+<div class="paragraph">
+<p>PortManager will contain a <code>java.nio Path</code> that files will be exported to. By default it is the same folder that Anakin is located in.
+Exporting a <code>Deck</code> will convert it to an <code>XmlExportableDeck</code>
+Upon creation, Model will initialize a PortManager. When an ExportCommand or ImportCommand is executed, it will call the Model&#8217;s importDeck or exportDeck method.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.6.2. Design considerations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Have Model contain a PortManager class to manage imports and export.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Explanation: Commands pass arguments to Model, which passes arguments to its PortManager.
+In the case of ExportCommand, the <code>Deck</code> to be exported is passed from Command to Model to PortManager.
+PortManager returns a <code>String</code> of the export location, which is passed to Model, then passed to the Command for printing.<br></p>
+</li>
+<li>
+<p>Pros: Better modularity</p>
+</li>
+<li>
+<p>Cons: Have to pass messages through many layers and methods.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Have Model itself manage imports and exports</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Less message passing between layers</p>
+</li>
+<li>
+<p>Cons: Worse modularity and Separation of Concerns.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -829,7 +882,7 @@ and update the cards panel accordingly</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1797,4 +1850,4 @@ b. Require developers to download those libraries manually (this creates extra w
 </dl>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 16:03:34 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 16:09:18 UTC</div></div></div></body></html>
