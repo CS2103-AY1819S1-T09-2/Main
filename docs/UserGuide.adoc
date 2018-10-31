@@ -189,17 +189,38 @@ Get into the first deck then deletes the 2nd card that appears in the card list.
 Starts a review of the deck specified. +
 Format: `review INDEX_OF_DECK`
 
+****
+* INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
+* While in review mode, all card and deck-related commands are disabled.
+****
+
 === Flip a card in a review : `flipcard`
 View the flipside of the current card during a review. +
 Format: `flipcard`
+
+Examples:
+
+* `review 1` +
+`flipcard` +
+`flipcard` +
+Reviews the first deck on the list. You will see the first question card. Upon first `flipcard`, you will see the
+answer on the back of the card. When you execute `flipcard` again, you will see the question card once more.
 
 === Go to the next card in a review : `nextcard`
 Views the subsequent card in the deck. +
 Format: `nextcard`
 
+****
+* When you are at the last card of the deck, executing `nextcard` will loop back to the first card.
+****
+
 === Go to the previous card in a review : `prevcard`
 Views the previous card in the deck. +
 Format: `prevcard`
+
+****
+* When you are at the first card of the deck, executing `prevcard` will loop back to the last card.
+****
 
 === Exit review mode : `endreview`
 Exits the review and returns to the editing menu +
