@@ -19,7 +19,7 @@ public class ClassifyCommand extends Command {
             + "Parameters: RATING (easy/good/hard/review) "
             + "Example: " + COMMAND_WORD + " easy ";
 
-    public static final String MESSAGE_CLASSIFICATION_SUCCESS = "Assigned card %1$s difficulty %2$s";
+    public static final String MESSAGE_CLASSIFICATION_SUCCESS = "Assigned %1$s difficulty to card %2$s";
 
     private final Performance difficulty;
 
@@ -41,6 +41,6 @@ public class ClassifyCommand extends Command {
         model.updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
         model.commitAnakin();
 
-        return new CommandResult(String.format(MESSAGE_CLASSIFICATION_SUCCESS, card, this.difficulty));
+        return new CommandResult(String.format(MESSAGE_CLASSIFICATION_SUCCESS, this.difficulty, card));
     }
 }
