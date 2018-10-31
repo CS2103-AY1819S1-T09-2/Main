@@ -1,0 +1,46 @@
+package seedu.address.logic.commands;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_NOT_REVIEWING_DECK;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CARDS;
+
+import seedu.address.logic.CommandHistory;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Model;
+import seedu.address.model.deck.Card;
+import seedu.address.model.deck.Performance;
+
+public class ClassifyCommand extends Command {
+    public static final String COMMAND_WORD = "classify";
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ":  assigns to this card one of the four "
+            + "difficulty classification: {easy, good, hard, review}. "
+            + "Existing difficulty classification will be overwritten by the input value.\n"
+            + "Parameters: RATING (easy/good/hard/review) "
+            + "Example: " + COMMAND_WORD + " easy ";
+
+    public static final String MESSAGE_CLASSIFICATION_SUCCESS = "Assigned card %1$s difficulty %2$s";
+
+    private final Performance difficulty;
+
+    public ClassifyCommand(Performance difficulty) {
+        requireNonNull(difficulty);
+        this.difficulty = difficulty;
+    }
+
+    @Override
+    public CommandResult execute(Model model, CommandHistory history) throws CommandException {
+        requireNonNull(model);
+
+        if (!model.isReviewingDeck()) {
+            throw new CommandException(MESSAGE_NOT_REVIEWING_DECK);
+        }
+        Card card = model.getFilteredCardList().get(model.getIndexOfCurrentCard());
+        Card editedCard = Card.classifyCard(card, difficulty);
+        model.updateCard(card, editedCard);
+        model.updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
+        model.commitAnakin();
+
+        return new CommandResult(String.format(MESSAGE_CLASSIFICATION_SUCCESS, card, this.difficulty));
+    }
+}
