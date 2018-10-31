@@ -43,7 +43,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 * **`delete`**`3` : deletes the 3rd deck shown in the current list
 * *`exit`* : exits the app
 
-.  Refer to <<Features>> for details of each command.
+Refer to <<Features>> for more details on the available commands.
 
 [[Features]]
 == Features
@@ -64,13 +64,12 @@ Format: `help`
 
 === Lists all decks (or all cards) : `list`
 
-Displays a list of all available decks or displays all cards if the command is typed inside a deck. +
+Displays a list of all available decks. If inside a deck displays all cards in that deck. +
 Format: `list`
 
 
-
 === Navigating into a deck : `cd`
-Enters the deck identified by the index number used in the displayed deck list. +
+Enters the deck identified by the index in the displayed deck list. +
 Format: `cd INDEX_OF_DECK`
 
 ****
@@ -81,7 +80,7 @@ Format: `cd INDEX_OF_DECK`
 Examples:
 
 * `cd 2` +
-Enter the 2nd deck in the deck list
+Enter the 2nd deck in the currently displayed deck list.
 
 === Navigating out of the current deck : `cd ..`
 Exit the current deck and returns the user to the list of decks. +
@@ -91,13 +90,13 @@ Examples:
 
 * `cd 1` +
 * `cd ..` +
-Enter the 1st deck
+Enter the 1st deck in the currently displayed deck list.
 then return back to the Anakin's deck list (get out of the 1st deck)
 
 === Adding a deck: `newdeck`
 
-Adds a new deck to Anakin +
-Format: `newdeck [n/NAME]`
+Adds a new deck with no cards to Anakin +
+Format: `newdeck n/NAME`
 
 ****
 * NAME will be taken as a string.
@@ -130,15 +129,15 @@ Deletes the specified deck from Anakin. +
 Format: `deldeck INDEX_OF_DECK`
 
 ****
-* Deletes the deck at the specified `INDEX`.
-* INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
+* Deletes the deck at the specified `INDEX_OF_DECK`.
+* `INDEX_OF_DECK` must be a positive integer from 1 onwards and is based on the currently displayed list.
 ****
 
 Examples:
 
 * `list` +
 `deldeck 2` +
-Deletes the 2nd deck that appears in the list.
+Deletes the 2nd deck that appears in the currently displayed list of decks.
 
 === Adding a card : `newcard`
 
@@ -146,14 +145,19 @@ Edits an existing card in the specified deck. +
 Format: `newcard d/INDEX_OF_DECK [q/QUESTION] [a/ANSWER]`
 
 If user is inside a deck, can omit: d/INDEX_OF_DECK. +
-Format: `newcard [q/QUESTION] [a/ANSWER]`
+Format: `newcard q/QUESTION a/ANSWER`
+
+****
+* `q/QUESTION` and `a/ANSWER` can be in any order.
+* `INDEX_OF_DECK` must be a positive integer from 1 onwards and is based on the currently displayed list.
+****
 
 === Editing a card : `editcard`
 
 Edits an existing card in the specified deck. +
 Format: `editcard INDEX_OF_CARD d/INDEX_OF_DECK [q/QUESTION] [a/ANSWER]`
 
-If user is inside a deck, can omit: d/INDEX_OF_DECK. +
+If user is inside a deck, can omit: `d/INDEX_OF_DECK`. +
 Format: `editcard INDEX_OF_CARD [q/QUESTION] [a/ANSWER]`
 
 ****
@@ -165,8 +169,8 @@ Format: `editcard INDEX_OF_CARD [q/QUESTION] [a/ANSWER]`
 
 Examples:
 
-* `edit 1 d/1 a/A` +
-Edits the answer of the first card in the first deck to be `A`.
+* `edit 1 d/1 a/New Answer` +
+Edits the answer of the first card in the first deck to be "New Answer".
 
 === Deleting a card : `delcard`
 
@@ -174,7 +178,7 @@ Deletes the specified card from the current deck. +
 Format: `delcard INDEX_OF_CARD`
 
 ****
-* Deletes the card at the specified `INDEX`.
+* Deletes the card at the specified `INDEX_OF_CARD`.
 * User must be inside a deck to perform this operation.
 * INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
 ****
@@ -184,6 +188,26 @@ Examples:
 * `cd 1` +
 `delcard 2` +
 Get into the first deck then deletes the 2nd card that appears in the card list.
+
+=== Review the cards in a deck: `review`
+Starts a review of the deck specified. +
+Format: `review INDEX_OF_DECK`
+
+=== Flip a card in a review: `flipcard`
+View the flipside of the current card during a review. +
+Format: `flipcard`
+
+=== Go to the next card in a review `nextcard`
+Views the subsequent card in the deck. +
+Format: `nextcard`
+
+=== Go to the previous card in a review `prevcard`
+Views the previous card in the deck. +
+Format: `prevcard`
+
+=== Exit review mode `endreview`
+Exits the review and returns to the editing menu
+Format: `endreview`
 
 === Sort current list in lexicographical order : `sort`
 If user is currently in a deck, sort all cards in alphabetical order according to the question. +
@@ -199,9 +223,9 @@ Format: `rank`
 * Note: User must be inside a deck to perform this command.
 ****
 
-=== Locate a deck / card by name : `find`
+=== Locate a deck by name / card by question : `find`
 
-Finds decks with names or cards with questions that contain any of the given keywords.
+Filters decks by names or cards by questions that contain any of the given keywords.
 
 * If user is currently in a deck, find cards.
 
@@ -222,12 +246,12 @@ Examples:
 * `find Algo` +
 Returns `algo` and `Easy Algo`
 * User is not inside any decks: `find Bio Chem Physics` +
-Returns any decks having names `Bio`, `Chem`, or `Physics`
+Returns any decks containing `Bio`, `Chem`, or `Physics` in their name.
 * User is inside a deck: `find John Snow` +
-Returns any cards having questions `John` or `Snow`
+Returns any cards containing `John` or `Snow` in their questions.
 
-=== Export deck to csv file : `exportdeck`
-Creates a CSV file at the specified FILEPATH containing the deck at INDEX_OF_DECK. +
+=== Export deck to xml file : `export`
+Creates an `xml` file at the specified FILEPATH containing the deck at INDEX_OF_DECK. +
 Format: `exportdeck INDEX_OF_DECK [f/FILEPATH]`
 
 ****
@@ -235,9 +259,9 @@ Format: `exportdeck INDEX_OF_DECK [f/FILEPATH]`
 * INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
 ****
 
-=== Import deck from csv file : `importdeck`
-Imports a deck from the CSV at the specified FILEPATH. +
-Format: `exportdeck FILEPATH`
+=== Import deck from csv file : `import`
+Imports an deck from the `xml` file at the specified FILEPATH. +
+Format: `import FILEPATH`
 
 ****
 * FILEPATH must include the filename of the target file.
@@ -331,10 +355,10 @@ Format: `exit`
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
-*A*: Export all your decks, copy the .csv files to the other Computer, then use the import command to import your decks.
+*A*: Export all your decks, copy the .xml files to the other Computer, then use the import command to import your decks.
 
 *Q*: Why is it called *Anakin*? +
-*A*: Because using CLI is as cool as using the Force.
+*A*: Because using CLI is as cool and mysterious as using the Force.
 
 == Command Summary
 
@@ -356,6 +380,8 @@ You must be inside a deck to perform this operation.
 |`newcard [q/QUESTION] [a/ANSWER]` | Creates a new card in the current deck. q/ and a/ are optional.
 |`editcard INDEX_OF_CARD [q/QUESTION] [a/ANSWER]` | Edits a new card in the current  at INDEX_OF_CARD. Either q/ or a/ must be provided.
 |`sort` | Sort the currently displayed list of decks/cards by name/question
+|`export INDEX_OF_DECK` | Exports the deck at the specified INDEX_OF_DECK. (Default location is the same folder as Anakin)
+|`import FILEPATH` | Imports a deck from the `xml` file at the specified FILEPATH.
 |`find KEYWORD [MORE_KEYWORDS]` | Finds decks with names that contain any of the given keywords.
 //|`find d/INDEX_OF_DECK KEYWORD [MORE_KEYWORDS]` | Finds cards in a specified deck with questions that contain any of the given keywords.
 |`classify RATING` | Classifies the current card into one of the following categories: {‘easy’, ‘good’ , ‘hard’ , ‘review’}

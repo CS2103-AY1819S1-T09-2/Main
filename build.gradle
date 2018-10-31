@@ -82,7 +82,7 @@ dependencies {
 }
 
 shadowJar {
-    archiveName = 'addressbook.jar'
+    archiveName = 'Anakin.jar'
 
     destinationDir = file("${buildDir}/jar/")
 }
