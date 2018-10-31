@@ -71,7 +71,7 @@ public class TestApp extends MainApp {
     /**
      * Returns a defensive copy of Anakin data stored inside the storage file.
      */
-    public Anakin readStorageAddressBook() {
+    public Anakin readStorageAnakin() {
         try {
             return new Anakin(storage.readAnakin().get());
         } catch (DataConversionException dce) {
