@@ -53,6 +53,8 @@ Refer to <<Features>> for more details on the available commands.
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 * Items in square brackets are optional e.g `newdeck [n/NAME]` can be used as `newdeck n/My Deck` or as `newdeck`.
+* Optional items separated by || e.g. `editdeck 1 [q/Question?]||[a/Answer]` denote that at least one of the optional
+ parameters are needed minimally to execute the command.
 * Items with …​ after them can be used multiple times including zero times e.g. `[t/TAG]…​` can be used as (i.e. 0 times), t/friend, t/friend t/family etc.
 * Parameters can be in any order e.g. if the command specifies `q/QUESTION a/ANSWER`, `a/ANSWER q/QUESTION` is also acceptable.
 ====
@@ -141,27 +143,20 @@ Deletes the 2nd deck that appears in the currently displayed list of decks.
 
 === Adding a card : `newcard`
 
-Edits an existing card in the specified deck. +
-Format: `newcard d/INDEX_OF_DECK [q/QUESTION] [a/ANSWER]`
-
-If user is inside a deck, can omit: d/INDEX_OF_DECK. +
+When user is inside a deck, adds a new card. +
 Format: `newcard q/QUESTION a/ANSWER`
 
 ****
 * `q/QUESTION` and `a/ANSWER` can be in any order.
-* `INDEX_OF_DECK` must be a positive integer from 1 onwards and is based on the currently displayed list.
 ****
 
 === Editing a card : `editcard`
 
-Edits an existing card in the specified deck. +
-Format: `editcard INDEX_OF_CARD d/INDEX_OF_DECK [q/QUESTION] [a/ANSWER]`
-
-If user is inside a deck, can omit: `d/INDEX_OF_DECK`. +
-Format: `editcard INDEX_OF_CARD [q/QUESTION] [a/ANSWER]`
+When user is inside a deck, edits an existing card at the specified index. +
+Format: `editcard INDEX_OF_CARD [q/QUESTION]||[a/ANSWER]`
 
 ****
-* Edits the card at the specified  INDEX_OF_CARD inside the INDEX_OF_DECK deck. The index refers to the index number shown in the list of displayed cards. The index must be a positive integer e.g. 1,2,3.
+* Edits the card at the specified INDEX_OF_CARD inside the deck. The index refers to the index number shown in the list of displayed cards. The index must be a positive integer e.g. 1,2,3.
 * Existing values will be updated to the input values.
 * If any of 2 fields: [q/QUESTION] [a/ANSWER] is left empty, the old value for that field will be retained
 * At least one of the optional fields must be provided.
@@ -169,18 +164,19 @@ Format: `editcard INDEX_OF_CARD [q/QUESTION] [a/ANSWER]`
 
 Examples:
 
-* `edit 1 d/1 a/New Answer` +
+* `cd 1` +
+`edit 1 a/New Answer` +
 Edits the answer of the first card in the first deck to be "New Answer".
 
 === Deleting a card : `delcard`
 
-Deletes the specified card from the current deck. +
+When user is inside a deck, deletes the existing card at the specified index. +
 Format: `delcard INDEX_OF_CARD`
 
 ****
 * Deletes the card at the specified `INDEX_OF_CARD`.
 * User must be inside a deck to perform this operation.
-* INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
+* INDEX_OF_CARD must be a positive integer from 1 onwards and is based on the currently displayed list.
 ****
 
 Examples:
