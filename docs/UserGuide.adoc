@@ -384,6 +384,11 @@ You must be inside a deck to perform this operation.
 |`import FILEPATH` | Imports a deck from the `xml` file at the specified FILEPATH.
 |`find KEYWORD [MORE_KEYWORDS]` | Finds decks with names that contain any of the given keywords.
 //|`find d/INDEX_OF_DECK KEYWORD [MORE_KEYWORDS]` | Finds cards in a specified deck with questions that contain any of the given keywords.
+|`review INDEX_OF_DECK` | Starts a review of the deck specified.
+|`endreview` | View the flipside of the current card during a review.
+|`flipcard` | Exits the review and returns to the editing menu.
+|`nextcard` | Views the subsequent card in the deck.
+|`prevcard` | Views the previous card in the deck.
 |`classify RATING` | Classifies the current card into one of the following categories: {‘easy’, ‘good’ , ‘hard’ , ‘review’}
 
 
