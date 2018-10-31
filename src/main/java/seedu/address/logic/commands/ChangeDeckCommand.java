@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_CURRENTLY_REVIEWING_DECK;
 
 import java.util.List;
 
@@ -49,6 +50,9 @@ public class ChangeDeckCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
+        if (model.isReviewingDeck()) {
+            throw new CommandException(MESSAGE_CURRENTLY_REVIEWING_DECK);
+        }
         List<Deck> lastShownList = model.getFilteredDeckList();
 
         if (this.noIndex) {

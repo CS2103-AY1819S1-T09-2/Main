@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_CURRENTLY_REVIEWING_DECK;
 import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_DECK;
 import static seedu.address.commons.core.Messages.MESSAGE_EDIT_DECK_SUCCESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
@@ -66,6 +67,10 @@ public class EditDeckCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
+        if (model.isReviewingDeck()) {
+            throw new CommandException(MESSAGE_CURRENTLY_REVIEWING_DECK);
+        }
+
         List<Deck> lastShownList = model.getFilteredDeckList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
