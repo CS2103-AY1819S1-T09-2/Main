@@ -206,7 +206,7 @@ Views the previous card in the deck. +
 Format: `prevcard`
 
 === Exit review mode `endreview`
-Exits the review and returns to the editing menu
+Exits the review and returns to the editing menu +
 Format: `endreview`
 
 === Sort current list in lexicographical order : `sort`
@@ -368,7 +368,7 @@ A convenient cheat sheet of commands
 |=======================================================================
 |Command | What does it do?
 |`list` | Lists all decks
-|`newdeck [n/NAME]` | Creates a new deck. n/ is optional
+|`newdeck n/NAME` | Creates a new deck.
 |`editdeck  INDEX n/NAME` | Edits the name of the deck
 |`cd INDEX` | Navigates into the deck at INDEX. +
 Use `cd ..` to navigate out of the deck
