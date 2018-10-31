@@ -18,22 +18,22 @@
 <li><a href="#navigating-into-a-deck-code-cd-code">3.3. Navigating into a deck : <code>cd</code></a></li>
 <li><a href="#navigating-out-of-the-current-deck-code-cd-code">3.4. Navigating out of the current deck : <code>cd ..</code></a></li>
 <li><a href="#adding-a-deck-code-newdeck-code">3.5. Adding a deck: <code>newdeck</code></a></li>
-<li><a href="#editing-a-deck-code-editdeck-code">3.6. Editing a deck : <code>editdeck</code></a></li>
+<li><a href="#editing-the-name-of-a-deck-code-editdeck-code">3.6. Editing the name of a deck : <code>editdeck</code></a></li>
 <li><a href="#deleting-a-deck-code-deldeck-code">3.7. Deleting a deck : <code>deldeck</code></a></li>
 <li><a href="#adding-a-card-code-newcard-code">3.8. Adding a card : <code>newcard</code></a></li>
 <li><a href="#editing-a-card-code-editcard-code">3.9. Editing a card : <code>editcard</code></a></li>
 <li><a href="#deleting-a-card-code-delcard-code">3.10. Deleting a card : <code>delcard</code></a></li>
-<li><a href="#review-the-cards-in-a-deck-code-review-code">3.11. Review the cards in a deck: <code>review</code></a></li>
-<li><a href="#flip-a-card-in-a-review-code-flipcard-code">3.12. Flip a card in a review: <code>flipcard</code></a></li>
-<li><a href="#go-to-the-next-card-in-a-review-code-nextcard-code">3.13. Go to the next card in a review <code>nextcard</code></a></li>
-<li><a href="#go-to-the-previous-card-in-a-review-code-prevcard-code">3.14. Go to the previous card in a review <code>prevcard</code></a></li>
-<li><a href="#exit-review-mode-code-endreview-code">3.15. Exit review mode <code>endreview</code></a></li>
-<li><a href="#sort-current-list-in-lexicographical-order-code-sort-code">3.16. Sort current list in lexicographical order : <code>sort</code></a></li>
-<li><a href="#sort-the-list-of-cards-by-performance-code-rank-code-code-coming-in-v1-4-code">3.17. Sort the list of cards by performance : <code>rank</code> <code>[coming in v1.4]</code></a></li>
-<li><a href="#locate-a-deck-by-name-card-by-question-code-find-code">3.18. Locate a deck by name / card by question : <code>find</code></a></li>
-<li><a href="#export-deck-to-xml-file-code-export-code">3.19. Export deck to xml file : <code>export</code></a></li>
-<li><a href="#import-deck-from-csv-file-code-import-code">3.20. Import deck from csv file : <code>import</code></a></li>
-<li><a href="#card-difficulty-classification-code-classify-code">3.21. Card difficulty classification : <code>classify</code></a></li>
+<li><a href="#review-the-cards-in-a-deck-code-review-code">3.11. Review the cards in a deck : <code>review</code></a></li>
+<li><a href="#flip-a-card-in-a-review-code-flipcard-code">3.12. Flip a card in a review : <code>flipcard</code></a></li>
+<li><a href="#go-to-the-next-card-in-a-review-code-nextcard-code">3.13. Go to the next card in a review : <code>nextcard</code></a></li>
+<li><a href="#go-to-the-previous-card-in-a-review-code-prevcard-code">3.14. Go to the previous card in a review : <code>prevcard</code></a></li>
+<li><a href="#exit-review-mode-code-endreview-code">3.15. Exit review mode : <code>endreview</code></a></li>
+<li><a href="#card-difficulty-classification-code-classify-code">3.16. Card difficulty classification : <code>classify</code></a></li>
+<li><a href="#sort-current-list-in-lexicographical-order-code-sort-code">3.17. Sort current list in lexicographical order : <code>sort</code></a></li>
+<li><a href="#sort-the-list-of-cards-by-performance-code-rank-code-coming-in-v1-4">3.18. Sort the list of cards by performance : <code>rank</code> [coming in v1.4]</a></li>
+<li><a href="#locate-a-deck-by-name-card-by-question-code-find-code">3.19. Locate a deck by name / card by question : <code>find</code></a></li>
+<li><a href="#export-deck-to-xml-file-code-export-code">3.20. Export deck to xml file : <code>export</code></a></li>
+<li><a href="#import-deck-from-csv-file-code-import-code">3.21. Import deck from csv file : <code>import</code></a></li>
 <li><a href="#listing-entered-commands-code-history-code">3.22. Listing entered commands : <code>history</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code">3.23. Undoing previous command : <code>undo</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">3.24. Redoing the previously undone command : <code>redo</code></a></li>
@@ -130,6 +130,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </li>
 <li>
 <p>Items in square brackets are optional e.g <code>newdeck [n/NAME]</code> can be used as <code>newdeck n/My Deck</code> or as <code>newdeck</code>.</p>
+</li>
+<li>
+<p>Optional items separated by - e.g. <code>editdeck 1 [q/Question?]-[a/Answer]</code> denote that at least one of the optional
+parameters are needed minimally to execute the command.</p>
 </li>
 <li>
 <p>Items with …​ after them can be used multiple times including zero times e.g. <code>[t/TAG]…​</code> can be used as (i.e. 0 times), t/friend, t/friend t/family etc.</p>
@@ -238,7 +242,7 @@ Format: <code>newdeck n/NAME</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-deck-code-editdeck-code"><a class="link" href="#editing-a-deck-code-editdeck-code">3.6. Editing a deck : <code>editdeck</code></a></h3>
+<h3 id="editing-the-name-of-a-deck-code-editdeck-code"><a class="link" href="#editing-the-name-of-a-deck-code-editdeck-code">3.6. Editing the name of a deck : <code>editdeck</code></a></h3>
 <div class="paragraph">
 <p>Edits the name of the deck at the specified index in the list.<br>
 Format: <code>editdeck INDEX_OF_DECK n/NAME</code></p>
@@ -305,11 +309,7 @@ Deletes the 2nd deck that appears in the currently displayed list of decks.</p>
 <div class="sect2">
 <h3 id="adding-a-card-code-newcard-code"><a class="link" href="#adding-a-card-code-newcard-code">3.8. Adding a card : <code>newcard</code></a></h3>
 <div class="paragraph">
-<p>Edits an existing card in the specified deck.<br>
-Format: <code>newcard d/INDEX_OF_DECK [q/QUESTION] [a/ANSWER]</code></p>
-</div>
-<div class="paragraph">
-<p>If user is inside a deck, can omit: d/INDEX_OF_DECK.<br>
+<p>When user is inside a deck, adds a new card.<br>
 Format: <code>newcard q/QUESTION a/ANSWER</code></p>
 </div>
 <div class="sidebarblock">
@@ -319,9 +319,6 @@ Format: <code>newcard q/QUESTION a/ANSWER</code></p>
 <li>
 <p><code>q/QUESTION</code> and <code>a/ANSWER</code> can be in any order.</p>
 </li>
-<li>
-<p><code>INDEX_OF_DECK</code> must be a positive integer from 1 onwards and is based on the currently displayed list.</p>
-</li>
 </ul>
 </div>
 </div>
@@ -330,19 +327,15 @@ Format: <code>newcard q/QUESTION a/ANSWER</code></p>
 <div class="sect2">
 <h3 id="editing-a-card-code-editcard-code"><a class="link" href="#editing-a-card-code-editcard-code">3.9. Editing a card : <code>editcard</code></a></h3>
 <div class="paragraph">
-<p>Edits an existing card in the specified deck.<br>
-Format: <code>editcard INDEX_OF_CARD d/INDEX_OF_DECK [q/QUESTION] [a/ANSWER]</code></p>
-</div>
-<div class="paragraph">
-<p>If user is inside a deck, can omit: <code>d/INDEX_OF_DECK</code>.<br>
-Format: <code>editcard INDEX_OF_CARD [q/QUESTION] [a/ANSWER]</code></p>
+<p>When user is inside a deck, edits an existing card at the specified index.<br>
+Format: <code>editcard INDEX_OF_CARD [q/QUESTION]-[a/ANSWER]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the card at the specified  INDEX_OF_CARD inside the INDEX_OF_DECK deck. The index refers to the index number shown in the list of displayed cards. The index must be a positive integer e.g. 1,2,3.</p>
+<p>Edits the card at the specified INDEX_OF_CARD inside the deck. The index refers to the index number shown in the list of displayed cards. The index must be a positive integer e.g. 1,2,3.</p>
 </li>
 <li>
 <p>Existing values will be updated to the input values.</p>
@@ -363,7 +356,8 @@ Format: <code>editcard INDEX_OF_CARD [q/QUESTION] [a/ANSWER]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 d/1 a/New Answer</code><br>
+<p><code>cd 1</code><br>
+<code>edit 1 a/New Answer</code><br>
 Edits the answer of the first card in the first deck to be "New Answer".</p>
 </li>
 </ul>
@@ -372,7 +366,7 @@ Edits the answer of the first card in the first deck to be "New Answer".</p>
 <div class="sect2">
 <h3 id="deleting-a-card-code-delcard-code"><a class="link" href="#deleting-a-card-code-delcard-code">3.10. Deleting a card : <code>delcard</code></a></h3>
 <div class="paragraph">
-<p>Deletes the specified card from the current deck.<br>
+<p>When user is inside a deck, deletes the existing card at the specified index.<br>
 Format: <code>delcard INDEX_OF_CARD</code></p>
 </div>
 <div class="sidebarblock">
@@ -386,7 +380,7 @@ Format: <code>delcard INDEX_OF_CARD</code></p>
 <p>User must be inside a deck to perform this operation.</p>
 </li>
 <li>
-<p>INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.</p>
+<p>INDEX_OF_CARD must be a positive integer from 1 onwards and is based on the currently displayed list.</p>
 </li>
 </ul>
 </div>
@@ -406,42 +400,119 @@ Get into the first deck then deletes the 2nd card that appears in the card list.
 </div>
 </div>
 <div class="sect2">
-<h3 id="review-the-cards-in-a-deck-code-review-code"><a class="link" href="#review-the-cards-in-a-deck-code-review-code">3.11. Review the cards in a deck: <code>review</code></a></h3>
+<h3 id="review-the-cards-in-a-deck-code-review-code"><a class="link" href="#review-the-cards-in-a-deck-code-review-code">3.11. Review the cards in a deck : <code>review</code></a></h3>
 <div class="paragraph">
 <p>Starts a review of the deck specified.<br>
 Format: <code>review INDEX_OF_DECK</code></p>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.</p>
+</li>
+<li>
+<p>While in review mode, all card and deck-related commands are disabled.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="flip-a-card-in-a-review-code-flipcard-code"><a class="link" href="#flip-a-card-in-a-review-code-flipcard-code">3.12. Flip a card in a review: <code>flipcard</code></a></h3>
+<h3 id="flip-a-card-in-a-review-code-flipcard-code"><a class="link" href="#flip-a-card-in-a-review-code-flipcard-code">3.12. Flip a card in a review : <code>flipcard</code></a></h3>
 <div class="paragraph">
 <p>View the flipside of the current card during a review.<br>
 Format: <code>flipcard</code></p>
 </div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>review 1</code><br>
+<code>flipcard</code><br>
+<code>flipcard</code><br>
+Reviews the first deck on the list. You will see the first question card. Upon first <code>flipcard</code>, you will see the
+answer on the back of the card. When you execute <code>flipcard</code> again, you will see the question card once more.</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
-<h3 id="go-to-the-next-card-in-a-review-code-nextcard-code"><a class="link" href="#go-to-the-next-card-in-a-review-code-nextcard-code">3.13. Go to the next card in a review <code>nextcard</code></a></h3>
+<h3 id="go-to-the-next-card-in-a-review-code-nextcard-code"><a class="link" href="#go-to-the-next-card-in-a-review-code-nextcard-code">3.13. Go to the next card in a review : <code>nextcard</code></a></h3>
 <div class="paragraph">
 <p>Views the subsequent card in the deck.<br>
 Format: <code>nextcard</code></p>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>When you are at the last card of the deck, executing <code>nextcard</code> will loop back to the first card.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="go-to-the-previous-card-in-a-review-code-prevcard-code"><a class="link" href="#go-to-the-previous-card-in-a-review-code-prevcard-code">3.14. Go to the previous card in a review <code>prevcard</code></a></h3>
+<h3 id="go-to-the-previous-card-in-a-review-code-prevcard-code"><a class="link" href="#go-to-the-previous-card-in-a-review-code-prevcard-code">3.14. Go to the previous card in a review : <code>prevcard</code></a></h3>
 <div class="paragraph">
 <p>Views the previous card in the deck.<br>
 Format: <code>prevcard</code></p>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>When you are at the first card of the deck, executing <code>prevcard</code> will loop back to the last card.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="exit-review-mode-code-endreview-code"><a class="link" href="#exit-review-mode-code-endreview-code">3.15. Exit review mode <code>endreview</code></a></h3>
+<h3 id="exit-review-mode-code-endreview-code"><a class="link" href="#exit-review-mode-code-endreview-code">3.15. Exit review mode : <code>endreview</code></a></h3>
 <div class="paragraph">
-<p>Exits the review and returns to the editing menu
+<p>Exits the review and returns to the editing menu<br>
 Format: <code>endreview</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sort-current-list-in-lexicographical-order-code-sort-code"><a class="link" href="#sort-current-list-in-lexicographical-order-code-sort-code">3.16. Sort current list in lexicographical order : <code>sort</code></a></h3>
+<h3 id="card-difficulty-classification-code-classify-code"><a class="link" href="#card-difficulty-classification-code-classify-code">3.16. Card difficulty classification : <code>classify</code></a></h3>
+<div class="paragraph">
+<p>Allocates card into one of four bins {Easy, Good, Hard, Review}<br>
+Format: <code>classify d/INDEX_OF_DECK INDEX_OF_CARD RATING</code></p>
+</div>
+<div class="paragraph">
+<p>If user is inside a deck:<br>
+Format: <code>classify INDEX_OF_CARD RATING</code></p>
+</div>
+<div class="paragraph">
+<p>If user is viewing a card:<br>
+Format: <code>classify RATING</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>RATING indicates how you felt about the question<br>
+<strong>RATING</strong> {‘easy’ | ‘good’ | ‘hard’ | ‘review’}</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sort-current-list-in-lexicographical-order-code-sort-code"><a class="link" href="#sort-current-list-in-lexicographical-order-code-sort-code">3.17. Sort current list in lexicographical order : <code>sort</code></a></h3>
 <div class="paragraph">
 <p>If user is currently in a deck, sort all cards in alphabetical order according to the question.<br>
 If user is not in a deck, sort all decks in alphabetical order according to the deck&#8217;s name.<br>
@@ -449,7 +520,7 @@ Format: <code>sort</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sort-the-list-of-cards-by-performance-code-rank-code-code-coming-in-v1-4-code"><a class="link" href="#sort-the-list-of-cards-by-performance-code-rank-code-code-coming-in-v1-4-code">3.17. Sort the list of cards by performance : <code>rank</code> <code>[coming in v1.4]</code></a></h3>
+<h3 id="sort-the-list-of-cards-by-performance-code-rank-code-coming-in-v1-4"><a class="link" href="#sort-the-list-of-cards-by-performance-code-rank-code-coming-in-v1-4">3.18. Sort the list of cards by performance : <code>rank</code> [coming in v1.4]</a></h3>
 <div class="paragraph">
 <p>User must be inside a deck to perform this operation.<br>
 Sorts the cards in current deck by rank (card performance).<br>
@@ -468,7 +539,7 @@ Format: <code>rank</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locate-a-deck-by-name-card-by-question-code-find-code"><a class="link" href="#locate-a-deck-by-name-card-by-question-code-find-code">3.18. Locate a deck by name / card by question : <code>find</code></a></h3>
+<h3 id="locate-a-deck-by-name-card-by-question-code-find-code"><a class="link" href="#locate-a-deck-by-name-card-by-question-code-find-code">3.19. Locate a deck by name / card by question : <code>find</code></a></h3>
 <div class="paragraph">
 <p>Filters decks by names or cards by questions that contain any of the given keywords.</p>
 </div>
@@ -529,18 +600,15 @@ Returns any cards containing <code>John</code> or <code>Snow</code> in their que
 </div>
 </div>
 <div class="sect2">
-<h3 id="export-deck-to-xml-file-code-export-code"><a class="link" href="#export-deck-to-xml-file-code-export-code">3.19. Export deck to xml file : <code>export</code></a></h3>
+<h3 id="export-deck-to-xml-file-code-export-code"><a class="link" href="#export-deck-to-xml-file-code-export-code">3.20. Export deck to xml file : <code>export</code></a></h3>
 <div class="paragraph">
-<p>Creates an <code>xml</code> file at the specified FILEPATH containing the deck at INDEX_OF_DECK.<br>
-Format: <code>exportdeck INDEX_OF_DECK [f/FILEPATH]</code></p>
+<p>Creates an <code>xml</code> file containing the deck at INDEX_OF_DECK.<br>
+Format: <code>exportdeck INDEX_OF_DECK</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
-<li>
-<p>If FILEPATH is left empty, the file will be created in the same directory as Anakin.</p>
-</li>
 <li>
 <p>INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.</p>
 </li>
@@ -550,7 +618,7 @@ Format: <code>exportdeck INDEX_OF_DECK [f/FILEPATH]</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="import-deck-from-csv-file-code-import-code"><a class="link" href="#import-deck-from-csv-file-code-import-code">3.20. Import deck from csv file : <code>import</code></a></h3>
+<h3 id="import-deck-from-csv-file-code-import-code"><a class="link" href="#import-deck-from-csv-file-code-import-code">3.21. Import deck from csv file : <code>import</code></a></h3>
 <div class="paragraph">
 <p>Imports an deck from the <code>xml</code> file at the specified FILEPATH.<br>
 Format: <code>import FILEPATH</code></p>
@@ -561,33 +629,6 @@ Format: <code>import FILEPATH</code></p>
 <ul>
 <li>
 <p>FILEPATH must include the filename of the target file.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="card-difficulty-classification-code-classify-code"><a class="link" href="#card-difficulty-classification-code-classify-code">3.21. Card difficulty classification : <code>classify</code></a></h3>
-<div class="paragraph">
-<p>Allocates card into one of four bins {Easy, Good, Hard, Review}<br>
-Format: <code>classify d/INDEX_OF_DECK INDEX_OF_CARD RATING</code></p>
-</div>
-<div class="paragraph">
-<p>If user is inside a deck:<br>
-Format: <code>classify INDEX_OF_CARD RATING</code></p>
-</div>
-<div class="paragraph">
-<p>If user is viewing a card:<br>
-Format: <code>classify RATING</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>RATING indicates how you felt about the question<br>
-<strong>RATING</strong> {‘easy’ | ‘good’ | ‘hard’ | ‘review’}</p>
 </li>
 </ul>
 </div>
@@ -618,7 +659,7 @@ Format: <code>history</code></p>
 <div class="sect2">
 <h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.23. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
-<p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
+<p>Restores Anakin to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
 </div>
 <div class="admonitionblock note">
@@ -696,7 +737,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <div class="sect2">
 <h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.25. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
-<p>Clears all entries from the address book.
+<p>Clears all entries from Anakin.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
@@ -741,68 +782,109 @@ Format: <code>exit</code></p>
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>help</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lists all available commands and their respective formats.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>list</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Lists all decks</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>newdeck [n/NAME]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Creates a new deck. n/ is optional</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>editdeck  INDEX n/NAME</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Edits the name of the deck</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Displays a list of all available decks. If inside a deck displays all cards in that deck.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>cd INDEX</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Navigates into the deck at INDEX.<br>
-Use <code>cd ..</code> to navigate out of the deck</p></td>
+Use <code>cd ..</code> to navigate out of the deck.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>newdeck n/NAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds a new deck.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>editdeck INDEX n/NAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Edits the name of the deck at INDEX.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>deldeck INDEX</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Deletes the deck at the specified INDEX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deletes the deck at INDEX.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>newcard [q/QUESTION] [a/ANSWER]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Creates a new card in the current deck.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delcard INDEX_OF_DECK INDEX_OF_CARD</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Deletes the card at the specified INDEX_OF_CARD inside the deck at INDEX_OF_DECK.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delcard INDEX_OF_CARD</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Deletes the card at the specified INDEX.<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>newcard q/QUESTION a/ANSWER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds a new card in the current deck.<br>
 You must be inside a deck to perform this operation.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>newcard [q/QUESTION] [a/ANSWER]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Creates a new card in the current deck. q/ and a/ are optional.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>editcard INDEX [q/QUESTION]-[a/ANSWER]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Edits the details of the card at INDEX.<br>
+At least one parameter must be present.<br>
+You must be inside a deck to perform this operation.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>editcard INDEX_OF_CARD [q/QUESTION] [a/ANSWER]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Edits a new card in the current  at INDEX_OF_CARD. Either q/ or a/ must be provided.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delcard INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deletes the card at INDEX.<br>
+You must be inside a deck to perform this operation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>review INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Review the cards of the deck at INDEX.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>flipcard</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">View the flipside of the current card during a review.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nextcard</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Views the subsequent card in the deck.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>prevcard</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Views the previous card in the deck.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>endreview</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exits the review.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>classify RATING</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Classifies the current card into one of the following categories: {‘easy’, ‘good’ , ‘hard’ , ‘review’}</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sort</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sort the currently displayed list of decks/cards by name/question</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sorts the displayed list of decks by name.<br>
+When inside a deck, sorts the displayed list of cards by question.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>export INDEX_OF_DECK</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Exports the deck at the specified INDEX_OF_DECK. (Default location is the same folder as Anakin)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find KEYWORD [MORE_KEYWORDS]&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Finds decks with names that contain any of the given keywords.<br>
+When inside a deck, finds cards with questions that contain any of the given keywords.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>export INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exports the deck at the specified INDEX. (Default location is the same folder as Anakin)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>import FILEPATH</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Imports a deck from the <code>xml</code> file at the specified FILEPATH.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find KEYWORD [MORE_KEYWORDS]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Finds decks with names that contain any of the given keywords.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>history</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List all entered commands in reverse chronological order.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>classify RATING</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Classifies the current card into one of the following categories: {‘easy’, ‘good’ , ‘hard’ , ‘review’}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>undo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Undo previous command.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>redo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Redo previously undone command.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clear</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clear all decks and cards.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exits the program.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 09:12:41 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 15:53:27 UTC</div></div></div></body></html>
