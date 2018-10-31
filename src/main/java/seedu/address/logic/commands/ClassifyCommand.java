@@ -10,6 +10,9 @@ import seedu.address.model.Model;
 import seedu.address.model.deck.Card;
 import seedu.address.model.deck.Performance;
 
+/**
+ * Classifies the currently reviewed card to a particular difficulty
+ */
 public class ClassifyCommand extends Command {
     public static final String COMMAND_WORD = "classify";
 
