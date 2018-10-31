@@ -53,7 +53,7 @@ Refer to <<Features>> for more details on the available commands.
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 * Items in square brackets are optional e.g `newdeck [n/NAME]` can be used as `newdeck n/My Deck` or as `newdeck`.
-* Optional items separated by || e.g. `editdeck 1 [q/Question?]||[a/Answer]` denote that at least one of the optional
+* Optional items separated by - e.g. `editdeck 1 [q/Question?]-[a/Answer]` denote that at least one of the optional
  parameters are needed minimally to execute the command.
 * Items with …​ after them can be used multiple times including zero times e.g. `[t/TAG]…​` can be used as (i.e. 0 times), t/friend, t/friend t/family etc.
 * Parameters can be in any order e.g. if the command specifies `q/QUESTION a/ANSWER`, `a/ANSWER q/QUESTION` is also acceptable.
@@ -153,7 +153,7 @@ Format: `newcard q/QUESTION a/ANSWER`
 === Editing a card : `editcard`
 
 When user is inside a deck, edits an existing card at the specified index. +
-Format: `editcard INDEX_OF_CARD [q/QUESTION]||[a/ANSWER]`
+Format: `editcard INDEX_OF_CARD [q/QUESTION]-[a/ANSWER]`
 
 ****
 * Edits the card at the specified INDEX_OF_CARD inside the deck. The index refers to the index number shown in the list of displayed cards. The index must be a positive integer e.g. 1,2,3.
@@ -226,7 +226,7 @@ Format: `prevcard`
 Exits the review and returns to the editing menu +
 Format: `endreview`
 
-=== Card difficulty classification : `classify`
+=== Card difficulty classification : `classify` [coming in v1.4]
 Allocates card into one of four bins {Easy, Good, Hard, Review} +
 Format: `classify d/INDEX_OF_DECK INDEX_OF_CARD RATING`
 
@@ -246,7 +246,7 @@ If user is currently in a deck, sort all cards in alphabetical order according t
 If user is not in a deck, sort all decks in alphabetical order according to the deck's name. +
 Format: `sort`
 
-=== Sort the list of cards by performance : `rank` `[coming in v1.4]`
+=== Sort the list of cards by performance : `rank` [coming in v1.4]
 User must be inside a deck to perform this operation. +
 Sorts the cards in current deck by rank (card performance). +
 Format: `rank`
@@ -393,7 +393,7 @@ Use `cd ..` to navigate out of the deck.
 |`deldeck INDEX` | Deletes the deck at INDEX.
 |`newcard q/QUESTION a/ANSWER` | Adds a new card in the current deck. +
 You must be inside a deck to perform this operation.
-|`editcard INDEX [q/QUESTION]||[a/ANSWER]` | Edits the details of the card at INDEX. +
+|`editcard INDEX [q/QUESTION]-[a/ANSWER]` | Edits the details of the card at INDEX. +
 At least one parameter must be present. +
 You must be inside a deck to perform this operation.
 |`delcard INDEX` | Deletes the card at INDEX. +
