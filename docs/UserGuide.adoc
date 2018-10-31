@@ -189,25 +189,40 @@ Examples:
 `delcard 2` +
 Get into the first deck then deletes the 2nd card that appears in the card list.
 
-=== Review the cards in a deck: `review`
+=== Review the cards in a deck : `review`
 Starts a review of the deck specified. +
 Format: `review INDEX_OF_DECK`
 
-=== Flip a card in a review: `flipcard`
+=== Flip a card in a review : `flipcard`
 View the flipside of the current card during a review. +
 Format: `flipcard`
 
-=== Go to the next card in a review `nextcard`
+=== Go to the next card in a review : `nextcard`
 Views the subsequent card in the deck. +
 Format: `nextcard`
 
-=== Go to the previous card in a review `prevcard`
+=== Go to the previous card in a review : `prevcard`
 Views the previous card in the deck. +
 Format: `prevcard`
 
-=== Exit review mode `endreview`
+=== Exit review mode : `endreview`
 Exits the review and returns to the editing menu +
 Format: `endreview`
+
+=== Card difficulty classification : `classify`
+Allocates card into one of four bins {Easy, Good, Hard, Review} +
+Format: `classify d/INDEX_OF_DECK INDEX_OF_CARD RATING`
+
+If user is inside a deck: +
+Format: `classify INDEX_OF_CARD RATING`
+
+If user is viewing a card: +
+Format: `classify RATING`
+
+****
+* RATING indicates how you felt about the question +
+*RATING* {‘easy’ | ‘good’ | ‘hard’ | ‘review’}
+****
 
 === Sort current list in lexicographical order : `sort`
 If user is currently in a deck, sort all cards in alphabetical order according to the question. +
@@ -265,21 +280,6 @@ Format: `import FILEPATH`
 
 ****
 * FILEPATH must include the filename of the target file.
-****
-
-=== Card difficulty classification : `classify`
-Allocates card into one of four bins {Easy, Good, Hard, Review} +
-Format: `classify d/INDEX_OF_DECK INDEX_OF_CARD RATING`
-
-If user is inside a deck: +
-Format: `classify INDEX_OF_CARD RATING`
-
-If user is viewing a card: +
-Format: `classify RATING`
-
-****
-* RATING indicates how you felt about the question +
-*RATING* {‘easy’ | ‘good’ | ‘hard’ | ‘review’}
 ****
 
 === Listing entered commands : `history`
@@ -344,7 +344,7 @@ The `redo` command fails as there are no `undo` commands executed previously.
 // end::undoredo[]
 
 === Clearing all entries : `clear`
-Clears all entries from the address book.
+Clears all entries from the address book. +
 Format: `clear`
 
 
