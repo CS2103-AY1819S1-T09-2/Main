@@ -240,6 +240,11 @@ public class ImportDeckCommandTest {
         }
 
         @Override
+        public boolean isReviewingDeck() {
+            return false;
+        }
+
+        @Override
         public void commitAnakin() {
             // called by {@code ImportDeckCommand#execute()}
         }
@@ -255,6 +260,11 @@ public class ImportDeckCommandTest {
         }
 
         @Override
+        public boolean isReviewingDeck() {
+            return false;
+        }
+
+        @Override
         public void commitAnakin() {
             // called by {@code ImportDeckCommand#execute()}
         }
@@ -266,6 +276,11 @@ public class ImportDeckCommandTest {
         @Override
         public Deck importDeck(String filepath) {
             throw new DeckImportException(MESSAGE_DUPLICATE_DECK);
+        }
+
+        @Override
+        public boolean isReviewingDeck() {
+            return false;
         }
 
         @Override
