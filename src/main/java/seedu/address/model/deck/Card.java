@@ -10,6 +10,7 @@ import java.util.Objects;
 public class Card {
 
     private final Performance performance;
+    private final int timesClassified;
 
     // Identity fields
     private final Question question;
@@ -20,6 +21,19 @@ public class Card {
         this.question = question;
         this.answer = answer;
         performance = Performance.DEFAULT;
+        timesClassified = 0;
+    }
+
+    public Card(Question question, Answer answer, Performance performance, int timesClassified) {
+        requireAllNonNull(question, answer, performance, timesClassified);
+        this.question = question;
+        this.answer = answer;
+        this.performance = performance;
+        this.timesClassified = timesClassified;
+    }
+
+    public static Card classifyCard(Card card, Performance performance) {
+        return new Card(card.question, card.answer, performance, card.timesClassified + 1);
     }
 
     public Question getQuestion() {
@@ -32,6 +46,10 @@ public class Card {
 
     public Performance getPerformance() {
         return performance;
+    }
+
+    public int getTimesClassified() {
+        return timesClassified;
     }
 
     /**
@@ -67,9 +85,9 @@ public class Card {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append("Question: ")
-            .append(question)
-            .append(" Answer: ")
-            .append(answer);
+                .append(question)
+                .append(" Answer: ")
+                .append(answer);
         return builder.toString();
     }
 }
