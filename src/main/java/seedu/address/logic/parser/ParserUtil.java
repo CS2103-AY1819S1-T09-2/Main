@@ -7,6 +7,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.deck.Answer;
 import seedu.address.model.deck.Name;
+import seedu.address.model.deck.Performance;
 import seedu.address.model.deck.Question;
 
 /**
@@ -71,5 +72,22 @@ public class ParserUtil {
             throw new ParseException(Answer.MESSAGE_ANSWER_CONSTRAINTS);
         }
         return new Answer(trimmed);
+    }
+
+    public static Performance parsePerformance(String performance) throws ParseException {
+        requireNonNull(performance);
+        String trimmed = performance.trim();
+        switch (trimmed) {
+        case "easy":
+            return Performance.EASY;
+        case "good":
+            return Performance.GOOD;
+        case "hard":
+            return Performance.HARD;
+        case "review":
+            return Performance.REVIEW;
+        default:
+            throw new ParseException(Performance.MESSAGE_PERFORMANCE_CONSTRAINTS);
+        }
     }
 }
