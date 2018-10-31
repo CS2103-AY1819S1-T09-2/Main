@@ -53,6 +53,8 @@ Refer to <<Features>> for more details on the available commands.
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 * Items in square brackets are optional e.g `newdeck [n/NAME]` can be used as `newdeck n/My Deck` or as `newdeck`.
+* Optional items separated by - e.g. `editdeck 1 [q/Question?]-[a/Answer]` denote that at least one of the optional
+ parameters are needed minimally to execute the command.
 * Items with …​ after them can be used multiple times including zero times e.g. `[t/TAG]…​` can be used as (i.e. 0 times), t/friend, t/friend t/family etc.
 * Parameters can be in any order e.g. if the command specifies `q/QUESTION a/ANSWER`, `a/ANSWER q/QUESTION` is also acceptable.
 ====
@@ -108,7 +110,7 @@ Examples:
 * `newdeck n/My First Deck`
 
 
-=== Editing a deck : `editdeck`
+=== Editing the name of a deck : `editdeck`
 
 Edits the name of the deck at the specified index in the list. +
 Format: `editdeck INDEX_OF_DECK n/NAME`
@@ -141,27 +143,20 @@ Deletes the 2nd deck that appears in the currently displayed list of decks.
 
 === Adding a card : `newcard`
 
-Edits an existing card in the specified deck. +
-Format: `newcard d/INDEX_OF_DECK [q/QUESTION] [a/ANSWER]`
-
-If user is inside a deck, can omit: d/INDEX_OF_DECK. +
+When user is inside a deck, adds a new card. +
 Format: `newcard q/QUESTION a/ANSWER`
 
 ****
 * `q/QUESTION` and `a/ANSWER` can be in any order.
-* `INDEX_OF_DECK` must be a positive integer from 1 onwards and is based on the currently displayed list.
 ****
 
 === Editing a card : `editcard`
 
-Edits an existing card in the specified deck. +
-Format: `editcard INDEX_OF_CARD d/INDEX_OF_DECK [q/QUESTION] [a/ANSWER]`
-
-If user is inside a deck, can omit: `d/INDEX_OF_DECK`. +
-Format: `editcard INDEX_OF_CARD [q/QUESTION] [a/ANSWER]`
+When user is inside a deck, edits an existing card at the specified index. +
+Format: `editcard INDEX_OF_CARD [q/QUESTION]-[a/ANSWER]`
 
 ****
-* Edits the card at the specified  INDEX_OF_CARD inside the INDEX_OF_DECK deck. The index refers to the index number shown in the list of displayed cards. The index must be a positive integer e.g. 1,2,3.
+* Edits the card at the specified INDEX_OF_CARD inside the deck. The index refers to the index number shown in the list of displayed cards. The index must be a positive integer e.g. 1,2,3.
 * Existing values will be updated to the input values.
 * If any of 2 fields: [q/QUESTION] [a/ANSWER] is left empty, the old value for that field will be retained
 * At least one of the optional fields must be provided.
@@ -169,18 +164,19 @@ Format: `editcard INDEX_OF_CARD [q/QUESTION] [a/ANSWER]`
 
 Examples:
 
-* `edit 1 d/1 a/New Answer` +
+* `cd 1` +
+`edit 1 a/New Answer` +
 Edits the answer of the first card in the first deck to be "New Answer".
 
 === Deleting a card : `delcard`
 
-Deletes the specified card from the current deck. +
+When user is inside a deck, deletes the existing card at the specified index. +
 Format: `delcard INDEX_OF_CARD`
 
 ****
 * Deletes the card at the specified `INDEX_OF_CARD`.
 * User must be inside a deck to perform this operation.
-* INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
+* INDEX_OF_CARD must be a positive integer from 1 onwards and is based on the currently displayed list.
 ****
 
 Examples:
@@ -189,32 +185,68 @@ Examples:
 `delcard 2` +
 Get into the first deck then deletes the 2nd card that appears in the card list.
 
-=== Review the cards in a deck: `review`
+=== Review the cards in a deck : `review`
 Starts a review of the deck specified. +
 Format: `review INDEX_OF_DECK`
 
-=== Flip a card in a review: `flipcard`
+****
+* INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
+* While in review mode, all card and deck-related commands are disabled.
+****
+
+=== Flip a card in a review : `flipcard`
 View the flipside of the current card during a review. +
 Format: `flipcard`
 
-=== Go to the next card in a review `nextcard`
+Examples:
+
+* `review 1` +
+`flipcard` +
+`flipcard` +
+Reviews the first deck on the list. You will see the first question card. Upon first `flipcard`, you will see the
+answer on the back of the card. When you execute `flipcard` again, you will see the question card once more.
+
+=== Go to the next card in a review : `nextcard`
 Views the subsequent card in the deck. +
 Format: `nextcard`
 
-=== Go to the previous card in a review `prevcard`
+****
+* When you are at the last card of the deck, executing `nextcard` will loop back to the first card.
+****
+
+=== Go to the previous card in a review : `prevcard`
 Views the previous card in the deck. +
 Format: `prevcard`
 
-=== Exit review mode `endreview`
-Exits the review and returns to the editing menu
+****
+* When you are at the first card of the deck, executing `prevcard` will loop back to the last card.
+****
+
+=== Exit review mode : `endreview`
+Exits the review and returns to the editing menu +
 Format: `endreview`
+
+=== Card difficulty classification : `classify`
+Allocates card into one of four bins {Easy, Good, Hard, Review} +
+Format: `classify d/INDEX_OF_DECK INDEX_OF_CARD RATING`
+
+If user is inside a deck: +
+Format: `classify INDEX_OF_CARD RATING`
+
+If user is viewing a card: +
+Format: `classify RATING`
+
+****
+* RATING indicates how you felt about the question +
+*RATING* {‘easy’ | ‘good’ | ‘hard’ | ‘review’}
+****
 
 === Sort current list in lexicographical order : `sort`
 If user is currently in a deck, sort all cards in alphabetical order according to the question. +
 If user is not in a deck, sort all decks in alphabetical order according to the deck's name. +
 Format: `sort`
 
-=== Sort the list of cards by performance : `rank` `[coming in v1.4]`
+=== Sort the list of cards by performance : `rank` [coming in v1.4]
 User must be inside a deck to perform this operation. +
 Sorts the cards in current deck by rank (card performance). +
 Format: `rank`
@@ -251,11 +283,10 @@ Returns any decks containing `Bio`, `Chem`, or `Physics` in their name.
 Returns any cards containing `John` or `Snow` in their questions.
 
 === Export deck to xml file : `export`
-Creates an `xml` file at the specified FILEPATH containing the deck at INDEX_OF_DECK. +
-Format: `exportdeck INDEX_OF_DECK [f/FILEPATH]`
+Creates an `xml` file containing the deck at INDEX_OF_DECK. +
+Format: `exportdeck INDEX_OF_DECK`
 
 ****
-* If FILEPATH is left empty, the file will be created in the same directory as Anakin.
 * INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
 ****
 
@@ -290,7 +321,7 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 // tag::undoredo[]
 === Undoing previous command : `undo`
 
-Restores the address book to the state before the previous _undoable_ command was executed. +
+Restores Anakin to the state before the previous _undoable_ command was executed. +
 Format: `undo`
 
 [NOTE]
@@ -339,7 +370,7 @@ The `redo` command fails as there are no `undo` commands executed previously.
 // end::undoredo[]
 
 === Clearing all entries : `clear`
-Clears all entries from the address book.
+Clears all entries from Anakin. +
 Format: `clear`
 
 
@@ -362,24 +393,37 @@ A convenient cheat sheet of commands
 [width="100%",cols="20%,<30%",options="header",]
 |=======================================================================
 |Command | What does it do?
-|`list` | Lists all decks
-|`newdeck [n/NAME]` | Creates a new deck. n/ is optional
-|`editdeck  INDEX n/NAME` | Edits the name of the deck
+|`help` | Lists all available commands and their respective formats.
+|`list` | Displays a list of all available decks. If inside a deck displays all cards in that deck.
 |`cd INDEX` | Navigates into the deck at INDEX. +
-Use `cd ..` to navigate out of the deck
-|`deldeck INDEX` | Deletes the deck at the specified INDEX
-|`newcard [q/QUESTION] [a/ANSWER]` | Creates a new card in the current deck.
-|`delcard INDEX_OF_DECK INDEX_OF_CARD` | Deletes the card at the specified INDEX_OF_CARD inside the deck at INDEX_OF_DECK.
-|`delcard INDEX_OF_CARD` | Deletes the card at the specified INDEX. +
+Use `cd ..` to navigate out of the deck.
+|`newdeck n/NAME` | Adds a new deck.
+|`editdeck INDEX n/NAME` | Edits the name of the deck at INDEX.
+|`deldeck INDEX` | Deletes the deck at INDEX.
+|`newcard q/QUESTION a/ANSWER` | Adds a new card in the current deck. +
 You must be inside a deck to perform this operation.
-|`newcard [q/QUESTION] [a/ANSWER]` | Creates a new card in the current deck. q/ and a/ are optional.
-|`editcard INDEX_OF_CARD [q/QUESTION] [a/ANSWER]` | Edits a new card in the current  at INDEX_OF_CARD. Either q/ or a/ must be provided.
-|`sort` | Sort the currently displayed list of decks/cards by name/question
-|`export INDEX_OF_DECK` | Exports the deck at the specified INDEX_OF_DECK. (Default location is the same folder as Anakin)
-|`import FILEPATH` | Imports a deck from the `xml` file at the specified FILEPATH.
-|`find KEYWORD [MORE_KEYWORDS]` | Finds decks with names that contain any of the given keywords.
-//|`find d/INDEX_OF_DECK KEYWORD [MORE_KEYWORDS]` | Finds cards in a specified deck with questions that contain any of the given keywords.
+|`editcard INDEX [q/QUESTION]-[a/ANSWER]` | Edits the details of the card at INDEX. +
+At least one parameter must be present. +
+You must be inside a deck to perform this operation.
+|`delcard INDEX` | Deletes the card at INDEX. +
+You must be inside a deck to perform this operation.
+|`review INDEX` | Review the cards of the deck at INDEX.
+|`flipcard` | View the flipside of the current card during a review.
+|`nextcard` | Views the subsequent card in the deck.
+|`prevcard` | Views the previous card in the deck.
+|`endreview` | Exits the review.
 |`classify RATING` | Classifies the current card into one of the following categories: {‘easy’, ‘good’ , ‘hard’ , ‘review’}
-
+|`sort` | Sorts the displayed list of decks by name. +
+When inside a deck, sorts the displayed list of cards by question.
+//|`rank` | Sort the list of cards by performance
+|`find KEYWORD [MORE_KEYWORDS]...` | Finds decks with names that contain any of the given keywords. +
+When inside a deck, finds cards with questions that contain any of the given keywords.
+|`export INDEX` | Exports the deck at the specified INDEX. (Default location is the same folder as Anakin)
+|`import FILEPATH` | Imports a deck from the `xml` file at the specified FILEPATH.
+|`history` | List all entered commands in reverse chronological order.
+|`undo` | Undo previous command.
+|`redo` | Redo previously undone command.
+|`clear` | Clear all decks and cards.
+|`exit` | Exits the program.
 
 |=======================================================================
