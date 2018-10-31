@@ -74,6 +74,11 @@ public class ParserUtil {
         return new Answer(trimmed);
     }
 
+    /**
+     * Parses a {@code String performance} into a {@code Performance}
+     *
+     * @throws ParseException
+     */
     public static Performance parsePerformance(String performance) throws ParseException {
         requireNonNull(performance);
         String trimmed = performance.trim();

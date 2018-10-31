@@ -10,6 +10,13 @@ import seedu.address.model.deck.Performance;
  * Parses input arguments and create a ClassifyCommand object
  */
 public class ClassifyCommandParser implements ParserInterface<ClassifyCommand> {
+
+    /**
+     * Parses the given {@code String} of arguments in the context of the ClassifyCommand
+     * and returns a ClassifyCommand object for execution.
+     *
+     * @throws ParseException if the user input does not conform the expected format
+     */
     public ClassifyCommand parse(String args) throws ParseException {
         try {
             Performance difficulty = ParserUtil.parsePerformance(args);
