@@ -226,7 +226,7 @@ Format: `prevcard`
 Exits the review and returns to the editing menu +
 Format: `endreview`
 
-=== Card difficulty classification : `classify` [coming in v1.4]
+=== Card difficulty classification : `classify`
 Allocates card into one of four bins {Easy, Good, Hard, Review} +
 Format: `classify d/INDEX_OF_DECK INDEX_OF_CARD RATING`
 
@@ -402,7 +402,7 @@ You must be inside a deck to perform this operation.
 |`nextcard` | Views the subsequent card in the deck.
 |`prevcard` | Views the previous card in the deck.
 |`endreview` | Exits the review.
-//|`classify RATING` | Classifies the current card into one of the following categories: {‘easy’, ‘good’ , ‘hard’ , ‘review’}
+|`classify RATING` | Classifies the current card into one of the following categories: {‘easy’, ‘good’ , ‘hard’ , ‘review’}
 |`sort` | Sorts the displayed list of decks by name. +
 When inside a deck, sorts the displayed list of cards by question.
 //|`rank` | Sort the list of cards by performance
