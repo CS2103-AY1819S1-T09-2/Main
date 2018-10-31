@@ -412,7 +412,8 @@ You must be inside a deck to perform this operation.
 |`nextcard` | Views the subsequent card in the deck.
 |`prevcard` | Views the previous card in the deck.
 |`endreview` | Exits the review.
-|`classify RATING` | Classifies the current card into one of the following categories: {‘easy’, ‘good’ , ‘hard’ , ‘review’}
+|`classify DIFFICULTY` | Classifies the current card into one of the following categories: {‘easy’, ‘good’ , ‘hard’ ,
+‘review’}
 |`sort` | Sorts the displayed list of decks by name. +
 When inside a deck, sorts the displayed list of cards by question.
 //|`rank` | Sort the list of cards by performance
