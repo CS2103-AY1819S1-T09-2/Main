@@ -32,7 +32,7 @@ public class EditDeckCommand extends Command {
         + "by the index number used in the displayed deck list. "
         + "Changes its name to NAME.\n"
         + "Parameters: INDEX (must be a positive integer) "
-        + "[" + PREFIX_NAME + "NAME]...\n "
+        + "[" + PREFIX_NAME + "NAME]...\n"
         + "Example: " + COMMAND_WORD + " 1 "
         + PREFIX_NAME + "[NAME]";
 

@@ -24,8 +24,8 @@ public class NewCardCommand extends Command {
         + "Parameters: "
         + "[" + PREFIX_QUESTION + "QUESTION] "
         + "[" + PREFIX_ANSWER + "ANSWER]\n"
-        + "Example: " + COMMAND_WORD
-        + PREFIX_QUESTION + "What does Socrates know?"
+        + "Example: " + COMMAND_WORD + " "
+        + PREFIX_QUESTION + "What does Socrates know? "
         + PREFIX_ANSWER + "Nothing";
 
     public static final String MESSAGE_NEW_CARD_SUCCESS = "New card added: %1$s";
