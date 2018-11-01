@@ -1,0 +1,598 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Truong Thanh - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Anakin</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S1-T09-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Truong Thanh - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-anakin"><a class="link" href="#project-anakin">PROJECT: Anakin</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Anakin is a desktop  application built to help people memorize things better by providing
+digital flash cards.
+The user interacts with it using a CLI, and it has a GUI created with JavaFX.
+It is written in Java, and has about 10 kLoC.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancements:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Re-design and implement the model component</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What can the new model do:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Allows Anakin to have a unique list of decks, each deck contains a unique list of cards.</p>
+</li>
+<li>
+<p>Allows UI to observe both the deck list and card list so that it can update its deck panel and
+card panel when user execute different commands.</p>
+</li>
+<li>
+<p>Allows Logic component to execute more commands by providing a complete Model interface with
+methods that support those operations.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Justification: The new model component executes the logic of all commands, determines
+how objects like deck and card interacts with each other and
+manipulate the state of the application.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Implement <code>find</code> command</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What can <code>find</code> command do:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Search for decks by name if user is under the home directory.</p>
+</li>
+<li>
+<p>Search for cards by question if user is inside a deck.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Justification: This allows user to locate the deck or card that contains specific keywords
+quickly when the application has a lot of data.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancements:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Implement <code>newcard</code> command</strong>: create a new card inside the current deck with the
+given question and answer.</p>
+</li>
+<li>
+<p><strong>Implement <code>sort</code> command</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What can <code>sort</code> command do:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Sort the current deck list in lexicographical order.</p>
+</li>
+<li>
+<p>Sort the current card list in lexicographical order if user is inside a deck.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Justification: This allows user to manage their data better and to find
+deck or card easily.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wrote tests for model component
+(Pull requests <a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/130">#130</a>)</p>
+</li>
+<li>
+<p>Wrote additional classes for test util
+(Pull requests <a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/122/files">#122</a>)</p>
+</li>
+<li>
+<p>Fix bugs (Pull requests
+<a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/156">#156</a>,
+<a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/164">#164</a>,
+<a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/168">#168</a>,
+<a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/171">#171</a>)</p>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wrote additional tests for existing features to increase coverage from 79.5% to 84%</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Update developer guide (Pull request <a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/91">#91</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/165">#165</a>,
+<a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/189">#189</a></p>
+</li>
+<li>
+<p>Reported bugs and suggestions in the issue tracker of the project
+(Issues:  <a href="https://github.com/CS2103-AY1819S1-T09-2/main/issues/161">#161</a>,
+ <a href="https://github.com/CS2103-AY1819S1-T09-2/main/issues/162">#162</a>,
+ <a href="https://github.com/CS2103-AY1819S1-T09-2/main/issues/163">#163</a>,
+ <a href="https://github.com/CS2103-AY1819S1-T09-2/main/issues/191">#191</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="adding-a-deck-code-newdeck-code"><a class="link" href="#adding-a-deck-code-newdeck-code">Adding a deck: <code>newdeck</code></a></h3>
+<div class="paragraph">
+<p>Adds a new deck with the given name to Anakin<br>
+Format: <code>newdeck n/NAME</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This deck will contains an empty list of cards.</p>
+</li>
+<li>
+<p>This operation is disabled when user is currently inside a deck.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>newdeck n/My First Deck</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-card-code-newcard-code"><a class="link" href="#adding-a-card-code-newcard-code">Adding a card : <code>newcard</code></a></h3>
+<div class="paragraph">
+<p>Add a new card with given question and answer to the current card list.<br>
+Format: <code>newcard q/QUESTION a/ANSWER</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>q/QUESTION</code> and <code>a/ANSWER</code> can be in any order.</p>
+</li>
+<li>
+<p>User should be inside a deck to perform this operation.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>newcard q/Who are you? a/I&#8217;m Batman</code></p>
+</li>
+<li>
+<p><code>newcard a/Ding ding ding q/What does the fox say?</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sort-code-sort-code"><a class="link" href="#sort-code-sort-code">Sort : <code>sort</code></a></h3>
+<div class="paragraph">
+<p>Sort the current list in lexicographical order.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If user is currently inside a deck, sort all cards according to their question.<br></p>
+</li>
+<li>
+<p>If user is not in a deck, sort all decks according to the their name.<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Format: <code>sort</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rank-performance-code-rank-code-coming-in-v1-4"><a class="link" href="#rank-performance-code-rank-code-coming-in-v1-4">Rank performance : <code>rank</code> [coming in v1.4]</a></h3>
+<div class="paragraph">
+<p>Rank the current card list by performance.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Sorts the cards in current deck by rank (card performance).<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Format: <code>rank</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Note: User must be inside a deck to perform this command.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-for-a-deck-or-card-code-find-code"><a class="link" href="#search-for-a-deck-or-card-code-find-code">Search for a deck or card : <code>find</code></a></h3>
+<div class="paragraph">
+<p>Search decks by names or cards by questions.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If user is currently in a deck, find all cards which contain the specific keywords.</p>
+</li>
+<li>
+<p>If user is not in a deck, find decks.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Format: <code>find KEYWORD [MORE_KEYWORDS]…</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
+</li>
+<li>
+<p>Only the name of the deck or the question of the card is searched.</p>
+</li>
+<li>
+<p>Decks or cards matching at least one keyword will be returned
+(i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+</li>
+<li>
+<p>If user inputs 1 keyword, partial word will be matched. e.g 'Han' will match `Hans'</p>
+</li>
+<li>
+<p>If user inputs multiple keywords, only full words will be matched
+e.g. 'Han Solo' will match 'Han non-solo' but will not match 'Hans Soooolo'</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find Algo</code><br>
+Returns <code>algo</code> and <code>Easy Algo</code></p>
+</li>
+<li>
+<p>User is not inside any decks:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find Bio Chem Physics</code><br>
+Returns any decks containing <code>Bio</code>, <code>Chem</code>, or <code>Physics</code> in their name.</p>
+</li>
+<li>
+<p><code>find insert</code><br>
+Returns <code>insert</code>, <code>inserted</code>, <code>inserting</code> or any decks of which name contains these words.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>User is inside a deck: <code>find John Snow</code><br>
+Returns any cards containing <code>John</code> or <code>Snow</code> in their questions.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="model-component"><a class="link" href="#model-component">Model component</a></h3>
+<div class="imageblock" style="text-align: left">
+<div class="content">
+<img src="../images/AnakinModelClassDiagram.png" alt="AnakinModelClassDiagram" width="900">
+</div>
+</div>
+<div class="paragraph">
+<p>Structure of the Model Component</p>
+</div>
+<div class="paragraph">
+<p>The <code>Model</code>,</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>stores Anakin data.</p>
+</li>
+<li>
+<p>provides a Model interface for Logic component to execute all commands</p>
+</li>
+<li>
+<p>manipulates the state of Anakin</p>
+</li>
+<li>
+<p>manages the interaction, relationship between different objects (Anakin, Card, Deck, &#8230;&#8203;)</p>
+</li>
+<li>
+<p>exposes an unmodifiable ObservableList&lt;Deck&gt; and ObservableList&lt;Card&gt; that can be 'observed'
+e.g. the UI is bound to these lists so that the UI automatically updates when the data in the lists change.</p>
+</li>
+<li>
+<p>does not depend on any of the other three components.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="card-level-operations"><a class="link" href="#card-level-operations">Card-level operations</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current implementation</a></h4>
+<div class="paragraph">
+<p>Card-level operations are supported in Anakin class:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Anakin#addCard(Card card) - Add a card to the current deck.</p>
+</li>
+<li>
+<p>Anakin#deleteCard(Card card) - Delete a card from the current deck.</p>
+</li>
+<li>
+<p>Anakin#updateCard( Card target, Card editedCard) - Update the information of a card inside the current deck.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These operations are exposed in the Model interface as: Model#addCard(Card card), Model#deleteCard(Card card), Model#updateCard(Card target, Card editedCard) respectively.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how these operations are executed in Model.</p>
+</div>
+<div class="paragraph">
+<p>The user executes <code>newcard q/Hello? a/World</code> to add a new card with question "Hello?" and answer "World" to the current deck.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>newcard</code> command calls Model#addCard(Card card), or ModelManager#addCard.</p>
+</li>
+<li>
+<p>ModelManager, which implements Model interface, will call Anakin#addCard method.</p>
+</li>
+<li>
+<p>Anakin#addCard will throw DeckNotFoundException if the user is not inside a deck. Otherwise, it will call method UniqueCardList#add(Card toAdd).</p>
+</li>
+<li>
+<p>UniqueCardList#add will throw DuplicateCardException if the card already exist in the list. Otherwise, it will add the card to its internal ObservableList&lt;Card&gt;.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>newcard</code> operation works:</p>
+</div>
+<div class="imageblock" style="text-align: left">
+<div class="content">
+<img src="../images/NewcardSequenceDiagram.png" alt="NewcardSequenceDiagram" width="790">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-consideration"><a class="link" href="#design-consideration">Design consideration</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Implement the logic of card-level operations in Anakin class.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and debug as all logic related with executing commands are implemented in Anakin.</p>
+</li>
+<li>
+<p>Cons: Deck class is not informed, or notified when its UniqueCardList is modified. This might result in unexpected behaviors if a card-level command is executed and the person in charge of Deck class assumes that the UniqueCardList is unmodified.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Implement the logic of card-level operations in Deck class.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The responsibility of each class is clear, only a Deck can modify its list of cards.</p>
+</li>
+<li>
+<p>Cons: The logic for executing deck-level and card-level commands are implemented at different places. We must ensure that the implementation of each command is correct.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="keep-cards-panel-updated-by-ui"><a class="link" href="#keep-cards-panel-updated-by-ui">Keep cards panel updated by UI</a></h3>
+<div class="sect3">
+<h4 id="problem-with-the-old-design"><a class="link" href="#problem-with-the-old-design">Problem with the old design</a></h4>
+<div class="paragraph">
+<p>The UI (MainWindow) constructs the cards panel by obtaining an <code>ObservableList</code> of cards from Model,
+this list is assigned when UI starts, and will never be re-assigned.
+The UI "observes" the list and updates when it is modified.</p>
+</div>
+<div class="paragraph">
+<p>This approach works well for the deck list because Anakin contains only 1 list of decks.
+However, the card list can not be updated in the same manner because Model component will
+change its card list&#8217;s reference when user enters another deck.</p>
+</div>
+<div class="paragraph">
+<p>In this case, the card list in UI will not be updated because the card list of which UI has
+reference to is actually not changed, but it is the wrong card list.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design considerations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Have a <code>displayedCards</code> list in Model and keep it updated with the current list of cards</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Explanation: The UI needs only 1 reference to this <code>displayedCards</code> list, each time user enters another deck,
+<code>displayedCards</code> list is cleared and the new deck&#8217;s list of cards is copy to the <code>displayedCards</code> list</p>
+</li>
+<li>
+<p>Pros: The structure of Model and UI component needs not be changed</p>
+</li>
+<li>
+<p>Cons: Need to keep a copy of the current card list, copying the whole list of cards
+for each <code>cd</code> operation has bad effect on performance</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Model component raises an event when its current card list&#8217;s reference is changed</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Explanation: When user <code>cd</code> (enters) a new deck, Model will raise
+an event (CardListChangedEvent), which is subscribed by UI, then UI can re-assign its list of cards
+and update the cards panel accordingly</p>
+</li>
+<li>
+<p>Pros: Better performance</p>
+</li>
+<li>
+<p>Cons: Need to re-design Model and UI components</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 14:58:48 UTC</div></div></div></body></html>

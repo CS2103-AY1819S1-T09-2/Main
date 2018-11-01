@@ -390,7 +390,17 @@ abstract <code>UiPart</code> class.</p>
 <p>stores Anakin data.</p>
 </li>
 <li>
-<p>exposes an unmodifiable ObservableList&lt;Deck&gt; and ObservableList&lt;Card&gt; that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>provides a Model interface for Logic component to execute all commands</p>
+</li>
+<li>
+<p>manipulates the state of Anakin</p>
+</li>
+<li>
+<p>manages the interaction, relationship between different objects (Anakin, Card, Deck, &#8230;&#8203;)</p>
+</li>
+<li>
+<p>exposes an unmodifiable ObservableList&lt;Deck&gt; and ObservableList&lt;Card&gt; that can be 'observed'
+e.g. the UI is bound to these lists so that the UI automatically updates when the data in the lists change.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
@@ -1850,4 +1860,4 @@ b. Require developers to download those libraries manually (this creates extra w
 </dl>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 08:41:26 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 14:58:48 UTC</div></div></div></body></html>
