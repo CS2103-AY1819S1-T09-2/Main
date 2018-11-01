@@ -29,14 +29,15 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#card-level-operations">3.1. Card-level operations</a></li>
-<li><a href="#deck-level-operations">3.2. Deck-level operations</a></li>
-<li><a href="#deck-review-implementation">3.3. Deck Review Implementation</a></li>
-<li><a href="#performance-tracking-implementation">3.4. Performance Tracking Implementation</a></li>
-<li><a href="#ui-implementation">3.5. UI implementation</a></li>
-<li><a href="#keep-cards-panel-updated-by-ui">3.6. Keep cards panel updated by UI</a></li>
-<li><a href="#import-export-implementation">3.7. Import/Export Implementation</a></li>
-<li><a href="#logging">3.8. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
+<li><a href="#handle-invalid-commands">3.2. Handle invalid commands</a></li>
+<li><a href="#deck-level-operations">3.3. Deck-level operations</a></li>
+<li><a href="#deck-review-implementation">3.4. Deck Review Implementation</a></li>
+<li><a href="#performance-tracking-implementation">3.5. Performance Tracking Implementation</a></li>
+<li><a href="#ui-implementation">3.6. UI implementation</a></li>
+<li><a href="#keep-cards-panel-updated-by-ui">3.7. Keep cards panel updated by UI</a></li>
+<li><a href="#import-export-implementation">3.8. Import/Export Implementation</a></li>
+<li><a href="#logging">3.9. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.10. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -537,9 +538,78 @@ e.g. the UI is bound to these lists so that the UI automatically updates when th
 </div>
 </div>
 <div class="sect2">
-<h3 id="deck-level-operations"><a class="link" href="#deck-level-operations">3.2. Deck-level operations</a></h3>
+<h3 id="handle-invalid-commands"><a class="link" href="#handle-invalid-commands">3.2. Handle invalid commands</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current implementation</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Deck-level operations (<code>newdeck</code>, <code>editdeck</code>, <code>deldeck</code>, <code>exportdeck</code>, <code>importdeck</code>)
+are disabled when user is inside a deck.</p>
+</li>
+<li>
+<p>These commands are blocked while executing commands (in Logic component) by
+checking the state of Anakin through Model interface.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-consideration-2"><a class="link" href="#design-consideration-2">3.2.2. Design consideration</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Implement the logic of command-checking in
+Logic component</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reduce possible bugs caused by executing deck-level commands while inside
+a deck.</p>
+</li>
+<li>
+<p>Model component handles less invalid commands.</p>
+</li>
+<li>
+<p>Exceptions are thrown and handled inside Logic components instead of being passed
+from Model to Logic.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons: Increase coupling between Logic and Model component.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Handle all commands logic in Model component</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Lower degree of dependency between Logic and Model (aka low coupling), thus
+make the process of maintenance, integration and testing easier.</p>
+</li>
+<li>
+<p>Cons: Model has to check for invalid commands according to its
+state</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deck-level-operations"><a class="link" href="#deck-level-operations">3.3. Deck-level operations</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current implementation</a></h4>
 <div class="paragraph">
 <p>Deck-level operations are supported in Anakin class:</p>
 </div>
@@ -595,7 +665,7 @@ e.g. the UI is bound to these lists so that the UI automatically updates when th
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-consideration-2"><a class="link" href="#design-consideration-2">3.2.2. Design consideration</a></h4>
+<h4 id="design-consideration-3"><a class="link" href="#design-consideration-3">3.3.2. Design consideration</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -629,9 +699,9 @@ e.g. the UI is bound to these lists so that the UI automatically updates when th
 </div>
 </div>
 <div class="sect2">
-<h3 id="deck-review-implementation"><a class="link" href="#deck-review-implementation">3.3. Deck Review Implementation</a></h3>
+<h3 id="deck-review-implementation"><a class="link" href="#deck-review-implementation">3.4. Deck Review Implementation</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The deck review mechanism is facilitated by <code>Anakin</code> from Model, the <code>MainWindow</code> and <code>DeckReviewScreen</code> from UI and
 the EventsCenter.</p>
@@ -748,7 +818,7 @@ of the process is similar to Step 3.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.4.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-tracking-index-of-current-card"><a class="link" href="#aspect-tracking-index-of-current-card">Aspect: Tracking index of current card</a></h5>
 <div class="ulist">
@@ -785,9 +855,9 @@ of the process is similar to Step 3.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="performance-tracking-implementation"><a class="link" href="#performance-tracking-implementation">3.4. Performance Tracking Implementation</a></h3>
+<h3 id="performance-tracking-implementation"><a class="link" href="#performance-tracking-implementation">3.5. Performance Tracking Implementation</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-v1-3"><a class="link" href="#current-implementation-v1-3">3.4.1. Current Implementation (v1.3)</a></h4>
+<h4 id="current-implementation-v1-3"><a class="link" href="#current-implementation-v1-3">3.5.1. Current Implementation (v1.3)</a></h4>
 <div class="paragraph">
 <p>The user can assign to a card a difficulty after reviewing it in "play" mode. Users can only do this assignment on
 the card they are currently reviewing, as it is the only time it makes sense.</p>
@@ -819,9 +889,9 @@ the card they are currently reviewing, as it is the only time it makes sense.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="ui-implementation"><a class="link" href="#ui-implementation">3.5. UI implementation</a></h3>
+<h3 id="ui-implementation"><a class="link" href="#ui-implementation">3.6. UI implementation</a></h3>
 <div class="sect3">
-<h4 id="previous-implementation-v1-2"><a class="link" href="#previous-implementation-v1-2">3.5.1. Previous implementation (v1.2)</a></h4>
+<h4 id="previous-implementation-v1-2"><a class="link" href="#previous-implementation-v1-2">3.6.1. Previous implementation (v1.2)</a></h4>
 <div class="paragraph">
 <p>The UI for Anakin at v1.2 split the main area into three sections:</p>
 </div>
@@ -859,7 +929,7 @@ that of the second deck.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-v1-3-2"><a class="link" href="#current-implementation-v1-3-2">3.5.2. Current implementation (v1.3)</a></h4>
+<h4 id="current-implementation-v1-3-2"><a class="link" href="#current-implementation-v1-3-2">3.6.2. Current implementation (v1.3)</a></h4>
 <div class="paragraph">
 <p>The UI for Anakin was revamped in v1.3. Previously in v1.2, the application had a list of decks and list of cards on
 its main view <code>MainWindow</code>. In v1.3, the panels displaying these lists have been refactored into <code>DeckEditScreen</code>.
@@ -871,7 +941,7 @@ to subsequent and previous cards in the deck. See Deck Review Implementation for
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.5.3. Design considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.6.3. Design considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -905,9 +975,9 @@ to subsequent and previous cards in the deck. See Deck Review Implementation for
 </div>
 </div>
 <div class="sect2">
-<h3 id="keep-cards-panel-updated-by-ui"><a class="link" href="#keep-cards-panel-updated-by-ui">3.6. Keep cards panel updated by UI</a></h3>
+<h3 id="keep-cards-panel-updated-by-ui"><a class="link" href="#keep-cards-panel-updated-by-ui">3.7. Keep cards panel updated by UI</a></h3>
 <div class="sect3">
-<h4 id="problem-with-the-old-design"><a class="link" href="#problem-with-the-old-design">3.6.1. Problem with the old design</a></h4>
+<h4 id="problem-with-the-old-design"><a class="link" href="#problem-with-the-old-design">3.7.1. Problem with the old design</a></h4>
 <div class="paragraph">
 <p>The UI (MainWindow) constructs the cards panel by obtaining an <code>ObservableList</code> of cards from Model,
 this list is assigned when UI starts, and will never be re-assigned.
@@ -924,7 +994,7 @@ reference to is actually not changed, but it is the wrong card list.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.6.2. Design considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.7.2. Design considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -968,9 +1038,9 @@ and update the cards panel accordingly</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="import-export-implementation"><a class="link" href="#import-export-implementation">3.7. Import/Export Implementation</a></h3>
+<h3 id="import-export-implementation"><a class="link" href="#import-export-implementation">3.8. Import/Export Implementation</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-v1-3-3"><a class="link" href="#current-implementation-v1-3-3">3.7.1. Current implementation (v1.3)</a></h4>
+<h4 id="current-implementation-v1-3-3"><a class="link" href="#current-implementation-v1-3-3">3.8.1. Current implementation (v1.3)</a></h4>
 <div class="paragraph">
 <p>Imports and exports in Anakin are managed by a PortManager.</p>
 </div>
@@ -981,7 +1051,7 @@ Upon creation, Model will initialize a PortManager. When an ExportCommand or Imp
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.7.2. Design considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.8.2. Design considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1020,14 +1090,14 @@ PortManager returns a <code>String</code> of the export location, which is passe
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.9. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.10, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1058,7 +1128,7 @@ PortManager returns a <code>String</code> of the export location, which is passe
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.10. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2026,4 +2096,4 @@ b. Require developers to download those libraries manually (this creates extra w
 </dl>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 15:34:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 16:17:47 UTC</div></div></div></body></html>
