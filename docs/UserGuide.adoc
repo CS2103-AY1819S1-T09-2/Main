@@ -288,7 +288,7 @@ Format: `showDue c/10 m/12 y/14`
 * The above command will display the cards due on the 10th December, 2014. If no arguments are given for date
 * If no day, month or year is given, showDue will default to showing the cards due for today
 ****
-// end::rank[]
+// end::showDue[]
 
 // tag::find[]
 === Search for a deck or card : `find`
