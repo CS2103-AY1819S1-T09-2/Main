@@ -227,18 +227,13 @@ Exits the review and returns to the editing menu +
 Format: `endreview`
 
 === Card difficulty classification : `classify`
-Allocates card into one of four bins {Easy, Good, Hard, Review} +
-Format: `classify d/INDEX_OF_DECK INDEX_OF_CARD RATING`
-
-If user is inside a deck: +
-Format: `classify INDEX_OF_CARD RATING`
-
-If user is viewing a card: +
-Format: `classify RATING`
+Allocates one of the four difficulties (easy, good, hard or review) +
+to the card currently being reviewed. +
+Format: `classify DIFFICULTY`
 
 ****
-* RATING indicates how you felt about the question +
-*RATING* {‘easy’ | ‘good’ | ‘hard’ | ‘review’}
+* DIFFICULTY indicates how you felt about the question +
+*DIFFICULTY* : {‘easy’ | ‘good’ | ‘hard’ | ‘review’}
 ****
 
 === Sort current list in lexicographical order : `sort`
@@ -296,16 +291,6 @@ Format: `import FILEPATH`
 
 ****
 * FILEPATH must include the filename of the target file.
-****
-
-=== Card difficulty classification : `classify`
-Allocates one of the four difficulties (easy, good, hard or review) +
-to the card currently being reviewed. +
-Format: `classify DIFFICULTY`
-
-****
-* DIFFICULTY indicates how you felt about the question +
-*DIFFICULTY* : {‘easy’ | ‘good’ | ‘hard’ | ‘review’}
 ****
 
 === Listing entered commands : `history`
