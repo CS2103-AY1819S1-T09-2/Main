@@ -138,7 +138,7 @@ The `LogicManager` contains an `AnakinModel`, an `AnakinParser`, and a `CommandH
 When a string input by the user is parsed by `AnakinParser`, it creates a new `AnakinCommand` of the appropriate type with the relevant arguments (based on parser tokens). Each `AnakinCommand` has its own Class. `LogicManager` will call `execute` on the command object. If successful, `LogicManager` will modify `Model` accordingly. Regardless of success, `LogicManager` will update `CommandHistory` with the `CommandResult`.
 
 
-
+// tag::modelcomponent[]
 === Model component
 
 image::AnakinModelClassDiagram.png[width="900", align="left"]
@@ -149,9 +149,14 @@ The `Model`,
 
 ****
 * stores Anakin data.
-* exposes an unmodifiable ObservableList<Deck> and ObservableList<Card> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* provides a Model interface for Logic component to execute all commands
+* manipulates the state of Anakin
+* manages the interaction, relationship between different objects (Anakin, Card, Deck, ...)
+* exposes an unmodifiable ObservableList<Deck> and ObservableList<Card> that can be 'observed'
+e.g. the UI is bound to these lists so that the UI automatically updates when the data in the lists change.
 * does not depend on any of the other three components.
 ****
+// end::modelcomponent[]
 
 === Storage component
 
@@ -169,6 +174,7 @@ The `Storage` component,
 
 This section describes some noteworthy details on how certain features are implemented.
 
+// tag::cardleveloperation[]
 === Card-level operations
 
 ==== Current implementation
@@ -207,6 +213,8 @@ image::NewcardSequenceDiagram.png[width="790", align="left"]
 
 ** Pros: The responsibility of each class is clear, only a Deck can modify its list of cards.
 ** Cons: The logic for executing deck-level and card-level commands are implemented at different places. We must ensure that the implementation of each command is correct.
+
+// end::cardleveloperation[]
 
 === Deck-level operations
 
@@ -310,6 +318,9 @@ Step 4. The user executes `cd ..` command to navigate out of the second deck. Th
 ** Pros: Looks more impressive in UI-wise,
 ** Cons: Have to implement a switch event to toggle items inside StackPane
 
+
+// tag::keepcardspanelupdatedbyui[]
+
 === Keep cards panel updated by UI
 
 ==== Problem with the old design
@@ -342,6 +353,7 @@ an event (CardListChangedEvent), which is subscribed by UI, then UI can re-assig
 and update the cards panel accordingly
 ** Pros: Better performance
 ** Cons: Need to re-design Model and UI components
+// end::keepcardspanelupdatedbyui[]
 
 === Import/Export Implementation
 ==== Current implementation (v1.3)

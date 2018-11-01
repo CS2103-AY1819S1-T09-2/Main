@@ -95,20 +95,21 @@ Examples:
 Enter the 1st deck in the currently displayed deck list.
 then return back to the Anakin's deck list (get out of the 1st deck)
 
+// tag::newdeck[]
 === Adding a deck: `newdeck`
 
-Adds a new deck with no cards to Anakin +
+Adds a new deck with the given name to Anakin +
 Format: `newdeck n/NAME`
 
 ****
-* NAME will be taken as a string.
-// * If NAME is left blank, the name of the deck will be “New Deck #number”.
+* This deck will contains an empty list of cards.
+* This operation is disabled when user is currently inside a deck.
 ****
 
 Examples:
 
 * `newdeck n/My First Deck`
-
+// end::newdeck[]
 
 === Editing the name of a deck : `editdeck`
 
@@ -118,6 +119,7 @@ Format: `editdeck INDEX_OF_DECK n/NAME`
 ****
 * INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
 * The new deck will maintain the card list of the old one.
+* This operation is disabled when user navigates into a deck.
 ****
 
 Examples:
@@ -133,6 +135,7 @@ Format: `deldeck INDEX_OF_DECK`
 ****
 * Deletes the deck at the specified `INDEX_OF_DECK`.
 * `INDEX_OF_DECK` must be a positive integer from 1 onwards and is based on the currently displayed list.
+* This operation is disabled when user navigates into a deck.
 ****
 
 Examples:
@@ -141,14 +144,23 @@ Examples:
 `deldeck 2` +
 Deletes the 2nd deck that appears in the currently displayed list of decks.
 
+// tag::newcard[]
 === Adding a card : `newcard`
 
-When user is inside a deck, adds a new card. +
+Add a new card with given question and answer to the current card list. +
 Format: `newcard q/QUESTION a/ANSWER`
 
 ****
 * `q/QUESTION` and `a/ANSWER` can be in any order.
+* User should be inside a deck to perform this operation.
 ****
+
+Examples:
+
+* `newcard q/Who are you? a/I'm Batman`
+* `newcard a/Ding ding ding q/What does the fox say?`
+
+// end::newcard[]
 
 === Editing a card : `editcard`
 
@@ -160,13 +172,13 @@ Format: `editcard INDEX_OF_CARD [q/QUESTION]-[a/ANSWER]`
 * Existing values will be updated to the input values.
 * If any of 2 fields: [q/QUESTION] [a/ANSWER] is left empty, the old value for that field will be retained
 * At least one of the optional fields must be provided.
+* User should be inside a deck to perform this operation.
 ****
 
 Examples:
 
-* `cd 1` +
-`edit 1 a/New Answer` +
-Edits the answer of the first card in the first deck to be "New Answer".
+* `edit 1 a/New Answer` +
+Edits the answer of the first card in the current card list to be "New Answer".
 
 === Deleting a card : `delcard`
 
@@ -175,7 +187,7 @@ Format: `delcard INDEX_OF_CARD`
 
 ****
 * Deletes the card at the specified `INDEX_OF_CARD`.
-* User must be inside a deck to perform this operation.
+* User should be inside a deck to perform this operation.
 * INDEX_OF_CARD must be a positive integer from 1 onwards and is based on the currently displayed list.
 ****
 
@@ -241,25 +253,36 @@ Format: `classify RATING`
 *RATING* {‘easy’ | ‘good’ | ‘hard’ | ‘review’}
 ****
 
-=== Sort current list in lexicographical order : `sort`
-If user is currently in a deck, sort all cards in alphabetical order according to the question. +
-If user is not in a deck, sort all decks in alphabetical order according to the deck's name. +
+// tag::sort[]
+=== Sort : `sort`
+Sort the current list in lexicographical order.
+
+* If user is currently inside a deck, sort all cards according to their question. +
+* If user is not in a deck, sort all decks according to the their name. +
+
 Format: `sort`
 
-=== Sort the list of cards by performance : `rank` [coming in v1.4]
-User must be inside a deck to perform this operation. +
-Sorts the cards in current deck by rank (card performance). +
+// end::sort[]
+
+// tag::rank[]
+=== Rank performance : `rank` [coming in v1.4]
+Rank the current card list by performance.
+
+* Sorts the cards in current deck by rank (card performance). +
+
 Format: `rank`
 
 ****
 * Note: User must be inside a deck to perform this command.
 ****
+// end::rank[]
 
-=== Locate a deck by name / card by question : `find`
+// tag::find[]
+=== Search for a deck or card : `find`
 
-Filters decks by names or cards by questions that contain any of the given keywords.
+Search decks by names or cards by questions.
 
-* If user is currently in a deck, find cards.
+* If user is currently in a deck, find all cards which contain the specific keywords.
 
 * If user is not in a deck, find decks.
 
@@ -268,19 +291,26 @@ Format: `find KEYWORD [MORE_KEYWORDS]…`
 ****
 * The search is case insensitive. e.g `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name / question is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Decks / cards matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* Only the name of the deck or the question of the card is searched.
+* Decks or cards matching at least one keyword will be returned
+(i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* If user inputs 1 keyword, partial word will be matched. e.g 'Han' will match `Hans'
+* If user inputs multiple keywords, only full words will be matched
+e.g. 'Han Solo' will match 'Han non-solo' but will not match 'Hans Soooolo'
 ****
 
 Examples:
 
 * `find Algo` +
 Returns `algo` and `Easy Algo`
-* User is not inside any decks: `find Bio Chem Physics` +
+* User is not inside any decks:
+** `find Bio Chem Physics` +
 Returns any decks containing `Bio`, `Chem`, or `Physics` in their name.
+** `find insert` +
+  Returns `insert`, `inserted`, `inserting` or any decks of which name contains these words.
 * User is inside a deck: `find John Snow` +
 Returns any cards containing `John` or `Snow` in their questions.
+// end::find[]
 
 === Export deck to xml file : `export`
 Creates an `xml` file containing the deck at INDEX_OF_DECK. +
@@ -288,6 +318,7 @@ Format: `exportdeck INDEX_OF_DECK`
 
 ****
 * INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
+* This operation is disabled when user navigates into a deck.
 ****
 
 === Import deck from csv file : `import`
@@ -296,6 +327,7 @@ Format: `import FILEPATH`
 
 ****
 * FILEPATH must include the filename of the target file.
+* This operation is disabled when user navigates into a deck.
 ****
 
 === Card difficulty classification : `classify`

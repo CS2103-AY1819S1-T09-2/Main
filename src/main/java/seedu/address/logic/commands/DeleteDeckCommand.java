@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_DECK_LEVEL_OPERATION;
 
 import java.util.List;
 
@@ -34,6 +35,11 @@ public class DeleteDeckCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
+
+        if (model.isInsideDeck()) {
+            throw new CommandException(MESSAGE_INVALID_DECK_LEVEL_OPERATION);
+        }
+
         List<Deck> lastShownList = model.getFilteredDeckList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {

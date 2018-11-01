@@ -39,7 +39,7 @@ methods that support those operations.
 *** Justification: This allows user to locate the deck or card that contains specific keywords
  quickly when the application has a lot of data.
 
-* *Minor enhancement:*
+* *Minor enhancements:*
 
 ** *Implement `newcard` command*: create a new card inside the current deck with the
 given question and answer.
@@ -47,8 +47,8 @@ given question and answer.
 ** *Implement `sort` command*
 
 *** What can `sort` command do:
-**** Sort the current deck list in alphabetical order.
-**** Sort the current card list in alphabetical order if user is inside a deck.
+**** Sort the current deck list in lexicographical order.
+**** Sort the current card list in lexicographical order if user is inside a deck.
 
 *** Justification: This allows user to manage their data better and to find
  deck or card easily.
@@ -81,10 +81,19 @@ https://github.com/CS2103-AY1819S1-T09-2/main/pull/189[#189]
 
 == Contributions to the User Guide
 
-
 |===
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
+
+include::../UserGuide.adoc[tag=newdeck]
+
+include::../UserGuide.adoc[tag=newcard]
+
+include::../UserGuide.adoc[tag=sort]
+
+include::../UserGuide.adoc[tag=rank]
+
+include::../UserGuide.adoc[tag=find]
 
 
 == Contributions to the Developer Guide
@@ -92,3 +101,10 @@ https://github.com/CS2103-AY1819S1-T09-2/main/pull/189[#189]
 |===
 |_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
 |===
+
+include::../DeveloperGuide.adoc[tag=modelcomponent]
+
+include::../DeveloperGuide.adoc[tag=cardleveloperation]
+
+include::../DeveloperGuide.adoc[tag=keepcardspanelupdatedbyui]
+

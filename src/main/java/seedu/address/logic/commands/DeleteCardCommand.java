@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_CARD_LEVEL_OPERATION;
 import static seedu.address.commons.core.Messages.MESSAGE_NOT_INSIDE_DECK;
 
 import java.util.List;
@@ -43,6 +44,11 @@ public class DeleteCardCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
+
+        if (!model.isInsideDeck()) {
+            throw new CommandException(MESSAGE_INVALID_CARD_LEVEL_OPERATION);
+        }
+
         List<Card> lastShownList = model.getFilteredCardList();
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_CARD_DISPLAYED_INDEX);

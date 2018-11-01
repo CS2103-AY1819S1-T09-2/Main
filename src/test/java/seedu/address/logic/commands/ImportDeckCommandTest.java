@@ -35,7 +35,7 @@ public class ImportDeckCommandTest {
 
 
     @Test
-    public void importDeck_successs() throws Exception {
+    public void importDeck_success() throws Exception {
         Model testModel = new ModelAlwaysImports();
         Deck deckToImport = DECK_WITH_CARDS;
         ImportDeckCommand importCommand = new ImportDeckCommand("Unused");
@@ -207,7 +207,7 @@ public class ImportDeckCommandTest {
 
         @Override
         public boolean isInsideDeck() {
-            throw new AssertionError("This method should not be called.");
+            return false;
         }
 
         @Override

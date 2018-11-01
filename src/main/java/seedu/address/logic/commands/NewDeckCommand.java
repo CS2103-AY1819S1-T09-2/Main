@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_DECK;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_DECK_LEVEL_OPERATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
 import seedu.address.logic.CommandHistory;
@@ -37,6 +38,10 @@ public class NewDeckCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
+
+        if (model.isInsideDeck()) {
+            throw new CommandException(MESSAGE_INVALID_DECK_LEVEL_OPERATION);
+        }
 
         if (model.hasDeck(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_DECK);

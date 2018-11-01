@@ -35,14 +35,14 @@ public class NewDeckCommandTest {
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test
-    public void constructor_nullPerson_throwsNullPointerException() {
+    public void constructor_nullDeck_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
         new NewDeckCommand(null);
     }
 
     @Test
-    public void execute_personAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
+    public void execute_deckAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubAcceptingDeckAdded modelStub = new ModelStubAcceptingDeckAdded();
         Deck validDeck = new DeckBuilder().build();
 
         CommandResult commandResult = new NewDeckCommand(validDeck).execute(modelStub, commandHistory);
@@ -53,7 +53,7 @@ public class NewDeckCommandTest {
     }
 
     @Test
-    public void execute_duplicatePerson_throwsCommandException() throws Exception {
+    public void execute_duplicateDeck_throwsCommandException() throws Exception {
         Deck validDeck = new DeckBuilder().build();
         NewDeckCommand newDeckCommand = new NewDeckCommand(validDeck);
         ModelStub modelStub = new ModelStubWithDeck(validDeck);
@@ -231,7 +231,7 @@ public class NewDeckCommandTest {
 
         @Override
         public boolean isInsideDeck() {
-            throw new AssertionError("This method should not be called.");
+            return false;
         }
 
         @Override
@@ -267,7 +267,7 @@ public class NewDeckCommandTest {
     /**
      * A Model stub that always accept the person being added.
      */
-    private class ModelStubAcceptingPersonAdded extends ModelStub {
+    private class ModelStubAcceptingDeckAdded extends ModelStub {
         final ArrayList<Deck> decksAdded = new ArrayList<>();
 
         @Override
