@@ -262,6 +262,11 @@ public class NewDeckCommandTest {
             requireNonNull(deck);
             return this.deck.isSameDeck(deck);
         }
+
+        @Override
+        public boolean isReviewingDeck() {
+            return false;
+        }
     }
 
     /**
@@ -280,6 +285,11 @@ public class NewDeckCommandTest {
         public void addDeck(Deck deck) {
             requireNonNull(deck);
             decksAdded.add(deck);
+        }
+
+        @Override
+        public boolean isReviewingDeck() {
+            return false;
         }
 
         @Override

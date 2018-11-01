@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_CURRENTLY_REVIEWING_DECK;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_CARD_LEVEL_OPERATION;
 import static seedu.address.commons.core.Messages.MESSAGE_NOT_INSIDE_DECK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ANSWER;
@@ -24,8 +25,8 @@ public class NewCardCommand extends Command {
         + "Parameters: "
         + "[" + PREFIX_QUESTION + "QUESTION] "
         + "[" + PREFIX_ANSWER + "ANSWER]\n"
-        + "Example: " + COMMAND_WORD
-        + PREFIX_QUESTION + "What does Socrates know?"
+        + "Example: " + COMMAND_WORD + " "
+        + PREFIX_QUESTION + "What does Socrates know? "
         + PREFIX_ANSWER + "Nothing";
 
     public static final String MESSAGE_NEW_CARD_SUCCESS = "New card added: %1$s";
@@ -46,6 +47,10 @@ public class NewCardCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
+        if (model.isReviewingDeck()) {
+            throw new CommandException(MESSAGE_CURRENTLY_REVIEWING_DECK);
+        }
+
 
         if (!model.isInsideDeck()) {
             throw new CommandException(MESSAGE_INVALID_CARD_LEVEL_OPERATION);

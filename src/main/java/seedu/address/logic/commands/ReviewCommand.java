@@ -22,7 +22,7 @@ public class ReviewCommand extends Command {
 
     public static final String COMMAND_WORD = "review";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Reviews a deck inside Anakin. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Reviews a deck inside Anakin.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1 ";
 

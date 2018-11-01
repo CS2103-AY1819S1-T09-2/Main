@@ -1,9 +1,11 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_CURRENTLY_REVIEWING_DECK;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.CommandHistory;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.deck.CardQuestionContainsKeywordsPredicate;
 import seedu.address.model.deck.DeckNameContainsKeywordsPredicate;
@@ -18,10 +20,10 @@ public class FindCommand extends Command {
     public static final String COMMAND_WORD = "find";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all decks / cards in the current list,"
-            + " which has identity field contains any of the argument keywords. "
+            + " which has identity field contains any of the argument keywords.\n"
             + "The specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + "Donald Duck";
+            + "Example: " + COMMAND_WORD + " Donald Duck";
 
     private final DeckNameContainsKeywordsPredicate deckPredicate;
     private final CardQuestionContainsKeywordsPredicate cardPredicate;
@@ -44,8 +46,12 @@ public class FindCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model, CommandHistory history) {
+    public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
+        if (model.isReviewingDeck()) {
+            throw new CommandException(MESSAGE_CURRENTLY_REVIEWING_DECK);
+        }
+
         if (model.isInsideDeck()) {
             model.updateFilteredCardList(cardPredicate);
             return new CommandResult(

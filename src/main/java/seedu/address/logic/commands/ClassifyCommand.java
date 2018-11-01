@@ -16,8 +16,8 @@ import seedu.address.model.deck.Performance;
 public class ClassifyCommand extends Command {
     public static final String COMMAND_WORD = "classify";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ":  assigns to this card one of the four "
-            + "difficulty classification: {easy, good, hard, review}. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Assigns to this card one of the four "
+            + "difficulty classification: {easy, good, hard, review}.\n"
             + "Existing difficulty classification will be overwritten by the input value.\n"
             + "Parameters: RATING (easy/good/hard/review) "
             + "Example: " + COMMAND_WORD + " easy ";

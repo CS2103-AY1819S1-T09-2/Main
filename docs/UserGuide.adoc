@@ -162,6 +162,7 @@ Examples:
 
 // end::newcard[]
 
+// tag::editcard[]
 === Editing a card : `editcard`
 
 When user is inside a deck, edits an existing card at the specified index. +
@@ -179,6 +180,7 @@ Examples:
 
 * `edit 1 a/New Answer` +
 Edits the answer of the first card in the current card list to be "New Answer".
+// end::editcard[]
 
 === Deleting a card : `delcard`
 
@@ -197,6 +199,7 @@ Examples:
 `delcard 2` +
 Get into the first deck then deletes the 2nd card that appears in the card list.
 
+// tag::review[]
 === Review the cards in a deck : `review`
 Starts a review of the deck specified. +
 Format: `review INDEX_OF_DECK`
@@ -237,20 +240,16 @@ Format: `prevcard`
 === Exit review mode : `endreview`
 Exits the review and returns to the editing menu +
 Format: `endreview`
+// end::review[]
 
 === Card difficulty classification : `classify`
-Allocates card into one of four bins {Easy, Good, Hard, Review} +
-Format: `classify d/INDEX_OF_DECK INDEX_OF_CARD RATING`
-
-If user is inside a deck: +
-Format: `classify INDEX_OF_CARD RATING`
-
-If user is viewing a card: +
-Format: `classify RATING`
+Allocates one of the four difficulties (easy, good, hard or review) +
+to the card currently being reviewed. +
+Format: `classify DIFFICULTY`
 
 ****
-* RATING indicates how you felt about the question +
-*RATING* {‘easy’ | ‘good’ | ‘hard’ | ‘review’}
+* DIFFICULTY indicates how you felt about the question +
+*DIFFICULTY* : {‘easy’ | ‘good’ | ‘hard’ | ‘review’}
 ****
 
 // tag::sort[]
@@ -328,16 +327,6 @@ Format: `import FILEPATH`
 ****
 * FILEPATH must include the filename of the target file.
 * This operation is disabled when user navigates into a deck.
-****
-
-=== Card difficulty classification : `classify`
-Allocates one of the four difficulties (easy, good, hard or review) +
-to the card currently being reviewed. +
-Format: `classify DIFFICULTY`
-
-****
-* DIFFICULTY indicates how you felt about the question +
-*DIFFICULTY* : {‘easy’ | ‘good’ | ‘hard’ | ‘review’}
 ****
 
 === Listing entered commands : `history`

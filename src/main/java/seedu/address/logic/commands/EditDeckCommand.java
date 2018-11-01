@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_CURRENTLY_REVIEWING_DECK;
 import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_DECK;
 import static seedu.address.commons.core.Messages.MESSAGE_EDIT_DECK_SUCCESS;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_DECK_LEVEL_OPERATION;
@@ -32,7 +33,7 @@ public class EditDeckCommand extends Command {
         + "by the index number used in the displayed deck list. "
         + "Changes its name to NAME.\n"
         + "Parameters: INDEX (must be a positive integer) "
-        + "[" + PREFIX_NAME + "NAME]...\n "
+        + "[" + PREFIX_NAME + "NAME]...\n"
         + "Example: " + COMMAND_WORD + " 1 "
         + PREFIX_NAME + "[NAME]";
 
@@ -67,6 +68,10 @@ public class EditDeckCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
+        if (model.isReviewingDeck()) {
+            throw new CommandException(MESSAGE_CURRENTLY_REVIEWING_DECK);
+        }
+
 
         if (model.isInsideDeck()) {
             throw new CommandException(MESSAGE_INVALID_DECK_LEVEL_OPERATION);

@@ -297,6 +297,11 @@ public class NewCardCommandTest {
             requireNonNull(card);
             return this.card.isSameCard(card);
         }
+
+        @Override
+        public boolean isReviewingDeck() {
+            return false;
+        }
     }
 
     /**
@@ -315,6 +320,11 @@ public class NewCardCommandTest {
         public void addCard(Card card) {
             requireNonNull(card);
             cardsAdded.add(card);
+        }
+
+        @Override
+        public boolean isReviewingDeck() {
+            return false;
         }
 
         @Override

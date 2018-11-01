@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_CURRENTLY_REVIEWING_DECK;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CARDS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_DECKS;
 
@@ -20,6 +21,9 @@ public class RedoCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
+        if (model.isReviewingDeck()) {
+            throw new CommandException(MESSAGE_CURRENTLY_REVIEWING_DECK);
+        }
 
         if (!model.canRedoAnakin()) {
             throw new CommandException(MESSAGE_FAILURE);
