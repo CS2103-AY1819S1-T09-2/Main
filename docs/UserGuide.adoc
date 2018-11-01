@@ -276,16 +276,17 @@ Format: `sort`
 
 // end::sort[]
 
-// tag::rank[]
-=== Rank performance : `rank` [coming in v1.4]
-Rank the current card list by performance.
+// tag::showDue[]
+=== Show cards that should be reviewed on a particular date : `showDue` [coming in v1.4]
+Show cards due on a particular date
 
-* Sorts the cards in current deck by rank (card performance). +
+* Shows the cards which require a review for a particular date based on past card performance. +
 
-Format: `rank`
-
+Format: `showDue c/10 m/12 y/14`
 ****
 * Note: User must be inside a deck to perform this command.
+* The above command will display the cards due on the 10th December, 2014. If no arguments are given for date
+* If no day, month or year is given, showDue will default to showing the cards due for today
 ****
 // end::rank[]
 
