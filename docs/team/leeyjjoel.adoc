@@ -1,4 +1,4 @@
-= Tay Yu Jia - Project Portfolio
+= Lee Yi Jie, Joel - Project Portfolio
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
