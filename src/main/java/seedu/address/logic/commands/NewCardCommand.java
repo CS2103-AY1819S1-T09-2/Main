@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_CURRENTLY_REVIEWING_DECK;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_CARD_LEVEL_OPERATION;
 import static seedu.address.commons.core.Messages.MESSAGE_NOT_INSIDE_DECK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ANSWER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUESTION;
@@ -48,6 +49,11 @@ public class NewCardCommand extends Command {
         requireNonNull(model);
         if (model.isReviewingDeck()) {
             throw new CommandException(MESSAGE_CURRENTLY_REVIEWING_DECK);
+        }
+
+
+        if (!model.isInsideDeck()) {
+            throw new CommandException(MESSAGE_INVALID_CARD_LEVEL_OPERATION);
         }
 
         try {

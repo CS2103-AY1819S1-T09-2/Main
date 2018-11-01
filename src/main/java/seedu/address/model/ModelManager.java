@@ -213,13 +213,11 @@ public class ModelManager extends ComponentManager implements Model {
      */
     @Override
     public ObservableList<Card> getFilteredCardList() {
-        // TODO: throws exception when user is not inside any decks
         return FXCollections.unmodifiableObservableList(filteredCards);
     }
 
     @Override
     public void updateFilteredCardList(Predicate<Card> predicate) {
-        // TODO: throws exception when user is not inside any decks
         requireAllNonNull(predicate);
         filteredCards.setPredicate(predicate);
     }

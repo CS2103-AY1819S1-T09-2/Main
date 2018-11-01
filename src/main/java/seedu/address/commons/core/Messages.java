@@ -20,4 +20,9 @@ public class Messages {
     public static final String MESSAGE_NOT_REVIEWING_DECK = "Not currently reviewing deck.";
     public static final String MESSAGE_CURRENTLY_REVIEWING_DECK = "Command disabled while reviewing deck.\n"
         + "Use `endreview` command to exit reviewing";
+    public static final String MESSAGE_INVALID_DECK_LEVEL_OPERATION = "This deck-level command is invalid, please"
+            + " navigate out of the current deck to perform this command.";
+    public static final String MESSAGE_INVALID_CARD_LEVEL_OPERATION = "This card-level command is invalid, please"
+            + " navigate into a deck to perform this command.";
+
 }

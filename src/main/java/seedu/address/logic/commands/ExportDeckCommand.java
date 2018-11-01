@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_CURRENTLY_REVIEWING_DECK;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_DECK_LEVEL_OPERATION;
 
 import java.util.List;
 
@@ -37,6 +38,11 @@ public class ExportDeckCommand extends Command {
         requireNonNull(model);
         if (model.isReviewingDeck()) {
             throw new CommandException(MESSAGE_CURRENTLY_REVIEWING_DECK);
+        }
+
+
+        if (model.isInsideDeck()) {
+            throw new CommandException(MESSAGE_INVALID_DECK_LEVEL_OPERATION);
         }
 
         List<Deck> lastShownList = model.getFilteredDeckList();

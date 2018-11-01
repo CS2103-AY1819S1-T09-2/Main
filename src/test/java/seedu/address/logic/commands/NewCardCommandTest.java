@@ -261,7 +261,7 @@ public class NewCardCommandTest {
 
         @Override
         public boolean isInsideDeck() {
-            throw new AssertionError("This method should not be called.");
+            return true;
         }
 
         @Override
