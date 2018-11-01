@@ -307,15 +307,16 @@ This will generate all resources required by the application and tests.</p>
 <p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S1-T09-2/main/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>DeckListPanel</code>,
-<code>CardListPanel</code>, <code>StatusBarFooter</code>, <code>PreviewPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the
-abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>DeckEditScreen</code>,
+<code>DeckReviewScreen</code>, <code>StatusBarFooter</code> etc. The <code>DeckEditScreen</code> is in turn made up of <code>DeckListPanel</code> and
+<code>CardListPanel</code> and the <code>DeckReviewScreen</code> is made up of <code>DeckReviewCard</code>. All these, including the <code>MainWindow</code>,
+inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/CS2103-AY1819S1-T09-2/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/CS2103-AY1819S1-T09-2/main/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component,</p>
+<p>The <code>UI</code> component</p>
 </div>
 <div class="ulist">
 <ul>
@@ -323,7 +324,7 @@ abstract <code>UiPart</code> class.</p>
 <p>Executes user commands using the <code>Logic</code> component.</p>
 </li>
 <li>
-<p>Binds itself to some data in the <code>Model</code> so that the UI can auto-update when data in the <code>Model</code> change.</p>
+<p>Binds itself to some data in the <code>Model</code> so that the UI can auto-update when data in the <code>Model</code> changes.</p>
 </li>
 <li>
 <p>Responds to events raised from various parts of the App and updates the UI accordingly.</p>
@@ -2096,4 +2097,4 @@ b. Require developers to download those libraries manually (this creates extra w
 </dl>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 16:17:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 17:05:28 UTC</div></div></div></body></html>
