@@ -62,6 +62,7 @@ public class ChangeDeckCommand extends Command {
             //Exit the deck
             model.getOutOfDeck();
             model.commitAnakin();
+
             return new CommandResult(String.format(MESSAGE_EXIT_SUCCESS));
         } else {
             if (targetIndex.getZeroBased() >= lastShownList.size()) {

@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.deck.Deck.NULLDECK;
 
 import java.util.Iterator;
 import java.util.List;
@@ -25,7 +26,9 @@ public class Anakin implements ReadOnlyAnakin {
 
     private final UniqueDeckList decks;
 
-    private boolean isInsideDeck;
+    // Boolean flag to indicate if a cd command has just been executed
+    private boolean justEnteredDeck;
+
     // Represent the current list of cards (when user get into a deck)
     private UniqueCardList cards;
 
@@ -37,6 +40,8 @@ public class Anakin implements ReadOnlyAnakin {
 
     // Manager to handle imports/exports
     private PortManager portManager;
+
+    private Deck currentDeck = NULLDECK;
 
     /*
     * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
@@ -81,15 +86,32 @@ public class Anakin implements ReadOnlyAnakin {
     }
 
     /**
+     * Sets the currentDeck
+     */
+
+    public void setCurrentDeck(Deck deck) {
+        this.currentDeck = deck;
+    }
+
+    /**
+     * A method to clear card lists to prevent side effects of editing a list of cards unintentionally.
+     * Used in resetData
+     */
+    public void clearCards() {
+        UniqueCardList newList = new UniqueCardList();
+        this.cards = newList;
+    }
+
+    /**
      * Resets the existing data of this {@code Anakin} with {@code newData}.
      */
     public void resetData(ReadOnlyAnakin newData) {
         requireNonNull(newData);
 
-        setIsInsideDeck(newData.isInsideDeck());
+        setJustEnteredDeck(newData.justEnteredDeck());
         setIsReviewingDeck(newData.isReviewingDeck());
-
         setDecks(newData.getDeckList());
+        setCurrentDeck(newData.getCurrentDeck());
         setCards(newData.getCardList());
         updateDisplayedCards();
     }
@@ -110,10 +132,6 @@ public class Anakin implements ReadOnlyAnakin {
         }
     }
 
-    public void setIsInsideDeck(boolean set) {
-        isInsideDeck = set;
-    }
-
     public void updateDisplayedCards() {
         displayedCards.setCards(cards);
     }
@@ -128,7 +146,8 @@ public class Anakin implements ReadOnlyAnakin {
         if (isReviewingDeck()) {
             throw new IllegalOperationWhileReviewingDeckException();
         }
-        isInsideDeck = true;
+        setJustEnteredDeck(true);
+        currentDeck = deck;
         cards = deck.getCards();
         updateDisplayedCards();
     }
@@ -140,9 +159,10 @@ public class Anakin implements ReadOnlyAnakin {
         if (isReviewingDeck()) {
             throw new IllegalOperationWhileReviewingDeckException();
         }
-        isInsideDeck = false;
-        cards = new UniqueCardList();
+        currentDeck = NULLDECK;
+        clearCards();
         updateDisplayedCards();
+        setJustEnteredDeckFalse();
     }
 
 
@@ -151,7 +171,12 @@ public class Anakin implements ReadOnlyAnakin {
      */
     @Override
     public boolean isInsideDeck() {
-        return isInsideDeck;
+        return currentDeck != NULLDECK;
+    }
+
+    @Override
+    public boolean justEnteredDeck() {
+        return justEnteredDeck;
     }
 
     //// deck-level operations
@@ -173,6 +198,7 @@ public class Anakin implements ReadOnlyAnakin {
             throw new IllegalOperationWhileReviewingDeckException();
         }
         decks.add(d);
+        setJustEnteredDeckFalse();
     }
 
     /**
@@ -187,6 +213,7 @@ public class Anakin implements ReadOnlyAnakin {
         requireNonNull(editedDeck);
 
         decks.setDeck(target, editedDeck);
+        setJustEnteredDeckFalse();
     }
 
     /**
@@ -202,6 +229,7 @@ public class Anakin implements ReadOnlyAnakin {
             cards = new UniqueCardList();
             updateDisplayedCards();
         }
+        setJustEnteredDeckFalse();
     }
 
     /**
@@ -229,6 +257,7 @@ public class Anakin implements ReadOnlyAnakin {
         if (decks.contains(targetDeck)) {
             throw new DuplicateDeckException();
         }
+        setJustEnteredDeckFalse();
         return targetDeck;
     }
 
@@ -263,6 +292,7 @@ public class Anakin implements ReadOnlyAnakin {
         }
         cards.add(c);
         updateDisplayedCards();
+        setJustEnteredDeckFalse();
     }
 
     /**
@@ -277,6 +307,7 @@ public class Anakin implements ReadOnlyAnakin {
         }
         cards.setCard(target, editedCard);
         updateDisplayedCards();
+        setJustEnteredDeckFalse();
     }
 
     /**
@@ -293,6 +324,7 @@ public class Anakin implements ReadOnlyAnakin {
         }
         cards.remove(key);
         updateDisplayedCards();
+        setJustEnteredDeckFalse();
     }
 
     /**
@@ -366,12 +398,27 @@ public class Anakin implements ReadOnlyAnakin {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Anakin // instanceof handles nulls
-                && decks.equals(((Anakin) other).decks));
+            || (other instanceof Anakin // instanceof handles nulls
+            && decks.equals(((Anakin) other).decks));
     }
 
     @Override
     public int hashCode() {
         return decks.hashCode();
+    }
+
+    public Deck getCurrentDeck() {
+        return currentDeck;
+    }
+
+    /**
+     * Sets the justEnteredDeck flag to false. Used in any operation that might follow a cd operation.
+     */
+    private void setJustEnteredDeckFalse() {
+        setJustEnteredDeck(false);
+    }
+
+    public void setJustEnteredDeck(boolean b) {
+        justEnteredDeck = b;
     }
 }

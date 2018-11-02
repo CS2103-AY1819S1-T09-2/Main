@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_CANNOT_UNDO_CD_COMMAND;
 import static seedu.address.commons.core.Messages.MESSAGE_CURRENTLY_REVIEWING_DECK;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CARDS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_DECKS;
@@ -23,6 +24,10 @@ public class UndoCommand extends Command {
         requireNonNull(model);
         if (model.isReviewingDeck()) {
             throw new CommandException(MESSAGE_CURRENTLY_REVIEWING_DECK);
+        }
+
+        if (model.justEnteredDeck()) {
+            throw new CommandException(MESSAGE_CANNOT_UNDO_CD_COMMAND);
         }
 
         if (!model.canUndoAnakin()) {

@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static seedu.address.commons.core.Messages.MESSAGE_CANNOT_UNDO_CD_COMMAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ANSWER_A;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ANSWER_B;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_QUESTION_A;
@@ -191,7 +192,7 @@ public class EditCardCommandTest {
 
         // single address book state in model -> undoCommand and redoCommand fail
         assertCommandFailure(new UndoCommand(), model, commandHistory,
-            seedu.address.logic.commands.UndoCommand.MESSAGE_FAILURE);
+            MESSAGE_CANNOT_UNDO_CD_COMMAND);
         assertCommandFailure(new seedu.address.logic.commands.RedoCommand(), model, commandHistory,
             seedu.address.logic.commands.RedoCommand.MESSAGE_FAILURE);
     }

@@ -325,6 +325,7 @@ Returns any decks containing `Bio`, `Chem`, or `Physics` in their name.
 Returns any cards containing `John` or `Snow` in their questions.
 // end::find[]
 
+// tag::export[]
 === Export deck to xml file : `export`
 Creates an `xml` file containing the deck at INDEX_OF_DECK. +
 Format: `exportdeck INDEX_OF_DECK`
@@ -333,7 +334,9 @@ Format: `exportdeck INDEX_OF_DECK`
 * INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
 * This operation is disabled when user navigates into a deck.
 ****
+// end::export[]
 
+// tag::import[]
 === Import deck from csv file : `import`
 Imports an deck from the `xml` file at the specified FILEPATH. +
 Format: `import FILEPATH`
@@ -342,6 +345,7 @@ Format: `import FILEPATH`
 * FILEPATH must include the filename of the target file.
 * This operation is disabled when user navigates into a deck.
 ****
+// end::import
 
 === Listing entered commands : `history`
 

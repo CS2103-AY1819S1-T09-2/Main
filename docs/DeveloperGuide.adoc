@@ -122,6 +122,8 @@ The `UI` component
 * Responds to events raised from various parts of the App and updates the UI accordingly.
 // end::uicomponent[]
 
+
+// tag::logic[]
 === Logic component
 
 image::AnakinLogicClassDiagram.png[width="700", align="left"]
@@ -139,7 +141,7 @@ The 'Logic' component:
 The `LogicManager` contains an `AnakinModel`, an `AnakinParser`, and a `CommandHistory`.
 
 When a string input by the user is parsed by `AnakinParser`, it creates a new `AnakinCommand` of the appropriate type with the relevant arguments (based on parser tokens). Each `AnakinCommand` has its own Class. `LogicManager` will call `execute` on the command object. If successful, `LogicManager` will modify `Model` accordingly. Regardless of success, `LogicManager` will update `CommandHistory` with the `CommandResult`.
-
+// end::logic[]
 
 // tag::modelcomponent[]
 === Model component
@@ -479,6 +481,7 @@ and update the cards panel accordingly
 ** Cons: Need to re-design Model and UI components
 // end::keepcardspanelupdatedbyui[]
 
+// tag::importexportimplementation[]
 === Import/Export Implementation
 ==== Current implementation (v1.3)
 
@@ -504,6 +507,7 @@ PortManager returns a `String` of the export location, which is passed to Model,
 ** Pros: Less message passing between layers
 ** Cons: Worse modularity and Separation of Concerns.
 
+// end::importexportimplementation[]
 
 === Logging
 

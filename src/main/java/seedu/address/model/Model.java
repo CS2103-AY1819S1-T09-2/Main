@@ -61,6 +61,8 @@ public interface Model {
 
     boolean isReviewingDeck();
 
+    boolean justEnteredDeck();
+
     void startReview();
 
     void endReview();

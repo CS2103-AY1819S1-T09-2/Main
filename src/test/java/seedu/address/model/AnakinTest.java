@@ -118,5 +118,15 @@ public class AnakinTest {
         public boolean isReviewingDeck() {
             return false;
         }
+
+        @Override
+        public boolean justEnteredDeck() {
+            return false;
+        }
+
+        @Override
+        public Deck getCurrentDeck() {
+            return null;
+        }
     }
 }

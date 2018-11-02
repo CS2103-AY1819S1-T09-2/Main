@@ -30,4 +30,16 @@ public interface ReadOnlyAnakin {
      * @return boolean of whether deck is being reviewed.
      */
     boolean isReviewingDeck();
+
+
+    /**
+     * @return boolean of whether deck has just been entered (i.e. following a cd command).
+     */
+    boolean justEnteredDeck();
+
+    /**
+    /**
+     * @returns the current deck that Anakin is in (if any)
+     */
+    Deck getCurrentDeck();
 }

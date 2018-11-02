@@ -9,6 +9,8 @@ import java.util.Objects;
  */
 public class Deck {
 
+    public static final Deck NULLDECK = new Deck(new Name("NULLDECK"));
+
     private final Name name;
     private final UniqueCardList cards;
 

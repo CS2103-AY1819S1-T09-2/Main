@@ -21,8 +21,9 @@ public class Messages {
     public static final String MESSAGE_CURRENTLY_REVIEWING_DECK = "Command disabled while reviewing deck.\n"
         + "Use `endreview` command to exit reviewing";
     public static final String MESSAGE_INVALID_DECK_LEVEL_OPERATION = "This deck-level command is invalid, please"
-            + " navigate out of the current deck to perform this command.";
+        + " navigate out of the current deck to perform this command.";
     public static final String MESSAGE_INVALID_CARD_LEVEL_OPERATION = "This card-level command is invalid, please"
-            + " navigate into a deck to perform this command.";
-
+        + " navigate into a deck to perform this command.";
+    public static final String MESSAGE_CANNOT_UNDO_CD_COMMAND = "Undo command disabled for the 'cd' command."
+        + "\nUse 'cd ..' to exit the current deck";
 }
