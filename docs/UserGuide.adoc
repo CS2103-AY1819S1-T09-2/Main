@@ -192,7 +192,7 @@ Format: `editcard INDEX_OF_CARD [q/QUESTION]-[a/ANSWER]`
 Examples:
 
 * `editcard 1 a/New Answer` +
-Edits the answer of the first card in the current card list to be "New Answer".
+Edits the answer of the first card in the current card list to be "New Answer". If multiple arguments are given for question or answer, only the last valid argument is accepted for each respective field.
 // end::editcard[]
 
 === Deleting a card : `delcard`
@@ -337,7 +337,7 @@ Format: `exportdeck INDEX_OF_DECK`
 // end::export[]
 
 // tag::import[]
-=== Import deck from csv file : `import`
+=== Import deck from xml file : `import`
 Imports an deck from the `xml` file at the specified FILEPATH. +
 Format: `import FILEPATH`
 
