@@ -76,7 +76,6 @@ public class NewDeckCommandSystemTest extends AnakinSystemTest {
         /* Case: add a duplicate Deck -> rejected */
         command = NewDeckCommand.COMMAND_WORD + VALID_DECK_NAME_B_ARGS;
         assertCommandFailure(command, MESSAGE_DUPLICATE_DECK);
-        
         /* Case: missing name -> rejected */
         command = NewDeckCommand.COMMAND_WORD;
         assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, NewDeckCommand.MESSAGE_USAGE));
