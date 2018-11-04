@@ -65,16 +65,13 @@ public class NewDeckCommandSystemTest extends AnakinSystemTest {
         command = NewDeckCommand.COMMAND_WORD + VALID_DECK_NAME_B_ARGS;
         assertCommandSuccess(command, toAdd);
 
-
-        /* -------------------------- Perform add operation on the shown filtered list
- ------------------------------ */
+        /* -------------------------- Perform add operation on the shown filtered list------------------------------ */
 
         /* Case: filters the Deck list before adding -> added */
         showDecksWithName(KEYWORD_MATCHING_JOHN);
         assertCommandSuccess(DECK_I);
-        
-        /* ----------------------------------- Perform invalid add operations
- --------------------------------------- */
+
+        /* ----------------------------------- Perform invalid add operations--------------------------------------- */
 
         /* Case: add a duplicate Deck -> rejected */
         command = NewDeckCommand.COMMAND_WORD + VALID_DECK_NAME_B_ARGS;

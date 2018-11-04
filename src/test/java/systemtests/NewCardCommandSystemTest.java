@@ -35,7 +35,7 @@ package systemtests;
 //import seedu.address.testutil.DeckBuilder;
 //import seedu.address.testutil.TestUtil;
 
-public class AddCardCommandSystemTest extends AnakinSystemTest {
+public class NewCardCommandSystemTest extends AnakinSystemTest {
 
 //    @Test
 //    public void add() {
