@@ -327,7 +327,7 @@ Returns any cards containing `John` or `Snow` in their questions.
 // tag::export[]
 === Export deck to xml file : `export`
 Creates an `xml` file containing the deck at INDEX_OF_DECK. +
-Format: `exportdeck INDEX_OF_DECK`
+Format: `export INDEX_OF_DECK`
 
 ****
 * INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
