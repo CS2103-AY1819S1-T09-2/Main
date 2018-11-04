@@ -92,7 +92,7 @@ public class EditDeckCommand extends Command {
 
         model.updateDeck(deckToEdit, editedDeck);
         model.updateFilteredDeckList(PREDICATE_SHOW_ALL_DECKS);
-        model.commitAnakin();
+        model.commitAnakin(COMMAND_WORD);
         return new CommandResult(String.format(MESSAGE_EDIT_DECK_SUCCESS, editedDeck));
     }
 

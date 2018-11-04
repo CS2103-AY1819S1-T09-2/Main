@@ -231,9 +231,10 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public void undoAnakin() {
-        versionedAnakin.undo();
+    public String undoAnakin() {
+        String undoCommand = versionedAnakin.undo();
         indicateAnakinChanged();
+        return undoCommand;
     }
 
     @Override
@@ -243,8 +244,8 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public void commitAnakin() {
-        versionedAnakin.commit();
+    public void commitAnakin(String command) {
+        versionedAnakin.commit(command);
     }
 
     @Override

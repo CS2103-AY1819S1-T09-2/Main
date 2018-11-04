@@ -15,7 +15,7 @@ import seedu.address.model.Model;
 public class UndoCommand extends Command {
 
     public static final String COMMAND_WORD = "undo";
-    public static final String MESSAGE_SUCCESS = "Undo success";
+    public static final String MESSAGE_SUCCESS = "Undo success: ";
     public static final String MESSAGE_FAILURE = "There is no more undoable commands!";
 
     @Override
@@ -29,9 +29,9 @@ public class UndoCommand extends Command {
             throw new CommandException(MESSAGE_FAILURE);
         }
 
-        model.undoAnakin();
+        String undoCommand = model.undoAnakin();
         model.updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
         model.updateFilteredDeckList(PREDICATE_SHOW_ALL_DECKS);
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS + undoCommand);
     }
 }

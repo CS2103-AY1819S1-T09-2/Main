@@ -53,7 +53,7 @@ public class DeleteDeckCommand extends Command {
 
         Deck deckToDelete = currentDeckList.get(targetIndex.getZeroBased());
         model.deleteDeck(deckToDelete);
-        model.commitAnakin();
+        model.commitAnakin(COMMAND_WORD);
         return new CommandResult(String.format(MESSAGE_DELETE_DECK_SUCCESS, deckToDelete));
     }
 

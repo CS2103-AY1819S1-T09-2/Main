@@ -25,7 +25,7 @@ public class ClearCommand extends Command {
         }
 
         model.resetData(new Anakin());
-        model.commitAnakin();
+        model.commitAnakin(COMMAND_WORD);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

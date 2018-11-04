@@ -54,7 +54,7 @@ public class ExportDeckCommand extends Command {
         Deck deckToExport = currentDeckList.get(targetIndex.getZeroBased());
         String exportPath = model.exportDeck(deckToExport);
         System.out.println(exportPath);
-        model.commitAnakin();
+        model.commitAnakin(COMMAND_WORD);
         return new CommandResult(String.format(MESSAGE_EXPORT_DECK_SUCCESS, deckToExport, exportPath));
     }
 

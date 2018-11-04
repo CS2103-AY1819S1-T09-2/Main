@@ -47,7 +47,7 @@ public class ImportDeckCommand extends Command {
 
         try {
             importedDeck = model.importDeck(targetPath);
-            model.commitAnakin();
+            model.commitAnakin(COMMAND_WORD);
             return new CommandResult(String.format(MESSAGE_IMPORT_DECK_SUCCESS, importedDeck));
 
         } catch (DeckImportException ie) {

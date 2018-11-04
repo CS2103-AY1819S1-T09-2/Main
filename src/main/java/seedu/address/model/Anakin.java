@@ -37,6 +37,8 @@ public class Anakin implements ReadOnlyAnakin {
     // Manager to handle imports/exports
     private PortManager portManager;
 
+    private String lastCommand;
+
     /*
     * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
     * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
@@ -88,6 +90,7 @@ public class Anakin implements ReadOnlyAnakin {
         setIsReviewingDeck(newData.isReviewingDeck());
         setDecks(newData.getDeckList());
         setCards(newData.getCardList());
+        lastCommand = newData.getLastCommand();
         updateDisplayedCards();
     }
 
@@ -308,6 +311,11 @@ public class Anakin implements ReadOnlyAnakin {
     @Override
     public ObservableList<Card> getCardList() {
         return displayedCards.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public String getLastCommand() {
+        return lastCommand;
     }
 
     @Override

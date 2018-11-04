@@ -64,11 +64,10 @@ Refer to <<Features>> for more details on the available commands.
 ====
 *Command Format*
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+* Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `newdeck n/NAME`, `NAME` is a parameter which can be used as `newdeck n/John Doe`.
 * Items in square brackets are optional e.g `newdeck [n/NAME]` can be used as `newdeck n/My Deck` or as `newdeck`.
 * Optional items separated by - e.g. `editdeck 1 [q/Question?]-[a/Answer]` denote that at least one of the optional
  parameters are needed minimally to execute the command.
-* Items with …​ after them can be used multiple times including zero times e.g. `[t/TAG]…​` can be used as (i.e. 0 times), t/friend, t/friend t/family etc.
 * Parameters can be in any order e.g. if the command specifies `q/QUESTION a/ANSWER`, `a/ANSWER q/QUESTION` is also acceptable.
 ====
 
@@ -178,7 +177,7 @@ Examples:
 // tag::editcard[]
 === Editing a card : `editcard`
 
-When user is inside a deck, edits an existing card at the specified index. +
+When user is inside a deck, edits an existing card at the specified index.If multiple arguments are given for question or answer, only the last valid argument is accepted for each respective field +
 Format: `editcard INDEX_OF_CARD [q/QUESTION]-[a/ANSWER]`
 
 ****
@@ -192,7 +191,7 @@ Format: `editcard INDEX_OF_CARD [q/QUESTION]-[a/ANSWER]`
 Examples:
 
 * `editcard 1 a/New Answer` +
-Edits the answer of the first card in the current card list to be "New Answer".
+Edits the answer of the first card in the current card list to be "New Answer". If multiple arguments are given for question or answer, only the last valid argument is accepted for each respective field.
 // end::editcard[]
 
 === Deleting a card : `delcard`
@@ -328,7 +327,7 @@ Returns any cards containing `John` or `Snow` in their questions.
 // tag::export[]
 === Export deck to xml file : `export`
 Creates an `xml` file containing the deck at INDEX_OF_DECK. +
-Format: `exportdeck INDEX_OF_DECK`
+Format: `export INDEX_OF_DECK`
 
 ****
 * INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
@@ -337,7 +336,7 @@ Format: `exportdeck INDEX_OF_DECK`
 // end::export[]
 
 // tag::import[]
-=== Import deck from csv file : `import`
+=== Import deck from xml file : `import`
 Imports an deck from the `xml` file at the specified FILEPATH. +
 Format: `import FILEPATH`
 

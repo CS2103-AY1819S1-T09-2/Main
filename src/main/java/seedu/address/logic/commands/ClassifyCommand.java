@@ -42,7 +42,7 @@ public class ClassifyCommand extends Command {
         Card editedCard = Card.classifyCard(card, difficulty);
         model.updateCard(card, editedCard);
         model.updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
-        model.commitAnakin();
+        model.commitAnakin(COMMAND_WORD);
 
         return new CommandResult(String.format(MESSAGE_CLASSIFICATION_SUCCESS, this.difficulty, card));
     }

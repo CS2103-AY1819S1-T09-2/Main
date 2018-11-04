@@ -30,4 +30,9 @@ public interface ReadOnlyAnakin {
      * @return boolean of whether deck is being reviewed.
      */
     boolean isReviewingDeck();
+
+    /**
+     * @return string represents the last commands that commits Anakin
+     */
+    String getLastCommand();
 }

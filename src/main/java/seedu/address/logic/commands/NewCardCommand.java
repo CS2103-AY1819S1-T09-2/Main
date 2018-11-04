@@ -19,7 +19,7 @@ public class NewCardCommand extends Command {
 
     public static final String COMMAND_WORD = "newcard";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Add a new card to the current deck"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Add a new card to the current deck\n"
         + "Parameters: "
         + "[" + PREFIX_QUESTION + "QUESTION] "
         + "[" + PREFIX_ANSWER + "ANSWER]\n"
@@ -58,7 +58,7 @@ public class NewCardCommand extends Command {
         }
 
         model.addCard(toAdd);
-        model.commitAnakin();
+        model.commitAnakin(COMMAND_WORD);
         return new CommandResult(String.format(MESSAGE_NEW_CARD_SUCCESS, toAdd));
     }
 

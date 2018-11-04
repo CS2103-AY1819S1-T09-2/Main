@@ -160,7 +160,7 @@ public class CommandTestUtil {
     public static void deleteFirstDeck(Model model) {
         Deck deck = model.getFilteredDeckList().get(0);
         model.deleteDeck(deck);
-        model.commitAnakin();
+        model.commitAnakin(DeleteDeckCommand.COMMAND_WORD);
     }
 
 }

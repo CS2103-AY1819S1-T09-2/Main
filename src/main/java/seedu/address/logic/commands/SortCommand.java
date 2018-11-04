@@ -24,7 +24,7 @@ public class SortCommand extends Command {
         }
 
         model.sort();
-        model.commitAnakin();
+        model.commitAnakin(COMMAND_WORD);
         if (model.isInsideDeck()) {
             return new CommandResult(MESSAGE_SUCCESS_2);
         } else {

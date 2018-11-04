@@ -42,7 +42,7 @@ public class DeleteCardCommandTest {
 
         ModelManager expectedModel = new ModelManager(model.getAnakin(), new UserPrefs());
         expectedModel.deleteCard(cardToDelete);
-        expectedModel.commitAnakin();
+        expectedModel.commitAnakin(DeleteCardCommand.COMMAND_WORD);
 
         assertCommandSuccess(deleteCommand, model, commandHistory, expectedMessage, expectedModel);
     }
@@ -66,7 +66,7 @@ public class DeleteCardCommandTest {
 
         Model expectedModel = new ModelManager(model.getAnakin(), new UserPrefs());
         expectedModel.deleteCard(cardToDelete);
-        expectedModel.commitAnakin();
+        expectedModel.commitAnakin(DeleteCardCommand.COMMAND_WORD);
         showNoCard(expectedModel);
 
         assertCommandSuccess(deleteCommand, model, commandHistory, expectedMessage, expectedModel);

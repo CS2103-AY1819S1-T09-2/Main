@@ -58,7 +58,7 @@ public class DeleteCardCommand extends Command {
         }
         Card cardToDelete = currentCardList.get(targetIndex.getZeroBased());
         model.deleteCard(cardToDelete);
-        model.commitAnakin();
+        model.commitAnakin(COMMAND_WORD);
 
         return new CommandResult(String.format(MESSAGE_DELETE_CARD_SUCCESS, cardToDelete));
     }

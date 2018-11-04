@@ -24,7 +24,7 @@ public class ClearCommandSystemTest extends AnakinSystemTest {
 
         /* Case: undo clearing address book -> original address book restored */
         String command = UndoCommand.COMMAND_WORD;
-        String expectedResultMessage = UndoCommand.MESSAGE_SUCCESS;
+        String expectedResultMessage = UndoCommand.MESSAGE_SUCCESS + ClearCommand.COMMAND_WORD;
         assertCommandSuccess(command, expectedResultMessage, defaultModel);
         assertSelectedCardUnchanged();
 

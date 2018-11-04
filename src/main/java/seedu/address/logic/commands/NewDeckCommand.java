@@ -52,7 +52,7 @@ public class NewDeckCommand extends Command {
         }
 
         model.addDeck(toAdd);
-        model.commitAnakin();
+        model.commitAnakin(COMMAND_WORD);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 

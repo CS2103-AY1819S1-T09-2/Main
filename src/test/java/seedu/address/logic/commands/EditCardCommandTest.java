@@ -54,7 +54,7 @@ public class EditCardCommandTest {
 
         Model expectedModel = new ModelManager(model.getAnakin(), new UserPrefs());
         expectedModel.updateCard(model.getFilteredCardList().get(INDEX_FIRST_CARD.getOneBased()), editedCard);
-        expectedModel.commitAnakin();
+        expectedModel.commitAnakin(EditCardCommand.COMMAND_WORD);
 
         assertCommandSuccess(editCardCommand, model, commandHistory, expectedMessage, expectedModel);
     }
@@ -77,7 +77,7 @@ public class EditCardCommandTest {
 
         Model expectedModel = new ModelManager(new Anakin(model.getAnakin()), new UserPrefs());
         expectedModel.updateCard(lastCard, editedCard);
-        expectedModel.commitAnakin();
+        expectedModel.commitAnakin(EditCardCommand.COMMAND_WORD);
 
         assertCommandSuccess(editCardCommand, model, commandHistory, expectedMessage, expectedModel);
     }
@@ -90,7 +90,7 @@ public class EditCardCommandTest {
         String expectedMessage = String.format(EditCardCommand.MESSAGE_EDIT_CARD_SUCCESS, editedCard);
 
         Model expectedModel = new ModelManager(new Anakin(model.getAnakin()), new UserPrefs());
-        expectedModel.commitAnakin();
+        expectedModel.commitAnakin(EditCardCommand.COMMAND_WORD);
 
         assertCommandSuccess(editCardCommand, model, commandHistory, expectedMessage, expectedModel);
     }
@@ -108,7 +108,7 @@ public class EditCardCommandTest {
 
         Model expectedModel = new ModelManager(new Anakin(model.getAnakin()), new UserPrefs());
         expectedModel.updateCard(model.getFilteredCardList().get(0), editedCard);
-        expectedModel.commitAnakin();
+        expectedModel.commitAnakin(EditCardCommand.COMMAND_WORD);
 
         assertCommandSuccess(editCardCommand, model, commandHistory, expectedMessage, expectedModel);
     }
@@ -170,7 +170,7 @@ public class EditCardCommandTest {
         EditCardCommand editCardCommand = new EditCardCommand(INDEX_FIRST_CARD, descriptor);
         Model expectedModel = new ModelManager(new Anakin(model.getAnakin()), new UserPrefs());
         expectedModel.updateCard(cardToEdit, editedCard);
-        expectedModel.commitAnakin();
+        expectedModel.commitAnakin(EditCardCommand.COMMAND_WORD);
 
         // edit -> first card edited
         editCardCommand.execute(model, commandHistory);
@@ -178,7 +178,7 @@ public class EditCardCommandTest {
         // undo -> reverts anakin back to previous state and filtered card list to show all cards
         expectedModel.undoAnakin();
         assertCommandSuccess(new UndoCommand(), model, commandHistory,
-            seedu.address.logic.commands.UndoCommand.MESSAGE_SUCCESS, expectedModel);
+            UndoCommand.MESSAGE_SUCCESS + EditCardCommand.COMMAND_WORD, expectedModel);
 
         // redo -> same first card edited again
         expectedModel.redoAnakin();
@@ -220,14 +220,15 @@ public class EditCardCommandTest {
         //  showCardAtIndex(model, INDEX_SECOND_CARD);
         Card cardToEdit = model.getFilteredCardList().get(INDEX_FIRST_CARD.getZeroBased());
         expectedModel.updateCard(cardToEdit, editedCard);
-        expectedModel.commitAnakin();
+        expectedModel.commitAnakin(EditCardCommand.COMMAND_WORD);
 
         // edit -> edits second card in unfiltered card list / first card in filtered card list
         editCardCommand.execute(model, commandHistory);
 
         // undo -> reverts anakin back to previous state and filtered card list to show all cards
         expectedModel.undoAnakin();
-        assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new UndoCommand(), model, commandHistory,
+                UndoCommand.MESSAGE_SUCCESS + EditCardCommand.COMMAND_WORD, expectedModel);
 
         // assertNotEquals(model.getFilteredCardList().get(INDEX_FIRST_CARD.getZeroBased()), cardToEdit);
         // redo -> edits same second card in unfiltered card list

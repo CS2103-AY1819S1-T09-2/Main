@@ -97,12 +97,11 @@ public class EditCardCommand extends Command {
         try {
             model.updateCard(cardToEdit, editedCard);
             model.updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
-            model.commitAnakin();
+            model.commitAnakin(COMMAND_WORD);
         } catch (DeckNotFoundException e) {
             throw new CommandException(MESSAGE_NOT_INSIDE_DECK);
         }
 
-        // TODO: Check that card changes are saved when committing
         return new CommandResult(String.format(MESSAGE_EDIT_CARD_SUCCESS, editedCard));
     }
 

@@ -245,7 +245,7 @@ public class NewCardCommandTest {
         }
 
         @Override
-        public void undoAnakin() {
+        public String undoAnakin() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -255,7 +255,7 @@ public class NewCardCommandTest {
         }
 
         @Override
-        public void commitAnakin() {
+        public void commitAnakin(String command) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -328,7 +328,7 @@ public class NewCardCommandTest {
         }
 
         @Override
-        public void commitAnakin() {
+        public void commitAnakin(String command) {
             // called by {@code NewCardCommand#execute()}
         }
 
