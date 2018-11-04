@@ -64,11 +64,10 @@ Refer to <<Features>> for more details on the available commands.
 ====
 *Command Format*
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+* Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `newdeck n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 * Items in square brackets are optional e.g `newdeck [n/NAME]` can be used as `newdeck n/My Deck` or as `newdeck`.
 * Optional items separated by - e.g. `editdeck 1 [q/Question?]-[a/Answer]` denote that at least one of the optional
  parameters are needed minimally to execute the command.
-* Items with …​ after them can be used multiple times including zero times e.g. `[t/TAG]…​` can be used as (i.e. 0 times), t/friend, t/friend t/family etc.
 * Parameters can be in any order e.g. if the command specifies `q/QUESTION a/ANSWER`, `a/ANSWER q/QUESTION` is also acceptable.
 ====
 
