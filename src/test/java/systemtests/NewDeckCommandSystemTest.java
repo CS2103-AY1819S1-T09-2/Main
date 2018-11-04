@@ -88,7 +88,6 @@ public class NewDeckCommandSystemTest extends AnakinSystemTest {
         /* Case: invalid name -> rejected */
         command = NewDeckCommand.COMMAND_WORD + INVALID_DECK_NAME_ARGS;
         assertCommandFailure(command, Name.MESSAGE_NAME_CONSTRAINTS);
-        
     }
 
     /**
