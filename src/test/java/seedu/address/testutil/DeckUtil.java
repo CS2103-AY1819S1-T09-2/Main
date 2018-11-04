@@ -3,9 +3,6 @@ package seedu.address.testutil;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
-
-import java.util.Set;
-
 import seedu.address.logic.commands.NewDeckCommand;
 import seedu.address.model.deck.Deck;
 
