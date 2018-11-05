@@ -43,7 +43,7 @@ public class NewDeckCommandSystemTest extends AnakinSystemTest {
 
         /* Case: undo adding DECK_A to the list -> Amy deleted */
         command = UndoCommand.COMMAND_WORD;
-        String expectedResultMessage = UndoCommand.MESSAGE_SUCCESS;
+        String expectedResultMessage = UndoCommand.MESSAGE_SUCCESS + NewDeckCommand.COMMAND_WORD;
         assertCommandSuccess(command, model, expectedResultMessage);
 
         /* Case: redo adding DECK_A to the list -> Amy added again */
