@@ -16,7 +16,7 @@ package systemtests;
 //import static seedu.address.testutil.TypicalDecks.IDA;
 //import static seedu.address.testutil.TypicalDecks.KEYWORD_MATCHING_JOHN;
 
-import org.junit.Test;
+//import org.junit.Test;
 
 //import seedu.address.commons.core.Messages;
 //import seedu.address.commons.core.index.Index;
@@ -147,25 +147,10 @@ public class NewCardCommandSystemTest extends AnakinSystemTest {
 //        assertCommandFailure(command, AddressbookMessages.MESSAGE_UNKNOWN_COMMAND);
 //
 //        /* Case: invalid name -> rejected */
-//        command = NewCardCommand.COMMAND_WORD + INVALID_NAME_DESC + PHONE_DESC_AMY + EMAIL_DESC_AMY + ADDRESS_DESC_AMY;
+//        command = NewCardCommand.COMMAND_WORD + INVALID_NAME_DESC + ADDRESS_DESC_AMY;
 //        assertCommandFailure(command, Name.MESSAGE_NAME_CONSTRAINTS);
 //
-//        /* Case: invalid phone -> rejected */
-//        command = NewCardCommand.COMMAND_WORD + NAME_DESC_AMY + INVALID_PHONE_DESC + EMAIL_DESC_AMY + ADDRESS_DESC_AMY;
-//        assertCommandFailure(command, Phone.MESSAGE_PHONE_CONSTRAINTS);
-//
-//        /* Case: invalid email -> rejected */
-//        command = NewCardCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + INVALID_EMAIL_DESC + ADDRESS_DESC_AMY;
-//        assertCommandFailure(command, Email.MESSAGE_EMAIL_CONSTRAINTS);
-//
-//        /* Case: invalid address -> rejected */
-//        command = NewCardCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY + INVALID_ADDRESS_DESC;
-//        assertCommandFailure(command, Address.MESSAGE_ADDRESS_CONSTRAINTS);
-//
-//        /* Case: invalid tag -> rejected */
-//        command = NewCardCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY + ADDRESS_DESC_AMY
-//                + INVALID_TAG_DESC;
-//        assertCommandFailure(command, Tag.MESSAGE_TAG_CONSTRAINTS);
+
 //    }
 //
 //    /**

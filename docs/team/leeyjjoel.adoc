@@ -45,7 +45,8 @@ into boxes based on how well he/she remembers them. This will allow for a better
 ** Added systemtests to increase robustness of the application
 ** Implemented a `editdeck` command that allows user to update the details of their deck.
 ** Added an exit command to allow user to leave the deck
-** Added a select command which is now deprecated
+** Added a `select` command which is now deprecated
+** Add `undo` and `redo` functions
 
 
 * *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] _{give links to collated code files}_
@@ -53,10 +54,13 @@ into boxes based on how well he/she remembers them. This will allow for a better
 * *Other contributions*:
 
 ** Project management:
-*** Set up Continuous Integration and Codacy:
+*** Set up Continuous Integration:
 https://github.com/CS2103-AY1819S1-T09-2/main/issues?q=is%3Aissue+is%3Aclosed+author%3Aleeyjjoel[List of created issues]
-** Enhancements to existing features:
+*** Update contact us page (Pull request https://github.com/CS2103-AY1819S1-T09-2/main/pull/68[#68])
 *** Added initial documentation for team README (Pull request https://github.com/CS2103-AY1819S1-T09-2/main/pull/23[#23])
+*** Integrate reposense for code contribution tracking
+
+** Enhancements to existing features:
 *** Created system tests (Pull request https://github.com/CS2103-AY1819S1-T09-2/main/pull/158[#158])
 ** Documentation:
 
@@ -64,6 +68,7 @@ https://github.com/CS2103-AY1819S1-T09-2/main/issues?q=is%3Aissue+is%3Aclosed+au
 *** PRs reviewed (with non-trivial review comments):
 https://github.com/CS2103-AY1819S1-T09-2/main/pull/189[#189]
 https://github.com/CS2103-AY1819S1-T09-2/main/pull/195[#195]
+
 *** Discovered and reported bugs to peers:
 This is a work in progress
 

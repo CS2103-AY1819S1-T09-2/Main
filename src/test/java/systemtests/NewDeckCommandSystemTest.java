@@ -1,7 +1,7 @@
 package systemtests;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_DECK;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_DECK_NAME_ARGS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_NAME_B_ARGS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_DECK_A;
@@ -19,8 +19,8 @@ import seedu.address.logic.commands.NewDeckCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.model.Model;
-import seedu.address.model.deck.Name;
 import seedu.address.model.deck.Deck;
+import seedu.address.model.deck.Name;
 import seedu.address.testutil.DeckBuilder;
 import seedu.address.testutil.DeckUtil;
 
@@ -128,8 +128,7 @@ public class NewDeckCommandSystemTest extends AnakinSystemTest {
      * {@code expectedModel}.<br>
      * @see NewDeckCommandSystemTest#assertCommandSuccess(String, Deck)
      */
-    private void assertCommandSuccess(String command, Model expectedModel, String
- expectedResultMessage) {
+    private void assertCommandSuccess(String command, Model expectedModel, String expectedResultMessage) {
         executeCommand(command);
         assertApplicationDisplaysExpected("", expectedResultMessage, expectedModel);
         assertSelectedCardUnchanged();
