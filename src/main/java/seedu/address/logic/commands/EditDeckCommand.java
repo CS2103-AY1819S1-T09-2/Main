@@ -37,6 +37,10 @@ public class EditDeckCommand extends Command {
         + "Example: " + COMMAND_WORD + " 1 "
         + PREFIX_NAME + "[NAME]";
 
+    public static final String MESSAGE_EDIT_DECK_SUCCESS = "Edited Deck: %1$s";
+    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
+    public static final String MESSAGE_DUPLICATE_DECK = "This deck already exists in the deck.";
+
 
     private final Index index;
     private final EditDeckDescriptor editDeckDescriptor;
