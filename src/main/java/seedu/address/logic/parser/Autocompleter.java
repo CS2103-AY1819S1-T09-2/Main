@@ -13,21 +13,23 @@ public class Autocompleter {
      * Checks if {@code commandBox}'s commandTextField has a potential autocompletable command word,
      * if there exists such a word, it is replaced with the relevant autocompletion command.
      */
-    public boolean isAutocompletable() {
-        // Generate a list of all possible completions
-        // Every command has a completion
+    public static boolean isAutocompletable(String input) {
+        // Check if the give input string has an existing autocompletion in the list of command words which starts
+        // with what the user has currently typed
+
         return true;
 
     }
 
     public static String getAutocompletion(String input) {
+        // Filter from the list of available autocompletions and pick the first one if it exists
         return "bob";
     }
     /**
      * This is a temporary javadoc comment
      * if there exists such a word, it is replaced with the relevant autocompletion command.
      */
-    public List<String> generateCompletions() {
+    public List<String> generateAutoCompletions() {
         return new ArrayList<String>();
         // Add all possible completions and their completion fields
     }

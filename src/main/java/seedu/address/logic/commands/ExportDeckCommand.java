@@ -26,6 +26,8 @@ public class ExportDeckCommand extends Command {
         + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_EXPORT_DECK_SUCCESS = "Successfully Exported Deck: %1$s to %2$s";
+    public static final String DEFAULT_INDEX = "1";
+    public static final String AUTOCOMPLETE_TEXT = COMMAND_WORD + " " + DEFAULT_INDEX;
 
     private final Index targetIndex;
 

@@ -27,6 +27,10 @@ public class FindCommand extends Command {
 
     private final DeckNameContainsKeywordsPredicate deckPredicate;
     private final CardQuestionContainsKeywordsPredicate cardPredicate;
+    public static final String DEFAULT_STRING= "Donald Duck";
+
+    public static final String AUTOCOMPLETE_TEXT = COMMAND_WORD + " " + DEFAULT_STRING;
+
 
     // Constructor to be called by FindCommandParser
     public FindCommand(DeckNameContainsKeywordsPredicate deckPredicate,

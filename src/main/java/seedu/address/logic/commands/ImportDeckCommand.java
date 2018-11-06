@@ -22,9 +22,13 @@ public class ImportDeckCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
         + ": Imports the deck at the specified file location.\n"
         + "Parameters: FILEPATH \n"
-        + "Example: " + COMMAND_WORD + " ";
+        + "Example: " + COMMAND_WORD + " default.xml";
 
     public static final String MESSAGE_IMPORT_DECK_SUCCESS = "Successfully Imported Deck: %1$s";
+    public static final String DEFAULT_FILEPATH = "default.xml";
+
+    public static final String AUTOCOMPLETE_TEXT = COMMAND_WORD + " " + DEFAULT_FILEPATH;
+
 
     private final String targetPath;
 
