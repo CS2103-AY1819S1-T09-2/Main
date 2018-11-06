@@ -35,8 +35,8 @@ public class DeleteCommandSystemTest extends AnakinSystemTest {
         /* Case: delete the first deck in the list, command with leading spaces and trailing spaces -> deleted */
         Model expectedModel = getModel();
         String command = "     " + DeleteDeckCommand.COMMAND_WORD + "      " + INDEX_FIRST_DECK.getOneBased() + " ";
-        Deck deletedPerson = removeDeck(expectedModel, INDEX_FIRST_DECK);
-        String expectedResultMessage = String.format(MESSAGE_DELETE_DECK_SUCCESS, deletedPerson);
+        Deck deletedDeck = removeDeck(expectedModel, INDEX_FIRST_DECK);
+        String expectedResultMessage = String.format(MESSAGE_DELETE_DECK_SUCCESS, deletedDeck);
         assertCommandSuccess(command, expectedModel, expectedResultMessage);
 
         /* Case: delete the last deck in the list -> deleted */

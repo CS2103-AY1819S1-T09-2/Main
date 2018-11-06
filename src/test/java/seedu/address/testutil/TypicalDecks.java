@@ -28,11 +28,6 @@ public class TypicalDecks {
     public static final Deck DECK_I = new DeckBuilder().withName("John History").build();
 
 
-
-
-
-
-
     public static final Deck THERE = new DeckBuilder().withName("Baby there")
             .withCards(TypicalCards.getTypicalCards()).build();
     public static final Deck NOTHING = new DeckBuilder().withName("is nothing").build();
