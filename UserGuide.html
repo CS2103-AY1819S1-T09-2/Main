@@ -202,6 +202,17 @@ Enter the 2nd deck in the currently displayed deck list.</p>
 </li>
 </ul>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Note: User can <code>cd</code> into another deck while being inside a deck.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="navigating-out-of-the-current-deck-code-cd-code"><a class="link" href="#navigating-out-of-the-current-deck-code-cd-code">3.4. Navigating out of the current deck : <code>cd ..</code></a></h3>
@@ -237,7 +248,7 @@ Format: <code>newdeck n/NAME</code></p>
 <p>This deck will contains an empty list of cards.</p>
 </li>
 <li>
-<p>This operation is disabled when user is currently inside a deck.</p>
+<p>User should be under Anakin&#8217;s deck list to perform this operation (not inside any decks).</p>
 </li>
 </ul>
 </div>
@@ -271,7 +282,7 @@ Format: <code>editdeck INDEX_OF_DECK n/NAME</code></p>
 <p>The new deck will maintain the card list of the old one.</p>
 </li>
 <li>
-<p>This operation is disabled when user navigates into a deck.</p>
+<p>User should be under Anakin&#8217;s deck list to perform this operation (not inside any decks).</p>
 </li>
 </ul>
 </div>
@@ -284,7 +295,7 @@ Format: <code>editdeck INDEX_OF_DECK n/NAME</code></p>
 <ul>
 <li>
 <p><code>editdeck 1 n/My Deck</code><br>
-Edits the name of the first deck in the list to be <code>My Deck</code> and keeps the old card list.</p>
+Edits the name of the first deck in the list to be <code>My Deck</code> and keeps the card list intact.</p>
 </li>
 </ul>
 </div>
@@ -306,7 +317,7 @@ Format: <code>deldeck INDEX_OF_DECK</code></p>
 <p><code>INDEX_OF_DECK</code> must be a positive integer from 1 onwards and is based on the currently displayed list.</p>
 </li>
 <li>
-<p>This operation is disabled when user navigates into a deck.</p>
+<p>User should be under Anakin&#8217;s deck list to perform this operation (not inside any decks).</p>
 </li>
 </ul>
 </div>
@@ -414,10 +425,10 @@ Format: <code>delcard INDEX_OF_CARD</code></p>
 <p>Deletes the card at the specified <code>INDEX_OF_CARD</code>.</p>
 </li>
 <li>
-<p>User should be inside a deck to perform this operation.</p>
+<p>INDEX_OF_CARD must be a positive integer from 1 onwards and is based on the currently displayed list.</p>
 </li>
 <li>
-<p>INDEX_OF_CARD must be a positive integer from 1 onwards and is based on the currently displayed list.</p>
+<p>User should be inside a deck to perform this operation.</p>
 </li>
 </ul>
 </div>
@@ -450,7 +461,8 @@ Format: <code>review INDEX_OF_DECK</code></p>
 <p>INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.</p>
 </li>
 <li>
-<p>While in review mode, all card and deck-related commands are disabled.</p>
+<p>While in review mode, disable commands that operate on decks and cards (except: <code>endreview</code>,
+<code>flipcard</code>, <code>`nextcard, `prevcard</code>, <code>help</code>, <code>history</code>, <code>exit</code>).</p>
 </li>
 </ul>
 </div>
@@ -756,7 +768,7 @@ Format: <code>undo</code></p>
 <div class="paragraph">
 <p>Undoable commands: those commands that modify the state of Anakin.
 (<code>newdeck</code>, <code>editdeck</code>, <code>deldeck</code>, <code>newcard</code>, <code>editcard</code>, <code>delcard</code>,
-<code>sort</code>, <code>classify</code>).</p>
+<code>sort</code>, <code>classify</code>, <code>cd</code>, <code>cd ..</code>).</p>
 </div>
 </td>
 </tr>
@@ -970,4 +982,4 @@ When inside a deck, finds cards with questions that contain any of the given key
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-06 12:58:45 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-06 16:00:19 UTC</div></div></div></body></html>

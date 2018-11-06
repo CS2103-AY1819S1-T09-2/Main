@@ -23,6 +23,9 @@ It is written in Java, and has about 10 kLoC.</p>
 <div class="ulist">
 <ul>
 <li>
+<p><strong>Code contributed:</strong> <a href="https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&amp;search=truongthanh2606">GitHub</a></p>
+</li>
+<li>
 <p><strong>Major enhancements:</strong></p>
 <div class="ulist">
 <ul>
@@ -35,23 +38,23 @@ It is written in Java, and has about 10 kLoC.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Allows Anakin to have a unique list of decks, each deck contains a unique list of cards.</p>
+<p>Allows Anakin to have a list of decks, each deck contains a card list with questions and answers.</p>
 </li>
 <li>
 <p>Allows UI to observe both the deck list and card list so that it can update its deck panel and
-card panel when user execute different commands.</p>
+card panel when these lists are modified (executing commands).</p>
 </li>
 <li>
-<p>Allows Logic component to execute its set of commands by providing a complete Model interface,
-which can support those operations.</p>
+<p>Allows Logic component to execute its set of commands by providing a Model interface,
+which can support the logic of those operations.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Justification: The new model component executes the logic of all commands, determines
-how objects like deck and card interacts with each other and
-manipulate the state of the application.</p>
+<p>Justification:
+The new model component determines how objects like deck and card interacts with each other and
+ manipulate the state of the application.</p>
 </li>
 </ul>
 </div>
@@ -75,7 +78,7 @@ manipulate the state of the application.</p>
 </li>
 <li>
 <p>Justification: This allows user to locate the deck or card that contains specific keywords
-quickly when the application has a lot of data.</p>
+quickly.</p>
 </li>
 </ul>
 </div>
@@ -87,6 +90,20 @@ quickly when the application has a lot of data.</p>
 <p><strong>Minor enhancements:</strong></p>
 <div class="ulist">
 <ul>
+<li>
+<p><strong>Add messages to <code>undo</code> and <code>redo</code> commands</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What is the new messages: The <code>undo</code> and <code>redo</code> messages will show which command has
+just been <code>undo</code>, or <code>redo</code>.</p>
+</li>
+<li>
+<p>Justification: This provides user more transparent view of the commands being executed.</p>
+</li>
+</ul>
+</div>
+</li>
 <li>
 <p><strong>Implement <code>sort</code> command</strong></p>
 <div class="ulist">
@@ -223,7 +240,7 @@ Format: <code>newdeck n/NAME</code></p>
 <p>This deck will contains an empty list of cards.</p>
 </li>
 <li>
-<p>This operation is disabled when user is currently inside a deck.</p>
+<p>User should be under Anakin&#8217;s deck list to perform this operation (not inside any decks).</p>
 </li>
 </ul>
 </div>
@@ -369,16 +386,13 @@ Returns any cards containing <code>John</code> or <code>Snow</code> in their que
 <div class="ulist">
 <ul>
 <li>
-<p>stores Anakin data.</p>
+<p>stores Anakin&#8217;s data and manipulates the state of the application.</p>
 </li>
 <li>
-<p>provides a Model interface for Logic component to execute all commands</p>
+<p>provides a Model interface for Logic component to execute its set of commands.</p>
 </li>
 <li>
-<p>manipulates the state of Anakin</p>
-</li>
-<li>
-<p>manages the interaction, relationship between different objects (Anakin, Card, Deck, &#8230;&#8203;)</p>
+<p>manages the interaction and relationship between different objects (Anakin, Card, Deck, &#8230;&#8203;)</p>
 </li>
 <li>
 <p>exposes an unmodifiable ObservableList&lt;Deck&gt; and ObservableList&lt;Card&gt; that can be 'observed'
@@ -617,4 +631,4 @@ and update the cards panel accordingly</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-06 12:58:45 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-06 16:00:19 UTC</div></div></div></body></html>
