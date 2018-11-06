@@ -68,7 +68,6 @@ public class NewDeckCommandSystemTest extends AnakinSystemTest {
         assertFalse(getModel().getAnakin().getDeckList().contains(VALID_NAME_DECK_A));
         assertCommandSuccess(command, toAdd);
         
-
         /* -------------------------- Perform add operation on the shown filtered list------------------------------ */
 
         /* Case: filters the Deck list before adding -> added */
