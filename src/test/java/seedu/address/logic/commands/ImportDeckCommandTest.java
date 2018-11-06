@@ -196,7 +196,7 @@ public class ImportDeckCommandTest {
         }
 
         @Override
-        public void redoAnakin() {
+        public String redoAnakin() {
             throw new AssertionError("This method should not be called.");
         }
 

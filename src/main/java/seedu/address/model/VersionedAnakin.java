@@ -60,13 +60,14 @@ public class VersionedAnakin extends Anakin {
     /**
      * Restores the address book to its previously undone state.
      */
-    public void redo() {
+    public String redo() {
         if (!canRedo()) {
             throw new NoRedoableStateException();
         }
         currentStatePointer++;
         resetData(anakinStateList.get(currentStatePointer));
         updateDisplayedCards();
+        return anakinStateList.get(currentStatePointer).getLastCommand();
     }
 
     /**

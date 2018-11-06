@@ -175,7 +175,7 @@ public class EditDeckCommandTest {
         // redo -> same first deck edited again
         expectedModel.redoAnakin();
         assertCommandSuccess(new RedoCommand(), model, commandHistory,
-            seedu.address.logic.commands.RedoCommand.MESSAGE_SUCCESS, expectedModel);
+            seedu.address.logic.commands.RedoCommand.MESSAGE_SUCCESS + EditDeckCommand.COMMAND_WORD, expectedModel);
     }
 
     @Test
@@ -227,7 +227,7 @@ public class EditDeckCommandTest {
         // redo -> edits same second deck in unfiltered deck list
         expectedModel.redoAnakin();
         assertCommandSuccess(new RedoCommand(), model, commandHistory,
-            seedu.address.logic.commands.RedoCommand.MESSAGE_SUCCESS, expectedModel);
+            seedu.address.logic.commands.RedoCommand.MESSAGE_SUCCESS + EditDeckCommand.COMMAND_WORD, expectedModel);
     }
 
     @Test

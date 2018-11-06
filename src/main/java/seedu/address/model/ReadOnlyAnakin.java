@@ -22,7 +22,7 @@ public interface ReadOnlyAnakin {
     ObservableList<Card> getCardList();
 
     /**
-     * Returns the state
+     * Returns true if user is inside a deck.
      */
     boolean isInsideDeck();
 

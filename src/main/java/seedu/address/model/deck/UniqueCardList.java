@@ -88,9 +88,12 @@ public class UniqueCardList implements Iterable<Card> {
         internalList.sort(Comparator.comparing(o -> o.getQuestion().toString().toLowerCase()));
     }
 
-    public void setCards(UniqueCardList replacement) {
-        requireNonNull(replacement);
-        internalList.setAll(replacement.internalList);
+    public void setCards(UniqueCardList cards) {
+        requireNonNull(cards);
+        internalList.setAll(cards.internalList);
+        for (int i = 0; i < cards.internalList.size(); i++) {
+            internalList.set(i, new Card(cards.internalList.get(i)));
+        }
     }
 
     /**

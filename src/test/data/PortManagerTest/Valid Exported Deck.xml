@@ -2,8 +2,16 @@
 <deck>
     <name>Valid Exported Deck</name>
     <cards>
-        <question>Another valid stuff</question>
-        <answer>Default answer for default question lmao</answer>
+        <question>An</question>
+        <answer>Empty</answer>
+    </cards>
+    <cards>
+        <question>Street</question>
+        <answer>An</answer>
+    </cards>
+    <cards>
+        <question>Empty</question>
+        <answer>House</answer>
     </cards>
     <cards>
         <question>A</question>
@@ -30,7 +38,7 @@
         <answer>Default answer for default question lmao</answer>
     </cards>
     <cards>
-        <question>Need another valid question</question>
-        <answer>Valid question needs a valid answer</answer>
+        <question>all it's gonna take</question>
+        <answer>Default answer for default question lmao</answer>
     </cards>
 </deck>

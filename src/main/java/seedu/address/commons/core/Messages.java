@@ -24,6 +24,4 @@ public class Messages {
         + " navigate out of the current deck to perform this command.";
     public static final String MESSAGE_INVALID_CARD_LEVEL_OPERATION = "This card-level command is invalid, please"
         + " navigate into a deck to perform this command.";
-    public static final String MESSAGE_CANNOT_UNDO_CD_COMMAND = "Undo command disabled for the 'cd' command."
-        + "\nUse 'cd ..' to exit the current deck";
 }

@@ -132,12 +132,14 @@ public class ModelManager extends ComponentManager implements Model {
         requireAllNonNull(deck);
         versionedAnakin.getIntoDeck(deck);
         updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
+        indicateAnakinChanged();
     }
 
     @Override
     public void getOutOfDeck() {
         versionedAnakin.getOutOfDeck();
         updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
+        indicateAnakinChanged();
     }
 
     @Override
@@ -238,9 +240,10 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public void redoAnakin() {
-        versionedAnakin.redo();
+    public String redoAnakin() {
+        String redoCommand = versionedAnakin.redo();
         indicateAnakinChanged();
+        return redoCommand;
     }
 
     @Override

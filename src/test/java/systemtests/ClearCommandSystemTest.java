@@ -30,7 +30,7 @@ public class ClearCommandSystemTest extends AnakinSystemTest {
 
         /* Case: redo clearing address book -> cleared */
         command = RedoCommand.COMMAND_WORD;
-        expectedResultMessage = RedoCommand.MESSAGE_SUCCESS;
+        expectedResultMessage = RedoCommand.MESSAGE_SUCCESS + ClearCommand.COMMAND_WORD;
         assertCommandSuccess(command, expectedResultMessage, new ModelManager());
         assertSelectedCardUnchanged();
 

@@ -133,7 +133,7 @@ public class Anakin implements ReadOnlyAnakin {
 
 
     /**
-     * Return true if user is inside a deck
+     * Return the current deck
      */
     @Override
     public boolean isInsideDeck() {
@@ -289,16 +289,15 @@ public class Anakin implements ReadOnlyAnakin {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(decks.asUnmodifiableObservableList().size() + " decks\n");
+        stringBuilder.append("ANAKIN: " + decks.asUnmodifiableObservableList().size() + " decks\n");
         Iterator<Deck> iterator = decks.iterator();
         while (iterator.hasNext()) {
             Deck cur = iterator.next();
-            stringBuilder.append(cur.toString() + ": ");
+            stringBuilder.append(cur.toString() + "\n");
             Iterator<Card> cardIterator = cur.getCards().iterator();
             while (cardIterator.hasNext()) {
-                stringBuilder.append(cardIterator.next().toString() + ", ");
+                stringBuilder.append("\t" + cardIterator.next().toString() + "\n");
             }
-            stringBuilder.append("\n");
         }
         return stringBuilder.toString();
     }

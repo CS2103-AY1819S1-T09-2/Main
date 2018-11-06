@@ -9,8 +9,6 @@ import java.util.Objects;
  */
 public class Deck {
 
-    public static final Deck NULLDECK = new Deck(new Name("NULLDECK"));
-
     private final Name name;
     private final UniqueCardList cards;
 
@@ -24,6 +22,12 @@ public class Deck {
         for (Card card : cards) {
             this.cards.add(card);
         }
+    }
+
+    public Deck(Deck other) {
+        this.name = new Name(other.name.toString());
+        this.cards = new UniqueCardList();
+        this.cards.setCards(other.getCards());
     }
 
     public Name getName() {

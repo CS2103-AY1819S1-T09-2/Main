@@ -91,8 +91,10 @@ public class UniqueDeckList implements Iterable<Deck> {
         if (!decksAreUnique(decks)) {
             throw new DuplicateDeckException();
         }
-
         internalList.setAll(decks);
+        for (int i = 0; i < decks.size(); i++) {
+            internalList.set(i, new Deck(decks.get(i)));
+        }
     }
 
     /**

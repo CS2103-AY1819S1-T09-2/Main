@@ -32,6 +32,13 @@ public class Card {
         this.timesClassified = timesClassified;
     }
 
+    public Card(Card other) {
+        this.question = new Question(other.getQuestion().toString());
+        this.answer = new Answer(other.getAnswer().toString());
+        this.performance = other.performance;
+        this.timesClassified = other.timesClassified;
+    }
+
     public static Card classifyCard(Card card, Performance performance) {
         return new Card(card.question, card.answer, performance, card.timesClassified + 1);
     }

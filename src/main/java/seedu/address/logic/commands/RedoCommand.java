@@ -15,7 +15,7 @@ import seedu.address.model.Model;
 public class RedoCommand extends Command {
 
     public static final String COMMAND_WORD = "redo";
-    public static final String MESSAGE_SUCCESS = "Redo success!";
+    public static final String MESSAGE_SUCCESS = "Redo success: ";
     public static final String MESSAGE_FAILURE = "No more commands to redo!";
 
     @Override
@@ -29,10 +29,10 @@ public class RedoCommand extends Command {
             throw new CommandException(MESSAGE_FAILURE);
         }
 
-        model.redoAnakin();
+        String redoCommand = model.redoAnakin();
         model.updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
         model.updateFilteredDeckList(PREDICATE_SHOW_ALL_DECKS);
 
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS + redoCommand);
     }
 }

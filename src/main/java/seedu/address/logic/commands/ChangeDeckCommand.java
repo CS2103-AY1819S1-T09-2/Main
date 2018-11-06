@@ -63,6 +63,7 @@ public class ChangeDeckCommand extends Command {
                 throw new CommandException(Messages.MESSAGE_NOT_INSIDE_DECK);
             }
             model.getOutOfDeck();
+            model.commitAnakin(COMMAND_WORD + EXIT_DECK_ARGS);
             return new CommandResult(String.format(MESSAGE_EXIT_SUCCESS));
         } else {
             if (targetIndex.getZeroBased() >= currentDeckList.size()) {
@@ -71,6 +72,7 @@ public class ChangeDeckCommand extends Command {
 
             Deck deckToEnter = currentDeckList.get(targetIndex.getZeroBased());
             model.getIntoDeck(deckToEnter);
+            model.commitAnakin(COMMAND_WORD);
             return new CommandResult(String.format(MESSAGE_CD_SUCCESS, deckToEnter));
         }
     }

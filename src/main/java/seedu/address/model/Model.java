@@ -79,7 +79,7 @@ public interface Model {
 
     String undoAnakin();
 
-    void redoAnakin();
+    String redoAnakin();
 
     void commitAnakin(String command);
 }

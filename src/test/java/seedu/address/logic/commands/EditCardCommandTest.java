@@ -183,7 +183,7 @@ public class EditCardCommandTest {
         // redo -> same first card edited again
         expectedModel.redoAnakin();
         assertCommandSuccess(new seedu.address.logic.commands.RedoCommand(), model, commandHistory,
-            seedu.address.logic.commands.RedoCommand.MESSAGE_SUCCESS, expectedModel);
+            RedoCommand.MESSAGE_SUCCESS + EditCardCommand.COMMAND_WORD, expectedModel);
     }
 
     @Test
@@ -233,7 +233,8 @@ public class EditCardCommandTest {
         // assertNotEquals(model.getFilteredCardList().get(INDEX_FIRST_CARD.getZeroBased()), cardToEdit);
         // redo -> edits same second card in unfiltered card list
         expectedModel.redoAnakin();
-        assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new RedoCommand(), model, commandHistory,
+                RedoCommand.MESSAGE_SUCCESS + EditCardCommand.COMMAND_WORD, expectedModel);
     }
 
     @Test
