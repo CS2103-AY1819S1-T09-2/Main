@@ -1,8 +1,10 @@
 package systemtests;
 
+import static org.junit.Assert.assertFalse;
 import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_DECK;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_DECK_NAME_ARGS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_NAME_A_ARGS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_NAME_B_ARGS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_DECK_A;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_DECK_B;
@@ -27,7 +29,7 @@ import seedu.address.testutil.DeckUtil;
 public class NewDeckCommandSystemTest extends AnakinSystemTest {
 
     @Test
-    public void add() {
+    public void newdeck() {
         Model model = getModel();
 
         /* ------------------------ Perform add operations on the shown unfiltered list
@@ -41,15 +43,15 @@ public class NewDeckCommandSystemTest extends AnakinSystemTest {
         String command = "   " + NewDeckCommand.COMMAND_WORD + "  " + PREFIX_NAME + VALID_NAME_DECK_A + "  ";
         assertCommandSuccess(command, toAdd);
 
-        /* Case: undo adding DECK_A to the list -> Amy deleted */
+        /* Case: undo adding DECK_A to the list -> Deck_A deleted */
         command = UndoCommand.COMMAND_WORD;
         String expectedResultMessage = UndoCommand.MESSAGE_SUCCESS + NewDeckCommand.COMMAND_WORD;
         assertCommandSuccess(command, model, expectedResultMessage);
 
-        /* Case: redo adding DECK_A to the list -> Amy added again */
+        /* Case: redo adding DECK_A to the list -> Deck_A added again */
         command = RedoCommand.COMMAND_WORD;
         model.addDeck(toAdd);
-        expectedResultMessage = RedoCommand.MESSAGE_SUCCESS;
+        expectedResultMessage = RedoCommand.MESSAGE_SUCCESS + NewDeckCommand.COMMAND_WORD;
         assertCommandSuccess(command, model, expectedResultMessage);
 
         /* Case: add a Deck with a different name -> added */
@@ -61,9 +63,11 @@ public class NewDeckCommandSystemTest extends AnakinSystemTest {
         deleteAllDecks();
         assertCommandSuccess(DECK_A);
 
-        /* Case: add a Deck, use two name prefixes -> added */
-        command = NewDeckCommand.COMMAND_WORD + VALID_DECK_NAME_B_ARGS;
+        /* Case: add a Deck, use two name prefixes, both valid -> last prefix added */
+        command = NewDeckCommand.COMMAND_WORD + VALID_DECK_NAME_A_ARGS + VALID_DECK_NAME_B_ARGS;
+        assertFalse(getModel().getAnakin().getDeckList().contains(VALID_NAME_DECK_A));
         assertCommandSuccess(command, toAdd);
+        
 
         /* -------------------------- Perform add operation on the shown filtered list------------------------------ */
 

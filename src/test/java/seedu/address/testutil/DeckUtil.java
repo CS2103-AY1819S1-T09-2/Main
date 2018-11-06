@@ -11,14 +11,14 @@ import seedu.address.model.deck.Deck;
 public class DeckUtil {
 
     /**
-     * Returns a new deck command string for adding the {@code person}.
+     * Returns a new deck command string for adding the {@code deck}.
      */
     public static String getNewDeckCommand(Deck deck) {
         return NewDeckCommand.COMMAND_WORD + " " + getDeckDetails(deck);
     }
 
     /**
-     * Returns the part of command string for the given {@code person}'s details.
+     * Returns the part of command string for the given {@code deck}'s details.
      */
     public static String getDeckDetails(Deck deck) {
         StringBuilder sb = new StringBuilder();
