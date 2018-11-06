@@ -16,6 +16,8 @@ public class Autocompleter {
     public static boolean isAutocompletable(String input) {
         // Check if the give input string has an existing autocompletion in the list of command words which starts
         // with what the user has currently typed
+        // listOfCommandWords.stream().filter(command ->command.startsWith(string)).collect().size() > 0;
+
 
         return true;
 
@@ -23,6 +25,7 @@ public class Autocompleter {
 
     public static String getAutocompletion(String input) {
         // Filter from the list of available autocompletions and pick the first one if it exists
+        // listOfCompletions.filter(completion -> completion.startsWith(input)).get(0);
         return "bob";
     }
     /**

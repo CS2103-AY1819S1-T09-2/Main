@@ -57,6 +57,7 @@ public class CommandBox extends UiPart<Region> {
             navigateToNextInput();
             break;
         case TAB:
+            keyEvent.consume();
             autocomplete();
             break;
         default:
