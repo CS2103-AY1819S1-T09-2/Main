@@ -75,7 +75,6 @@ public class EditDeckCommand extends Command {
             throw new CommandException(MESSAGE_CURRENTLY_REVIEWING_DECK);
         }
 
-
         if (model.isInsideDeck()) {
             throw new CommandException(MESSAGE_INVALID_DECK_LEVEL_OPERATION);
         }

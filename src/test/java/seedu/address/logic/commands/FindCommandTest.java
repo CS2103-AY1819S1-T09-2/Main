@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_CARDS_LISTED_OVERVIEW;
 import static seedu.address.commons.core.Messages.MESSAGE_DECKS_LISTED_OVERVIEW;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalCards.ALL;
 import static seedu.address.testutil.TypicalCards.IS;
@@ -13,12 +14,14 @@ import static seedu.address.testutil.TypicalDecks.HOLDING;
 import static seedu.address.testutil.TypicalDecks.NOTHING;
 import static seedu.address.testutil.TypicalDecks.THERE;
 import static seedu.address.testutil.TypicalDecks.getTypicalAnakin;
+import static seedu.address.testutil.TypicalDecks.getTypicalAnakinInDeck;
 
 import java.util.Arrays;
 import java.util.Collections;
 
 import org.junit.Test;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -86,6 +89,16 @@ public class FindCommandTest {
 
         // different card -> returns false
         assertFalse(findFirstCardCommand.equals(findSecondCardCommand));
+    }
+
+    @Test
+    public void executeCommandInReview_throwsCommandException() {
+        Model actualModel = new ModelManager(getTypicalAnakinInDeck(), new UserPrefs());
+        actualModel.startReview();
+        DeckNameContainsKeywordsPredicate deckPredicate = prepareDeckPredicate(" ");
+        FindCommand command = new FindCommand(deckPredicate);
+        assertCommandFailure(command, actualModel, commandHistory,
+                Messages.MESSAGE_CURRENTLY_REVIEWING_DECK);
     }
 
     @Test

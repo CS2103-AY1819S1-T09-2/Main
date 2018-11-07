@@ -1,54 +1,47 @@
 package seedu.address.logic.commands;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.testutil.TypicalCards.getTypicalDeck;
-import static seedu.address.testutil.TypicalDecks.DECK_A;
-import static seedu.address.testutil.TypicalDecks.DECK_B;
-
-import java.util.List;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.SortCommand.MESSAGE_SUCCESS_1;
+import static seedu.address.logic.commands.SortCommand.MESSAGE_SUCCESS_2;
+import static seedu.address.testutil.TypicalDecks.getTypicalAnakin;
+import static seedu.address.testutil.TypicalDecks.getTypicalAnakinInDeck;
 
 import org.junit.Test;
 
 import seedu.address.logic.CommandHistory;
-import seedu.address.model.Anakin;
+import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.deck.Card;
-import seedu.address.model.deck.Deck;
-import seedu.address.testutil.AnakinBuilder;
 
 public class SortCommandTest {
 
     private final CommandHistory commandHistory = new CommandHistory();
 
     @Test
-    public void execute_sortDeckList() throws Exception {
-        Anakin expectedAnakin = new AnakinBuilder().withDeck(DECK_A).withDeck(DECK_B).build();
-        List<Deck> expectedDeckList = expectedAnakin.getDeckList();
-        ModelManager model = new ModelManager(new AnakinBuilder().withDeck(DECK_B).withDeck(DECK_A).build(),
-            new UserPrefs());
-        List<Deck> deckList = model.getAnakin().getDeckList();
+    public void execute_sortDeckList() {
+        Model actualModel = new ModelManager(getTypicalAnakin(), new UserPrefs());
+        SortCommand sortCommand = new SortCommand();
 
-        SortCommand command = new SortCommand();
-        command.execute(model, commandHistory);
-        assertEquals(expectedDeckList, deckList);
+        String expectedMessage = String.format(MESSAGE_SUCCESS_1);
+
+        Model expectedModel = new ModelManager(actualModel.getAnakin(), new UserPrefs());
+        expectedModel.sort();
+        expectedModel.commitAnakin(SortCommand.COMMAND_WORD);
+
+        assertCommandSuccess(sortCommand, actualModel, commandHistory, expectedMessage, expectedModel);
     }
 
     @Test
-    public void execute_sortCardList() throws Exception {
-        Deck expectedDeck = getTypicalDeck();
-        expectedDeck.getCards().sort();
-        List<Card> expectedCardList = expectedDeck.getCards().asUnmodifiableObservableList();
+    public void execute_sortCardList() {
+        Model actualModel = new ModelManager(getTypicalAnakinInDeck(), new UserPrefs());
+        SortCommand sortCommand = new SortCommand();
 
-        Deck deck = getTypicalDeck();
-        Anakin anakin = new AnakinBuilder().withDeck(deck).build();
-        anakin.getIntoDeck(deck);
-        ModelManager model = new ModelManager(anakin, new UserPrefs());
+        String expectedMessage = String.format(MESSAGE_SUCCESS_2);
 
-        SortCommand command = new SortCommand();
-        command.execute(model, commandHistory);
-        List<Card> cardList = model.getFilteredCardList();
+        Model expectedModel = new ModelManager(actualModel.getAnakin(), new UserPrefs());
+        expectedModel.sort();
+        expectedModel.commitAnakin(SortCommand.COMMAND_WORD);
 
-        assertEquals(expectedCardList, cardList);
+        assertCommandSuccess(sortCommand, actualModel, commandHistory, expectedMessage, expectedModel);
     }
 }

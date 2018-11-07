@@ -181,7 +181,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public Deck importDeck (String filepath) {
+    public Deck importDeck(String filepath) {
         Deck imported = versionedAnakin.importDeck(filepath);
         addDeck(imported);
         return imported;
