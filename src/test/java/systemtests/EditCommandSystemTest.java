@@ -106,10 +106,7 @@ public class EditCommandSystemTest extends AnakinSystemTest {
         int invalidIndex = getModel().getAnakin().getDeckList().size();
         //        assertCommandFailure(EditDeckCommand.COMMAND_WORD + " " + invalidIndex + VALID_DECK_NAME_B_ARGS,
         //                Messages.MESSAGE_INVALID_DECK_DISPLAYED_INDEX);
-
-                /* --------------------- Performing edit operation while a deck card is selected
-         -------------------------- */
-
+        /* --------------------- Performing edit operation while a deck card is selected-------------------------- */
         //     /* Case: selects first card in the deck list, edit a deck -> edited, card selection remains unchanged but
         //         * browser url changes
         //         */
@@ -199,8 +196,7 @@ public class EditCommandSystemTest extends AnakinSystemTest {
     private void assertCommandSuccess(String command, Index toEdit, Deck editedDeck,
             Index expectedSelectedCardIndex) {
         Model expectedModel = getModel();
-        expectedModel.updateDeck(expectedModel.getFilteredDeckList().get(toEdit
- .getZeroBased()), editedDeck);
+        expectedModel.updateDeck(expectedModel.getFilteredDeckList().get(toEdit.getZeroBased()), editedDeck);
         expectedModel.updateFilteredDeckList(PREDICATE_SHOW_ALL_DECKS);
 
         assertCommandSuccess(command, expectedModel,
@@ -213,8 +209,7 @@ public class EditCommandSystemTest extends AnakinSystemTest {
      * browser url and selected card remain unchanged.
      * @see EditCommandSystemTest#assertCommandSuccess(String, Model, String, Index)
      */
-    private void assertCommandSuccess(String command, Model expectedModel, String
- expectedResultMessage) {
+    private void assertCommandSuccess(String command, Model expectedModel, String expectedResultMessage) {
         assertCommandSuccess(command, expectedModel, expectedResultMessage, null);
     }
 
