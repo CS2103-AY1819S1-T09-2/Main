@@ -71,9 +71,8 @@ public class CommandBox extends UiPart<Region> {
      */
     private void autocomplete() {
         String commandText = commandTextField.getText();
-        if (Autocompleter.isAutocompletable(commandText)) {
 
-            // Replace with autocompleted
+        if (Autocompleter.isAutocompletable(commandText)) {
             replaceText(Autocompleter.getAutocompletion(commandText));
 
         }
