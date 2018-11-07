@@ -10,7 +10,7 @@ import java.util.Objects;
 public class Card {
 
     private final Performance performance;
-    private final int timesClassified;
+    private final int timesReviewed;
 
     // Identity fields
     private final Question question;
@@ -20,27 +20,27 @@ public class Card {
         requireAllNonNull(question, answer);
         this.question = question;
         this.answer = answer;
-        performance = Performance.DEFAULT;
-        timesClassified = 0;
+        performance = Performance.NORMAL;
+        timesReviewed = 0;
     }
 
-    public Card(Question question, Answer answer, Performance performance, int timesClassified) {
-        requireAllNonNull(question, answer, performance, timesClassified);
+    public Card(Question question, Answer answer, Performance performance, int timesReviewed) {
+        requireAllNonNull(question, answer, performance, timesReviewed);
         this.question = question;
         this.answer = answer;
         this.performance = performance;
-        this.timesClassified = timesClassified;
+        this.timesReviewed = timesReviewed;
     }
 
     public Card(Card other) {
         this.question = new Question(other.getQuestion().toString());
         this.answer = new Answer(other.getAnswer().toString());
         this.performance = other.performance;
-        this.timesClassified = other.timesClassified;
+        this.timesReviewed = other.timesReviewed;
     }
 
     public static Card classifyCard(Card card, Performance performance) {
-        return new Card(card.question, card.answer, performance, card.timesClassified + 1);
+        return new Card(card.question, card.answer, performance, card.timesReviewed + 1);
     }
 
     public Question getQuestion() {
@@ -55,8 +55,8 @@ public class Card {
         return performance;
     }
 
-    public int getTimesClassified() {
-        return timesClassified;
+    public int getTimesReviewed() {
+        return timesReviewed;
     }
 
     /**

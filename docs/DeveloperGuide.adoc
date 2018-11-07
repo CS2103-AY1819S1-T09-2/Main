@@ -153,10 +153,9 @@ Structure of the Model Component
 The `Model`,
 
 ****
-* stores Anakin data.
-* provides a Model interface for Logic component to execute all commands
-* manipulates the state of Anakin
-* manages the interaction, relationship between different objects (Anakin, Card, Deck, ...)
+* stores Anakin's data and manipulates the state of the application.
+* provides a Model interface for Logic component to execute its set of commands.
+* manages the interaction and relationship between different objects (Anakin, Card, Deck, ...)
 * exposes an unmodifiable ObservableList<Deck> and ObservableList<Card> that can be 'observed'
 e.g. the UI is bound to these lists so that the UI automatically updates when the data in the lists change.
 * does not depend on any of the other three components.
@@ -377,17 +376,17 @@ Step 5. When the user is done, he executes `endreview` to quit review mode. The 
 
 ==== Current Implementation (v1.3)
 
-The user can assign to a card a difficulty after reviewing it in "play" mode. Users can only do this assignment on
-the card they are currently reviewing, as it is the only time it makes sense.
+The user can assign to a card a difficulty after reviewing it in "review" mode. Users can only do this assignment on
+the card they are currently reviewing, as it is the only time it makes sense. By default, all cards are assigned the
+`normal` difficulty.
 
-The command available to the user will be `classify [DIFFICULTY_TEXT]`, where `DIFFICULTY_TEXT` is any of the strings
- `easy`, `good`, `hard`, and `review`, corresponding to the respective levels of perceived difficulty of that
- flashcard (`review` refers to flagging for immediate review, and that card will be automatically assigned a
- difficulty of `hard`).
+The command available to the user will be `classify DIFFICULTY`, where `DIFFICULTY` is any of the strings
+ `easy`, `normal`, `hard`, corresponding to the level of perceived difficulty for that
+ flashcard.
 
 Given below is an example usage scenario for the performance tracking feature.
 
-Step 1. The user requests to "play" a deck. He sees a card A (question only) from the deck.
+Step 1. The user requests to "review" a deck. He sees a card A (question only) from the deck.
 
 Step 2. The user requests to see the answer. He sees the answer displayed with the question.
 
