@@ -1,19 +1,19 @@
 package systemtests;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_A;
+//import static org.junit.Assert.assertFalse;
+//import static org.junit.Assert.assertNotEquals;
+//import static org.junit.Assert.assertTrue;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_A;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_B;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_NAME_A_ARGS;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_NAME_A_ARGS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_NAME_B_ARGS;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_DECK_A;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_DECK_B;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_DECK_A;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_DECK_B;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_DECKS;
-import static seedu.address.testutil.TypicalDecks.KEYWORD_MATCHING_JOHN;
+//import static seedu.address.testutil.TypicalDecks.KEYWORD_MATCHING_JOHN;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_DECK;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_DECK;
-import static seedu.address.testutil.TypicalDecks.DECK_C;
+//import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_DECK;
+//import static seedu.address.testutil.TypicalDecks.DECK_C;
 //import static seedu.address.testutil.TypicalDecks.VALID_DECK_A;
 
 
@@ -26,9 +26,9 @@ import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.model.Model;
 import seedu.address.model.deck.Deck;
-import seedu.address.model.deck.Name;
+//import seedu.address.model.deck.Name;
 import seedu.address.testutil.DeckBuilder;
-import seedu.address.testutil.DeckUtil;
+//import seedu.address.testutil.DeckUtil;
 
 public class EditCommandSystemTest extends AnakinSystemTest {
 
@@ -81,32 +81,32 @@ public class EditCommandSystemTest extends AnakinSystemTest {
 //        editedDeck = new DeckBuilder(VALID_DECK_A).build();
 //        assertCommandSuccess(command, index, editedDeck);
 
-//        /* Case: clear tags -> cleared */
+        //        /* Case: clear tags -> cleared */
         index = INDEX_FIRST_DECK;
-//        command = EditDeckCommand.COMMAND_WORD + " " + index.getOneBased() + " " + PREFIX_TAG.getPrefix();
+        //        command = EditDeckCommand.COMMAND_WORD + " " + index.getOneBased() + " " + PREFIX_TAG.getPrefix();
         Deck deckToEdit = getModel().getFilteredDeckList().get(index.getZeroBased());
         editedDeck = new DeckBuilder(deckToEdit).build();
-//        assertCommandSuccess(command, index, editedDeck);
+        //        assertCommandSuccess(command, index, editedDeck);
 
         /* ------------------ Performing edit operation while a filtered list is being shown
  ------------------------ */
 
-//        /* Case: filtered deck list, edit index within bounds of address book and deck list -> edited */
-//        showDecksWithName(KEYWORD_MATCHING_JOHN);
-//        index = INDEX_FIRST_DECK;
-//        assertTrue(index.getZeroBased() < getModel().getFilteredDeckList().size());
-//        command = EditDeckCommand.COMMAND_WORD + " " + index.getOneBased() + " " + VALID_DECK_NAME_B_ARGS;
-//        deckToEdit = getModel().getFilteredDeckList().get(index.getZeroBased());
-//        editedDeck = new DeckBuilder(deckToEdit).withName(VALID_NAME_DECK_B).build();
-//        assertCommandSuccess(command, index, editedDeck);
+        //        /* Case: filtered deck list, edit index within bounds of address book and deck list -> edited */
+        //        showDecksWithName(KEYWORD_MATCHING_JOHN);
+        //        index = INDEX_FIRST_DECK;
+        //        assertTrue(index.getZeroBased() < getModel().getFilteredDeckList().size());
+        //        command = EditDeckCommand.COMMAND_WORD + " " + index.getOneBased() + " " + VALID_DECK_NAME_B_ARGS;
+        //        deckToEdit = getModel().getFilteredDeckList().get(index.getZeroBased());
+        //        editedDeck = new DeckBuilder(deckToEdit).withName(VALID_NAME_DECK_B).build();
+        //        assertCommandSuccess(command, index, editedDeck);
 
-//        /* Case: filtered deck list, edit index within bounds of address book but out of bounds of deck list
-//         * -> rejected
-//         */
-//        showDecksWithName(KEYWORD_MATCHING_JOHN);
+        //        /* Case: filtered deck list, edit index within bounds of address book but out of bounds of deck list
+        //         * -> rejected
+        //         */
+        //        showDecksWithName(KEYWORD_MATCHING_JOHN);
         int invalidIndex = getModel().getAnakin().getDeckList().size();
-//        assertCommandFailure(EditDeckCommand.COMMAND_WORD + " " + invalidIndex + VALID_DECK_NAME_B_ARGS,
-//                Messages.MESSAGE_INVALID_DECK_DISPLAYED_INDEX);
+        //        assertCommandFailure(EditDeckCommand.COMMAND_WORD + " " + invalidIndex + VALID_DECK_NAME_B_ARGS,
+        //                Messages.MESSAGE_INVALID_DECK_DISPLAYED_INDEX);
 
         /* --------------------- Performing edit operation while a deck card is selected
  -------------------------- */
