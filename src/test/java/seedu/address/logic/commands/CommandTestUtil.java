@@ -30,6 +30,7 @@ import seedu.address.testutil.TypicalCards;
 public class CommandTestUtil {
 
     public static final String VALID_NAME = "My Deck";
+    public static final String INVALID_NAME = "B@d_Deck_Name";
     public static final String VALID_NAME_JOHN = "John Phua";
 
     public static final String VALID_NAME_DECK_A = "My Deck A";

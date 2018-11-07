@@ -153,10 +153,9 @@ Structure of the Model Component
 The `Model`,
 
 ****
-* stores Anakin data.
-* provides a Model interface for Logic component to execute all commands
-* manipulates the state of Anakin
-* manages the interaction, relationship between different objects (Anakin, Card, Deck, ...)
+* stores Anakin's data and manipulates the state of the application.
+* provides a Model interface for Logic component to execute its set of commands.
+* manages the interaction and relationship between different objects (Anakin, Card, Deck, ...)
 * exposes an unmodifiable ObservableList<Deck> and ObservableList<Card> that can be 'observed'
 e.g. the UI is bound to these lists so that the UI automatically updates when the data in the lists change.
 * does not depend on any of the other three components.

@@ -15,19 +15,21 @@ It is written in Java, and has about 10 kLoC.
 
 == Summary of contributions
 
+* *Code contributed:* https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&search=truongthanh2606[GitHub]
+
 * *Major enhancements:*
 ** *Re-design and implement the model component*
 
 *** What can the new model do:
 
-**** Allows Anakin to have a unique list of decks, each deck contains a unique list of cards.
+**** Allows Anakin to have a list of decks, each deck contains a card list with questions and answers.
 **** Allows UI to observe both the deck list and card list so that it can update its deck panel and
-card panel when user execute different commands.
-**** Allows Logic component to execute its set of commands by providing a complete Model interface,
-which can support those operations.
+card panel when these lists are modified (executing commands).
+**** Allows Logic component to execute its set of commands by providing a Model interface,
+which can support the logic of those operations.
 
-*** Justification: The new model component executes the logic of all commands, determines
- how objects like deck and card interacts with each other and
+*** Justification:
+The new model component determines how objects like deck and card interacts with each other and
  manipulate the state of the application.
 
 ** *Implement `find` command*
@@ -37,9 +39,15 @@ which can support those operations.
 **** Search for cards by question if user is inside a deck.
 
 *** Justification: This allows user to locate the deck or card that contains specific keywords
- quickly when the application has a lot of data.
+ quickly.
 
 * *Minor enhancements:*
+
+** *Add messages to `undo` and `redo` commands*
+
+*** What is the new messages: The `undo` and `redo` messages will show which command has
+just been `undo`, or `redo`.
+*** Justification: This provides user more transparent view of the commands being executed.
 
 ** *Implement `sort` command*
 

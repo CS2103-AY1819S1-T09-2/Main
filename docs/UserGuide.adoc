@@ -96,6 +96,10 @@ Examples:
 * `cd 2` +
 Enter the 2nd deck in the currently displayed deck list.
 
+****
+* Note: User can `cd` into another deck while being inside a deck.
+****
+
 === Navigating out of the current deck : `cd ..`
 Exit the current deck and returns the user to the list of decks. +
 Format: `cd ..`
@@ -115,7 +119,7 @@ Format: `newdeck n/NAME`
 
 ****
 * This deck will contains an empty list of cards.
-* This operation is disabled when user is currently inside a deck.
+* User should be under Anakin's deck list to perform this operation (not inside any decks).
 ****
 
 Examples:
@@ -131,13 +135,13 @@ Format: `editdeck INDEX_OF_DECK n/NAME`
 ****
 * INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
 * The new deck will maintain the card list of the old one.
-* This operation is disabled when user navigates into a deck.
+* User should be under Anakin's deck list to perform this operation (not inside any decks).
 ****
 
 Examples:
 
 * `editdeck 1 n/My Deck` +
-Edits the name of the first deck in the list to be `My Deck` and keeps the old card list.
+Edits the name of the first deck in the list to be `My Deck` and keeps the card list intact.
 
 === Deleting a deck : `deldeck`
 
@@ -147,7 +151,7 @@ Format: `deldeck INDEX_OF_DECK`
 ****
 * Deletes the deck at the specified `INDEX_OF_DECK`.
 * `INDEX_OF_DECK` must be a positive integer from 1 onwards and is based on the currently displayed list.
-* This operation is disabled when user navigates into a deck.
+* User should be under Anakin's deck list to perform this operation (not inside any decks).
 ****
 
 Examples:
@@ -201,8 +205,8 @@ Format: `delcard INDEX_OF_CARD`
 
 ****
 * Deletes the card at the specified `INDEX_OF_CARD`.
-* User should be inside a deck to perform this operation.
 * INDEX_OF_CARD must be a positive integer from 1 onwards and is based on the currently displayed list.
+* User should be inside a deck to perform this operation.
 ****
 
 Examples:
@@ -218,7 +222,8 @@ Format: `review INDEX_OF_DECK`
 
 ****
 * INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
-* While in review mode, all card and deck-related commands are disabled.
+* While in review mode, disable commands that operate on decks and cards (except: `endreview`,
+`flipcard`, ``nextcard, `prevcard`, `help`, `history`, `exit`).
 ****
 
 === Flip a card in a review : `flipcard`
@@ -369,7 +374,7 @@ Format: `undo`
 ====
 Undoable commands: those commands that modify the state of Anakin.
 (`newdeck`, `editdeck`, `deldeck`, `newcard`, `editcard`, `delcard`,
-`sort`, `classify`).
+`sort`, `classify`, `cd`, `cd ..`).
 ====
 
 Examples:

@@ -50,4 +50,11 @@ public class ClassifyCommand extends Command {
 
         return new CommandResult(String.format(MESSAGE_CLASSIFICATION_SUCCESS, this.difficulty, card));
     }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+            || (other instanceof ClassifyCommand // instanceof handles nulls
+            && difficulty.equals(((ClassifyCommand) other).difficulty)); // state check
+    }
 }
