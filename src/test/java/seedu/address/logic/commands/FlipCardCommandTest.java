@@ -36,8 +36,6 @@ public class FlipCardCommandTest {
     @Test
     public void execute_flipcard_failure() {
         model.endReview();
-        expectedModel.endReview();
-
         assertCommandFailure(new FlipCardCommand(), model, commandHistory, MESSAGE_NOT_REVIEWING_DECK);
     }
 }
