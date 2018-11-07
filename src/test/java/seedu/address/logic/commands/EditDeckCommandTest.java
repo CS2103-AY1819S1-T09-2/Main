@@ -58,7 +58,8 @@ public class EditDeckCommandTest {
     public void execute_invalidEditDeckCommandInReview_throwsCommandException() {
         Model actualModel = new ModelManager(getTypicalAnakin(), new UserPrefs());
         actualModel.startReview();
-        EditDeckCommand editDeckCommand = new EditDeckCommand(INDEX_FIRST_DECK, new EditDeckCommand.EditDeckDescriptor());
+        EditDeckCommand editDeckCommand = new EditDeckCommand(INDEX_FIRST_DECK,
+                new EditDeckCommand.EditDeckDescriptor());
         assertCommandFailure(editDeckCommand, actualModel, commandHistory,
                 Messages.MESSAGE_CURRENTLY_REVIEWING_DECK);
     }
@@ -66,7 +67,8 @@ public class EditDeckCommandTest {
     @Test
     public void execute_invalidEditDeckCommandInsideDeck_throwsCommandException() {
         Model actualModel = new ModelManager(getTypicalAnakinInDeck(), new UserPrefs());
-        EditDeckCommand editDeckCommand = new EditDeckCommand(INDEX_FIRST_DECK, new EditDeckCommand.EditDeckDescriptor());
+        EditDeckCommand editDeckCommand = new EditDeckCommand(INDEX_FIRST_DECK,
+                new EditDeckCommand.EditDeckDescriptor());
         assertCommandFailure(editDeckCommand, actualModel, commandHistory,
                 Messages.MESSAGE_INVALID_DECK_LEVEL_OPERATION);
     }

@@ -41,11 +41,11 @@ import seedu.address.testutil.EditCardDescriptorBuilder;
  */
 public class EditCardCommandTest {
 
-    private Model model = new ModelManager(getTypicalAnakinInDeck(), new UserPrefs());
-    private CommandHistory commandHistory = new CommandHistory();
-
     @Rule
     public ExpectedException thrown = ExpectedException.none();
+
+    private Model model = new ModelManager(getTypicalAnakinInDeck(), new UserPrefs());
+    private CommandHistory commandHistory = new CommandHistory();
 
     @Before
     public void getIntoFirstDeck() {
