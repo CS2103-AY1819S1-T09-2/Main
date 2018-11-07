@@ -47,6 +47,7 @@ into boxes based on how well he/she remembers them. This will allow for a better
 ** Added an exit command to allow user to leave the deck
 ** Added a `select` command which is now deprecated
 ** Add `undo` and `redo` functions
+** Implement autocompletion function
 
 
 * *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] _{give links to collated code files}_
@@ -87,6 +88,7 @@ include::../UserGuide.adoc[tag=showDue]
 |_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
 |===
 
-include::../DeveloperGuide.adoc[tag=deckleveloperation]
+include::../DeveloperGuide.adoc[tag=autocompleteimplementation]
+include::../DeveloperGuide.adoc[tag=decklevelcommands]
 
 

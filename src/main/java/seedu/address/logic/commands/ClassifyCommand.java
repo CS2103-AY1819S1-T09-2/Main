@@ -23,6 +23,10 @@ public class ClassifyCommand extends Command {
             + "Example: " + COMMAND_WORD + " easy ";
 
     public static final String MESSAGE_CLASSIFICATION_SUCCESS = "Assigned %1$s difficulty to card %2$s";
+    public static final String DEFAULT_DIFFICULTY = "easy";
+
+    public static final String AUTOCOMPLETE_TEXT = COMMAND_WORD + " " + DEFAULT_DIFFICULTY;
+
 
     private final Performance difficulty;
 

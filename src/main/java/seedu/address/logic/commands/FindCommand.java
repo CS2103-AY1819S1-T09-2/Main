@@ -24,9 +24,13 @@ public class FindCommand extends Command {
             + "The specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " Donald Duck";
+    public static final String DEFAULT_STRING = "Donald Duck";
+    public static final String AUTOCOMPLETE_TEXT = COMMAND_WORD + " " + DEFAULT_STRING;
 
     private final DeckNameContainsKeywordsPredicate deckPredicate;
     private final CardQuestionContainsKeywordsPredicate cardPredicate;
+
+
 
     // Constructor to be called by FindCommandParser
     public FindCommand(DeckNameContainsKeywordsPredicate deckPredicate,

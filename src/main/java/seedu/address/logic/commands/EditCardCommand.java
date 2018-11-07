@@ -41,6 +41,13 @@ public class EditCardCommand extends Command {
     public static final String MESSAGE_EDIT_CARD_SUCCESS = "Edited Card: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_CARD = "This card already exists in the deck.";
+    public static final String DEFAULT_INDEX = "1";
+    public static final String DEFAULT_QUESTION = "Why is Earth round?";
+
+
+    public static final String AUTOCOMPLETE_TEXT = COMMAND_WORD + " " + DEFAULT_INDEX + " "
+            + PREFIX_QUESTION + DEFAULT_QUESTION;
+
 
     private final Index index;
     private final EditCardDescriptor editCardDescriptor;

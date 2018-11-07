@@ -29,6 +29,10 @@ public class ReviewCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Deck review started: %1$s";
     public static final String MESSAGE_DECK_NO_CARDS = "Cannot review deck with no cards";
     public static final String MESSAGE_ALREADY_REVIEWING_DECK = "End current deck review before reviewing another deck";
+    public static final String DEFAULT_INDEX = "1";
+
+    public static final String AUTOCOMPLETE_TEXT = COMMAND_WORD + " " + DEFAULT_INDEX;
+
 
     private final Index index;
 

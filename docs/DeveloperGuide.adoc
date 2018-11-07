@@ -252,6 +252,8 @@ state
 
 // end::handleinvalidcommands[]
 
+// tag::deckleveloperations[]
+
 === Deck-level operations
 
 ==== Current implementation
@@ -290,6 +292,7 @@ image::NewDeck.png[width="790", align="left"]
 
 ** Pros: The responsibility of each class is clear, only a Deck can modify its list of cards.
 ** Cons: The logic for executing deck-level and card-level commands are implemented at different places. We must ensure that the implementation of each command is correct.
+// end::deckleveloperations[]
 
 // tag::deckreview[]
 === Deck Review Implementation
@@ -522,7 +525,31 @@ We are using `java.util.logging` package for logging. The `LogsCenter` class is 
 * `WARNING` : Can continue, but with caution
 * `INFO` : Information showing the noteworthy actions by the App
 * `FINE` : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size
+// tag::autocompleteimplementation[]
+=== Autocomplete Implementation
+==== Current implementation (v1.4)
 
+Autocompletion in Anakin is handled by an Autocompleter.
+
+On pressing tab, CommandBox will raise an event and check if the current text in the command box is autocompletable, that is to say, it is a prefix of one of the existing commands supported by Anakin.
+If it is Autocompletable, Autocompleter will search through the list of existing commands in lexicographic order and find the first match for the current text in the command box.
+
+
+==== Design considerations
+
+* *Alternative 1 (current choice):* Use a set of pre-decided completion text for each command and have a list of all supported command words
+** Explanation: Each command has a pre-decided autocompletion text and we do prefix-matching between the text in the command box and our existing set of command words.
+If there is a potential match, we replace the current text in the command box with the autocompletion text of the supported command which it is matched to.
+
+** Pros: Better modularity
+** Cons: Less customizability. This design doesn't take into account the past commands that the user has issued.
+
+* *Alternative 2:* Match current command against the history of previously executed commands
+
+** Pros: Better prediction of intended command
+** Cons: Worse modularity and Separation of Concerns as the autocompleter would need to interact with the history and thus the state of the model.
+
+// end::autocompleteimplementation[]
 [[Implementation-Configuration]]
 === Configuration
 
