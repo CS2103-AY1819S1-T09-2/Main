@@ -41,34 +41,34 @@ public class CommandBoxTest extends GuiUnitTest {
         errorStyleOfCommandBox.add(CommandBox.ERROR_STYLE_CLASS);
     }
 
-    //    @Test
-    //    public void commandBox_startingWithSuccessfulCommand() {
-    //        assertBehaviorForSuccessfulCommand();
-    //        assertBehaviorForFailedCommand();
-    //    }
-    //
-    //    @Test
-    //    public void commandBox_startingWithFailedCommand() {
-    //        assertBehaviorForFailedCommand();
-    //        assertBehaviorForSuccessfulCommand();
-    //
-    //        // verify that style is changed correctly even after multiple consecutive failed commands
-    //        assertBehaviorForSuccessfulCommand();
-    //        assertBehaviorForFailedCommand();
-    //        assertBehaviorForFailedCommand();
-    //    }
-    //
-    //    @Test
-    //    public void commandBox_handleKeyPress() {
-    //        commandBoxHandle.run(COMMAND_THAT_FAILS);
-    //        assertEquals(errorStyleOfCommandBox, commandBoxHandle.getStyleClass());
-    //        guiRobot.push(KeyCode.ESCAPE);
-    //        assertEquals(errorStyleOfCommandBox, commandBoxHandle.getStyleClass());
-    //
-    //        guiRobot.push(KeyCode.A);
-    //        assertEquals(defaultStyleOfCommandBox, commandBoxHandle.getStyleClass());
-    //    }
-    //
+    @Test
+    public void commandBox_startingWithSuccessfulCommand() {
+        assertBehaviorForSuccessfulCommand();
+        assertBehaviorForFailedCommand();
+    }
+
+    @Test
+    public void commandBox_startingWithFailedCommand() {
+        assertBehaviorForFailedCommand();
+        assertBehaviorForSuccessfulCommand();
+
+        // verify that style is changed correctly even after multiple consecutive failed commands
+        assertBehaviorForSuccessfulCommand();
+        assertBehaviorForFailedCommand();
+        assertBehaviorForFailedCommand();
+    }
+
+    @Test
+    public void commandBox_handleKeyPress() {
+        commandBoxHandle.run(COMMAND_THAT_FAILS);
+        assertEquals(errorStyleOfCommandBox, commandBoxHandle.getStyleClass());
+        guiRobot.push(KeyCode.ESCAPE);
+        assertEquals(errorStyleOfCommandBox, commandBoxHandle.getStyleClass());
+
+        guiRobot.push(KeyCode.A);
+        assertEquals(defaultStyleOfCommandBox, commandBoxHandle.getStyleClass());
+    }
+
     @Test
     public void handleKeyPress_startingWithUp() {
         // empty history
