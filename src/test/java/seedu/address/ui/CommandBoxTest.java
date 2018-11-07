@@ -41,33 +41,33 @@ public class CommandBoxTest extends GuiUnitTest {
         errorStyleOfCommandBox.add(CommandBox.ERROR_STYLE_CLASS);
     }
 
-        @Test
-        public void commandBox_startingWithSuccessfulCommand() {
-            assertBehaviorForSuccessfulCommand();
-            assertBehaviorForFailedCommand();
-        }
+    @Test
+    public void commandBox_startingWithSuccessfulCommand() {
+        assertBehaviorForSuccessfulCommand();
+        assertBehaviorForFailedCommand();
+    }
 
-        @Test
-        public void commandBox_startingWithFailedCommand() {
-            assertBehaviorForFailedCommand();
-            assertBehaviorForSuccessfulCommand();
+    @Test
+    public void commandBox_startingWithFailedCommand() {
+        assertBehaviorForFailedCommand();
+        assertBehaviorForSuccessfulCommand();
 
-            // verify that style is changed correctly even after multiple consecutive failed commands
-            assertBehaviorForSuccessfulCommand();
-            assertBehaviorForFailedCommand();
-            assertBehaviorForFailedCommand();
-        }
+        // verify that style is changed correctly even after multiple consecutive failed commands
+        assertBehaviorForSuccessfulCommand();
+        assertBehaviorForFailedCommand();
+        assertBehaviorForFailedCommand();
+    }
 
-        @Test
-        public void commandBox_handleKeyPress() {
-            commandBoxHandle.run(COMMAND_THAT_FAILS);
-            assertEquals(errorStyleOfCommandBox, commandBoxHandle.getStyleClass());
-            guiRobot.push(KeyCode.ESCAPE);
-            assertEquals(errorStyleOfCommandBox, commandBoxHandle.getStyleClass());
+    @Test
+    public void commandBox_handleKeyPress() {
+        commandBoxHandle.run(COMMAND_THAT_FAILS);
+        assertEquals(errorStyleOfCommandBox, commandBoxHandle.getStyleClass());
+        guiRobot.push(KeyCode.ESCAPE);
+        assertEquals(errorStyleOfCommandBox, commandBoxHandle.getStyleClass());
 
-            guiRobot.push(KeyCode.A);
-            assertEquals(defaultStyleOfCommandBox, commandBoxHandle.getStyleClass());
-        }
+        guiRobot.push(KeyCode.A);
+        assertEquals(defaultStyleOfCommandBox, commandBoxHandle.getStyleClass());
+    }
 
     @Test
     public void handleKeyPress_startingWithUp() {
@@ -104,37 +104,37 @@ public class CommandBoxTest extends GuiUnitTest {
 
     }
 
-        @Test
-        public void handleKeyPress_startingWithDown() {
-            final String expectedAutocompletion = "newcard q/ What does Socrates know? a/ Nothing";
-            // empty history
-            assertInputHistory(KeyCode.DOWN, "");
-            assertInputHistory(KeyCode.UP, "");
+    @Test
+    public void handleKeyPress_startingWithDown() {
+        final String expectedAutocompletion = "newcard q/ What does Socrates know? a/ Nothing";
+        // empty history
+        assertInputHistory(KeyCode.DOWN, "");
+        assertInputHistory(KeyCode.UP, "");
 
-            // one command
-            commandBoxHandle.run(COMMAND_THAT_SUCCEEDS);
-            assertInputHistory(KeyCode.DOWN, "");
-            assertInputHistory(KeyCode.UP, COMMAND_THAT_SUCCEEDS);
+        // one command
+        commandBoxHandle.run(COMMAND_THAT_SUCCEEDS);
+        assertInputHistory(KeyCode.DOWN, "");
+        assertInputHistory(KeyCode.UP, COMMAND_THAT_SUCCEEDS);
 
-            // two commands
-            commandBoxHandle.run(COMMAND_THAT_FAILS);
-            assertInputHistory(KeyCode.DOWN, "");
-            assertInputHistory(KeyCode.UP, COMMAND_THAT_FAILS);
+        // two commands
+        commandBoxHandle.run(COMMAND_THAT_FAILS);
+        assertInputHistory(KeyCode.DOWN, "");
+        assertInputHistory(KeyCode.UP, COMMAND_THAT_FAILS);
 
-            // insert command in the middle of retrieving previous commands
-            guiRobot.push(KeyCode.UP);
-            String thirdCommand = "sort";
-            commandBoxHandle.run(thirdCommand);
-            assertInputHistory(KeyCode.DOWN, "");
-            assertInputHistory(KeyCode.UP, thirdCommand);
+        // insert command in the middle of retrieving previous commands
+        guiRobot.push(KeyCode.UP);
+        String thirdCommand = "sort";
+        commandBoxHandle.run(thirdCommand);
+        assertInputHistory(KeyCode.DOWN, "");
+        assertInputHistory(KeyCode.UP, thirdCommand);
 
-            // check tab completion
-            String fourthCommand = "newc";
-            commandBoxHandle.run(fourthCommand);
-            assertInputHistory(KeyCode.TAB, expectedAutocompletion);
+        // check tab completion
+        String fourthCommand = "newc";
+        commandBoxHandle.run(fourthCommand);
+        assertInputHistory(KeyCode.TAB, expectedAutocompletion);
 
 
-        }
+    }
 
     /**
      * Runs a command that fails, then verifies that <br>
