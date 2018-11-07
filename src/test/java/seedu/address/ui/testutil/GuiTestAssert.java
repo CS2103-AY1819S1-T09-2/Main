@@ -12,7 +12,6 @@ import guitests.guihandles.DeckReviewCardHandle;
 import guitests.guihandles.ResultDisplayHandle;
 import seedu.address.model.deck.Card;
 import seedu.address.model.deck.Deck;
-import seedu.address.ui.DeckReviewCard;
 
 /**
  * A set of assertion methods useful for writing GUI tests.
