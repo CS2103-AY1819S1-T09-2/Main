@@ -67,6 +67,20 @@ public class TypicalDecks {
         return ak;
     }
 
+    /**
+     * Returns an {@code Anakin} with all typical decks and is already reviewing DECK_WITH_CARDS.
+     */
+    public static Anakin getTypicalAnakinInDeckReview() {
+        Anakin ak = new Anakin();
+        for (Deck deck : getTypicalDecks()) {
+            ak.addDeck(deck);
+        }
+
+        ak.getIntoDeck(DECK_WITH_CARDS);
+        ak.startReview();
+        return ak;
+    }
+
     public static List<Deck> getTypicalDecks() {
         return new ArrayList<>(Arrays.asList(DECK_WITH_CARDS, DECK_A,
                 DECK_B, DECK_C, DECK_D, DECK_E, THERE, NOTHING, HOLDING));
