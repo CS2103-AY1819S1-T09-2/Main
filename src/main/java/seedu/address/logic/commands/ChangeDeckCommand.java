@@ -28,6 +28,10 @@ public class ChangeDeckCommand extends Command {
 
     public static final String MESSAGE_CD_SUCCESS = "Successfully navigated into %1$s";
     public static final String MESSAGE_EXIT_SUCCESS = "Successfully exited deck";
+    public static final String DEFAULT_INDEX = "1";
+
+    public static final String AUTOCOMPLETE_TEXT = COMMAND_WORD + " " + DEFAULT_INDEX;
+
 
     private final Index targetIndex;
 

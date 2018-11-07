@@ -25,6 +25,9 @@ public class NewDeckCommand extends Command {
         + PREFIX_NAME + "Deck 1";
 
     public static final String MESSAGE_SUCCESS = "New deck added: %1$s";
+    public static final String DEFAULT_DECK = "DECK 1";
+    public static final String AUTOCOMPLETE_TEXT = COMMAND_WORD + " " + PREFIX_NAME + " " + DEFAULT_DECK;
+
 
     private final Deck toAdd;
 

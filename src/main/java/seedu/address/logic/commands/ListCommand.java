@@ -19,6 +19,8 @@ public class ListCommand extends Command {
 
     public static final String MESSAGE_SUCCESS_DECK = "Listed all decks";
     public static final String MESSAGE_SUCCESS_CARD = "Listed all cards";
+    public static final String AUTOCOMPLETE_TEXT = COMMAND_WORD;
+
 
 
     @Override
