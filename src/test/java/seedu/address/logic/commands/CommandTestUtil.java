@@ -20,8 +20,8 @@ import seedu.address.model.deck.Card;
 import seedu.address.model.deck.CardQuestionContainsKeywordsPredicate;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.DeckNameContainsKeywordsPredicate;
-import seedu.address.testutil.DeckBuilder;
 import seedu.address.model.deck.Performance;
+import seedu.address.testutil.DeckBuilder;
 import seedu.address.testutil.EditDeckDescriptorBuilder;
 import seedu.address.testutil.TypicalCards;
 
