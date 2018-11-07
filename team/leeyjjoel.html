@@ -104,6 +104,9 @@ into boxes based on how well he/she remembers them. This will allow for a better
 <li>
 <p>Add <code>undo</code> and <code>redo</code> functions</p>
 </li>
+<li>
+<p>Implement autocompletion function</p>
+</li>
 </ul>
 </div>
 </li>
@@ -231,5 +234,55 @@ This is a work in progress</p>
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="autocomplete-implementation"><a class="link" href="#autocomplete-implementation">Autocomplete Implementation</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-v1-4"><a class="link" href="#current-implementation-v1-4">Current implementation (v1.4)</a></h4>
+<div class="paragraph">
+<p>Autocompletion in Anakin is handled by an Autocompleter.</p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-07 13:19:18 UTC</div></div></div></body></html>
+<div class="paragraph">
+<p>On pressing tab, CommandBox will raise an event and check if the current text in the command box is autocompletable, that is to say, it is a prefix of one of the existing commands supported by Anakin.
+If it is Autocompletable, Autocompleter will search through the list of existing commands in lexicographic order and find the first match for the current text in the command box.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design considerations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use a set of pre-decided completion text for each command and have a list of all supported command words</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Explanation: Each command has a pre-decided autocompletion text and we do prefix-matching between the text in the command box and our existing set of command words.
+If there is a potential match, we replace the current text in the command box with the autocompletion text of the supported command which it is matched to.</p>
+</li>
+<li>
+<p>Pros: Better modularity</p>
+</li>
+<li>
+<p>Cons: Less customizability. This design doesn&#8217;t take into account the past commands that the user has issued.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Match current command against the history of previously executed commands</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Better prediction of intended command</p>
+</li>
+<li>
+<p>Cons: Worse modularity and Separation of Concerns as the autocompleter would need to interact with the history and thus the state of the model.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-07 14:09:07 UTC</div></div></div></body></html>
