@@ -52,20 +52,12 @@ public class Autocompleter {
 
     }
 
-    public static String getAutocompletion(String input) {
-        // Filter from the list of available autocompletions and pick the first one if it exists
-        return getAutocompletionStrings().stream().filter(
-        completion -> completion.startsWith(input)).collect(Collectors.toList()).get(0);
-    }
-
-
     /**
-     * This is a temporary javadoc comment
-     * if there exists such a word, it is replaced with the relevant autocompletion command.
+     * Filters from list of available autocompletions and retrieves the first matching completion
      */
-    private static List<String> generateAutoCompletions() {
-        return new ArrayList<String>();
-        // Add all possible completions and their completion fields
+    public static String getAutocompletion(String input) {
+        return getAutocompletionStrings().stream().filter(
+            completion -> completion.startsWith(input)).collect(Collectors.toList()).get(0);
     }
 
     private static List<String> getCommandList() {
@@ -78,6 +70,9 @@ public class Autocompleter {
 
     }
 
+    /**
+     * Get a property/field for a particular command class.
+     */
     private static List<String> getCommandField(String field) {
         return getCommandClasses().stream().map(command -> {
             try {
@@ -92,6 +87,10 @@ public class Autocompleter {
         }).collect(Collectors.toList());
 
     }
+
+    /**
+     * Creates a list of all existing command classes and returns it to the user.
+     */
     private static List<Class<? extends Command>> getCommandClasses() {
         //        File directory = new File(COMMAND_DIRECTORY);
         //        File[] fList = directory.listFiles();
