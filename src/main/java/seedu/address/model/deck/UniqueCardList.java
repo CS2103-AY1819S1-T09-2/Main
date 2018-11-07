@@ -75,13 +75,6 @@ public class UniqueCardList implements Iterable<Card> {
     }
 
     /**
-     * Clears all cards.
-     */
-    public void clear() {
-        internalList.clear();
-    }
-
-    /**
      * Sort all cards in the list in alphabetical order according to the question.
      */
     public void sort() {
@@ -114,9 +107,6 @@ public class UniqueCardList implements Iterable<Card> {
     }
 
     public void setCurrentIndex(int newIndex) {
-        if (newIndex < 0 || newIndex >= internalList.size()) {
-            throw new CardNotFoundException();
-        }
         currentIndex = newIndex;
     }
 

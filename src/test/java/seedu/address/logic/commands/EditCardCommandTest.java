@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_CARD_LEVEL_OPERATION;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ANSWER_A;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ANSWER_B;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_QUESTION_A;
@@ -9,17 +10,21 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_QUESTION_B;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.UndoCommand.MESSAGE_FAILURE;
+import static seedu.address.testutil.TypicalDecks.getTypicalAnakin;
 import static seedu.address.testutil.TypicalDecks.getTypicalAnakinInDeck;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_CARD;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_CARD;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.EditCardCommand.EditCardDescriptor;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Anakin;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -39,6 +44,9 @@ public class EditCardCommandTest {
     private Model model = new ModelManager(getTypicalAnakinInDeck(), new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
     @Before
     public void getIntoFirstDeck() {
         model.getIntoDeck(model.getFilteredDeckList().get(0));
@@ -57,6 +65,15 @@ public class EditCardCommandTest {
         expectedModel.commitAnakin(EditCardCommand.COMMAND_WORD);
 
         assertCommandSuccess(editCardCommand, model, commandHistory, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_invalidEditCardCommandInReview_throwsCommandException() {
+        Model actualModel = new ModelManager(getTypicalAnakinInDeck(), new UserPrefs());
+        actualModel.startReview();
+        EditCardCommand editCardCommand = new EditCardCommand(INDEX_FIRST_CARD, new EditCardDescriptor());
+        assertCommandFailure(editCardCommand, actualModel, commandHistory,
+                Messages.MESSAGE_CURRENTLY_REVIEWING_DECK);
     }
 
     @Test
@@ -114,7 +131,7 @@ public class EditCardCommandTest {
     }
 
     @Test
-    public void execute_duplicateAnakinCardUnfilteredList_failure() {
+    public void execute_duplicateCardUnfilteredList_failure() {
         Card firstCard = model.getFilteredCardList().get(INDEX_FIRST_CARD.getZeroBased());
         EditCardDescriptor descriptor = new EditCardDescriptorBuilder(firstCard).build();
         EditCardCommand editCardCommand = new EditCardCommand(INDEX_SECOND_CARD, descriptor);
@@ -135,7 +152,7 @@ public class EditCardCommandTest {
     }
 
     @Test
-    public void execute_invalidAnakinCardIndexUnfilteredList_failure() {
+    public void execute_invalidCardIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredCardList().size() + 1);
         EditCardDescriptor descriptor = new EditCardDescriptorBuilder().withQuestion(VALID_QUESTION_A).build();
         EditCardCommand editCardCommand = new EditCardCommand(outOfBoundIndex, descriptor);
@@ -144,24 +161,18 @@ public class EditCardCommandTest {
             Messages.MESSAGE_INVALID_CARD_DISPLAYED_INDEX);
     }
 
-    /**
-     * Edit filtered list where index is larger than size of filtered list,
-     * but smaller than size of address book
-     */
-    // TODO: When filter functions are available write filter test
-    //    @Test
-    //    public void execute_invalidAnakinCardIndexFilteredList_failure() {
-    //        showCardAtIndex(model, INDEX_FIRST_CARD);
-    //        Index outOfBoundIndex = INDEX_SECOND_CARD;
-    //        // ensures that outOfBoundIndex is still in bounds of address book list
-    //        assertTrue(outOfBoundIndex.getZeroBased() < model.getAnakin().getCardList().size());
-    //
-    //        EditCardCommand editCardCommand = new EditCardCommand(outOfBoundIndex,
-    //                new EditCardDescriptorBuilder().withQuestion(VALID_QUESTION_A).build());
-    //
-    //        assertCommandFailure(editCardCommand, model, commandHistory, AddressbookMessages
-    // .MESSAGE_INVALID_CARD_DISPLAYED_INDEX);
-    //    }
+    @Test
+    public void execute_invalidCardLevelOperation_throwException() throws Exception {
+        Model actualModel = new ModelManager(getTypicalAnakin(), new UserPrefs());
+        Card editedCard = new CardBuilder().build();
+        EditCardDescriptor descriptor = new EditCardDescriptorBuilder(editedCard).build();
+        EditCardCommand editCardCommand = new EditCardCommand(INDEX_FIRST_CARD, descriptor);
+
+        thrown.expect(CommandException.class);
+        thrown.expectMessage(MESSAGE_INVALID_CARD_LEVEL_OPERATION);
+        editCardCommand.execute(actualModel, commandHistory);
+    }
+
     @Test
     public void executeUndoRedo_validIndexUnfilteredList_success() throws Exception {
         Card editedCard = new CardBuilder().build();
@@ -211,7 +222,7 @@ public class EditCardCommandTest {
      */
 
     @Test
-    public void executeUndoRedo_validIndexFilteredList_sameAnakinCardEdited() throws Exception {
+    public void executeUndoRedo_validIndexFilteredList_sameCardEdited() throws Exception {
         Card editedCard = new CardBuilder().build();
         EditCardDescriptor descriptor = new EditCardDescriptorBuilder(editedCard).build();
         EditCardCommand editCardCommand = new EditCardCommand(INDEX_FIRST_CARD, descriptor);

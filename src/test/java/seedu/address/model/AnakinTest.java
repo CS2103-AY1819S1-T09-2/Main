@@ -41,7 +41,7 @@ public class AnakinTest {
     }
 
     @Test
-    public void resetData_withValidAnakinReadOnlyAnakin_replacesData() {
+    public void resetData_withValidReadOnlyAnakin_replacesData() {
         Anakin newData = getTypicalAnakin();
         anakin.resetData(newData);
         assertEquals(newData, anakin);

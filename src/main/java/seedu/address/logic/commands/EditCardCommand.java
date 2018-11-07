@@ -101,13 +101,9 @@ public class EditCardCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_CARD);
         }
 
-        try {
-            model.updateCard(cardToEdit, editedCard);
-            model.updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
-            model.commitAnakin(COMMAND_WORD);
-        } catch (DeckNotFoundException e) {
-            throw new CommandException(MESSAGE_NOT_INSIDE_DECK);
-        }
+        model.updateCard(cardToEdit, editedCard);
+        model.updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
+        model.commitAnakin(COMMAND_WORD);
 
         return new CommandResult(String.format(MESSAGE_EDIT_CARD_SUCCESS, editedCard));
     }

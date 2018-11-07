@@ -13,6 +13,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showDeckAtIndex;
 import static seedu.address.testutil.TypicalDecks.getTypicalAnakin;
+import static seedu.address.testutil.TypicalDecks.getTypicalAnakinInDeck;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_DECK;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_DECK;
 
@@ -54,16 +55,33 @@ public class EditDeckCommandTest {
     }
 
     @Test
+    public void execute_invalidEditDeckCommandInReview_throwsCommandException() {
+        Model actualModel = new ModelManager(getTypicalAnakin(), new UserPrefs());
+        actualModel.startReview();
+        EditDeckCommand editDeckCommand = new EditDeckCommand(INDEX_FIRST_DECK, new EditDeckCommand.EditDeckDescriptor());
+        assertCommandFailure(editDeckCommand, actualModel, commandHistory,
+                Messages.MESSAGE_CURRENTLY_REVIEWING_DECK);
+    }
+
+    @Test
+    public void execute_invalidEditDeckCommandInsideDeck_throwsCommandException() {
+        Model actualModel = new ModelManager(getTypicalAnakinInDeck(), new UserPrefs());
+        EditDeckCommand editDeckCommand = new EditDeckCommand(INDEX_FIRST_DECK, new EditDeckCommand.EditDeckDescriptor());
+        assertCommandFailure(editDeckCommand, actualModel, commandHistory,
+                Messages.MESSAGE_INVALID_DECK_LEVEL_OPERATION);
+    }
+
+    @Test
     public void execute_someFieldsSpecifiedUnfilteredList_success() {
-        Index indexLastAnakinDeck = Index.fromOneBased(model.getFilteredDeckList().size());
-        Deck lastDeck = model.getFilteredDeckList().get(indexLastAnakinDeck.getZeroBased());
+        Index indexLastDeck = Index.fromOneBased(model.getFilteredDeckList().size());
+        Deck lastDeck = model.getFilteredDeckList().get(indexLastDeck.getZeroBased());
 
         DeckBuilder deckInList = new DeckBuilder(lastDeck);
         Deck editedDeck = deckInList.withName(VALID_NAME_JOHN).withCards(TYPICAL_CARD_LIST).build();
 
         EditDeckCommand.EditDeckDescriptor descriptor = new EditDeckDescriptorBuilder().withName(VALID_NAME_JOHN)
             .withCards(TYPICAL_CARD_LIST).build();
-        EditDeckCommand editCommand = new EditDeckCommand(indexLastAnakinDeck, descriptor);
+        EditDeckCommand editCommand = new EditDeckCommand(indexLastDeck, descriptor);
 
         String expectedMessage = String.format(MESSAGE_EDIT_DECK_SUCCESS, editedDeck);
 
