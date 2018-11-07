@@ -76,18 +76,18 @@ public class DeleteCommandSystemTest extends AnakinSystemTest {
         /* --------------------- Performing delete operation while a person card is selected
  ------------------------ */
 
-//                 /* Case: delete the selected deck -> deck list panel selects the person before the deleted person */
-//                showAllDecks();
-//                expectedModel = getModel();
-//                Index selectedIndex = getLastIndex(expectedModel);
-//                Index expectedIndex = Index.fromZeroBased(selectedIndex.getZeroBased() - 1);
-//                selectDeck(selectedIndex);
-//                command = DeleteDeckCommand.COMMAND_WORD + " " + selectedIndex.getOneBased();
-//                deletedDeck = removeDeck(expectedModel, selectedIndex);
-//                expectedResultMessage = String.format(MESSAGE_DELETE_DECK_SUCCESS, deletedDeck);
-//                assertCommandSuccess(command, expectedModel, expectedResultMessage, expectedIndex);
-//                /* --------------------------------- Performing invalid delete operation
-//         ------------------------------------ */
+        //         /* Case: delete the selected deck -> deck list panel selects the person before the deleted person */
+        //                showAllDecks();
+        //                expectedModel = getModel();
+        //                Index selectedIndex = getLastIndex(expectedModel);
+        //                Index expectedIndex = Index.fromZeroBased(selectedIndex.getZeroBased() - 1);
+        //                selectDeck(selectedIndex);
+        //                command = DeleteDeckCommand.COMMAND_WORD + " " + selectedIndex.getOneBased();
+        //                deletedDeck = removeDeck(expectedModel, selectedIndex);
+        //                expectedResultMessage = String.format(MESSAGE_DELETE_DECK_SUCCESS, deletedDeck);
+        //                assertCommandSuccess(command, expectedModel, expectedResultMessage, expectedIndex);
+        //                /* --------------------------------- Performing invalid delete operation
+        //         ------------------------------------ */
 
         /* Case: invalid index (0) -> rejected */
         command = DeleteDeckCommand.COMMAND_WORD + " 0";
