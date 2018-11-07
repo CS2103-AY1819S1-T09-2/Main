@@ -69,7 +69,6 @@ public class EditCommandSystemTest extends AnakinSystemTest {
 //        index = INDEX_SECOND_DECK;
 //        assertNotEquals(getModel().getFilteredDeckList().get(index.getZeroBased()), VALID_DECK_A);
 //        command = EditDeckCommand.COMMAND_WORD + " " + index.getOneBased() + VALID_DECK_NAME_A_ARGS;
-        
 //        editedDeck = new DeckBuilder(VALID_DECK_A).withName(VALID_NAME_DECK_A).build();
 //        assertCommandSuccess(command, index, editedDeck);
 
