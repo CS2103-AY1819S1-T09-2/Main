@@ -1,24 +1,10 @@
 package systemtests;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-//import org.junit.Test;
-
-import org.junit.Test;
-
 import seedu.address.model.Anakin;
-
-//import seedu.address.model.deck.Deck;
-import seedu.address.model.Model;
-import seedu.address.model.ReadOnlyAnakin;
-import seedu.address.model.util.SampleDataUtil;
-//import seedu.address.model.ReadOnlyAnakin;
-//import seedu.address.model.deck.Deck;
-//import seedu.address.model.util.SampleDataUtil;
 import seedu.address.testutil.TestUtil;
 
 
