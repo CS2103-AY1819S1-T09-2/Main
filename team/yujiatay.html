@@ -210,6 +210,9 @@ Format: <code>review INDEX_OF_DECK</code></p>
 <p>While in review mode, disable commands that operate on decks and cards (except: <code>endreview</code>,
 <code>flipcard</code>, <code>`nextcard, `prevcard</code>, <code>help</code>, <code>history</code>, <code>exit</code>).</p>
 </li>
+<li>
+<p>The application&#8217;s data will only be stored after execute <code>endreview</code> command.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -247,7 +250,7 @@ Format: <code>nextcard</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>When you are at the last card of the deck, executing <code>nextcard</code> will loop back to the first card.</p>
+<p>Note: When you are at the last card of the deck, executing <code>nextcard</code> will loop back to the first card.</p>
 </li>
 </ul>
 </div>
@@ -265,7 +268,7 @@ Format: <code>prevcard</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>When you are at the first card of the deck, executing <code>prevcard</code> will loop back to the last card.</p>
+<p>Note: When you are at the first card of the deck, executing <code>prevcard</code> will loop back to the last card.</p>
 </li>
 </ul>
 </div>
@@ -277,6 +280,18 @@ Format: <code>prevcard</code></p>
 <div class="paragraph">
 <p>Exits the review and returns to the editing menu<br>
 Format: <code>endreview</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Note: Executing <code>undo</code> after reviewing will undo all the changes made in that review session
+(all <code>classify</code> commands).</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -615,4 +630,4 @@ to subsequent and previous cards in the deck. See Deck Review Implementation for
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-08 06:48:55 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-08 09:34:33 UTC</div></div></div></body></html>
