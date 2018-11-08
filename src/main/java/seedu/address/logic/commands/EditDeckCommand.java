@@ -41,7 +41,7 @@ public class EditDeckCommand extends Command {
     public static final String AUTOCOMPLETE_TEXT = COMMAND_WORD + " " + DEFAULT_INDEX;
 
     public static final String MESSAGE_EDIT_DECK_SUCCESS = "Edited Deck: %1$s";
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
+
 
 
     private final Index index;

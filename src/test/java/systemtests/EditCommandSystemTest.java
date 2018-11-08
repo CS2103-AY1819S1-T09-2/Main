@@ -136,17 +136,9 @@ public class EditCommandSystemTest extends AnakinSystemTest {
         assertCommandFailure(EditDeckCommand.COMMAND_WORD + VALID_DECK_NAME_B_ARGS,
                 String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, EditDeckCommand.MESSAGE_USAGE));
 
-        //       /* Case: missing all fields -> rejected */
-        //        assertCommandFailure(EditDeckCommand.COMMAND_WORD + " " + INDEX_FIRST_DECK.getOneBased(),
-        //                EditDeckCommand.MESSAGE_NOT_EDITED);
-
-        //        /* Case: invalid question -> rejected */
-        //        assertCommandFailure(EditDeckCommand.COMMAND_WORD + " " + INDEX_FIRST_DECK.getOneBased(),
-        //                Address.MESSAGE_ADDRESS_CONSTRAINTS);
-        //
-        //        /* Case: invalid answer -> rejected */
-        //        assertCommandFailure(EditDeckCommand.COMMAND_WORD + " " + INDEX_FIRST_DECK.getOneBased(),
-        //                Tag.MESSAGE_TAG_CONSTRAINTS);
+        /* Case: missing all fields -> rejected */
+        assertCommandFailure(EditDeckCommand.COMMAND_WORD + " " + INDEX_FIRST_DECK.getOneBased(),
+                Messages.MESSAGE_DECK_NOT_EDITED);
 
         //        /* Case: edit a deck with new values same as another deck's values -> rejected */
         //        executeCommand(DeckUtil.getNewDeckCommand(VALID_DECK_A));
@@ -164,7 +156,7 @@ public class EditCommandSystemTest extends AnakinSystemTest {
         // rejected */
         //        command = EditDeckCommand.COMMAND_WORD + " " + index.getOneBased() + VALID_DECK_NAME_B_ARGS;
         //        assertCommandFailure(command, EditDeckCommand.MESSAGE_DUPLICATE_DECK);
-        //
+
         //    /* Case: edit a deck with new values same as another deck's values but with different phone -> rejected */
         //        command = EditDeckCommand.COMMAND_WORD + " " + index.getOneBased() + VALID_DECK_NAME_B_ARGS;
         //        assertCommandFailure(command, EditDeckCommand.MESSAGE_DUPLICATE_DECK);
