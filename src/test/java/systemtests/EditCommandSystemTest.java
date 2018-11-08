@@ -10,7 +10,6 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_DECKS;
 import static seedu.address.testutil.TypicalDecks.KEYWORD_MATCHING_JOHN;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_DECK;
 
-
 import org.junit.Test;
 
 import seedu.address.commons.core.Messages;
