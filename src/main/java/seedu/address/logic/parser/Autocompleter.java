@@ -120,21 +120,6 @@ public class Autocompleter {
         commandClasses.add(ReviewCommand.class);
         commandClasses.add(SortCommand.class);
         commandClasses.add(UndoCommand.class);
-
-        //        for (File file : fList) {
-        //            // Check if file is file
-        //            if (file.isFile()) {
-        //                String fileName = file.getName();
-        //                if (fileName.endsWith("Command")) {
-        //                    try {
-        //                        commandClasses.add(Class.forName(fileName));
-        //                    } catch (ClassNotFoundException e) {
-        //
-        //                    }
-        //                }
-        //            }
-        //        }
-        //
         return commandClasses;
 
     }

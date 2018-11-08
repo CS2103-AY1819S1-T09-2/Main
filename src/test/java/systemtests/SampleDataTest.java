@@ -52,10 +52,4 @@ public class SampleDataTest extends AnakinSystemTest {
         }
     }
 
-    @Test
-    public void anakin_dataFileDoesNotExist_loadSampleData() {
-        final Model sampleAnakin = getModel();
-        ReadOnlyAnakin expectedAnakin = SampleDataUtil.getSampleAnakin();
-        assertEquals(sampleAnakin.getFilteredDeckList(), expectedAnakin.getDeckList());
-    }
 }

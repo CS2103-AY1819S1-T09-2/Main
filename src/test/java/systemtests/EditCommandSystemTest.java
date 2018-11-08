@@ -1,19 +1,15 @@
 package systemtests;
 
-//import static org.junit.Assert.assertFalse;
-//import static org.junit.Assert.assertNotEquals;
-//import static org.junit.Assert.assertTrue;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_A;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_A;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_B;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_NAME_A_ARGS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_NAME_A_ARGS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_NAME_B_ARGS;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_DECK_A;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_DECK_B;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_DECKS;
 import static seedu.address.testutil.TypicalDecks.KEYWORD_MATCHING_JOHN;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_DECK;
-//import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_DECK;
-//import static seedu.address.testutil.TypicalDecks.DECK_C;
+
 
 import org.junit.Test;
 
@@ -24,9 +20,8 @@ import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.model.Model;
 import seedu.address.model.deck.Deck;
-//import seedu.address.model.deck.Name;
 import seedu.address.testutil.DeckBuilder;
-//import seedu.address.testutil.DeckUtil;
+import seedu.address.testutil.DeckUtil;
 
 public class EditCommandSystemTest extends AnakinSystemTest {
 
@@ -62,29 +57,12 @@ public class EditCommandSystemTest extends AnakinSystemTest {
         command = EditDeckCommand.COMMAND_WORD + " " + index.getOneBased() + VALID_DECK_NAME_B_ARGS;
         assertCommandSuccess(command, index, VALID_DECK_B);
 
-        //        /* Case: edit a deck with new values same as another deck's values but with different name -> edited*/
-        //        assertTrue(getModel().getAnakin().getDeckList().contains(VALID_DECK_A));
-        //        index = INDEX_SECOND_DECK;
-        //        assertNotEquals(getModel().getFilteredDeckList().get(index.getZeroBased()), VALID_DECK_A);
-        //        command = EditDeckCommand.COMMAND_WORD + " " + index.getOneBased() + VALID_DECK_NAME_A_ARGS;
-        //        editedDeck = new DeckBuilder(VALID_DECK_A).withName(VALID_NAME_DECK_A).build();
-        //        assertCommandSuccess(command, index, editedDeck);
-
         index = INDEX_FIRST_DECK;
         Deck deckToEdit = getModel().getFilteredDeckList().get(index.getZeroBased());
         editedDeck = new DeckBuilder(deckToEdit).build();
 
         /* ------------------ Performing edit operation while a filtered list is being shown
  ------------------------ */
-
-        //        /* Case: filtered deck list, edit index within bounds of address book and deck list -> edited */
-        //        showDecksWithName(KEYWORD_MATCHING_JOHN);
-        //        index = INDEX_FIRST_DECK;
-        //        assertTrue(index.getZeroBased() < getModel().getFilteredDeckList().size());
-        //        command = EditDeckCommand.COMMAND_WORD + " " + index.getOneBased() + " " + VALID_DECK_NAME_B_ARGS;
-        //        deckToEdit = getModel().getFilteredDeckList().get(index.getZeroBased());
-        //        editedDeck = new DeckBuilder(deckToEdit).withName(VALID_NAME_DECK_B).build();
-        //        assertCommandSuccess(command, index, editedDeck);
 
         /* Case: filtered deck list, edit index within bounds of address book but out of bounds of deck list
          * -> rejected
@@ -118,13 +96,13 @@ public class EditCommandSystemTest extends AnakinSystemTest {
         assertCommandFailure(EditDeckCommand.COMMAND_WORD + " " + INDEX_FIRST_DECK.getOneBased(),
                 Messages.MESSAGE_DECK_NOT_EDITED);
 
-        //        /* Case: edit a deck with new values same as another deck's values -> rejected */
-        //        executeCommand(DeckUtil.getNewDeckCommand(VALID_DECK_A));
-        //        assertTrue(getModel().getAnakin().getDeckList().contains(VALID_DECK_A));
-        //        index = INDEX_FIRST_DECK;
-        //        assertFalse(getModel().getFilteredDeckList().get(index.getZeroBased()).equals(VALID_DECK_A));
-        //        command = EditDeckCommand.COMMAND_WORD + " " + index.getOneBased() + VALID_DECK_NAME_B_ARGS;
-        //        assertCommandFailure(command, Messages.MESSAGE_DUPLICATE_DECK);
+        /* Case: edit a deck with new values same as another deck's values -> rejected */
+        executeCommand(DeckUtil.getNewDeckCommand(VALID_DECK_A));
+        assertTrue(getModel().getAnakin().getDeckList().contains(VALID_DECK_A));
+        index = INDEX_FIRST_DECK;
+        assertFalse(getModel().getFilteredDeckList().get(index.getZeroBased()).equals(VALID_DECK_A));
+        command = EditDeckCommand.COMMAND_WORD + " " + index.getOneBased() + VALID_DECK_NAME_A_ARGS;
+        assertCommandFailure(command, Messages.MESSAGE_DUPLICATE_DECK);
 
     }
 
