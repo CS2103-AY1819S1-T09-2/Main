@@ -1,19 +1,19 @@
 package systemtests;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_A;
+//import static org.junit.Assert.assertFalse;
+//import static org.junit.Assert.assertNotEquals;
+//import static org.junit.Assert.assertTrue;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_A;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_B;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_NAME_A_ARGS;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_NAME_A_ARGS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_NAME_B_ARGS;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_DECK_A;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_DECK_B;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_DECK_A;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_DECK_B;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_DECKS;
 import static seedu.address.testutil.TypicalDecks.KEYWORD_MATCHING_JOHN;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_DECK;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_DECK;
-import static seedu.address.testutil.TypicalDecks.DECK_C;
+//import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_DECK;
+//import static seedu.address.testutil.TypicalDecks.DECK_C;
 
 import org.junit.Test;
 
@@ -26,7 +26,7 @@ import seedu.address.model.Model;
 import seedu.address.model.deck.Deck;
 //import seedu.address.model.deck.Name;
 import seedu.address.testutil.DeckBuilder;
-import seedu.address.testutil.DeckUtil;
+//import seedu.address.testutil.DeckUtil;
 
 public class EditCommandSystemTest extends AnakinSystemTest {
 
