@@ -11,7 +11,6 @@ import seedu.address.model.Anakin;
 
 //import seedu.address.model.deck.Deck;
 import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAnakin;
 import seedu.address.model.util.SampleDataUtil;
 //import seedu.address.model.ReadOnlyAnakin;
