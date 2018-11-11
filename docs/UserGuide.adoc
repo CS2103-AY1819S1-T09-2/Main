@@ -228,12 +228,12 @@ Format: `review INDEX_OF_DECK`
 ****
 * INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
 * While in review mode, commands that operate on decks and cards are disabled except `endreview`,
-`flipcard`, ``nextcard, `prevcard`, `classify`, `help`, `history`, `exit`.
+`flipcard`, `nextcard`, `prevcard`, `classify`, `help`, `history`, `exit`.
 * The application's data will only be stored after executing `endreview` command.
 ****
 
 === Flip a card in a review : `flipcard`
-View the flipside of the current card during a review. +
+View the other side of the current card during a review. +
 Format: `flipcard`
 
 Examples:
@@ -248,26 +248,29 @@ answer on the back of the card. When you execute `flipcard` again, you will see 
 Views the subsequent card in the deck. +
 Format: `nextcard`
 
-****
-* Note: When you are at the last card of the deck, executing `nextcard` will loop back to the first card.
-****
+[NOTE]
+====
+When you are at the last card of the deck, executing `nextcard` will loop back to the first card.
+====
 
 === Go to the previous card in a review : `prevcard`
 Views the previous card in the deck. +
 Format: `prevcard`
 
-****
-* Note: When you are at the first card of the deck, executing `prevcard` will loop back to the last card.
-****
+[NOTE]
+====
+When you are at the first card of the deck, executing `prevcard` will loop back to the last card.
+====
 
 === Exit review mode : `endreview`
 Exits the review and returns to the editing menu +
 Format: `endreview`
 
-****
-* Note: Executing `undo` after reviewing will undo all the changes made in that review session
+[NOTE]
+====
+Executing `undo` after reviewing will undo all the changes made in that review session
 (all `classify` commands).
-****
+====
 
 // end::review[]
 
