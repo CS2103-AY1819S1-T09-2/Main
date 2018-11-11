@@ -74,7 +74,8 @@ public class EditCardCommand extends Command {
         Question updatedQuestion = editCardDescriptor.getQuestion().orElse(cardToEdit.getQuestion());
         Answer updatedAnswer = editCardDescriptor.getAnswer().orElse(cardToEdit.getAnswer());
 
-        return new Card(updatedQuestion, updatedAnswer, cardToEdit.getPerformance(), cardToEdit.getTimesReviewed());
+        return new Card(updatedQuestion, updatedAnswer, cardToEdit.getPerformance(), cardToEdit.getTimesReviewed(),
+                cardToEdit.getReviewScore(), cardToEdit.getNextReview());
     }
 
     @Override

@@ -19,6 +19,12 @@ import seedu.address.model.deck.anakinexceptions.DeckNotFoundException;
  * Represents the in-memory model of Anakin data.
  */
 public class ModelManager extends ComponentManager implements Model {
+    /**
+     * This enum encapsulates the different types of sorts that can be performed.
+     */
+    public enum SortingType {
+        PERFORMANCE, LEXICOGRAPHICAL
+    }
     public static final Logger LOGGER = LogsCenter.getLogger(ModelManager.class);
 
     private final VersionedAnakin versionedAnakin;
@@ -63,12 +69,20 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public void sort() {
-        versionedAnakin.sort();
-        if (isInsideDeck()) {
+    public void sort(SortingType type) {
+
+        if (type == SortingType.LEXICOGRAPHICAL && isInsideDeck()) {
+            LOGGER.info("Execute Lexicographical Card Sort");
+            versionedAnakin.sort(SortingType.LEXICOGRAPHICAL);
             updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
-        } else {
+        } else if (type == SortingType.LEXICOGRAPHICAL && !isInsideDeck()) {
+            LOGGER.info("Execute Lexicographical Deck Sort");
+            versionedAnakin.sort(SortingType.LEXICOGRAPHICAL);
             updateFilteredDeckList(PREDICATE_SHOW_ALL_DECKS);
+        } else if (type == SortingType.PERFORMANCE && isInsideDeck()) {
+            LOGGER.info("Execute Performance card sort ");
+            versionedAnakin.sort(SortingType.PERFORMANCE);
+            updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
         }
         indicateAnakinChanged();
     }

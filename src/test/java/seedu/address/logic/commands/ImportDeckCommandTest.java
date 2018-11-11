@@ -17,6 +17,7 @@ import javafx.collections.ObservableList;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAnakin;
 import seedu.address.model.deck.Card;
 import seedu.address.model.deck.Deck;
@@ -221,7 +222,7 @@ public class ImportDeckCommandTest {
         }
 
         @Override
-        public void sort() {
+        public void sort(ModelManager.SortingType type) {
             throw new AssertionError("This method should not be called.");
         }
 

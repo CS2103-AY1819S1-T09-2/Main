@@ -164,6 +164,8 @@ e.g. the UI is bound to these lists so that the UI automatically updates when th
 
 === Storage component
 
+This section details the Storage component, which is the bridge between internal application state and external files.
+
 .Structure of the Storage Component
 image::StorageClassDiagram.png[width="800"]
 
@@ -334,11 +336,18 @@ Step 5. When the user is done, he executes `endreview` to quit review mode. The 
 
 === Performance Tracking Implementation
 
-==== Current Implementation (v1.3)
+This section details the implementation details and considerations of the performance tracking feature.
 
-The user can assign to a card a difficulty after reviewing it in "review" mode. Users can only do this assignment on
-the card they are currently reviewing, as it is the only time it makes sense. By default, all cards are assigned the
-`normal` difficulty.
+==== Current Implementation
+
+Cards contain the `Performance` parameter, implemented as an `enum`, as well as a `timesReviewed` counter. The fields
+ are set to `normal` difficulty and `0` counts respectively on initialization. Since these are metadata fields, they
+ will be considered optional and a `Card` can still be created without specifying them, which will result in the
+ fields being reset to the default initializations.
+
+The user can change the difficulty of a card during "review" mode. Users can only do this on the card they are
+currently reviewing, as it is the only time it makes sense to do so. Cards assigned a difficulty will have their
+`timesReviewed` counter incremented by one.
 
 The command available to the user will be `classify DIFFICULTY`, where `DIFFICULTY` is any of the strings
  `easy`, `normal`, `hard`, corresponding to the level of perceived difficulty for that
@@ -346,9 +355,9 @@ The command available to the user will be `classify DIFFICULTY`, where `DIFFICUL
 
 Given below is an example usage scenario for the performance tracking feature.
 
-Step 1. The user requests to "review" a deck. He sees a card A (question only) from the deck.
+Step 1. The user requests to "review" a deck. He sees the question of card A from the deck.
 
-Step 2. The user requests to see the answer. He sees the answer displayed with the question.
+Step 2. The user requests to see the answer. He sees the displayed answer.
 
 Step 3. The user executes `classify hard`. Card A is now assigned the difficulty of `hard`.
 

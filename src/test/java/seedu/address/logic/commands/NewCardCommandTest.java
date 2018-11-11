@@ -275,7 +275,7 @@ public class NewCardCommandTest {
         }
 
         @Override
-        public void sort() {
+        public void sort(ModelManager.SortingType type) {
             throw new AssertionError("This method should not be called.");
         }
 

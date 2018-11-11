@@ -26,6 +26,7 @@ import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.NewCardCommand;
 import seedu.address.logic.commands.NewDeckCommand;
 import seedu.address.logic.commands.NextCardCommand;
+import seedu.address.logic.commands.PerformanceSortCommand;
 import seedu.address.logic.commands.PreviousCardCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.ReviewCommand;
@@ -132,6 +133,8 @@ public class Parser {
 
         case ClassifyCommand.COMMAND_WORD:
             return new ClassifyCommandParser().parse(arguments);
+        case PerformanceSortCommand.COMMAND_WORD:
+            return new PerformanceSortCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
