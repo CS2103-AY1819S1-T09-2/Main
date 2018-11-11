@@ -32,7 +32,7 @@
 <li><a href="#handle-invalid-commands">3.2. Handle invalid commands</a></li>
 <li><a href="#deck-review-implementation">3.3. Deck Review Implementation</a></li>
 <li><a href="#performance-tracking-implementation">3.4. Performance Tracking Implementation</a></li>
-<li><a href="#ui-implementation">3.5. UI implementation</a></li>
+<li><a href="#ui-implementation">3.5. UI Implementation</a></li>
 <li><a href="#keep-cards-panel-updated-by-ui">3.6. Keep cards panel updated by UI</a></li>
 <li><a href="#import-export-implementation">3.7. Import/Export Implementation</a></li>
 <li><a href="#logging">3.8. Logging</a></li>
@@ -300,7 +300,7 @@ This will generate all resources required by the application and tests.</p>
 <h3 id="ui-component"><a class="link" href="#ui-component">2.2. UI component</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/AnakinUIClassDiagram.png" alt="AnakinUIClassDiagram" width="800">
+<img src="images/AnakinUIClassDiagram.png" alt="AnakinUIClassDiagram" width="600">
 </div>
 <div class="title">Figure 2. Structure of the UI Component</div>
 </div>
@@ -692,38 +692,113 @@ the EventsCenter.</p>
 <p>Step 1. The user launches the application and he already has a deck of cards that he wants to review. He executes
 <code>review 1</code> command to review the first deck on the list.</p>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>review</code> command calls <code>Model#getIntoDeck(Deck deck)</code>.</p>
+</li>
+<li>
+<p>It then calls <code>Model#startReview()</code> which updates the <code>isReviewingDeck</code> boolean in <code>Anakin</code> to true.</p>
+</li>
+<li>
+<p>It also calls <code>Model#getFilteredCardList()</code> and <code>Model#getIndexOfCurrentCard()</code> to retrieve the <code>Card</code>
+object of the last reviewed card.</p>
+</li>
+<li>
+<p>Thereafter, it posts a <code>StartReviewRequestEvent(Card card)</code> with the EventsCenter.</p>
+</li>
+<li>
+<p><code>MainWindow</code>, on the UI side, subscribes to this event and switches <code>DeckEditScreen</code> with <code>DeckReviewScreen</code> by
+reordering the nodes in <code>mainAreaPlaceholder</code>, which is a JavaFX StackPane.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
 <div class="paragraph">
-<p>The <code>review</code> command calls <code>Model#getIntoDeck(Deck deck)</code> and subsequently <code>Model#startReview()</code>, which updates the
-<code>isReviewingDeck</code> boolean in <code>Anakin</code> to true. Also, the command calls <code>Model#getFilteredCardList()</code> and
-<code>Model#getIndexOfCurrentCard()</code> to retrieve the <code>Card</code> object of the last reviewed card. Thereafter, it posts a
-<code>StartReviewRequestEvent(Card card)</code> with the EventsCenter. <code>MainWindow</code>, on the UI side, subscribes to this event
-and switches <code>DeckEditScreen</code> with <code>DeckReviewScreen</code> by reordering the nodes in <code>mainAreaPlaceholder</code>, which is a
-JavaFX StackPane.</p>
+<p>The following sequence diagram shows how the review operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ReviewSequenceDiagram.png" alt="ReviewSequenceDiagram">
+</div>
 </div>
 <div class="paragraph">
 <p>Step 2. The user sees the question displayed on the first card and comes up with his own answer. To verify his
-answer, he executes the <code>flipcard</code> command. The command posts a <code>FlipCardRequestEvent</code> with EventsCenter and
-<code>DeckReviewScreen</code> is notified of the event and switches the card with the question with the other card displaying
+answer, he executes the <code>flipcard</code> command.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>flipcard</code> command posts a <code>FlipCardRequestEvent</code> with EventsCenter.</p>
+</li>
+<li>
+<p><code>DeckReviewScreen</code> is notified of the event and switches the card with the question with the other card displaying
 the answer. This is also achieved by reordering the nodes in a StackPane but this time in <code>reviewAreaPlaceholder</code>. As
-a result, the user is presented with the answer to the question.</p>
+ a result, the user is presented with the answer to the question.</p>
+</li>
+</ol>
+</div>
+</div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user wants to go to the next card and executes <code>nextcard</code> command. This calls <code>Model#getFilteredCardList
-()</code> and <code>Model#getIndexOfCurrentCard()</code> and increments the index by one. The command reassigns the index a value of 0
-if the incremented index is equals to the size of the list of cards. This is to ensure that calling <code>nextcard</code> on the
-last card of the deck will loop back to the first card. Using the <code>Card</code> object found at the new index, the command
-posts a <code>ReviewNextCardEvent</code> using EventsCenter and notifies <code>DeckReviewScreen</code> of the event. <code>DeckReviewScreen</code>
-uses the <code>Card</code> object to create question and answer `DeckReviewCard`s and replaces the currently displayed cards
-with these two new ones.</p>
+<p>Step 3. The user wants to go to the next card and executes <code>nextcard</code> command.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>nextcard</code> command calls <code>Model#getFilteredCardList()</code> and <code>Model#getIndexOfCurrentCard()</code> and increments the index by one.</p>
+</li>
+<li>
+<p>If the incremented index is equal to the size of the card list, it reassigns the index a value of 0. This is to
+ensure that calling <code>nextcard</code> on the last card of the deck will loop back to the first card.</p>
+</li>
+<li>
+<p>Using the <code>Card</code> object found at the new index, the command posts a <code>ReviewNextCardEvent</code> using EventsCenter.</p>
+</li>
+<li>
+<p><code>DeckReviewScreen</code> is subscribed to the event and uses the <code>Card</code> object to create question and answer
+`DeckReviewCard`s and replaces the currently displayed cards with these two new ones.</p>
+</li>
+</ol>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Step 4. If the user wants to go back to review a previous card, he executes <code>prevcard</code> command. The explanation
 of the process is similar to Step 3.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. When the user is done, he executes <code>endreview</code> to quit review mode. The command posts a
-<code>EndReviewRequestEvent</code> using EventsCenter and notifies <code>MainWindow</code>. <code>MainWindow</code> switches the <code>DeckEditScreen</code> back
- to the front by reordering the nodes in <code>mainAreaPlaceholder</code> and the user is able to edit his decks again.</p>
+<p>Step 5. When the user is done, he executes <code>endreview</code> to quit review mode.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>endreview</code> command posts a <code>EndReviewRequestEvent</code> using EventsCenter.</p>
+</li>
+<li>
+<p><code>MainWindow</code> is subscribed to the event and switches the <code>DeckEditScreen</code> back to the front by reordering the nodes
+in <code>mainAreaPlaceholder</code> and the user is able to edit his decks again.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user enters deck review mode.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ReviewActivityDiagram.png" alt="ReviewActivityDiagram">
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -754,6 +829,39 @@ of the process is similar to Step 3.</p>
 </li>
 <li>
 <p>Cons: Field is not required by many operations in <code>Anakin</code> and its use case is specific to deck reviews.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-iterating-through-cards-during-review"><a class="link" href="#aspect-iterating-through-cards-during-review">Aspect: Iterating through cards during review</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Post events for UI to change the currently reviewed card.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Logic of iterating cards is decoupled from UI.</p>
+</li>
+<li>
+<p>Cons: Limited scalability as adding new functionality require adding more events and event handlers.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Implement a ListElementPointer for the list of cards similar to command history.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Able to easily implement more functionality such as keyboard shortcuts for iterating cards.</p>
+</li>
+<li>
+<p>Cons: Still requires events to trigger changes in UI.</p>
 </li>
 </ul>
 </div>
@@ -807,7 +915,7 @@ currently reviewing, as it is the only time it makes sense to do so. Cards assig
 </div>
 </div>
 <div class="sect2">
-<h3 id="ui-implementation"><a class="link" href="#ui-implementation">3.5. UI implementation</a></h3>
+<h3 id="ui-implementation"><a class="link" href="#ui-implementation">3.5. UI Implementation</a></h3>
 <div class="sect3">
 <h4 id="previous-implementation-v1-2"><a class="link" href="#previous-implementation-v1-2">3.5.1. Previous implementation (v1.2)</a></h4>
 <div class="paragraph">
@@ -2133,4 +2241,4 @@ Maintained by Model and stored in Storage.</p>
 </dl>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 13:49:16 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 20:21:45 UTC</div></div></div></body></html>
