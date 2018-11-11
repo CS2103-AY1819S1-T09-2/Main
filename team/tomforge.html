@@ -10,18 +10,65 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Anakin is a desktop application built to help people memorize things better by providing
-digital flash cards.
-The user interacts with it using a CLI, and it has a GUI created with JavaFX.
-It is written in Java, and has about 10 kLoC.</p>
+<p>This project portfolio page serves to document my contributions to the Anakin project.</p>
+</div>
+<div class="paragraph">
+<p>Anakin is a desktop flashcard management application created by team T09-2 to solve the inherent problems associated
+with physical flashcards. It aims to facilitate quick and intuitive management of virtual flashcards as well as the sharing of flashcard decks. Additionally, it features the ability to rate the difficulty of individual flashcards and a scheduling algorithm that prompts reviews of cards based on their difficulty rating.</p>
+</div>
+<div class="paragraph">
+<p>Team T09-2 consisted of myself, Joel Lee, Tay Yu Jia, David Goh, and Truong Thanh.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Ui.png" alt="Ui" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>The user interacts with Anakin using a command-line interface, and has a GUI created with JavaFX. Anakin is written
+in Java, and has about 10 kLoC.</p>
+</div>
+<div class="paragraph">
+<p>Anakin&#8217;s codebase draws from <a href="https://se-edu.github.io/">SE-EDU</a>'s AddressBook Level 4.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="preface"><a class="link" href="#preface">Preface</a></h3>
+<div class="paragraph">
+<p>This section summarizes my contributions to the project in terms of code I have written, as well as other general
+areas which had a positive impact on the function of the product (e.g. code reviews, bug fixes).</p>
+</div>
+<hr>
 <div class="ulist">
 <ul>
+<li>
+<p><strong>Code contributed:</strong> <a href="https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&amp;search=tomforge">GitHub</a></p>
+</li>
+<li>
+<p><strong>Area of Responsibility:</strong> Storage</p>
+<div class="ulist">
+<ul>
+<li>
+<p>I was in charge of the Storage component in this project, and handled the initial adaptation of AddressBook&#8217;s
+storage component for use with Anakin. I served as the subject matter expert for any queries my team had for this
+area.</p>
+</li>
+<li>
+<p>The Storage component allows you to save the data you have in Anakin on a seperate file, and also
+supports the loading of external data from a file into Anakin. Essentially, it acts as the bridge between disk (file)
+storage and program memory, containing functions to convert Anakin state to and from XML files.</p>
+</li>
+<li>
+<p>This allowed Anakin to be portable and persistent. You will no longer have to worry about losing your precious
+data after closing the Anakin program.</p>
+</li>
+</ul>
+</div>
+</li>
 <li>
 <p><strong>Major enhancement:</strong></p>
 <div class="ulist">
@@ -31,28 +78,12 @@ It is written in Java, and has about 10 kLoC.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to classify reviewed cards into difficulty, as well as track the number of times a
-card has been reviewed</p>
-</li>
-<li>
-<p>Justification: This feature paves the way for card scheduling based on user performance where cards that the user
-is struggling with will show up more often for review. This personalization is what truly differentiates Anakin as a
-smart flashcard manager.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Implemented Storage component</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p>What it does: The Storage component acts as the bridge between disk (file) storage and program memory. It allows
-Anakin state to be saved as an XML file and conversely, allows for loading of Anakin state from XML.</p>
-</li>
-<li>
-<p>Justification: This feature allows Anakin to be portable and persistent. It enables saving of user changes to
-disk such that the user will not lose all his data after closing the application.</p>
+<p>I implemented the <code>classify</code> feature which allows you to classify your cards into various difficulties. In the
+background, I also tracked the number of times you have classified each card. This feature allows you to note which
+cards you struggled the most with, or found relatively easy. Besides documentation purposes, this feature also paves
+the way for card scheduling based on your performance. This is implemented in Anakin&#8217;s <code>schedule</code> feature,  where cards
+that the user is struggling with will show up more often for review. This personalization is what truly
+differentiates Anakin as a smart flashcard manager.</p>
 </li>
 </ul>
 </div>
@@ -65,11 +96,8 @@ disk such that the user will not lose all his data after closing the application
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Implement <code>newcard</code> command</strong>: create a new card inside the current deck with the
-given question and answer.</p>
-</li>
-<li>
-<p><strong>Implement <code>delcard</code> command</strong>: delete a card inside the current deck given the index</p>
+<p><strong>Implement card creation and deletion</strong>: I implemented the ability to create a new card in a deck with the given
+question and answer, as well as the ability to delete cards from decks.</p>
 </li>
 </ul>
 </div>
@@ -79,31 +107,23 @@ given question and answer.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Wrote initial draft for Model interface</p>
+<p>I drafted the initial architecture of the Model interface</p>
 </li>
 <li>
-<p>Wrote tests for Storage component</p>
-</li>
-<li>
-<p>Documentation:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Update developer guide</p>
-</li>
-</ul>
-</div>
+<p>I wrote tests for the Storage component as well as other utility functions</p>
 </li>
 <li>
 <p>Community:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/146">#146</a>,
+<p>I reviewed the following pull requests of my team, and provided insightful review comments:
+<a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/146">#146</a>,
 <a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/140">#140</a></p>
 </li>
 <li>
-<p>Reported bugs and suggestions in the issue tracker of the project
+<p>I created the following issues in the issue tracker of the project to report bugs I have discovered as well as
+make suggestions for new features or ways to implement existing features.
 (Issues:  <a href="https://github.com/CS2103-AY1819S1-T09-2/main/issues/187">#187</a>,
  <a href="https://github.com/CS2103-AY1819S1-T09-2/main/issues/119">#119</a>,
  <a href="https://github.com/CS2103-AY1819S1-T09-2/main/issues/143">#143</a>,
@@ -120,6 +140,7 @@ given question and answer.</p>
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
 <div class="sectionbody">
@@ -129,10 +150,75 @@ given question and answer.</p>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting
+end-users.</em></p></td>
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="card-difficulty-classification-code-classify-code"><a class="link" href="#card-difficulty-classification-code-classify-code">Card difficulty classification : <code>classify</code></a></h3>
+<div class="paragraph">
+<p>Allocates a difficulty (easy, normal, hard) to the card currently being reviewed.<br>
+This indicates how you felt about the difficulty of the card, relative to your performance. This rating will be taken
+into consideration when scheduling cards for review. For example, a card rated <code>easy</code> will show up less often compared
+to a card rated <code>hard</code>.<br>
+Format: <code>classify DIFFICULTY</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The <strong>DIFFICULTY</strong> parameter should be one of the strings: {<code>easy</code>, <code>normal</code>, <code>hard</code>}</p>
+</li>
+<li>
+<p>The <strong>DIFFICULTY</strong> parameter is case-insensitive</p>
+</li>
+<li>
+<p>By default, cards are assigned a <code>normal</code> difficulty</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example"><a class="link" href="#example">Example</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You decide to review a deck.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/classifyExample1.png" alt="classifyExample1" width="500">
+</div>
+</div>
+</li>
+<li>
+<p>You encounter a difficult question. You would like to document this for future revision. Simply type in
+<code>classify</code>, followed by the desired difficulty (in this case, <code>hard</code>).</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/classifyExample2.png" alt="classifyExample2" width="500">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/classifyExample3.png" alt="classifyExample3" width="500">
+</div>
+</div>
+</li>
+<li>
+<p>Upon ending the review, you should be able to see the updated difficulty classification on your cards.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/classifyExample4.png" alt="classifyExample4" width="500">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -144,9 +230,81 @@ given question and answer.</p>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical
+documentation and the technical depth of my contributions to the project.</em></p></td>
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="storage-component"><a class="link" href="#storage-component">Storage component</a></h3>
+<div class="paragraph">
+<p>This section details the Storage component, which is the bridge between internal application state and external files.</p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 12:53:27 UTC</div></div></div></body></html>
+<div class="imageblock">
+<div class="content">
+<img src="../images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
+</div>
+<div class="title">Figure 1. Structure of the Storage Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>Storage</code> component,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>can store <code>UserPref</code> objects in json format and read it back</p>
+</li>
+<li>
+<p>can save Anakin&#8217;s data in XML format and read it back</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="performance-tracking-implementation"><a class="link" href="#performance-tracking-implementation">Performance Tracking Implementation</a></h3>
+<div class="paragraph">
+<p>This section details the implementation details and considerations of the performance tracking feature.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>Cards contain the <code>Performance</code> parameter, implemented as an <code>enum</code>, as well as a <code>timesReviewed</code> counter. The fields
+ are set to <code>normal</code> difficulty and <code>0</code> counts respectively on initialization. Since these are metadata fields, they
+ will be considered optional and a <code>Card</code> can still be created without specifying them, which will result in the
+ fields being reset to the default initializations.</p>
+</div>
+<div class="paragraph">
+<p>The user can change the difficulty of a card during "review" mode. Users can only do this on the card they are
+currently reviewing, as it is the only time it makes sense to do so. Cards assigned a difficulty will have their
+<code>timesReviewed</code> counter incremented by one.</p>
+</div>
+<div class="paragraph">
+<p>The command available to the user will be <code>classify DIFFICULTY</code>, where <code>DIFFICULTY</code> is any of the strings
+ <code>easy</code>, <code>normal</code>, <code>hard</code>, corresponding to the level of perceived difficulty for that
+ flashcard.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario for the performance tracking feature.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user requests to "review" a deck. He sees the question of card A from the deck.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The user requests to see the answer. He sees the displayed answer.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The user executes <code>classify hard</code>. Card A is now assigned the difficulty of <code>hard</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. The user continues reviewing the rest of the cards in the deck.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. Card A is shown to the user more regularly when he reviews the same deck in the future.</p>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 13:05:07 UTC</div></div></div></body></html>
