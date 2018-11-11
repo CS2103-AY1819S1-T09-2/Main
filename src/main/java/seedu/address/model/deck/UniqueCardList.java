@@ -82,11 +82,15 @@ public class UniqueCardList implements Iterable<Card> {
     }
 
     /**
-     * Sort all cards in the list in alphabetical order according to the question.
+     * Sort all cards by their next review date
      */
+    public void perfsort() {
+        internalList.sort(Comparator.comparing(o -> o.getPerformance().getNextReview()));
+    }
     public void sort() {
         internalList.sort(Comparator.comparing(o -> o.getQuestion().toString().toLowerCase()));
     }
+
 
     public void setCards(UniqueCardList cards) {
         requireNonNull(cards);
