@@ -13,9 +13,13 @@ Anakin is a desktop flashcard management application created by team T09-2 to so
 
 Team T09-2 consisted of myself, Joel Lee, Tay Yu Jia, Foo Guo Wei, and Thanh.
 
-image::Ui.png[width="790"]
 
-The user interacts with Anakin using a commandline interface, and has a GUI created with JavaFX. Anakin is written in Java, and has about 10 kLoC.
+
+image::Ui.png[width="500"]
+
+_Screenshot of Anakin's main page_
+
+While Anakin features a GUI created with JavaFX, users are only able to interact with Anakin through a commandline interface. Anakin is written in Java, and has about 10 kLoC.
 
 Anakin's codebase draws from https://se-edu.github.io/[SE-EDU]'s AddressBook Level 4.
 
@@ -54,7 +58,7 @@ https://github.com/CS2103-AY1819S1-T09-2/main/pull/180[#180]
 https://github.com/CS2103-AY1819S1-T09-2/main/pull/97[#97],
 https://github.com/CS2103-AY1819S1-T09-2/main/pull/188[#188]
 ** Community:
-*** PRs reviewed (with non-trivial review comments): https://github.com/CS2103-AY1819S1-T09-2/main/pull/60[#60], https://github.com/CS2103-AY1819S1-T09-2/main/pull/73[#73], https://github.com/CS2103-AY1819S1-T09-2/main/pull/192[#192]
+*** Pull Requests reviewed (with non-trivial review comments): https://github.com/CS2103-AY1819S1-T09-2/main/pull/60[#60], https://github.com/CS2103-AY1819S1-T09-2/main/pull/73[#73], https://github.com/CS2103-AY1819S1-T09-2/main/pull/192[#192]
 *** Highlighted several bugs: https://github.com/CS2103-AY1819S1-T09-2/main/issues/139[#139], https://github.com/CS2103-AY1819S1-T09-2/main/issues/167[#167], https://github.com/CS2103-AY1819S1-T09-2/main/issues/194[#194], https://github.com/CS2103-AY1819S1-T09-2/main/issues/208[#208]
 *** Led the discussion on major bug: https://github.com/CS2103-AY1819S1-T09-2/main/issues/203[#203]
 
@@ -62,13 +66,10 @@ https://github.com/CS2103-AY1819S1-T09-2/main/pull/188[#188]
 === Contributions to the User Guide
 
 |===
-|_Below are some of my more notable contributions to the Userguide._
+|_Provided below are some of my more notable contributions to the User Guide._
 |===
 
 include::../UserGuide.adoc[tag=importexport]
-
-include::../UserGuide.adoc[tag=cmdsummary]
-
 
 === Contributions to the Developer Guide
 
