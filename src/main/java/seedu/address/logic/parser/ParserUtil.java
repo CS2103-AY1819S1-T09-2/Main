@@ -33,7 +33,7 @@ public class ParserUtil {
 
     /**
      * Parses a {@code String name} into a {@code Name}.
-     * Leading and trailing whitespaces will be trimmed.
+     * Leading and trailing whitespaces will be trimmed. NEEDS TO CHANGE TO ANAKIN_NAME
      *
      * @throws ParseException if the given {@code name} is invalid.
      */
@@ -82,10 +82,17 @@ public class ParserUtil {
     public static Performance parsePerformance(String performance) throws ParseException {
         requireNonNull(performance);
         String trimmed = performance.trim();
-        try {
-            return Performance.type(trimmed);
-        } catch (IllegalArgumentException e) {
-            throw new ParseException(Performance.MESSAGE_PERFORMANCE_CONSTRAINTS);
+        switch (trimmed) {
+            case "easy":
+                return Performance.EASY;
+            case "good":
+                return Performance.GOOD;
+            case "hard":
+                return Performance.HARD;
+            case "review":
+                return Performance.REVIEW;
+            default:
+                throw new ParseException(Performance.MESSAGE_PERFORMANCE_CONSTRAINTS);
         }
     }
 }

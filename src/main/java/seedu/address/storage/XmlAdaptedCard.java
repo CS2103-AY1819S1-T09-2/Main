@@ -7,7 +7,6 @@ import javax.xml.bind.annotation.XmlElement;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.deck.Answer;
 import seedu.address.model.deck.Card;
-import seedu.address.model.deck.Performance;
 import seedu.address.model.deck.Question;
 
 /**
@@ -21,11 +20,6 @@ public class XmlAdaptedCard {
     private String question;
     @XmlElement(required = true)
     private String answer;
-    @XmlElement
-    private String performance;
-    @XmlElement
-    private int timesReviewed = 0;
-
 
     /**
      * Constructs an XmlAdaptedCard.
@@ -42,13 +36,6 @@ public class XmlAdaptedCard {
         this.answer = answer;
     }
 
-    public XmlAdaptedCard(String question, String answer, String performance, int timesReviewed) {
-        this.question = question;
-        this.answer = answer;
-        this.performance = performance;
-        this.timesReviewed = timesReviewed;
-    }
-
     /**
      * Converts a given Card into this class for JAXB use.
      *
@@ -57,8 +44,6 @@ public class XmlAdaptedCard {
     public XmlAdaptedCard(Card source) {
         question = source.getQuestion().fullQuestion;
         answer = source.getAnswer().fullAnswer;
-        performance = source.getPerformance().toString();
-        timesReviewed = source.getTimesReviewed();
     }
 
     /**
@@ -87,12 +72,7 @@ public class XmlAdaptedCard {
 
         final Answer cardAnswer = new Answer(answer);
 
-        Performance cardPerformance = Performance.NORMAL;
-        if (Performance.isValidPerformance(performance)) {
-            cardPerformance = Performance.type(performance);
-        }
-
-        return new Card(cardQuestion, cardAnswer, cardPerformance, timesReviewed);
+        return new Card(cardQuestion, cardAnswer);
     }
 
     @Override
@@ -107,8 +87,6 @@ public class XmlAdaptedCard {
 
         XmlAdaptedCard otherCard = (XmlAdaptedCard) other;
         return Objects.equals(question, otherCard.question)
-                && Objects.equals(answer, otherCard.answer)
-                && Objects.equals(performance, otherCard.performance)
-                && Objects.equals(timesReviewed, otherCard.timesReviewed);
+                && Objects.equals(answer, otherCard.answer);
     }
 }
