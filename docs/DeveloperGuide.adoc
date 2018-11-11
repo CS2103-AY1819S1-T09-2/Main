@@ -164,6 +164,8 @@ e.g. the UI is bound to these lists so that the UI automatically updates when th
 
 === Storage component
 
+This section details the Storage component, which is the bridge between internal application state and external files.
+
 .Structure of the Storage Component
 image::StorageClassDiagram.png[width="800"]
 
