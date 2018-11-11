@@ -226,9 +226,9 @@ Format: `review INDEX_OF_DECK`
 
 ****
 * INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
-* While in review mode, disable commands that operate on decks and cards (except: `endreview`,
-`flipcard`, ``nextcard, `prevcard`, `help`, `history`, `exit`).
-* The application's data will only be stored after execute `endreview` command.
+* While in review mode, commands that operate on decks and cards are disabled except `endreview`,
+`flipcard`, ``nextcard, `prevcard`, `classify`, `help`, `history`, `exit`.
+* The application's data will only be stored after executing `endreview` command.
 ****
 
 === Flip a card in a review : `flipcard`
