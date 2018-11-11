@@ -42,7 +42,7 @@ public class ImportDeckCommandTest {
         CommandResult commandResult = importCommand.execute(testModel, commandHistory);
 
         assertEquals(String.format(ImportDeckCommand.MESSAGE_IMPORT_DECK_SUCCESS, deckToImport),
-            commandResult.feedbackToUser);
+                commandResult.feedbackToUser);
         assertEquals(EMPTY_COMMAND_HISTORY, commandHistory);
     }
 
@@ -330,4 +330,3 @@ public class ImportDeckCommandTest {
         }
     }
 }
-

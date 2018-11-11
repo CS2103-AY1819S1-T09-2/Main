@@ -4,26 +4,41 @@ package seedu.address.model.deck;
  * Represents a card's performance.
  */
 public enum Performance {
-    DEFAULT("default"),
-    EASY("easy"),
-    GOOD("good"),
-    HARD("hard"),
-    REVIEW("review");
+    EASY,
+    NORMAL,
+    HARD;
 
     public static final String MESSAGE_PERFORMANCE_CONSTRAINTS =
-            "Performance must be one of the strings {easy|good|hard|review}";
-    private final String description;
+            "Performance must be one of the strings {easy|normal|hard}";
 
-    private Performance(String description) {
-        this.description = description;
+    /**
+     * Converts the provided string to a Performance type
+     * @param type the input string
+     * @return the converted Performance type
+     */
+    public static Performance type(String type) {
+        return Performance.valueOf(type.toUpperCase());
+    }
+
+    /**
+     * Returns a boolean indicating whether the given string can be converted to a valid performance type
+     * @param type the input string
+     * @return True if type is a valid performance, false otherwise
+     */
+    public static boolean isValidPerformance(String type) {
+        if (type == null) {
+            return false;
+        }
+        try {
+            Performance dummy = Performance.type(type);
+            return true;
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
     }
     public boolean isCorrect() {
-        //TODO : Find a better way to right this, ideally want to find if .ordinal() of performance is below len(enum)/2
-        return (description.equals("default")||(description.equals("easy"))
-                || (description.equals("good")));
-    }
 
-    public String toString() {
-        return description;
+        return this.ordinal() > (Performance.values().length/2);
     }
 }
+

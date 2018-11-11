@@ -12,7 +12,7 @@ import seedu.address.model.deck.Performance;
 public class ClassifyCardParserTest {
 
     private static final String MESSAGE_INVALID_CLASSIFY_FORMAT =
-        String.format(MESSAGE_INVALID_COMMAND_FORMAT, ClassifyCommand.MESSAGE_USAGE);
+            String.format(MESSAGE_INVALID_COMMAND_FORMAT, ClassifyCommand.MESSAGE_USAGE);
 
     private ClassifyCommandParser parser = new ClassifyCommandParser();
 

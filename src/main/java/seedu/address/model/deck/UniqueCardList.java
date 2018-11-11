@@ -85,7 +85,7 @@ public class UniqueCardList implements Iterable<Card> {
      * Sort all cards by their next review date
      */
     public void perfsort() {
-        internalList.sort(Comparator.comparing(o -> o.getPerformance().getNextReview()));
+        internalList.sort(Comparator.comparing(o -> o.getNextReview()));
     }
     public void sort() {
         internalList.sort(Comparator.comparing(o -> o.getQuestion().toString().toLowerCase()));
