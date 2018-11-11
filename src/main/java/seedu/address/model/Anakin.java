@@ -105,6 +105,17 @@ public class Anakin implements ReadOnlyAnakin {
         }
     }
 
+
+    /**
+     * Sort the current list of cards by Performance.
+     */
+    public void perfsort() {
+        assert(isInsideDeck());
+        cards.perfsort();
+        updateDisplayedCards();
+
+    }
+
     public void updateDisplayedCards() {
         displayedCards.setCards(cards);
     }

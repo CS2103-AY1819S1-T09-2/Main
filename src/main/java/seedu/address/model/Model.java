@@ -27,7 +27,8 @@ public interface Model {
 
     ReadOnlyAnakin getAnakin();
 
-    void sort();
+    void sort(ModelManager.SortingType type);
+
 
     boolean hasDeck(Deck deck);
 
