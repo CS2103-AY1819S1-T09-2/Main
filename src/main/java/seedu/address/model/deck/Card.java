@@ -23,7 +23,6 @@ public class Card {
         timesReviewed = 0;
         performance = new Performance(Performance.Difficulty.NORMAL, timesReviewed);
 
-
     }
 
     public Card(Question question, Answer answer, Performance performance, int timesReviewed) {

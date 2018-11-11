@@ -96,6 +96,10 @@ Examples:
 * `cd 2` +
 Enter the 2nd deck in the currently displayed deck list.
 
+****
+* Note: User can `cd` into another deck while being inside a deck.
+****
+
 === Navigating out of the current deck : `cd ..`
 Exit the current deck and returns the user to the list of decks. +
 Format: `cd ..`
@@ -116,6 +120,8 @@ Format: `newdeck n/NAME`
 ****
 * This deck will contains an empty list of cards.
 * This operation is disabled when user is currently inside a deck.
+* If multiple arguments are given (i.e. `newdeck n/My First Deck n/My Second Deck` only the last valid argument is accepted for each respective field.
+* User should be under Anakin's deck list to perform this operation (not inside any decks).
 ****
 
 Examples:
@@ -132,12 +138,14 @@ Format: `editdeck INDEX_OF_DECK n/NAME`
 * INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
 * The new deck will maintain the card list of the old one.
 * This operation is disabled when user navigates into a deck.
+* If multiple arguments are given (i.e. `editdeck 1 n/My First Deck n/My Second Deck` only the last valid argument is accepted for each respective field.
+* User should be under Anakin's deck list to perform this operation (not inside any decks).
 ****
 
 Examples:
 
 * `editdeck 1 n/My Deck` +
-Edits the name of the first deck in the list to be `My Deck` and keeps the old card list.
+Edits the name of the first deck in the list to be `My Deck` and keeps the card list intact.
 
 === Deleting a deck : `deldeck`
 
@@ -147,7 +155,7 @@ Format: `deldeck INDEX_OF_DECK`
 ****
 * Deletes the deck at the specified `INDEX_OF_DECK`.
 * `INDEX_OF_DECK` must be a positive integer from 1 onwards and is based on the currently displayed list.
-* This operation is disabled when user navigates into a deck.
+* User should be under Anakin's deck list to perform this operation (not inside any decks).
 ****
 
 Examples:
@@ -201,8 +209,8 @@ Format: `delcard INDEX_OF_CARD`
 
 ****
 * Deletes the card at the specified `INDEX_OF_CARD`.
-* User should be inside a deck to perform this operation.
 * INDEX_OF_CARD must be a positive integer from 1 onwards and is based on the currently displayed list.
+* User should be inside a deck to perform this operation.
 ****
 
 Examples:
@@ -218,7 +226,9 @@ Format: `review INDEX_OF_DECK`
 
 ****
 * INDEX_OF_DECK must be a positive integer from 1 onwards and is based on the currently displayed list.
-* While in review mode, all card and deck-related commands are disabled.
+* While in review mode, disable commands that operate on decks and cards (except: `endreview`,
+`flipcard`, ``nextcard, `prevcard`, `help`, `history`, `exit`).
+* The application's data will only be stored after execute `endreview` command.
 ****
 
 === Flip a card in a review : `flipcard`
@@ -238,7 +248,7 @@ Views the subsequent card in the deck. +
 Format: `nextcard`
 
 ****
-* When you are at the last card of the deck, executing `nextcard` will loop back to the first card.
+* Note: When you are at the last card of the deck, executing `nextcard` will loop back to the first card.
 ****
 
 === Go to the previous card in a review : `prevcard`
@@ -246,22 +256,31 @@ Views the previous card in the deck. +
 Format: `prevcard`
 
 ****
-* When you are at the first card of the deck, executing `prevcard` will loop back to the last card.
+* Note: When you are at the first card of the deck, executing `prevcard` will loop back to the last card.
 ****
 
 === Exit review mode : `endreview`
 Exits the review and returns to the editing menu +
 Format: `endreview`
+
+****
+* Note: Executing `undo` after reviewing will undo all the changes made in that review session
+(all `classify` commands).
+****
+
 // end::review[]
 
 === Card difficulty classification : `classify`
-Allocates one of the four difficulties (easy, good, hard or review) +
-to the card currently being reviewed. +
+Allocates a difficulty (easy, normal, hard) to the card currently being reviewed. +
+This indicates how you felt about the difficulty of the card, relative to your performance. This rating will be taken
+into consideration when scheduling cards for review. For example, a card rated `easy` will show up less often compared
+to a card rated `hard`. +
 Format: `classify DIFFICULTY`
 
 ****
-* DIFFICULTY indicates how you felt about the question +
-*DIFFICULTY* : {‘easy’ | ‘good’ | ‘hard’ | ‘review’}
+* The *DIFFICULTY* parameter should be one of the strings: {`easy`, `normal`, `hard`}
+* The *DIFFICULTY* parameter is case-insensitive
+* By default, cards are assigned a `normal` difficulty
 ****
 
 // tag::sort[]
@@ -366,7 +385,7 @@ Format: `undo`
 ====
 Undoable commands: those commands that modify the state of Anakin.
 (`newdeck`, `editdeck`, `deldeck`, `newcard`, `editcard`, `delcard`,
-`sort`, `classify`).
+`sort`, `classify`, `cd`, `cd ..`).
 ====
 
 Examples:
@@ -415,6 +434,15 @@ Format: `clear`
 Exits the program. +
 Format: `exit`
 
+// start::autocompletion[]
+=== Autocompletion : Hit `<TAB>`
+
+Provides autocompletion for existing text. If there is an available autocompletion for the text in the textbox then hitting <TAB> will replace the text in the command box with the autocompletion text of the existing command
+which is lexicographically closest to what is in the text box. If the command box is empty autocompletion will default to ``cd 1``. Unfortunately, this feature does not work with trailing or preceeding whitespace currently.
+
+// end::autocompletion[]
+
+
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
@@ -449,8 +477,7 @@ You must be inside a deck to perform this operation.
 |`nextcard` | Views the subsequent card in the deck.
 |`prevcard` | Views the previous card in the deck.
 |`endreview` | Exits the review.
-|`classify DIFFICULTY` | Classifies the current card into one of the following categories: {‘easy’, ‘good’ , ‘hard’ ,
-‘review’}
+|`classify DIFFICULTY` | Classifies the current card into one of the following categories: {‘easy’, ‘normal' , ‘hard’}
 |`sort` | Sorts the displayed list of decks by name. +
 When inside a deck, sorts the displayed list of cards by question.
 //|`rank` | Sort the list of cards by performance

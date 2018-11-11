@@ -29,6 +29,12 @@ public class NewCardCommand extends Command {
 
     public static final String MESSAGE_NEW_CARD_SUCCESS = "New card added: %1$s";
     public static final String MESSAGE_DUPLICATE_CARD = "This card already exists in the deck.";
+    public static final String DEFAULT_QUESTION = "What does Socrates know?";
+    public static final String DEFAULT_ANSWER = "Nothing";
+    public static final String AUTOCOMPLETE_TEXT = COMMAND_WORD + " " + PREFIX_QUESTION + " "
+            + DEFAULT_QUESTION + " " + PREFIX_ANSWER + " " + DEFAULT_ANSWER;
+
+
 
     private final Card toAdd;
 

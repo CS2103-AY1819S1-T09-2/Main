@@ -27,6 +27,10 @@ public class DeleteCardCommand extends Command {
         + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_CARD_SUCCESS = "Deleted card: %1$s";
+    public static final String DEFAULT_INDEX = "1";
+
+    public static final String AUTOCOMPLETE_TEXT = COMMAND_WORD + " " + DEFAULT_INDEX;
+
 
     private final Index targetIndex;
 

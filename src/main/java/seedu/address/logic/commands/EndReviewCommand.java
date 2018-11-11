@@ -16,6 +16,8 @@ public class EndReviewCommand extends Command {
 
     public static final String COMMAND_WORD = "endreview";
     public static final String MESSAGE_SUCCESS = "Deck review ended.";
+    public static final String AUTOCOMPLETE_TEXT = COMMAND_WORD;
+
 
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
@@ -27,6 +29,7 @@ public class EndReviewCommand extends Command {
 
         EventsCenter.getInstance().post(new EndReviewRequestEvent());
         model.endReview();
+        model.commitAnakin(COMMAND_WORD);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

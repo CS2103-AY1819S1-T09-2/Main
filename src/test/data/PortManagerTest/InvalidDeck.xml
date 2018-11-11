@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <deck>
-    <name>Valid Exported Deck</name>
-    <cards>
+    <name>InvalidDeck</name>
+    <ca
         <question>An</question>
         <answer>Empty</answer>
         <performance>NORMAL</performance>
-        <timesReviewed>0</timesReviewed>
+        eviewed>0</timesReviewed>
     </cards>
     <cards>
         <question>Street</question>

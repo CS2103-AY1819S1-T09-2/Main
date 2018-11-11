@@ -17,12 +17,16 @@ public class ClassifyCommand extends Command {
     public static final String COMMAND_WORD = "classify";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Assigns to this card one of the four "
-            + "difficulty classification: {easy, good, hard, review}.\n"
+            + "difficulty classification: {easy, normal, hard}.\n"
             + "Existing difficulty classification will be overwritten by the input value.\n"
-            + "Parameters: RATING (easy/good/hard/review) "
+            + "Parameters: RATING (easy/normal/hard) "
             + "Example: " + COMMAND_WORD + " easy ";
 
     public static final String MESSAGE_CLASSIFICATION_SUCCESS = "Assigned %1$s difficulty to card %2$s";
+    public static final String DEFAULT_DIFFICULTY = "easy";
+
+    public static final String AUTOCOMPLETE_TEXT = COMMAND_WORD + " " + DEFAULT_DIFFICULTY;
+
 
     private final Performance difficulty;
 
@@ -42,8 +46,14 @@ public class ClassifyCommand extends Command {
         Card editedCard = Card.classifyCard(card, difficulty);
         model.updateCard(card, editedCard);
         model.updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
-        model.commitAnakin(COMMAND_WORD);
 
         return new CommandResult(String.format(MESSAGE_CLASSIFICATION_SUCCESS, this.difficulty, card));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+            || (other instanceof ClassifyCommand // instanceof handles nulls
+            && difficulty.equals(((ClassifyCommand) other).difficulty)); // state check
     }
 }

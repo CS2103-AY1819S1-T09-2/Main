@@ -26,6 +26,7 @@ public class Performance implements Comparable<Performance> {
 
     public int getConsecutiveCorrect() {
         return (this.difficulty.ordinal() > CORRECT_THRESHOLD) ? timesReviewed + 1 : 0;
+
     }
 
     public LocalDateTime getNextReview() {
