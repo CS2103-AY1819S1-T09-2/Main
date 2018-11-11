@@ -164,6 +164,8 @@ e.g. the UI is bound to these lists so that the UI automatically updates when th
 
 === Storage component
 
+This section details the Storage component, which is the bridge between internal application state and external files.
+
 .Structure of the Storage Component
 image::StorageClassDiagram.png[width="800"]
 
@@ -204,7 +206,7 @@ The user executes `newcard q/Hello? a/World` to add a new card with question "He
 
 The following sequence diagram shows how the `newcard` operation works:
 
-image::NewcardSequenceDiagram.png[width="790", align="left"]
+image::Newcard Sequence Diagram.png[width="790", align="left"]
 
 ==== Design consideration
 
@@ -227,8 +229,8 @@ image::NewcardSequenceDiagram.png[width="790", align="left"]
 
 * Deck-level operations (`newdeck`, `editdeck`, `deldeck`, `exportdeck`, `importdeck`)
  are disabled when user is inside a deck.
-* These commands are blocked while executing commands (in Logic component) by
-checking the state of Anakin through Model interface.
+* These commands will be blocked in Logic component
+by checking the state of the application through Model interface.
 
 ==== Design consideration
 
@@ -236,9 +238,9 @@ checking the state of Anakin through Model interface.
 Logic component
 
 ** Pros:
-*** Reduce possible bugs caused by executing deck-level commands while inside
-a deck.
-*** Model component handles less invalid commands.
+*** Reduce possible bugs caused by having each methods check the state of the application before
+execution.
+*** Model component does not have to handle invalid commands.
 *** Exceptions are thrown and handled inside Logic components instead of being passed
 from Model to Logic.
 ** Cons: Increase coupling between Logic and Model component.
@@ -247,52 +249,9 @@ from Model to Logic.
 
 ** Pros: Lower degree of dependency between Logic and Model (aka low coupling), thus
 make the process of maintenance, integration and testing easier.
-** Cons: Model has to check for invalid commands according to its
-state
+** Cons: Model component has to check for invalid commands according to its state for all commands.
 
 // end::handleinvalidcommands[]
-
-// tag::deckleveloperations[]
-
-=== Deck-level operations
-
-==== Current implementation
-
-Deck-level operations are supported in Anakin class:
-
-* Anakin#addDeck(Deck deck) - Add a deck.
-* Anakin#removeDeck(Deck key) - Delete a deck with specified key.
-* Anakin#updateDeck(Deck target, Deck editedDeck) - Update the information of a card inside the current deck.
-
-These operations are exposed in the Model interface as: Model#addDeck(Deck deck), Model#deleteDeck(Deck deck), Model#updateDeck(Deck target, Deck editedDeck) respectively.
-
-Given below is an example usage scenario and how these operations are executed in Model.
-
-The user executes `newdeck n/My First Deck` to add a new deck with the name `My First Deck`.
-
-****
-. The `newdeck` command calls Model#addDeck(Deck deck), or ModelManager#addDeck.
-. ModelManager, which implements Model interface, will call Anakin#addDeck method.
-. Anakin#addDeck will call method addDeck(Card toAdd).
-. UniqueDeckList#add will throw DuplicateDeckException if the card already exist in the list. Otherwise, it will add the deck to its internal ObservableList<Deck>.
-****
-
-The following sequence diagram shows how the `newdeck` operation works:
-
-image::NewDeck.png[width="790", align="left"]
-
-==== Design consideration
-
-* *Alternative 1 (current choice):* Implement the logic of deck-level operations in Anakin class.
-
-** Pros: Easy to implement and debug as all logic related with executing commands are implemented in Anakin.
-** Cons: Deck class is not informed, or notified when its UniqueCardList is modified. This might result in unexpected behaviors if a card-level command is executed and the person in charge of Deck class assumes that the UniqueCardList is unmodified.
-
-* *Alternative 2:* Implement the logic of deck-level operations together with card level operations.
-
-** Pros: The responsibility of each class is clear, only a Deck can modify its list of cards.
-** Cons: The logic for executing deck-level and card-level commands are implemented at different places. We must ensure that the implementation of each command is correct.
-// end::deckleveloperations[]
 
 // tag::deckreview[]
 === Deck Review Implementation
@@ -408,11 +367,18 @@ image::ReviewActivityDiagram.png[]
 
 === Performance Tracking Implementation
 
-==== Current Implementation (v1.3)
+This section details the implementation details and considerations of the performance tracking feature.
 
-The user can assign to a card a difficulty after reviewing it in "review" mode. Users can only do this assignment on
-the card they are currently reviewing, as it is the only time it makes sense. By default, all cards are assigned the
-`normal` difficulty.
+==== Current Implementation
+
+Cards contain the `Performance` parameter, implemented as an `enum`, as well as a `timesReviewed` counter. The fields
+ are set to `normal` difficulty and `0` counts respectively on initialization. Since these are metadata fields, they
+ will be considered optional and a `Card` can still be created without specifying them, which will result in the
+ fields being reset to the default initializations.
+
+The user can change the difficulty of a card during "review" mode. Users can only do this on the card they are
+currently reviewing, as it is the only time it makes sense to do so. Cards assigned a difficulty will have their
+`timesReviewed` counter incremented by one.
 
 The command available to the user will be `classify DIFFICULTY`, where `DIFFICULTY` is any of the strings
  `easy`, `normal`, `hard`, corresponding to the level of perceived difficulty for that
@@ -420,9 +386,9 @@ The command available to the user will be `classify DIFFICULTY`, where `DIFFICUL
 
 Given below is an example usage scenario for the performance tracking feature.
 
-Step 1. The user requests to "review" a deck. He sees a card A (question only) from the deck.
+Step 1. The user requests to "review" a deck. He sees the question of card A from the deck.
 
-Step 2. The user requests to see the answer. He sees the answer displayed with the question.
+Step 2. The user requests to see the answer. He sees the displayed answer.
 
 Step 3. The user executes `classify hard`. Card A is now assigned the difficulty of `hard`.
 
@@ -484,8 +450,9 @@ to subsequent and previous cards in the deck. See Deck Review Implementation for
 
 ==== Problem with the old design
 
-The UI (MainWindow) constructs the cards panel by obtaining an `ObservableList` of cards from Model,
+The UI (MainWindow) constructs the displayed cards panel by obtaining an `ObservableList` of cards from Model,
 this list is assigned when UI starts, and will never be re-assigned.
+
 The UI "observes" the list and updates when it is modified.
 
 This approach works well for the deck list because Anakin contains only 1 list of decks.
@@ -503,7 +470,7 @@ reference to is actually not changed, but it is the wrong card list.
 `displayedCards` list is cleared and the new deck's list of cards is copy to the `displayedCards` list
 ** Pros: The structure of Model and UI component needs not be changed
 ** Cons: Need to keep a copy of the current card list, copying the whole list of cards
- for each `cd` operation has bad effect on performance
+ for each `cd` operation might affect performance
 
 * *Alternative 2:* Model component raises an event when its current card list's reference is changed
 

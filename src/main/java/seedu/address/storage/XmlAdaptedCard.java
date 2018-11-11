@@ -1,5 +1,6 @@
 package seedu.address.storage;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -25,6 +26,9 @@ public class XmlAdaptedCard {
     private String performance;
     @XmlElement
     private int timesReviewed = 0;
+    @XmlElement
+    private double reviewScore = 2.5;
+
 
 
     /**
@@ -59,6 +63,7 @@ public class XmlAdaptedCard {
         answer = source.getAnswer().fullAnswer;
         performance = source.getPerformance().toString();
         timesReviewed = source.getTimesReviewed();
+        reviewScore = source.getReviewScore();
     }
 
     /**
@@ -91,8 +96,9 @@ public class XmlAdaptedCard {
         if (Performance.isValidPerformance(performance)) {
             cardPerformance = Performance.type(performance);
         }
+        LocalDateTime nextReview = LocalDateTime.now();
 
-        return new Card(cardQuestion, cardAnswer, cardPerformance, timesReviewed);
+        return new Card(cardQuestion, cardAnswer, cardPerformance, timesReviewed, reviewScore, nextReview);
     }
 
     @Override

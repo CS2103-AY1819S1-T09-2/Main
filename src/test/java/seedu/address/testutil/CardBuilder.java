@@ -1,5 +1,7 @@
 package seedu.address.testutil;
 
+import java.time.LocalDateTime;
+
 import seedu.address.model.deck.Answer;
 import seedu.address.model.deck.Card;
 import seedu.address.model.deck.Performance;
@@ -14,17 +16,28 @@ public class CardBuilder {
     public static final String DEFAULT_ANSWER = "Default answer for default question lmao";
     public static final Performance DEFAULT_PERFORMANCE = Performance.NORMAL;
     public static final int DEFAULT_TIMES_REVIEWED = 0;
+    public static final int DEFAULT_REVIEW_SCORE = 0;
+    public static final LocalDateTime DEFAULT_NEXT_REVIEW = LocalDateTime.now();
+
+
 
     private Question question;
     private Answer answer;
     private Performance performance;
     private int timesReviewed;
+    private double reviewScore;
+    private LocalDateTime nextReview;
+
 
     public CardBuilder() {
         question = new Question(DEFAULT_QUESTION);
         answer = new Answer(DEFAULT_ANSWER);
         performance = DEFAULT_PERFORMANCE;
         timesReviewed = DEFAULT_TIMES_REVIEWED;
+        reviewScore = DEFAULT_REVIEW_SCORE;
+        nextReview = DEFAULT_NEXT_REVIEW;
+
+
     }
 
     /**
@@ -69,8 +82,23 @@ public class CardBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code reviewScore} of the {@code Card} that we are building
+     */
+    public CardBuilder withReviewScore(double reviewScore) {
+        this.reviewScore = reviewScore;
+        return this;
+    }
+    /**
+     * Sets the {@code nextReviewDate} of the {@code Card} that we are building
+     */
+    public CardBuilder withNextReviewDate(LocalDateTime nextReviewDate) {
+        this.nextReview = nextReviewDate;
+        return this;
+    }
+
     public Card build() {
-        return new Card(question, answer, performance, timesReviewed);
+        return new Card(question, answer, performance, timesReviewed, reviewScore, nextReview);
     }
 
 }

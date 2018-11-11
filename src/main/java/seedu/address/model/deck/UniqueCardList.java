@@ -88,6 +88,14 @@ public class UniqueCardList implements Iterable<Card> {
         internalList.sort(Comparator.comparing(o -> o.getQuestion().toString().toLowerCase()));
     }
 
+    /**
+     * Sort all cards in the list in order of performance.
+     */
+    public void perfsort() {
+        internalList.sort(Comparator.comparing(o -> o.getNextReview()));
+
+    }
+
     public void setCards(UniqueCardList cards) {
         requireNonNull(cards);
         internalList.setAll(cards.internalList);

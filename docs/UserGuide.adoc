@@ -287,12 +287,29 @@ Format: `classify DIFFICULTY`
 * By default, cards are assigned a `normal` difficulty
 ****
 
+*Example*
+
+1.  You decide to review a deck.
++
+image::classifyExample1.png[width="500"]
+
+2. You encounter a difficult question. You would like to document this for future revision. Simply type in
+`classify`, followed by the desired difficulty (in this case, `hard`).
++
+image::classifyExample2.png[width="500"]
++
+image::classifyExample3.png[width="500"]
+
+3. Upon ending the review, you should be able to see the updated difficulty classification on your cards.
++
+image::classifyExample4.png[width="500"]
+
 // tag::sort[]
 === Sort : `sort`
 Sort the current list in lexicographical order.
 
-* If user is currently inside a deck, sort all cards according to their question. +
-* If user is not in a deck, sort all decks according to the their name. +
+* If user is currently inside a deck, sort all cards according to their questions. +
+* If user is not in a deck, sort all decks according to the their names. +
 
 Format: `sort`
 

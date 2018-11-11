@@ -14,9 +14,12 @@ import seedu.address.model.deck.Performance;
  */
 public class TypicalCards {
 
-    public static final Card CARD_A = new CardBuilder().withQuestion("An").withAnswer("Empty").build();
-    public static final Card CARD_B = new CardBuilder().withQuestion("Street").withAnswer("An").build();
-    public static final Card CARD_C = new CardBuilder().withQuestion("Empty").withAnswer("House").build();
+    public static final Card CARD_A = new CardBuilder().withQuestion("An").withAnswer("Empty")
+            .withReviewScore(4.0).build();
+    public static final Card CARD_B = new CardBuilder().withQuestion("Street").withAnswer("An")
+            .withReviewScore(5.0).build();
+    public static final Card CARD_C = new CardBuilder().withQuestion("Empty").withAnswer("House")
+            .withReviewScore(3.0).build();
     public static final Card CARD_D = new CardBuilder().withQuestion("A").withAnswer("Hole").build();
     public static final Card CARD_E = new CardBuilder().withQuestion("Inside").withAnswer("My").build();
     public static final Card CARD_F = new CardBuilder().withQuestion("Heart").withAnswer("I am").build();

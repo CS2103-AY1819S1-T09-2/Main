@@ -50,7 +50,7 @@ into boxes based on how well he/she remembers them. This will allow for a better
 ** Implement autocompletion function
 
 
-* *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] _{give links to collated code files}_
+*Code contributed:* https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&search=leeyjjoel[GitHub]
 
 * *Other contributions*:
 

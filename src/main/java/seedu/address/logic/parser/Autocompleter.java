@@ -37,9 +37,7 @@ import seedu.address.logic.commands.UndoCommand;
  */
 
 public class Autocompleter {
-    public static final String COMMAND_DIRECTORY = "../commands";
-
-
+    // This method of approaching the problem was inspired by @jethrokuan
     /**
      * Checks if {@code commandBox}'s commandTextField has a potential autocompletable command word,
      * if there exists such a word, it is replaced with the relevant autocompletion command.
