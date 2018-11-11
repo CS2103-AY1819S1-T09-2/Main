@@ -7,14 +7,15 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_CARD_LEVEL_OPE
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
 
 /**
- * Sort the list of deck in lexicographical order.
+ * Sort the list of deck in order of next review date.
  */
 public class PerformanceSortCommand extends Command {
 
     public static final String COMMAND_WORD = "perfsort";
-    public static final String MESSAGE_SUCCESS = "Cards are sorted by performace";
+    public static final String MESSAGE_SUCCESS = "Cards are sorted by performance";
 
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
@@ -23,7 +24,7 @@ public class PerformanceSortCommand extends Command {
             throw new CommandException(MESSAGE_CURRENTLY_REVIEWING_DECK);
         }
 
-        model.sort();
+        model.sort(ModelManager.SortingType.PERFORMANCE);
         model.commitAnakin(COMMAND_WORD);
         if (!model.isInsideDeck()) {
             throw new CommandException(MESSAGE_INVALID_CARD_LEVEL_OPERATION);

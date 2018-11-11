@@ -25,6 +25,9 @@ public class ModelManager extends ComponentManager implements Model {
     private final FilteredList<Deck> filteredDecks;
     // The filteredCards is not assigned. Should have methods to assign filteredCards (when user is inside a deck).
     private FilteredList<Card> filteredCards;
+    public enum SortingType {
+       PERFORMANCE, ALPHABETICAL
+    }
 
     /**
      * Initializes a ModelManager with the given Anakin and userPrefs.
@@ -63,15 +66,20 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public void sort() {
-        versionedAnakin.sort();
-        if (isInsideDeck()) {
-            updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
-        } else {
-            updateFilteredDeckList(PREDICATE_SHOW_ALL_DECKS);
+    public void sort(SortingType type) {
+        if(type == SortingType.PERFORMANCE) {
+            versionedAnakin.perfsort();
+        } else if (type == SortingType.ALPHABETICAL) {
+            versionedAnakin.sort();
+            if (isInsideDeck()) {
+                updateFilteredCardList(PREDICATE_SHOW_ALL_CARDS);
+            } else {
+                updateFilteredDeckList(PREDICATE_SHOW_ALL_DECKS);
+            }
+            indicateAnakinChanged();
         }
-        indicateAnakinChanged();
     }
+
 
     @Override
     public boolean hasDeck(Deck deck) {

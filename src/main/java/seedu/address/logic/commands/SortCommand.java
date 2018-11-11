@@ -6,6 +6,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_CURRENTLY_REVIEWING_DE
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
 
 /**
  * Sort the list of deck in lexicographical order.
@@ -25,7 +26,7 @@ public class SortCommand extends Command {
             throw new CommandException(MESSAGE_CURRENTLY_REVIEWING_DECK);
         }
 
-        model.sort();
+        model.sort(ModelManager.SortingType.ALPHABETICAL);
         model.commitAnakin(COMMAND_WORD);
         if (model.isInsideDeck()) {
             return new CommandResult(MESSAGE_SUCCESS_2);
