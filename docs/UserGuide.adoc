@@ -185,7 +185,8 @@ Examples:
 // tag::editcard[]
 === Editing a card : `editcard`
 
-When user is inside a deck, edits an existing card at the specified index.If multiple arguments are given for question or answer, only the last valid argument is accepted for each respective field +
+When user is inside a deck, edits an existing card at the specified index. If multiple arguments are given for
+question or answer, only the last valid argument is accepted for each respective field. +
 Format: `editcard INDEX_OF_CARD [q/QUESTION]-[a/ANSWER]`
 
 ****

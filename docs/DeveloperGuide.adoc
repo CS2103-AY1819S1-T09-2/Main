@@ -104,7 +104,7 @@ The sections below give more details of each component.
 === UI component
 
 .Structure of the UI Component
-image::AnakinUIClassDiagram.png[width="800"]
+image::AnakinUIClassDiagram.png[width="600"]
 
 *API* : link:{repoURL}/src/main/java/seedu/address/ui/Ui.java[`Ui.java`]
 
@@ -346,7 +346,7 @@ reordering the nodes in `mainAreaPlaceholder`, which is a JavaFX StackPane.
 
 The following sequence diagram shows how the review operation works:
 
-image::ReviewSequenceDiagram.png[width="790", align="left"]
+image::ReviewSequenceDiagram.png[]
 
 Step 2. The user sees the question displayed on the first card and comes up with his own answer. To verify his
 answer, he executes the `flipcard` command.
@@ -382,7 +382,7 @@ Step 5. When the user is done, he executes `endreview` to quit review mode.
 
 The following activity diagram summarizes what happens when a user enters deck review mode.
 
-image::ReviewActivityDiagram.png[width="790", align="left"]
+image::ReviewActivityDiagram.png[]
 
 ==== Design Considerations
 
@@ -401,7 +401,7 @@ image::ReviewActivityDiagram.png[width="790", align="left"]
 ** Pros: Logic of iterating cards is decoupled from UI.
 ** Cons: Limited scalability as adding new functionality require adding more events and event handlers.
 * **Alternative 2:** Implement a ListElementPointer for the list of cards similar to command history.
-** Pros: Able to easily implement keyboard shortcuts for iterating cards.
+** Pros: Able to easily implement more functionality such as keyboard shortcuts for iterating cards.
 ** Cons: Still requires events to trigger changes in UI.
 
 // end::deckreview[]
