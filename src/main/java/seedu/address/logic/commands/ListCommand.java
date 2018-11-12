@@ -41,6 +41,7 @@ public class ListCommand extends Command {
     /**
      * Creates a ListCommand with the given performance matching predicate, which will filter by the performances
      * defined in said predicate
+     *
      * @param cardPerformancePredicate the performance matching predicate
      */
     public ListCommand(CardPerformanceMatchesPerformancesPredicate cardPerformancePredicate) {
