@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Anakin</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S1-T09-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Lee Yi Jie, Joel - Project Portfolio</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>This portfolio outlines the contributions of Lee Yi Jie Joel to the following project(s).</p>
+<p>This portfolio outlines my contributions  to the following project.</p>
 </div>
 </div>
 </div>
@@ -12,9 +12,9 @@
 <div class="sectionbody">
 <hr>
 <div class="paragraph">
-<p>This project was completed during August 2018 to November 2018 as part of a Software Engineering module (CS2103T) in
-the National University of Singapore. The team comprises Tay Yu Jia, Joel Lee, Foo Guo Wei, David Goh and Nguyen
-Trong Truong Thanh.</p>
+<p>Anakin is the result of our search for a better command line application to revise for exams. From August 2018 to November 2018,
+Team T09-2 comprising of myself, Tay Yu Jia, Foo Guo Wei, David Goh and Nguyen Truong Thanh built Anakin as part of a Software Engineering module (CS2103T) conducted at
+the National University of Singapore.</p>
 </div>
 </div>
 </div>
@@ -23,9 +23,32 @@ Trong Truong Thanh.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Anakin is a desktop-based flashcard application which makes remembering things easy. The user
-interacts with it using a CLI, and it has a GUI created with JavaFX. Its key selling points are the ability to replace
-traditional paper flashcards (thus saving the environment) and to provide an enhanced learning experience through the
-well-established spaced repetition learning method.</p>
+interacts with it using a Command Line Interface but can fallback to the Java FX GUI if needed. Anakin uses <a href="https://www.supermemo.com/english/ol/sm2.htm">Super Memo 2</a>  which is the  spaced repetition algorithm used by popular language learning tools such as
+Duolingo, Wani Kani, and Memrise.<br></p>
+</div>
+<div class="paragraph">
+<p>Anakin aims to revolutionise the studying experience of the technically advanced user. On top of being easy to use,
+Anakin is also environmentally friendly, having zero paper wastage unlike conventional flashcards.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Ui.png" alt="Ui" width="500">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>What is spaced repetition?<br>
+Spaced repetition is a learning technique that incorporates increasing intervals of time between subsequent review of previously learned material in order to exploit the psychological spacing effect.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>It is written in Java, and has about 10 kLoC.</p>
@@ -64,20 +87,35 @@ well-established spaced repetition learning method.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>showDue</strong> command as well as the scheduling algorithm behind it</p>
+<p><strong>Major enhancement</strong>: I added autocompletion for commands</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the users to see cards which have been scheduled on a particular date  .</p>
+<p>What it does: allows the users to sort cards by when they should be reviewed.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user will want to be able to look through
-review cards based on how he has classified them</p>
+<p>Justification: This feature improves the product significantly because a user will want to be able to finish expressing
+the command he wants to type with a simple press of &lt;TAB&gt;</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. While in the review
-mode, using the <strong>supermemo2</strong> spaced recognition algorithm, the student is saved from the hassle of seperating his/her flashcards
-into boxes based on how well he/she remembers them. This will allow for a better studying experience and in turn better recall for tests</p>
+<p>Highlights: This enhancement affects existing commands and commands to be added in future. While typing in the command box, the student is saved from the hassle of typing and remembering
+long strings of command syntax. This will allow for a better user experience and in turn easier studying for tests.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Major enhancement</strong>: I added the scheduling algorithm at the core of the product together with the <code>rank</code> command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the users to sort cards by when they should be reviewed.</p>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly because a user will want to review cards which he or she performed poorly on</p>
+</li>
+<li>
+<p>Highlights: This allows user to focus on what&#8217;s important for review by sorting the cards in order of performance and pushing cards which require review to the top of the deck.</p>
 </li>
 </ul>
 </div>
@@ -87,25 +125,19 @@ into boxes based on how well he/she remembers them. This will allow for a better
 <div class="ulist">
 <ul>
 <li>
-<p>Help command which allows user to seek help when he/she is lost or initially starting out</p>
+<p>Added Help command which allows user to seek help when he/she is lost.</p>
 </li>
 <li>
-<p>Added systemtests to increase robustness of the application</p>
+<p>Implemented the <code>editdeck</code> command that allows users to update the name of their deck.</p>
 </li>
 <li>
-<p>Implemented a <code>editdeck</code> command that allows user to update the details of their deck.</p>
+<p>Added the <code>exit</code> command to allow the user to leave the deck</p>
 </li>
 <li>
-<p>Added an exit command to allow user to leave the deck</p>
+<p>Added the <code>select</code> command which eventually formed the basis for other commands to be developed.</p>
 </li>
 <li>
-<p>Added a <code>select</code> command which is now deprecated</p>
-</li>
-<li>
-<p>Add <code>undo</code> and <code>redo</code> functions</p>
-</li>
-<li>
-<p>Implement autocompletion function</p>
+<p>Add <code>undo</code> and <code>redo</code> commands</p>
 </li>
 </ul>
 </div>
@@ -113,7 +145,9 @@ into boxes based on how well he/she remembers them. This will allow for a better
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Code contributed:</strong> <a href="https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&amp;search=leeyjjoel">GitHub</a></p>
+<p><strong>Code contributed:</strong>
+<a href="https://github.com/CS2103-AY1819S1-T09-2/main/commits?author=leeyjjoel">Github Commits</a>,
+<a href="https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&amp;search=leeyjjoel">Reposense</a></p>
 </div>
 <div class="ulist">
 <ul>
@@ -136,7 +170,11 @@ into boxes based on how well he/she remembers them. This will allow for a better
 <p>Added initial documentation for team README (Pull request <a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/23">#23</a>)</p>
 </li>
 <li>
-<p>Integrate reposense for code contribution tracking</p>
+<p>Integrate Reposense for code contribution tracking (Pull request <a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/75/files">#75</a>)</p>
+</li>
+<li>
+<p>Configure naming convention of files and packages across the project to comply with project style guide(<a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/38/files">#38</a>
+, <a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/106/files">#106</a>)</p>
 </li>
 </ul>
 </div>
@@ -146,13 +184,41 @@ into boxes based on how well he/she remembers them. This will allow for a better
 <div class="ulist">
 <ul>
 <li>
-<p>Created system tests (Pull request <a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/158">#158</a>)</p>
+<p>Wrote extensive system tests which played a major role in boosting coverage from 66% to the above 90%</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wrote integration tests and tests for help command(<a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/148">#148</a>)</p>
+</li>
+<li>
+<p>Wrote Unit Tests for editdeck(<a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/121/files">#121</a>)</p>
+</li>
+<li>
+<p>Wrote tests for EditCard, EditDeckParser, and GUI (<a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/157/files">#157</a>)</p>
+</li>
+<li>
+<p>Wrote System Tests for ClearCommand, FindCommand, Logic Manager, EditDeck, NewDeck(<a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/158/files">#158</a>,
+<a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/165/files">#165</a>,
+ <a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/238">#238</a>, <a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/242">#242</a>, <a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/244">#244</a>)</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </li>
 <li>
 <p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Add documentation for deck level operations(<a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/110/files">#110</a>)</p>
+</li>
+<li>
+<p>Update user guide and development guide(<a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/268">#268</a>)</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>Community:</p>
@@ -161,11 +227,8 @@ into boxes based on how well he/she remembers them. This will allow for a better
 <li>
 <p>PRs reviewed (with non-trivial review comments):
 <a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/189">#189</a>
-<a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/195">#195</a></p>
-</li>
-<li>
-<p>Discovered and reported bugs to peers:
-This is a work in progress</p>
+<a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/195">#195</a>
+<a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/271">#271</a></p>
 </li>
 </ul>
 </div>
@@ -191,36 +254,189 @@ This is a work in progress</p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="show-cards-that-should-be-reviewed-on-a-particular-date-code-showdue-code-coming-in-v1-4"><a class="link" href="#show-cards-that-should-be-reviewed-on-a-particular-date-code-showdue-code-coming-in-v1-4">Show cards that should be reviewed on a particular date : <code>showDue</code> [coming in v1.4]</a></h3>
+<h3 id="autocompletion-hit-code-tab-code"><a class="link" href="#autocompletion-hit-code-tab-code">Autocompletion : Hit <code>&lt;TAB&gt;</code></a></h3>
 <div class="paragraph">
-<p>Show cards due on a particular date</p>
+<p>Hit &lt;TAB&gt; for autocompletion so you don&#8217;t have to remember verbose commands. If there is an autocompletion available, hitting &lt;TAB&gt; will replace the current text in the command box with the autocompletion text.</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="paragraph">
+<p>Examples:<br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>Shows the cards which require a review for a particular date based on past card performance.<br></p>
+<p>Suppose you&#8217;re attempting to create a new card.</p>
 </li>
-</ul>
+</ol>
 </div>
-<div class="paragraph">
-<p>Format: <code>showDue c/10 m/12 y/14</code></p>
-</div>
-<div class="sidebarblock">
+<div class="imageblock">
 <div class="content">
+<img src="../images/newCardPreAutocomplete.png" alt="newCardPreAutocomplete" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>Image: Partially completed <code>newcard</code> command.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Just hit &lt;TAB&gt; and you will instantly get the desired result</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/newCardPostAutocomplete.png" alt="newCardPostAutocomplete" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>Image: After pressing &lt;TAB&gt; the command is automatically completed!</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If the command box is empty autocompletion will default to <code>cd 1</code>.
+Additionally, this feature does not work with trailing or preceding whitespace currently.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rank-code-rank-code"><a class="link" href="#rank-code-rank-code">Rank : <code>rank</code></a></h3>
+<div class="paragraph">
+<p>To sort all cards by a user&#8217;s cumulative performance score on each card.<br>
+Format: <code>rank</code><br>
+Examples: Suppose you are studying for an important exam, and you want to find out which cards you performed poorly on so you can review them.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Classify cards as described in the <code>classify</code> section above and type <code>rank</code></p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/rankScreenshot1.png" alt="rankScreenshot1" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>Image: Appearance of cards before sorting by performance</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Type  and you will instantly get the desired result</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/rankScreenshot2.png" alt="rankScreenshot2" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>Image: Appearance of cards after sorting by performance. As can be seen, harder cards move to the top.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="literalblock">
+<div class="content">
+<pre> The indicator in the card panel only shows the most recent classification of the card while the scheduling algorithm takes into account all past reviews.
+As such, cards labelled HARD may not always be above cards ranked NORMAL.</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">Undoing previous command : <code>undo</code></a></h3>
+<div class="paragraph">
+<p>Restores Anakin to the state before the previous <em>undoable</em> command was executed.<br>
+Format: <code>undo</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Undoable commands: those commands that modify the state of Anakin.
+(<code>newdeck</code>, <code>editdeck</code>, <code>deldeck</code>, <code>newcard</code>, <code>editcard</code>, <code>delcard</code>,
+<code>sort</code>, <code>classify</code>, <code>cd</code>, <code>cd ..</code>).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Note: User must be inside a deck to perform this command.</p>
+<p><code>deldeck 1</code><br>
+<code>undo</code> (reverses the <code>deldeck 1</code> command)<br></p>
 </li>
 <li>
-<p>The above command will display the cards due on the 10th December, 2014. If no arguments are given for date</p>
+<p><code>history</code><br>
+<code>undo</code><br>
+The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
 </li>
 <li>
-<p>If no day, month or year is given, showDue will default to showing the cards due for today</p>
+<p><code>deldeck 1</code><br>
+<code>clear</code><br>
+<code>undo</code> (reverses the <code>clear</code> command)<br>
+<code>undo</code> (reverses the <code>deldeck 1</code> command)<br></p>
 </li>
 </ul>
 </div>
 </div>
+<div class="sect2">
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">Redoing the previously undone command : <code>redo</code></a></h3>
+<div class="paragraph">
+<p>Reverses the most recent <code>undo</code> command.<br>
+Format: <code>redo</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>deldeck 1</code><br>
+<code>undo</code> (reverses the <code>deldeck 1</code> command)<br>
+<code>redo</code> (reapplies the <code>deldeck 1</code> command)<br></p>
+</li>
+<li>
+<p><code>delcard 1</code><br>
+<code>redo</code><br>
+The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
+</li>
+<li>
+<p><code>delcard 1</code><br>
+<code>clear</code><br>
+<code>undo</code> (reverses the <code>clear</code> command)<br>
+<code>undo</code> (reverses the <code>delcard 1</code> command)<br>
+<code>redo</code> (reapplies the <code>delcard 1</code> command)<br>
+<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -243,11 +459,14 @@ This is a work in progress</p>
 <div class="sect3">
 <h4 id="current-implementation-v1-4"><a class="link" href="#current-implementation-v1-4">Current implementation (v1.4)</a></h4>
 <div class="paragraph">
-<p>Autocompletion in Anakin is handled by an Autocompleter.</p>
+<p>The logic behind autocompletion is handled by an <code>Autocompleter</code> class.</p>
 </div>
 <div class="paragraph">
-<p>On pressing tab, CommandBox will raise an event and check if the current text in the command box is autocompletable, that is to say, it is a prefix of one of the existing commands supported by Anakin.
+<p>On pressing <code>&lt;TAB&gt;</code>, Command Box will raise an event and check if the current text in the command box is autocompletable, that is to say, it is a prefix of one of the existing commands supported by Anakin.
 If it is Autocompletable, Autocompleter will search through the list of existing commands in lexicographic order and find the first match for the current text in the command box.</p>
+</div>
+<div class="paragraph">
+<p>Here is a sequence diagram of what happens during the autocompletion.</p>
 </div>
 </div>
 <div class="sect3">
@@ -259,14 +478,14 @@ If it is Autocompletable, Autocompleter will search through the list of existing
 <div class="ulist">
 <ul>
 <li>
-<p>Explanation: Each command has a pre-decided autocompletion text and we do prefix-matching between the text in the command box and our existing set of command words.
-If there is a potential match, we replace the current text in the command box with the autocompletion text of the supported command which it is matched to.</p>
+<p>Explanation: Each command has a pre-decided <code>AUTOCOMPLETE_TEXT</code> field and we do prefix-matching between the text in the command box and our existing set of command words.
+If there is a potential match, we replace the current text in the command box with the <code>AUTOCOMPLETE_TEXT</code> of the supported command which it is matched to.</p>
 </li>
 <li>
-<p>Pros: Better modularity</p>
+<p>Pros: Provides better modularity by decreasing the depndency of autocomplete on external components  (Current Implementation)</p>
 </li>
 <li>
-<p>Cons: Less customizability. This design doesn&#8217;t take into account the past commands that the user has issued.</p>
+<p>Cons: Less personalisation to each user. This design doesn&#8217;t take into account the past commands that the user has issued.</p>
 </li>
 </ul>
 </div>
@@ -276,10 +495,10 @@ If there is a potential match, we replace the current text in the command box wi
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Better prediction of intended command</p>
+<p>Pros: Better personalisation of each command</p>
 </li>
 <li>
-<p>Cons: Worse modularity and Separation of Concerns as the autocompleter would need to interact with the history and thus the state of the model.</p>
+<p>Cons: Worse modularity and separation of concerns as the autocompleter would need to interact with the history. As such, it might increase coupling between the autocomplete and history components.</p>
 </li>
 </ul>
 </div>
@@ -287,6 +506,38 @@ If there is a potential match, we replace the current text in the command box wi
 </ul>
 </div>
 </div>
+<div class="sect3">
+<h4 id="how-to-add-autocompletion-for-new-commands"><a class="link" href="#how-to-add-autocompletion-for-new-commands">How to add autocompletion for new commands</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Should there be a need to include new commands, you can follow the following steps to ensure your command can be autocompleted.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example Scenario: Suppose we just introduced the <code>undo</code> command and we wish to integrate it with the autocompleter.</p>
+</div>
+<div class="paragraph">
+<p>Step 1 : Add the <code>AUTOCOMPLETE_TEXT</code> field to the class. This will decide what the command autocompletes to when the user presses tab.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddAutocompleteTextExample.png" alt="AddAutocompleteTextExample" width="600">
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 13:26:06 UTC</div></div></div></body></html>
+<div class="paragraph">
+<p>Step 2 : Add the class to Autocompleter java</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddCommandToAutocompleterExample.png" alt="AddCommandToAutocompleterExample" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>With that, you&#8217;re good to go!</p>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 13:31:19 UTC</div></div></div></body></html>

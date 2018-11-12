@@ -29,14 +29,16 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#card-level-operations">3.1. Card-level operations</a></li>
-<li><a href="#handle-invalid-commands">3.2. Handle invalid commands</a></li>
-<li><a href="#deck-review-implementation">3.3. Deck Review Implementation</a></li>
-<li><a href="#performance-tracking-implementation">3.4. Performance Tracking Implementation</a></li>
-<li><a href="#ui-implementation">3.5. UI Implementation</a></li>
-<li><a href="#keep-cards-panel-updated-by-ui">3.6. Keep cards panel updated by UI</a></li>
-<li><a href="#import-export-implementation">3.7. Import/Export Implementation</a></li>
-<li><a href="#logging">3.8. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
+<li><a href="#deck-level-operations">3.2. Deck-level operations</a></li>
+<li><a href="#handle-invalid-commands">3.3. Handle invalid commands</a></li>
+<li><a href="#deck-review-implementation">3.4. Deck Review Implementation</a></li>
+<li><a href="#performance-tracking-implementation">3.5. Performance Tracking Implementation</a></li>
+<li><a href="#ui-implementation">3.6. UI Implementation</a></li>
+<li><a href="#keep-cards-panel-updated-by-ui">3.7. Keep cards panel updated by UI</a></li>
+<li><a href="#import-export-implementation">3.8. Import/Export Implementation</a></li>
+<li><a href="#logging">3.9. Logging</a></li>
+<li><a href="#autocomplete-implementation">3.10. Autocomplete Implementation</a></li>
+<li><a href="#Implementation-Configuration">3.11. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -548,9 +550,50 @@ e.g. the UI is bound to these lists so that the UI automatically updates when th
 </div>
 </div>
 <div class="sect2">
-<h3 id="handle-invalid-commands"><a class="link" href="#handle-invalid-commands">3.2. Handle invalid commands</a></h3>
+<h3 id="deck-level-operations"><a class="link" href="#deck-level-operations">3.2. Deck-level operations</a></h3>
+<div class="paragraph">
+<p>The following deck level operations are supported in Anakin:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Anakin#newDeck()</p>
+</li>
+<li>
+<p>Anakin#removeDeck()</p>
+</li>
+<li>
+<p>Anakin#updateDeck()</p>
+</li>
+<li>
+<p>Anakin#importDeck()</p>
+</li>
+<li>
+<p>Anakin#exportDeck()</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram describes how the editdeck command would work:<br>
+Step 1:<br>
+Step 2:<br>
+Step 3:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1</strong> : &lt;Insert first option here&gt;</p>
+</li>
+<li>
+<p><strong>Alternative 2</strong> : &lt;Insert Alternative here&gt;</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="handle-invalid-commands"><a class="link" href="#handle-invalid-commands">3.3. Handle invalid commands</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.3.1. Current implementation</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -565,7 +608,7 @@ by checking the state of the application through Model interface.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-consideration-2"><a class="link" href="#design-consideration-2">3.2.2. Design consideration</a></h4>
+<h4 id="design-consideration-2"><a class="link" href="#design-consideration-2">3.3.2. Design consideration</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -616,9 +659,9 @@ make the process of maintenance, integration and testing easier.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deck-review-implementation"><a class="link" href="#deck-review-implementation">3.3. Deck Review Implementation</a></h3>
+<h3 id="deck-review-implementation"><a class="link" href="#deck-review-implementation">3.4. Deck Review Implementation</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.4.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The deck review mechanism is facilitated by <code>Anakin</code> from Model, the <code>MainWindow</code> and <code>DeckReviewScreen</code> from UI and
 the EventsCenter.</p>
@@ -810,7 +853,7 @@ in <code>mainAreaPlaceholder</code> and the user is able to edit his decks again
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.4.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-tracking-index-of-current-card"><a class="link" href="#aspect-tracking-index-of-current-card">Aspect: Tracking index of current card</a></h5>
 <div class="ulist">
@@ -880,12 +923,12 @@ in <code>mainAreaPlaceholder</code> and the user is able to edit his decks again
 </div>
 </div>
 <div class="sect2">
-<h3 id="performance-tracking-implementation"><a class="link" href="#performance-tracking-implementation">3.4. Performance Tracking Implementation</a></h3>
+<h3 id="performance-tracking-implementation"><a class="link" href="#performance-tracking-implementation">3.5. Performance Tracking Implementation</a></h3>
 <div class="paragraph">
 <p>This section details the implementation details and considerations of the performance tracking feature.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.5.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>Cards contain the <code>Performance</code> parameter, implemented as an <code>enum</code>, as well as a <code>timesReviewed</code> counter. The fields
  are set to <code>normal</code> difficulty and <code>0</code> counts respectively on initialization. Since these are metadata fields, they
@@ -923,9 +966,9 @@ currently reviewing, as it is the only time it makes sense to do so. Cards assig
 </div>
 </div>
 <div class="sect2">
-<h3 id="ui-implementation"><a class="link" href="#ui-implementation">3.5. UI Implementation</a></h3>
+<h3 id="ui-implementation"><a class="link" href="#ui-implementation">3.6. UI Implementation</a></h3>
 <div class="sect3">
-<h4 id="previous-implementation-v1-2"><a class="link" href="#previous-implementation-v1-2">3.5.1. Previous implementation (v1.2)</a></h4>
+<h4 id="previous-implementation-v1-2"><a class="link" href="#previous-implementation-v1-2">3.6.1. Previous implementation (v1.2)</a></h4>
 <div class="paragraph">
 <p>The UI for Anakin at v1.2 split the main area into three sections:</p>
 </div>
@@ -963,7 +1006,7 @@ that of the second deck.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-v1-3"><a class="link" href="#current-implementation-v1-3">3.5.2. Current implementation (v1.3)</a></h4>
+<h4 id="current-implementation-v1-3"><a class="link" href="#current-implementation-v1-3">3.6.2. Current implementation (v1.3)</a></h4>
 <div class="paragraph">
 <p>The UI for Anakin was revamped in v1.3. Previously in v1.2, the application had a list of decks and list of cards on
 its main view <code>MainWindow</code>. In v1.3, the panels displaying these lists have been refactored into <code>DeckEditScreen</code>.
@@ -975,7 +1018,7 @@ to subsequent and previous cards in the deck. See Deck Review Implementation for
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.5.3. Design considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.6.3. Design considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1009,9 +1052,9 @@ to subsequent and previous cards in the deck. See Deck Review Implementation for
 </div>
 </div>
 <div class="sect2">
-<h3 id="keep-cards-panel-updated-by-ui"><a class="link" href="#keep-cards-panel-updated-by-ui">3.6. Keep cards panel updated by UI</a></h3>
+<h3 id="keep-cards-panel-updated-by-ui"><a class="link" href="#keep-cards-panel-updated-by-ui">3.7. Keep cards panel updated by UI</a></h3>
 <div class="sect3">
-<h4 id="problem-with-the-old-design"><a class="link" href="#problem-with-the-old-design">3.6.1. Problem with the old design</a></h4>
+<h4 id="problem-with-the-old-design"><a class="link" href="#problem-with-the-old-design">3.7.1. Problem with the old design</a></h4>
 <div class="paragraph">
 <p>The UI (MainWindow) constructs the displayed cards panel by obtaining an <code>ObservableList</code> of cards from Model,
 this list is assigned when UI starts, and will never be re-assigned.</p>
@@ -1030,7 +1073,7 @@ reference to is actually not changed, but it is the wrong card list.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.6.2. Design considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.7.2. Design considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1074,9 +1117,9 @@ and update the cards panel accordingly</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="import-export-implementation"><a class="link" href="#import-export-implementation">3.7. Import/Export Implementation</a></h3>
+<h3 id="import-export-implementation"><a class="link" href="#import-export-implementation">3.8. Import/Export Implementation</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-v1-3-2"><a class="link" href="#current-implementation-v1-3-2">3.7.1. Current implementation (v1.3)</a></h4>
+<h4 id="current-implementation-v1-3-2"><a class="link" href="#current-implementation-v1-3-2">3.8.1. Current implementation (v1.3)</a></h4>
 <div class="paragraph">
 <p>Imports and exports in Anakin are managed by a PortManager.</p>
 </div>
@@ -1087,7 +1130,7 @@ PortManager uses the <code>java.nio Path</code> package to navigate directories.
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.7.2. Design considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.8.2. Design considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1148,14 +1191,14 @@ PortManager returns a <code>String</code> of the export location, which is passe
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.9. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.11, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1180,21 +1223,28 @@ PortManager returns a <code>String</code> of the export location, which is passe
 <p><code>INFO</code> : Information showing the noteworthy actions by the App</p>
 </li>
 <li>
-<p><code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size
-=== Autocomplete Implementation
-==== Current implementation (v1.4)</p>
+<p><code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size</p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="autocomplete-implementation"><a class="link" href="#autocomplete-implementation">3.10. Autocomplete Implementation</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-v1-4"><a class="link" href="#current-implementation-v1-4">3.10.1. Current implementation (v1.4)</a></h4>
 <div class="paragraph">
-<p>Autocompletion in Anakin is handled by an Autocompleter.</p>
+<p>The logic behind autocompletion is handled by an <code>Autocompleter</code> class.</p>
 </div>
 <div class="paragraph">
-<p>On pressing tab, CommandBox will raise an event and check if the current text in the command box is autocompletable, that is to say, it is a prefix of one of the existing commands supported by Anakin.
+<p>On pressing <code>&lt;TAB&gt;</code>, Command Box will raise an event and check if the current text in the command box is autocompletable, that is to say, it is a prefix of one of the existing commands supported by Anakin.
 If it is Autocompletable, Autocompleter will search through the list of existing commands in lexicographic order and find the first match for the current text in the command box.</p>
 </div>
+<div class="paragraph">
+<p>Here is a sequence diagram of what happens during the autocompletion.</p>
+</div>
+</div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.8.1. Design considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.10.2. Design considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1202,14 +1252,14 @@ If it is Autocompletable, Autocompleter will search through the list of existing
 <div class="ulist">
 <ul>
 <li>
-<p>Explanation: Each command has a pre-decided autocompletion text and we do prefix-matching between the text in the command box and our existing set of command words.
-If there is a potential match, we replace the current text in the command box with the autocompletion text of the supported command which it is matched to.</p>
+<p>Explanation: Each command has a pre-decided <code>AUTOCOMPLETE_TEXT</code> field and we do prefix-matching between the text in the command box and our existing set of command words.
+If there is a potential match, we replace the current text in the command box with the <code>AUTOCOMPLETE_TEXT</code> of the supported command which it is matched to.</p>
 </li>
 <li>
-<p>Pros: Better modularity</p>
+<p>Pros: Provides better modularity by decreasing the depndency of autocomplete on external components  (Current Implementation)</p>
 </li>
 <li>
-<p>Cons: Less customizability. This design doesn&#8217;t take into account the past commands that the user has issued.</p>
+<p>Cons: Less personalisation to each user. This design doesn&#8217;t take into account the past commands that the user has issued.</p>
 </li>
 </ul>
 </div>
@@ -1219,20 +1269,52 @@ If there is a potential match, we replace the current text in the command box wi
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Better prediction of intended command</p>
+<p>Pros: Better personalisation of each command</p>
 </li>
 <li>
-<p>Cons: Worse modularity and Separation of Concerns as the autocompleter would need to interact with the history and thus the state of the model.</p>
+<p>Cons: Worse modularity and separation of concerns as the autocompleter would need to interact with the history. As such, it might increase coupling between the autocomplete and history components.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="how-to-add-autocompletion-for-new-commands"><a class="link" href="#how-to-add-autocompletion-for-new-commands">3.10.3. How to add autocompletion for new commands</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Should there be a need to include new commands, you can follow the following steps to ensure your command can be autocompleted.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example Scenario: Suppose we just introduced the <code>undo</code> command and we wish to integrate it with the autocompleter.</p>
+</div>
+<div class="paragraph">
+<p>Step 1 : Add the <code>AUTOCOMPLETE_TEXT</code> field to the class. This will decide what the command autocompletes to when the user presses tab.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddAutocompleteTextExample.png" alt="AddAutocompleteTextExample" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 2 : Add the class to Autocompleter java</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddCommandToAutocompleterExample.png" alt="AddCommandToAutocompleterExample" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>With that, you&#8217;re good to go!</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.11. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2376,4 +2458,4 @@ Maintained by Model and stored in Storage.</p>
 </dl>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 13:26:06 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 13:31:19 UTC</div></div></div></body></html>
