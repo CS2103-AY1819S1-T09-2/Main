@@ -30,11 +30,19 @@ public class ListCommand extends Command {
     private Predicate<Card> cardPredicate;
     private String MESSAGE_SUCCESS_CARD;
 
+    /**
+     * Creates the default ListCommand, which lists all cards
+     */
     public ListCommand() {
         this.cardPredicate = PREDICATE_SHOW_ALL_CARDS;
         this.MESSAGE_SUCCESS_CARD = MESSAGE_SUCCESS_ALL_CARDS;
     }
 
+    /**
+     * Creates a ListCommand with the given performance matching predicate, which will filter by the performances
+     * defined in said predicate
+     * @param cardPerformancePredicate the performance matching predicate
+     */
     public ListCommand(CardPerformanceMatchesPerformancesPredicate cardPerformancePredicate) {
         this.cardPredicate = cardPerformancePredicate;
         String performanceString = cardPerformancePredicate.performancesAsStrings().stream().collect(Collectors
