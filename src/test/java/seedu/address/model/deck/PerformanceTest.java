@@ -13,7 +13,7 @@ public class PerformanceTest {
     private static final String VALID_PERFORMANCE_STRING_MIXED_CASE = "hArD";
 
     @Test
-    public void validPerformance_toString_type_returnsPerformance() {
+    public void type_validPerformanceToString_returnsPerformance() {
         Performance expectedPerformance = Performance.HARD;
         Performance actualPerformance = Performance.type(expectedPerformance.toString());
         assertEquals(expectedPerformance, actualPerformance);
