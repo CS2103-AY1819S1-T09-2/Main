@@ -206,7 +206,7 @@ The user executes `newcard q/Hello? a/World` to add a new card with question "He
 
 The following sequence diagram shows how the `newcard` operation works:
 
-image::NewcardSequenceDiagram.png[width="790", align="left"]
+image::NewCardSequenceDiagram.png[width="790", align="left"]
 
 ==== Design consideration
 
