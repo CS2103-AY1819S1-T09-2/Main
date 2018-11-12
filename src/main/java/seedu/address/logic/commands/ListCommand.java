@@ -28,14 +28,14 @@ public class ListCommand extends Command {
     public static final String AUTOCOMPLETE_TEXT = COMMAND_WORD;
 
     private Predicate<Card> cardPredicate;
-    private String MESSAGE_SUCCESS_CARD;
+    private String messageSuccessCard;
 
     /**
      * Creates the default ListCommand, which lists all cards
      */
     public ListCommand() {
         this.cardPredicate = PREDICATE_SHOW_ALL_CARDS;
-        this.MESSAGE_SUCCESS_CARD = MESSAGE_SUCCESS_ALL_CARDS;
+        this.messageSuccessCard = MESSAGE_SUCCESS_ALL_CARDS;
     }
 
     /**
@@ -47,7 +47,7 @@ public class ListCommand extends Command {
         this.cardPredicate = cardPerformancePredicate;
         String performanceString = cardPerformancePredicate.performancesAsStrings().stream().collect(Collectors
                 .joining(", ")).toLowerCase();
-        this.MESSAGE_SUCCESS_CARD = String.format(MESSAGE_SUCCESS_PERFORMANCE_CARDS, performanceString);
+        this.messageSuccessCard = String.format(MESSAGE_SUCCESS_PERFORMANCE_CARDS, performanceString);
     }
 
 
@@ -60,7 +60,7 @@ public class ListCommand extends Command {
 
         if (model.isInsideDeck()) {
             model.updateFilteredCardList(cardPredicate);
-            return new CommandResult(MESSAGE_SUCCESS_CARD);
+            return new CommandResult(messageSuccessCard);
         } else {
             model.updateFilteredDeckList(PREDICATE_SHOW_ALL_DECKS);
             return new CommandResult(MESSAGE_SUCCESS_DECK);
