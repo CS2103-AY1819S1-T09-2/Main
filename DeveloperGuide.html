@@ -1274,9 +1274,9 @@ If there is a potential match, we replace the current text in the command box wi
 <div class="sect3">
 <h4 id="current-implementation-v1-4-2"><a class="link" href="#current-implementation-v1-4-2">3.10.1. Current implementation (v1.4)</a></h4>
 <div class="paragraph">
-<p>The logic behind scheduling is handled in <code>Card.java</code>. Each card contains a <code>reviewScore</code> and <code>nextReviewDate</code> fields which determine how well the user remembers the card and when the user should review the card again.
+<p>The logic behind scheduling is handled in <code>Card.java</code>. Each card contains <code>reviewScore</code> and <code>nextReviewDate</code> fields which determine how well the user remembers the card and when the user should review the card again respectively.
 When each card is classified using <code>classify</code>, it&#8217;s score is adjusted according to a modified version of the Super Memo 2 algorithm which we have detailed below. The review score is then updated, and using this review score
-days are added to the current review date of the card to determine when it should be reviewed.</p>
+we calculate the number of days to add to the current review date.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2489,4 +2489,4 @@ Maintained by Model and stored in Storage.</p>
 </dl>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 15:34:41 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 15:44:38 UTC</div></div></div></body></html>

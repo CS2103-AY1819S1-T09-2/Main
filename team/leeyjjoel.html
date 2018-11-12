@@ -125,7 +125,7 @@ for commands he/she has forgotten. This will allow for a better user experience 
 <div class="ulist">
 <ul>
 <li>
-<p>Added Help command which allows user to seek help when he/she is lost.</p>
+<p>Added <code>help</code> command which allows user to seek help when he/she is lost.</p>
 </li>
 <li>
 <p>Implemented the <code>editdeck</code> command that allows users to update the name of their deck.</p>
@@ -137,7 +137,7 @@ for commands he/she has forgotten. This will allow for a better user experience 
 <p>Added the <code>select</code> command which eventually formed the basis for other commands to be developed.</p>
 </li>
 <li>
-<p>Add <code>undo</code> and <code>redo</code> commands</p>
+<p>Added <code>undo</code> and <code>redo</code> commands</p>
 </li>
 </ul>
 </div>
@@ -163,13 +163,13 @@ for commands he/she has forgotten. This will allow for a better user experience 
 <p>Set up Continuous Integration</p>
 </li>
 <li>
-<p>Update contact us page (Pull Request: <a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/68">#68</a>)</p>
+<p>Update contact us page(Pull Request: <a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/68">#68</a>)</p>
 </li>
 <li>
-<p>Added initial documentation for team README (Pull Request: <a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/23">#23</a>)</p>
+<p>Added initial documentation for team README(Pull Request: <a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/23">#23</a>)</p>
 </li>
 <li>
-<p>Integrate Reposense for code contribution tracking (Pull Request: <a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/75/files">#75</a>)</p>
+<p>Integrate Reposense for code contribution tracking(Pull Request: <a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/75/files">#75</a>)</p>
 </li>
 <li>
 <p>Configure naming convention of files and packages across the project to comply with project style guide(Pull Requests: <a href="https://github.com/CS2103-AY1819S1-T09-2/main/pull/38/files">#38</a>
@@ -333,7 +333,7 @@ Examples: Suppose you are studying for an important exam, and you want to find o
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Classify cards as described in the <code>classify</code> section above and type <code>rank</code></p>
+<p>Classify cards as described in the <code>classify</code> section above and then type <code>rank</code></p>
 </li>
 </ol>
 </div>
@@ -348,7 +348,7 @@ Examples: Suppose you are studying for an important exam, and you want to find o
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Type  and you will instantly get the desired result</p>
+<p>Type <code>rank</code> and you will instantly get the desired result</p>
 </li>
 </ol>
 </div>
@@ -480,9 +480,9 @@ If there is a potential match, we replace the current text in the command box wi
 <div class="sect3">
 <h4 id="current-implementation-v1-4-2"><a class="link" href="#current-implementation-v1-4-2">Current implementation (v1.4)</a></h4>
 <div class="paragraph">
-<p>The logic behind scheduling is handled in <code>Card.java</code>. Each card contains a <code>reviewScore</code> and <code>nextReviewDate</code> fields which determine how well the user remembers the card and when the user should review the card again.
+<p>The logic behind scheduling is handled in <code>Card.java</code>. Each card contains <code>reviewScore</code> and <code>nextReviewDate</code> fields which determine how well the user remembers the card and when the user should review the card again respectively.
 When each card is classified using <code>classify</code>, it&#8217;s score is adjusted according to a modified version of the Super Memo 2 algorithm which we have detailed below. The review score is then updated, and using this review score
-days are added to the current review date of the card to determine when it should be reviewed.</p>
+we calculate the number of days to add to the current review date.</p>
 </div>
 </div>
 <div class="sect3">
@@ -559,4 +559,4 @@ How the user assesses his/her performance during classify.<br>
 <p>For more information about me and to view more of my works, please feel to check out my website <a href="https://joellee.ml">here</a></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 15:34:41 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 15:44:38 UTC</div></div></div></body></html>
