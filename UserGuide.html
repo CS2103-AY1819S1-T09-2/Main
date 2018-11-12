@@ -154,6 +154,12 @@ parameters are needed minimally to execute the command.</p>
 <li>
 <p>Parameters can be in any order e.g. if the command specifies <code>q/QUESTION a/ANSWER</code>, <code>a/ANSWER q/QUESTION</code> is also acceptable.</p>
 </li>
+<li>
+<p>Any argument followed by <code>&#8230;&#8203;</code> indicates that the command is able to accept multiple arguments for that field.</p>
+</li>
+<li>
+<p>If you provide multiple parameters for fields that do not support multiple arguments, only the last argument will be accepted. I.e. If you entered <code>newdeck n/nameOne n/nameTwo</code>, the new deck will have the name "nameTwo".</p>
+</li>
 </ul>
 </div>
 </div>
@@ -729,7 +735,7 @@ Format: <code>classify DIFFICULTY</code></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Format: <code>find KEYWORD [MORE_KEYWORDS]…</code></p>
+<p>Format: <code>find KEYWORD [MORE_KEYWORDS]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -866,7 +872,7 @@ Format: <code>import FILEPATH</code></p>
 <p>This operation is disabled when you navigate into a deck.</p>
 </li>
 <li>
-<p>The default base directory is the same directory as the Anakin.jar file.</p>
+<p>The default base directory is the directory that the Anakin.jar file is in.</p>
 </li>
 </ul>
 </div>
@@ -876,7 +882,7 @@ Format: <code>import FILEPATH</code></p>
 <p>Examples:</p>
 </div>
 <div class="paragraph">
-<p>Say you want to import a deck called "Geography" and you have the <code>Geography.xml</code> file in the same directory as Anakin.jar.<br></p>
+<p>Say you want to import a deck called "Geography" and you have the <code>Geography.xml</code> file in the same folder as Anakin.jar.<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -886,12 +892,12 @@ Format: <code>import FILEPATH</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Simply  enter <code>import Geography.xml</code><br></p>
+<p>Simply  enter <code>import Geography.xml</code> and Anakin will import the deck "Geography".<br></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Before:</p>
+<p><strong>Before</strong></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -899,17 +905,19 @@ Format: <code>import FILEPATH</code></p>
 </div>
 </div>
 <div class="paragraph">
-<p>After:</p>
+<p><strong>After</strong></p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/importScreenshot2.png" alt="importScreenshot2" width="500">
 </div>
 </div>
-<div class="paragraph">
-<p>Anakin imports the deck "My Deck" if it is in the same directory as the Anakin.jar file.
-* <code>import C:/Users/Admin/Desktop/My Deck2.xml</code><br>
-Anakin imports the deck "My Deck2".</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If you want to import a deck that is located elsewhere, for example the file is in Desktop, you can enter <code>import</code> followed by the full filepath (something like: <code>import C:/Users/Admin/Desktop/My Deck2.xml</code>) and Anakin will be able to import the deck.<br></p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -1170,4 +1178,4 @@ When you are inside a deck, finds cards with questions that contain any of the g
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 10:36:45 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 13:26:06 UTC</div></div></div></body></html>

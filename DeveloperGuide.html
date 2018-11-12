@@ -81,8 +81,16 @@
 <li><a href="#import-a-deck">C.9. Import a deck</a></li>
 </ul>
 </li>
-<li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
-<li><a href="#glossary">Appendix E: Glossary</a></li>
+<li><a href="#instructions-for-manual-testing">Appendix D: Instructions for Manual Testing</a>
+<ul class="sectlevel2">
+<li><a href="#launch">D.1. Launch</a></li>
+<li><a href="#navigating-into-a-deck">D.2. Navigating into a deck</a></li>
+<li><a href="#exporting-a-deck">D.3. Exporting a deck</a></li>
+<li><a href="#importing-a-deck">D.4. Importing a deck</a></li>
+</ul>
+</li>
+<li><a href="#non-functional-requirements">Appendix E: Non Functional Requirements</a></li>
+<li><a href="#glossary">Appendix F: Glossary</a></li>
 </ul>
 </div>
 </div>
@@ -2168,7 +2176,134 @@ Without any UI elements, the UI is extremely clean. Users will never accidentall
 </div>
 </div>
 <div class="sect1">
-<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></h2>
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix D: Instructions for Manual Testing</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Given below are instructions to test Anakin manually. These instructions only provide a starting framework for testers; testers are expected to do additional, exploratory testing.</p>
+</div>
+<div class="sect2">
+<h3 id="launch"><a class="link" href="#launch">D.1. Launch</a></h3>
+<div class="paragraph">
+<p>Initial launch</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download the jar file and copy into an empty folder</p>
+</li>
+<li>
+<p>Double-click the jar file to launch Anakin
+Expected: Shows the GUI with a set of sample decks.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="navigating-into-a-deck"><a class="link" href="#navigating-into-a-deck">D.2. Navigating into a deck</a></h3>
+<div class="paragraph">
+<p>Prerequisites: There must be at least 1 deck in the application.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>cd INDEX_OF_DECK</code> where <code>INDEX_OF_DECK</code> is the currently displayed index of the target deck.</p>
+</li>
+<li>
+<p>The card panel on the right of the deck panel should be populated with a list of the cards in the target deck. If the deck is empty, no cards will be shown.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exporting-a-deck"><a class="link" href="#exporting-a-deck">D.3. Exporting a deck</a></h3>
+<div class="paragraph">
+<p>Exporting a deck from Anakin to a <code>.xml</code> file.
+Prerequisites: There must be at least 1 deck in the application.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter the command <code>export INDEX_OF_DECK</code> where <code>INDEX_OF_DECK</code> is the currently displayed index of the target deck.</p>
+</li>
+<li>
+<p>Check the directory that contains Anakin.jar. There should be a <code>.xml</code> file with the same name as the target deck.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="importing-a-deck"><a class="link" href="#importing-a-deck">D.4. Importing a deck</a></h3>
+<div class="paragraph">
+<p>Importing a deck from a <code>.xml</code> file at a known file location
+Prerequisites: Target deck must not already exist in Anakin. Renaming an existing deck is acceptable.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter the command <code>import DECK_FILEPATH</code> where <code>DECK_FILEPATH</code> is the relative filepath of the deck from the folder that Anakin.jar is in.</p>
+</li>
+<li>
+<p>Anakin should display an import success message and the deck should appear in the deck panel.</p>
+</li>
+<li>
+<p>Navigating into the deck should display all the cards of that deck. (Assuming the deck was not empty)</p>
+</li>
+<li>
+<p>Performing the same operation again should display an error that states "This deck already exist in Anakin"</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Importing a file that is in the same folder as Anakin.jar</strong>
+Prerequisites: Target must be in the same folder as Anakin.jar. Target deck must not already exist in Anakin. Renaming an existing deck is acceptable.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter the command <code>import DECK_NAME</code> where <code>DECK_NAME</code> is the name of the <code>.xml</code> file.</p>
+</li>
+<li>
+<p>Anakin should display an import success message and the deck should appear in the deck panel.</p>
+</li>
+<li>
+<p>Navigating into the deck should display all the cards of that deck. (Assuming the deck was not empty)</p>
+</li>
+<li>
+<p>Performing the same operation again should display an error that states "This deck already exist in Anakin"</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Importing from an invalid location</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter <code>import BAD_FILEPATH</code> where <code>BAD_FILEPATH</code> is a non-existent location.</p>
+</li>
+<li>
+<p>Anakin should display an error stating "File at <code>BAD_FILEPATH</code> could not be found".</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Importing an invalid file</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter the command <code>import DECK_FILEPATH</code> where <code>DECK_FILEPATH</code> is the relative filepath of a corrupted or invalid from the folder that Anakin.jar is in.</p>
+</li>
+<li>
+<p>Anakin should display an error stating "Target deck contains invalid data".</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix E: Non Functional Requirements</a></h2>
 <div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
@@ -2213,7 +2348,7 @@ Without any UI elements, the UI is extremely clean. Users will never accidentall
 </div>
 </div>
 <div class="sect1">
-<h2 id="glossary"><a class="link" href="#glossary">Appendix E: Glossary</a></h2>
+<h2 id="glossary"><a class="link" href="#glossary">Appendix F: Glossary</a></h2>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
@@ -2241,4 +2376,4 @@ Maintained by Model and stored in Storage.</p>
 </dl>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 10:36:45 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 13:26:06 UTC</div></div></div></body></html>
